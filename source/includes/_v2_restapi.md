@@ -2642,7 +2642,7 @@ GET/v2/all/assets
 }
 ```
 
-Get a list of all assets available on CoinFLEX. These include coins and bookable contracts.
+Get a list of all assets available on Opnx. These include coins and bookable contracts.
 
 Response Parameters |Type | Description| 
 -------------------------- | -----|--------- |

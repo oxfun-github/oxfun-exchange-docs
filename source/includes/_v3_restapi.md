@@ -2367,7 +2367,7 @@ lastUpdatedAt | STRING | |
 
 ### GET `/v3/assets`
 
-Get a list of assets supported on CoinFLEX
+Get a list of assets supported on Opnx
 
 > **Request**
 
