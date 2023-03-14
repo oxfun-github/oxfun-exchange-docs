@@ -204,7 +204,7 @@ Here come the API V3!
 * Added Python example of request for websocket API [Cancel Batch Orders](?python#websocket-api-order-commands-cancel-batch-orders)
 * Added Python example of request for websocket API [Modify Order](?python#websocket-api-order-commands-modify-order)
 * Added Python example of request for websocket API [Modify Batch Orders](?python#websocket-api-order-commands-modify-batch-orders)
-* Added link to CoinFLEX's [Historical Data](?python#historical-data) from third party API
+* Added link to Opnx's [Historical Data](?python#historical-data) from third party API
 
 **2021-08-05**
 
@@ -356,14 +356,14 @@ Here come the API V3!
 
 # Introduction
 
-Welcome to CoinFLEX's v2 application programming interface (API). CoinFLEX's APIs provide clients programmatic access to control aspects of their accounts and to place orders on CoinFLEX's trading platform. CoinFLEX supports the following types of APIs:
+Welcome to Opnx's v2 application programming interface (API). Opnx's APIs provide clients programmatic access to control aspects of their accounts and to place orders on Opnx's trading platform. Opnx supports the following types of APIs:
 
 * a WebSocket API
 * a REST API
 
 Using these interfaces it is possible to place both authenticated and unauthenticated API commands for public and prvate commands respectively.
 
-To get started please register for a TEST account at `https://v2stg.coinflex.com/user-console/register`
+To get started please register for a TEST account at `https://v2stg.opnx.com/user-console/register`
 
 
 # API Key Management
@@ -378,11 +378,11 @@ API keys are also only bound to a single sub-account, defined upon creation. Thi
 
 # Historical Data
 
-CoinFLEX's historical L2 order book data (depth data), can be found at [https://docs.tardis.dev/historical-data-details/coinflex] (https://docs.tardis.dev/historical-data-details/coinflex) (third party API), which includes historical market data details - instruments, data coverage and data collection specifics for all of our instruments since 2020-07-14.
+Opnx's historical L2 order book data (depth data), can be found at [https://docs.tardis.dev/historical-data-details/opnx] (https://docs.tardis.dev/historical-data-details/opnx) (third party API), which includes historical market data details - instruments, data coverage and data collection specifics for all of our instruments since 2020-07-14.
 
 # Rate Limit
 
-CoinFLEX's APIs allows our clients to access and control their accounts or view our market data using custom-written software. To protect the performance of the system, we impose certain limits:
+Opnx's APIs allows our clients to access and control their accounts or view our market data using custom-written software. To protect the performance of the system, we impose certain limits:
 
 Type                              |                            Limit |
 --------------------------------- | -------------------------------- |

@@ -2,13 +2,13 @@
 
 **TEST** site
 
-* `https://v2stgapi.coinflex.com`
+* `https://v2stgapi.opnx.com`
 
 **LIVE** site
 
-* `https://v2api.coinflex.com/v2`
+* `https://v2api.opnx.com/v2`
 
-For clients who do not wish to take advantage of CoinFLEX's native WebSocket API, CoinFLEX offers a RESTful API that implements much of the same functionality.
+For clients who do not wish to take advantage of Opnx's native WebSocket API, Opnx offers a RESTful API that implements much of the same functionality.
 
 ##Authentication 
 
@@ -32,8 +32,8 @@ import hashlib
 import datetime
 from urllib.parse import urlencode
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = <API-KEY>
 api_secret = <API-SECRET>
@@ -73,7 +73,7 @@ Component | Required | Example | Description|
 Timestamp | Yes | 2020-04-30T15:20:30 | YYYY-MM-DDThh:mm:ss
 Nonce | Yes | 123 | User generated
 Verb | Yes| 'GET' | Uppercase
-Path | Yes | 'v2stgapi.coinflex.com' |
+Path | Yes | 'v2stgapi.opnx.com' |
 Method | Yes | '/v2/positions | Available REST methods: <li>`V2/positions`</li><li>`V2/orders`</li><li>`V2/balances`</li>
 Body | No | instrumentID=BTC-USD-SWAP-LIN | Optional and dependent on the REST method being called
 
@@ -82,7 +82,7 @@ The constructed message string should look like:-
   `2020-04-30T15:20:30\n
   123\n
   GET\n
-  v2stgapi.coinflex.com\n
+  v2stgapi.opnx.com\n
   /v2/positions\n
   instrumentID=BTC-USD-SWAP-LIN`
 
@@ -115,8 +115,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_secret'
@@ -228,8 +228,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_secret'
@@ -346,8 +346,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_secret'
@@ -453,8 +453,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_secret'
@@ -593,8 +593,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_secret'
@@ -715,8 +715,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_secret'
@@ -874,8 +874,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_secret'
@@ -1017,8 +1017,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_key'
@@ -1249,8 +1249,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_secret'
@@ -1331,8 +1331,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_secret'
@@ -1418,8 +1418,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_secret'
@@ -1587,8 +1587,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_secret'

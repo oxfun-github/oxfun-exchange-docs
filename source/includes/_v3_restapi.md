@@ -2,13 +2,13 @@
 
 **TEST** 
 
-* `https://v2stgapi.coinflex.com`
+* `https://v2stgapi.opnx.com`
 
 **LIVE** site
 
-* `https://v2api.coinflex.com`
+* `https://v2api.opnx.com`
 
-For clients who do not wish to take advantage of CoinFLEX's native WebSocket API, CoinFLEX offers a RESTful API that implements much of the same functionality.
+For clients who do not wish to take advantage of Opnx's native WebSocket API, Opnx offers a RESTful API that implements much of the same functionality.
 
 ## Error Codes
 
@@ -71,11 +71,11 @@ import datetime
 import json
 
 
-# rest_url = 'https://v2api.coinflex.com'
-# rest_path = 'v2api.coinflex.com'
+# rest_url = 'https://v2api.opnx.com'
+# rest_path = 'v2api.opnx.com'
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = "API-KEY"
 api_secret = "API-SECRET"
@@ -117,7 +117,7 @@ Component | Required | Example | Description|
 Timestamp | Yes | 2020-04-30T15:20:30 | YYYY-MM-DDThh:mm:ss
 Nonce | Yes | 123 | User generated
 Verb | Yes| GET | Uppercase
-Path | Yes | v2stgapi.coinflex.com |
+Path | Yes | v2stgapi.opnx.com |
 Method | Yes | /v3/positions | Available REST methods
 Body | No | marketCode=BTC-USD-SWAP-LIN | Optional and dependent on the REST method being called
 
@@ -126,7 +126,7 @@ The constructed message string should look like:-
   `2020-04-30T15:20:30\n
   123\n
   GET\n
-  v2stgapi.coinflex.com\n
+  v2stgapi.opnx.com\n
   /v3/positions\n
   marketCode=BTC-USD-SWAP-LIN`
 

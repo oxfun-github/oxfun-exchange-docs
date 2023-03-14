@@ -2,13 +2,13 @@
 
 **TEST** site
 
-* `https://v2stgapi.coinflex.com`
+* `https://v2stgapi.opnx.com`
 
 **LIVE** site
 
-* `https://v2api.coinflex.com/v2`
+* `https://v2api.opnx.com/v2`
 
-For clients who do not wish to take advantage of CoinFLEX's native WebSocket API, CoinFLEX offers a RESTful API that implements much of the same functionality.
+For clients who do not wish to take advantage of Opnx's native WebSocket API, Opnx offers a RESTful API that implements much of the same functionality.
 
 ##Authentication 
 
@@ -228,8 +228,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_secret'
@@ -366,8 +366,8 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.coinflex.com'
-rest_path = 'v2stgapi.coinflex.com'
+rest_url = 'https://v2stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
 api_secret = 'api_key'

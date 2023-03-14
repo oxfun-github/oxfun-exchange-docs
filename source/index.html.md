@@ -7,7 +7,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - python
 
 toc_footers:
-  - <a href='https://coinflex.com/user-console/register'>Sign Up for a Developer Key</a>
+  - <a href='https://opnx.com/user-console/register'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -22,5 +22,5 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the CoinFLEX API
+    content: Documentation for the Opnx API
 ---
