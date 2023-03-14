@@ -2309,7 +2309,7 @@ createdAt | STRING | Millisecond timestamp |
 
 ### GET `/v3/markets`
 
-Get a list of markets on CoinFlex.
+Get a list of markets on Opnx.
 
 > **Request**
 

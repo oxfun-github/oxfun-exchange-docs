@@ -363,7 +363,7 @@ Welcome to Opnx's v2 application programming interface (API). Opnx's APIs provid
 
 Using these interfaces it is possible to place both authenticated and unauthenticated API commands for public and prvate commands respectively.
 
-To get started please register for a TEST account at `https://v2stg.opnx.com/user-console/register`
+To get started please register for a TEST account at `https://v2stg.opnx.com/register`
 
 
 # API Key Management

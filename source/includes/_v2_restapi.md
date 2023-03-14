@@ -2573,11 +2573,11 @@ GET/v2/all/markets`
             "lowerPriceBound": "9000.00",
             "marketPrice": "10000.00",
             "marketPriceLastUpdated": "1620810131131"
-        },
+        }
     ]
 }
 ```
-Get a list of all available markets on CoinFlex.
+Get a list of all available markets on Opnx.
 
 Response Parameters |Type | Description| 
 -------------------------- | -----|--------- |
