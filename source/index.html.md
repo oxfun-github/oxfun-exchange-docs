@@ -13,8 +13,8 @@ toc_footers:
 includes:
   - v2_introduction
   - v2_websocket
-  - v2_restapi
   - v3_restapi
+  - v2_restapi  
 
 search: true
 

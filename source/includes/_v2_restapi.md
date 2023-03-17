@@ -1,4 +1,4 @@
-# REST API V2
+# REST API V2 [no longer maintained]
 
 **TEST** site
 

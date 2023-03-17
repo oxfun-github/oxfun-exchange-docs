@@ -1812,3 +1812,87 @@ flexasset | STRING | Asset name, available assets e.g. `flexUSD`, `flexBTC`, `fl
 apr | STRING | Annualized APR (%) = yield * 3 * 365 * 100 |
 yield | STRING | Period yield |
 paidAt | STRING | Millisecond timestamp of the interest payment |
+
+
+### POST `/v3/leverage`
+
+Increase or decrease your leverage. This endpoint is used in markets that support isolated margin.
+
+> **Request**
+
+```
+POST /v3/leverage
+```
+```json
+{
+    "marketCode": "BTC-USD-SWAP-PER",
+    "leverage": 3
+}
+```
+
+> **Successful response format**
+
+```json
+{
+    "success": true,
+    "data":{
+        "marketCode": "BTC-USD-SWAP-PER",
+        "leverage": 2,
+        "maxPositionSize": "1000000"
+    }
+}
+```
+
+Request Parameter | Type | Required | Description | 
+----------------- | ---- | -------- | ----------- |
+marketCode | STRING | YES | |
+leverage | STRING | YES | |
+
+Response Field | Type | Description | 
+-------------- | ---- | ----------- |
+marketCode | STRING | |
+leverage | STRING | |
+maxPositionSize | STRING | |
+
+
+### POST `/v3/position/adjust`
+
+Add to or reduce your margin balance when using isolated margin.
+
+> **Request**
+
+```
+POST /v3/position/adjust
+```
+```json
+{
+    "marketCode": "BTC-USD-SWAP-PER",
+    "amount": "100",
+    "type": "ADD"
+}
+```
+
+> **Successful response format**
+
+```json
+{     
+"success": true,     
+"data": { 
+        "type": "ADD",       
+        "amount": "100.0",       
+        "marginBalance": "150.5"   
+ }
+}
+```
+
+Request Parameter | Type | Required | Description | 
+----------------- | ---- | -------- | ----------- |
+marketCode | STRING | YES | |
+amount | STRING | YES | Must be a positive value |
+type | STRING | YES | `ADD`, `REDUCE`|
+
+Response Field | Type | Description | 
+-------------- | ---- | ----------- |
+type | STRING | |
+amount | STRING | |
+marginBalance | STRING | |
