@@ -54,7 +54,7 @@ $lang-select-pressed-text: #fff !default; // color of language tab text when mou
 
 // SIZES
 ////////////////////
-$nav-width: 265px !default; // width of the navbar
+$nav-width: 270px !default; // width of the navbar
 $examples-width: 36% !default; // portion of the screen taken up by code examples
 $logo-margin: 0px !default; // margin below logo
 $main-padding: 28px !default; // padding to left and right of content & examples
@@ -65,6 +65,7 @@ $code-annotation-padding: 13px !default; // padding inside code annotations
 $h1-margin-bottom: 21px !default; // padding under the largest header tags
 $tablet-width: 930px !default; // min width before reverting to tablet size
 $phone-width: $tablet-width - $nav-width !default; // min width before reverting to mobile size
+
 
 // FONTS
 ////////////////////
@@ -97,6 +98,6 @@ $search-box-border-color: #666 !default;
 // These settings are probably best left alone.
 
 %break-words {
-    word-break: break-all;
-    hyphens: auto;
+  word-break: break-all;
+  hyphens: auto;
 }
