@@ -2,11 +2,11 @@
 
 **TEST** site
 
-* `https://v2stgapi.opnx.com`
+* `https://stgapi.opnx.com`
 
 **LIVE** site
 
-* `https://v2api.opnx.com/v2`
+* `https://api.opnx.com`
 
 For clients who do not wish to take advantage of Opnx's native WebSocket API, Opnx offers a RESTful API that implements much of the same functionality.
 
@@ -228,7 +228,7 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.opnx.com'
+rest_url = 'https://stgapi.opnx.com'
 rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'
@@ -366,7 +366,7 @@ import hashlib
 import datetime
 import json
 
-rest_url = 'https://v2stgapi.opnx.com'
+rest_url = 'https://stgapi.opnx.com'
 rest_path = 'v2stgapi.opnx.com'
 
 api_key = 'api_key'

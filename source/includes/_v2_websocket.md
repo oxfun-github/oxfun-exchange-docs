@@ -73,11 +73,11 @@
 
 **TEST** site
 
-* `wss://v2stgapi.opnx.com/v2/websocket`
+* `wss://stgapi.opnx.com/v2/websocket`
 
 **LIVE** site
 
-* `wss://v2api.opnx.com/v2/websocket`
+* `wss://api.opnx.com/v2/websocket`
 
 Opnx's application programming interface (API) provides our clients programmatic access to control aspects of their accounts and to place orders on the Opnx trading platform. The API is accessible via WebSocket connection to the URIs listed above. Commands, replies, and notifications all traverse the WebSocket in text frames with JSON-formatted payloads.
 
@@ -160,7 +160,7 @@ msg_auth = \
 }
 
 async def subscribe():
-    async with websockets.connect('wss://v2stgapi.opnx.com/v2/websocket') as ws:
+    async with websockets.connect('wss://stgapi.opnx.com/v2/websocket') as ws:
         await ws.send(json.dumps(msg_auth))
         while ws.open:
             resp = await ws.recv()
@@ -187,7 +187,7 @@ var msg = JSON.stringify({
                             }
                           });
 
-var ws = new WebSocket('wss://v2stgapi.opnx.com/v2/websocket');
+var ws = new WebSocket('wss://stgapi.opnx.com/v2/websocket');
 
 ws.onmessage = function (e) {
   console.log('websocket message from server : ', e.data);
@@ -354,7 +354,7 @@ place_order = \
           }
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -504,7 +504,7 @@ place_order = \
 }
 
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -654,7 +654,7 @@ place_order = \
 }
 
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -828,7 +828,7 @@ place_batch_order =\
                 }]
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1001,7 +1001,7 @@ cancel_order = \
           }
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1128,7 +1128,7 @@ cancel_batch_order = \
                 }]
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1282,7 +1282,7 @@ modify_order = \
           }
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1449,7 +1449,7 @@ modify_batch_order = \
                 }]
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1617,7 +1617,7 @@ balance = \
   "args": ["balance:all"],
   "tag": 101
 }
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1759,7 +1759,7 @@ position = \
   "tag": 102
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1910,7 +1910,7 @@ order = \
   "tag": 102
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -2401,7 +2401,7 @@ orderbook_depth = \
   "args": ["depthL10:BTC-USD-SWAP-LIN"]
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -2523,7 +2523,7 @@ orderbook_depth = \
   "args": ["depth:BTC-USD-SWAP-LIN"]
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -2697,7 +2697,7 @@ action| STRING |  |
 Incremental order book stream
 
 Usage Instructions:
-1. Connect to websocket wss://v2api.opnx.com/v2/websocket
+1. Connect to websocket wss://api.opnx.com/v2/websocket
 2. Subscribe to **depthUpdate** and you will get a message reply saying your subscription is successful
 3. Afterwards you will get a snapshot of the book with **table:depthUpdate**
 4. If you receive a reply with **table:depthUpdate-diff** first, keep it locally and wait for snapshot reply in step 3
@@ -2825,7 +2825,7 @@ trade = \
   "args": ["trade:BTC-USD-SWAP-LIN"]
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -2930,7 +2930,7 @@ ticker = \
   "args": ["ticker:all"]
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -3058,7 +3058,7 @@ candles = \
   "args": ["candles60s:BTC-USD-SWAP-LIN"]
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -3154,7 +3154,7 @@ liquidation = \
   "args": ["liquidationRFQ"]
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -3255,7 +3255,7 @@ market = \
   "args": ["market:all"]
 }
 
-url= 'wss://v2stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.opnx.com/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
