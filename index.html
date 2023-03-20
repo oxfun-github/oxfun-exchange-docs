@@ -1362,13 +1362,13 @@
 <p><strong>TEST</strong> site</p>
 
 <ul>
-<li><code>wss://v2stgapi.opnx.com/v2/websocket</code></li>
+<li><code>wss://stgapi.opnx.com/v2/websocket</code></li>
 </ul>
 
 <p><strong>LIVE</strong> site</p>
 
 <ul>
-<li><code>wss://v2api.opnx.com/v2/websocket</code></li>
+<li><code>wss://api.opnx.com/v2/websocket</code></li>
 </ul>
 
 <p>Opnx&#39;s application programming interface (API) provides our clients programmatic access to control aspects of their accounts and to place orders on the Opnx trading platform. The API is accessible via WebSocket connection to the URIs listed above. Commands, replies, and notifications all traverse the WebSocket in text frames with JSON-formatted payloads.</p>
@@ -1453,7 +1453,7 @@
 <span class="p">}</span>
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
-    <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="s">'wss://stgapi.opnx.com/v2/websocket'</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">await</span> <span class="n">ws</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">msg_auth</span><span class="p">))</span>
         <span class="k">while</span> <span class="n">ws</span><span class="p">.</span><span class="nb">open</span><span class="p">:</span>
             <span class="n">resp</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ws</span><span class="p">.</span><span class="n">recv</span><span class="p">()</span>
@@ -1478,7 +1478,7 @@
                             <span class="p">}</span>
                           <span class="p">});</span>
 
-<span class="kd">var</span> <span class="nx">ws</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="dl">'</span><span class="s1">wss://v2stgapi.opnx.com/v2/websocket</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">ws</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="dl">'</span><span class="s1">wss://stgapi.opnx.com/v2/websocket</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">websocket message from server : </span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
@@ -1667,7 +1667,7 @@
           <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -1877,7 +1877,7 @@ One account can only place up to 50 orders per second via websocket.
 <span class="p">}</span>
 
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -2077,7 +2077,7 @@ One account can only place up to 50 orders per second via websocket.
 <span class="p">}</span>
 
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -2316,7 +2316,7 @@ One account can only place up to 50 orders per second via websocket.
                 <span class="p">}]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -2516,7 +2516,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
           <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -2667,7 +2667,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
                 <span class="p">}]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -2835,7 +2835,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
           <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -3053,7 +3053,7 @@ One account can only place up to 50 orders per second via websocket.
                 <span class="p">}]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -3241,7 +3241,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"balance:all"</span><span class="p">],</span>
   <span class="s">"tag"</span><span class="p">:</span> <span class="mi">101</span>
 <span class="p">}</span>
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -3448,7 +3448,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"tag"</span><span class="p">:</span> <span class="mi">102</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -3671,7 +3671,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"tag"</span><span class="p">:</span> <span class="mi">102</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -4693,7 +4693,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"depthL10:BTC-USD-SWAP-LIN"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -4866,7 +4866,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"depth:BTC-USD-SWAP-LIN"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -5091,7 +5091,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <p>Incremental order book stream</p>
 
 <p>Usage Instructions:
-1. Connect to websocket wss://v2api.opnx.com/v2/websocket
+1. Connect to websocket wss://api.opnx.com/v2/websocket
 2. Subscribe to <strong>depthUpdate</strong> and you will get a message reply saying your subscription is successful
 3. Afterwards you will get a snapshot of the book with <strong>table:depthUpdate</strong>
 4. If you receive a reply with <strong>table:depthUpdate-diff</strong> first, keep it locally and wait for snapshot reply in step 3
@@ -5327,7 +5327,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"trade:BTC-USD-SWAP-LIN"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -5488,7 +5488,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"ticker:all"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -5688,7 +5688,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"candles60s:BTC-USD-SWAP-LIN"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -5820,7 +5820,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"liquidationRFQ"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -5958,7 +5958,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"market:all"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://v2stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -6373,13 +6373,13 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <p><strong>TEST</strong> </p>
 
 <ul>
-<li><code>https://v2stgapi.opnx.com</code></li>
+<li><code>https://stgapi.opnx.com</code></li>
 </ul>
 
 <p><strong>LIVE</strong> site</p>
 
 <ul>
-<li><code>https://v2api.opnx.com</code></li>
+<li><code>https://api.opnx.com</code></li>
 </ul>
 
 <p>For clients who do not wish to take advantage of Opnx&#39;s native WebSocket API, Opnx offers a RESTful API that implements much of the same functionality.</p>
@@ -6474,10 +6474,10 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <span class="kn">import</span> <span class="nn">json</span>
 
 
-<span class="c1"># rest_url = 'https://v2api.opnx.com'
+<span class="c1"># rest_url = 'https://api.opnx.com'
 # rest_path = 'v2api.opnx.com'
 </span>
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">"API-KEY"</span>
@@ -10184,13 +10184,13 @@ Cancels all open orders for the **specified market** for the account connected t
 <p><strong>TEST</strong> site</p>
 
 <ul>
-<li><code>https://v2stgapi.opnx.com</code></li>
+<li><code>https://stgapi.opnx.com</code></li>
 </ul>
 
 <p><strong>LIVE</strong> site</p>
 
 <ul>
-<li><code>https://v2api.opnx.com/v2</code></li>
+<li><code>https://api.opnx.com</code></li>
 </ul>
 
 <p>For clients who do not wish to take advantage of Opnx&#39;s native WebSocket API, Opnx offers a RESTful API that implements much of the same functionality.</p>
@@ -10212,7 +10212,7 @@ Cancels all open orders for the **specified market** for the account connected t
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlencode</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">API</span><span class="o">-</span><span class="n">KEY</span><span class="o">&gt;</span>
@@ -10324,7 +10324,7 @@ If <em>Body</em> is ommitted it&#39;s treated as an empty string.</p>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">'api_key'</span>
@@ -10484,7 +10484,7 @@ If <em>Body</em> is ommitted it&#39;s treated as an empty string.</p>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">'api_key'</span>
@@ -10637,7 +10637,7 @@ If <em>Body</em> is ommitted it&#39;s treated as an empty string.</p>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">'api_key'</span>
@@ -10790,7 +10790,7 @@ If <em>Body</em> is ommitted it&#39;s treated as an empty string.</p>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">'api_key'</span>
@@ -10984,7 +10984,7 @@ Returns an empty array `[]` when no positions were found
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">'api_key'</span>
@@ -11172,7 +11172,7 @@ Returned an empty object `{}` when no positions were found
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">'api_key'</span>
@@ -11417,7 +11417,7 @@ Returned an empty object `{}` when no positions were found
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">'api_key'</span>
@@ -11628,7 +11628,7 @@ Returned an empty object `{}` when no positions were found
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">'api_key'</span>
@@ -12008,7 +12008,7 @@ OrderClosed orders are not in the orderbook, the remainQuantity in the OrderClos
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">'api_key'</span>
@@ -12105,7 +12105,7 @@ OrderClosed orders are not in the orderbook, the remainQuantity in the OrderClos
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">'api_key'</span>
@@ -12223,7 +12223,7 @@ OrderClosed orders are not in the orderbook, the remainQuantity in the OrderClos
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">'api_key'</span>
@@ -12467,7 +12467,7 @@ OrderClosed orders are not in the orderbook, the remainQuantity in the OrderClos
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://v2stgapi.opnx.com'</span>
+<span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
 <span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">'api_key'</span>
