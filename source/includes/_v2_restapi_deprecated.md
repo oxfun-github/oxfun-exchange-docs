@@ -1896,3 +1896,9 @@ Response Field | Type | Description |
 type | STRING | |
 amount | STRING | |
 marginBalance | STRING | |
+
+
+# Historical Data
+
+Opnx's historical L2 order book data (depth data), can be found at [https://docs.tardis.dev/historical-data-details/opnx] (https://docs.tardis.dev/historical-data-details/opnx) (third party API), which includes historical market data details - instruments, data coverage and data collection specifics for all of our instruments since 2020-07-14.
+
