@@ -2942,7 +2942,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
               </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WBTC-USD-SWAP-PER"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WBTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0.542"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1617099855968"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"contractValCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WBTC"</span><span class="p">,</span><span class="w">
@@ -6061,7 +6061,7 @@ Calling this endpoint using an API key pair linked to the parent account with th
             </span><span class="p">],</span><span class="w">
             </span><span class="nl">"positions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX-USD-SWAP-PER"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX-USD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
                     </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX"</span><span class="p">,</span><span class="w"> 
                     </span><span class="nl">"counterAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w"> 
                     </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11411.1"</span><span class="p">,</span><span class="w"> 
@@ -6764,7 +6764,7 @@ Calling this endpoint using an API key pair linked to the parent account with th
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERMISSIONLESS_1234"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"positions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XYZ-USD-SWAP-PER"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XYZ-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XYZ"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"counterAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"566.0"</span><span class="p">,</span><span class="w">
@@ -9095,7 +9095,7 @@ Cancels all open orders for the **specified market** for the account connected t
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WBTC-USD-SWAP-PER"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WBTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"fundingAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1667012400000"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"estFundingRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -9541,7 +9541,7 @@ Cancels all open orders for the **specified market** for the account connected t
 </tr>
 </tbody></table>
 <h3 id='get-v3-funding-rates'>GET <code>/v3/funding/rates</code></h3>
-<p>Get all historical financing rates, including PLP</p>
+<p>Get all historical financing rates</p>
 
 <blockquote>
 <p><strong>Request</strong></p>
@@ -9558,11 +9558,6 @@ Cancels all open orders for the **specified market** for the account connected t
             </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"fundingRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1628362803134"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-             </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TKX-USD-SWAP-PER"</span><span class="p">,</span><span class="w">
-             </span><span class="nl">"fundingRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
-             </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1628362803134"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -10273,7 +10268,7 @@ If <em>Body</em> is ommitted it&#39;s treated as an empty string.</p>
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1593627415000</span><span class="p">,</span><span class="w">
   </span><span class="nl">"accountId"</span><span class="p">:</span><span class="s2">"&lt;Your Account ID&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-PER"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.542000000"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1617099855966"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"contractValCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
@@ -10312,7 +10307,7 @@ If <em>Body</em> is ommitted it&#39;s treated as an empty string.</p>
             <span class="s">"estLiquidationPrice"</span><span class="p">:</span> <span class="s">"0"</span><span class="p">,</span>
         <span class="p">},</span> 
         <span class="p">{</span>
-            <span class="s">"instrumentId"</span><span class="p">:</span> <span class="s">"BTC-USD-SWAP-PER"</span><span class="p">,</span> 
+            <span class="s">"instrumentId"</span><span class="p">:</span> <span class="s">"BTC-USD-SWAP-LIN"</span><span class="p">,</span> 
             <span class="s">"quantity"</span><span class="p">:</span> <span class="s">"65.889"</span><span class="p">,</span> 
             <span class="s">"lastUpdated"</span><span class="p">:</span> <span class="s">"1648806900492"</span><span class="p">,</span> 
             <span class="s">"contractValCurrency"</span><span class="p">:</span> <span class="s">"BTC"</span><span class="p">,</span> 
@@ -10467,7 +10462,7 @@ Returns an empty array `[]` when no positions were found
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1593617005438</span><span class="p">,</span><span class="w">
   </span><span class="nl">"accountId"</span><span class="p">:</span><span class="s2">"&lt;Your Account ID&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-PER"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.542000000"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1617099855966"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"contractValCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
@@ -10485,7 +10480,7 @@ Returns an empty array `[]` when no positions were found
     <span class="s">"timestamp"</span><span class="p">:</span> <span class="s">"1648812534064"</span><span class="p">,</span>
     <span class="s">"accountId"</span><span class="p">:</span> <span class="s">"677473"</span><span class="p">,</span>
     <span class="s">"data"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">"instrumentId"</span><span class="p">:</span> <span class="s">"FLEX-USD-SWAP-PER"</span><span class="p">,</span>
+        <span class="s">"instrumentId"</span><span class="p">:</span> <span class="s">"FLEX-USD-SWAP-LIN"</span><span class="p">,</span>
         <span class="s">"quantity"</span><span class="p">:</span> <span class="s">"38742.4"</span><span class="p">,</span>
         <span class="s">"lastUpdated"</span><span class="p">:</span> <span class="s">"1648174875502"</span><span class="p">,</span>
         <span class="s">"contractValCurrency"</span><span class="p">:</span> <span class="s">"FLEX"</span><span class="p">,</span>
