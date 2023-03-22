@@ -1,4 +1,14 @@
 # Change Log
+**2023-03-22**
+
+* Updated REST API [POST /v3/orders/place](#post-v3-orders-place)
+    * Request params:
+        * Added new field `displayQuantity`
+        * Added new field `amount`
+    * Response fields:
+        * Added new field `displayQuantity`
+        * Added new field `amount`
+
 
 # Introduction
 
