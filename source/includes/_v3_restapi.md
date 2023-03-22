@@ -184,7 +184,7 @@ GET v3/account?subAcc={subAcc},{subAcc}
             ],
             "positions": [
                 {
-                    "marketCode": "FLEX-USD-SWAP-PER", 
+                    "marketCode": "FLEX-USD-SWAP-LIN", 
                     "baseAsset": "FLEX", 
                     "counterAsset": "USD", 
                     "position": "11411.1", 
@@ -528,7 +528,7 @@ GET /v3/positions?subAcc={name1},{name2}&marketCode={marketCode}
         "name": "PERMISSIONLESS_1234",
         "positions": [
             {
-              "marketCode": "XYZ-USD-SWAP-PER",
+              "marketCode": "XYZ-USD-SWAP-LIN",
               "baseAsset": "XYZ",
               "counterAsset": "USD",
               "position": "566.0",
@@ -1608,7 +1608,7 @@ GET /v3/funding/estimates?marketCode={marketCode}
     "success": true,
     "data": [
         {
-            "marketCode": "WBTC-USD-SWAP-PER",
+            "marketCode": "WBTC-USD-SWAP-LIN",
             "fundingAt": "1667012400000",
             "estFundingRate": "0"
         },
@@ -1853,7 +1853,7 @@ matchedAt | STRING    | |
 
 ### GET `/v3/funding/rates`
 
-Get all historical financing rates, including PLP
+Get all historical financing rates
 
 > **Request**
 
@@ -1871,11 +1871,6 @@ GET /v3/funding/rates?marketCode={marketCode}&limit={limit}&startTime={startTime
             "marketCode": "BTC-USD-SWAP-LIN",
             "fundingRate": "0.0",
             "createdAt": "1628362803134"
-        },
-        {
-             "marketCode": "TKX-USD-SWAP-PER",
-             "fundingRate": "0.0",
-             "createdAt": "1628362803134"
         }
     ]
 }

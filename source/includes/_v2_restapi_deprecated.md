@@ -1825,7 +1825,7 @@ POST /v3/leverage
 ```
 ```json
 {
-    "marketCode": "BTC-USD-SWAP-PER",
+    "marketCode": "BTC-USD-SWAP-LIN",
     "leverage": 3
 }
 ```
@@ -1836,7 +1836,7 @@ POST /v3/leverage
 {
     "success": true,
     "data":{
-        "marketCode": "BTC-USD-SWAP-PER",
+        "marketCode": "BTC-USD-SWAP-LIN",
         "leverage": 2,
         "maxPositionSize": "1000000"
     }
@@ -1866,7 +1866,7 @@ POST /v3/position/adjust
 ```
 ```json
 {
-    "marketCode": "BTC-USD-SWAP-PER",
+    "marketCode": "BTC-USD-SWAP-LIN",
     "amount": "100",
     "type": "ADD"
 }

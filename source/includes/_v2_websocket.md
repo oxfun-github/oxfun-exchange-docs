@@ -1811,7 +1811,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
               "leverage": "0"
             },
             {
-              "instrumentId": "WBTC-USD-SWAP-PER",
+              "instrumentId": "WBTC-USD-SWAP-LIN",
               "quantity" : "0.542",
               "lastUpdated": "1617099855968",
               "contractValCurrency": "WBTC",

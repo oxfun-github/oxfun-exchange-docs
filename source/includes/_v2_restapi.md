@@ -494,7 +494,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
   "timestamp": 1593627415000,
   "accountId":"<Your Account ID>",
   "data": [ {
-              "instrumentId": "BTC-USD-SWAP-PER",
+              "instrumentId": "BTC-USD-SWAP-LIN",
               "quantity": "0.542000000",
               "lastUpdated": "1617099855966",
               "contractValCurrency": "BTC",
@@ -536,7 +536,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "estLiquidationPrice": "0",
         }, 
         {
-            "instrumentId": "BTC-USD-SWAP-PER", 
+            "instrumentId": "BTC-USD-SWAP-LIN", 
             "quantity": "65.889", 
             "lastUpdated": "1648806900492", 
             "contractValCurrency": "BTC", 
@@ -634,7 +634,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
   "timestamp": 1593617005438,
   "accountId":"<Your Account ID>",
   "data": [ {
-              "instrumentId": "BTC-USD-SWAP-PER",
+              "instrumentId": "BTC-USD-SWAP-LIN",
               "quantity": "0.542000000",
               "lastUpdated": "1617099855966",
               "contractValCurrency": "BTC",
@@ -655,7 +655,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
     "timestamp": "1648812534064",
     "accountId": "677473",
     "data": {
-        "instrumentId": "FLEX-USD-SWAP-PER",
+        "instrumentId": "FLEX-USD-SWAP-LIN",
         "quantity": "38742.4",
         "lastUpdated": "1648174875502",
         "contractValCurrency": "FLEX",
