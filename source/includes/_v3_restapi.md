@@ -1183,6 +1183,8 @@ price | STRING | |
 stopPrice | STRING | |
 isTriggered | STRING | false (or true for STOP order types) |
 quantity | STRING | |
+amount | STRING | |
+displayQuantity | STRING | |
 remainQuantity | STRING | Remaining quantity |
 matchId | STRING | |
 matchPrice | STRING | |

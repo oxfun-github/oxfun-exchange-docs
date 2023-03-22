@@ -2,7 +2,7 @@
 **2023-03-22**
 
 * Updated REST  API [POST /v3/orders/place](#post-v3-orders-place)
-* Updated WS API [Order Commands](##order-commands) place/modify WS api
+* Updated WebSocket API [Order Commands](#order-commands) place/modify WebSocket api
     * Request params:
         * Added new field `displayQuantity`
         * Added new field `amount`
