@@ -438,6 +438,7 @@ marketCode | STRING | Yes | Market code e.g. `BTC-USD-SWAP-LIN` |
 orderType | STRING | Yes |  `LIMIT` |
 price | FLOAT |  No | Price |
 quantity |  FLOAT | Yes | Quantity (denominated by contractValCurrency) |
+displayQuantity |  FLOAT | NO |  |
 side | STRING | Yes | `BUY` or `SELL` |
 timeInForce | ENUM | No | <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade)</li></ul>
 timestamp | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
