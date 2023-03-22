@@ -3367,9 +3367,7 @@ By subscribing to an authenticated websocket there may be instances when a REST 
 }
 ```
 
-Documentation for the REST method for cancelling **all** open orders for an account can be found here [Cancel All Orders](#rest-api-methods-private-delete-v2-cancel-orders).
-
-Documentation for the REST method for cancelling **all** open orders **by market** for an account can be found here [Cancel All Orders By Market](#rest-api-methods-private-delete-v2-cancel-orders-marketcode).
+Documentation for the REST method for cancelling **all** open orders for an account can be found here [Cancel All Orders](#delete-v3-orders-cancel).
 
 In both these instances a successful action will generate the shown repsonse in an authenticated websocket.
 
