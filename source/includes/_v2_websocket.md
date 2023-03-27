@@ -748,6 +748,160 @@ timestamp | LONG | NO | In milliseconds. If an order reaches the matching engine
 recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
 
 
+### Place Stop Market Order
+
+> **Request format**
+
+```json
+{
+  "op": "placeorder",
+  "tag": 123,
+  "data": {
+            "timestamp": 1679907302693,
+            "recvWindow": 500,
+            "clientOrderId": 1679907301552,
+            "marketCode": "BTC-USDT-SWAP-LIN",
+            "side": "SELL",
+            "orderType": "STOP_MARKET",
+            "quantity": 0.012,
+            "stopPrice": 22279.29
+         }
+}
+```
+```python
+import websockets
+import asyncio
+import time
+import hmac
+import base64
+import hashlib
+import json
+
+api_key = ''
+api_secret = ''
+ts = str(int(time.time() * 1000))
+sig_payload = (ts+'GET/auth/self/verify').encode('utf-8')
+signature = base64.b64encode(hmac.new(api_secret.encode('utf-8'), sig_payload, hashlib.sha256).digest()).decode('utf-8')
+
+auth = \
+{
+  "op": "login",
+  "tag": 1,
+  "data": {
+           "apiKey": api_key,
+           "timestamp": ts,
+           "signature": signature
+          }
+}
+place_order = \
+{
+  "op": "placeorder",
+  "tag": 123,
+  "data": {
+            "timestamp": 1679907302693,
+            "recvWindow": 500,
+            "clientOrderId": 1679907301552,
+            "marketCode": "BTC-USDT-SWAP-LIN",
+            "side": "SELL",
+            "orderType": "STOP_MARKET",
+            "quantity": 0.001,
+            "stopPrice": 22279.29
+         }
+}
+
+
+url= 'wss://stgapi.opnx.com/v2/websocket'
+async def subscribe():
+    async with websockets.connect(url) as ws:
+        while True:
+            if not ws.open:
+                print("websocket disconnected")
+                ws = await websockets.connect(url)
+            response = await ws.recv()
+            data = json.loads(response)
+            print(data)
+
+            if 'nonce' in data:
+                    await ws.send(json.dumps(auth))
+            elif 'event' in data and data['event'] == 'login':
+                if data['success'] == True:
+                    await ws.send(json.dumps(place_order))
+            elif 'event' in data and data['event'] == 'placeorder':
+                continue
+asyncio.get_event_loop().run_until_complete(subscribe())
+```
+> **Success response format**
+
+```json
+{
+  "event": "placeorder",
+  "submitted": True,
+  "tag": "123",
+  "timestamp": "1607639739098",
+  "data": {
+            "clientOrderId": "1679907301552",
+            "marketCode": "BTC-USDT-SWAP-LIN",
+            "side": "SELL",
+            "status":"OPEN",
+            "orderType": "STOP_MARKET",
+            "quantity": "0.012",
+            "stopPrice": "22279.29",
+            "orderId": "1000001680990",
+            "triggerType": "MARK_PRICE",
+            "source": 0
+          }
+}
+```
+
+> **Failure response format**
+
+```json
+{
+  "event": "placeorder",
+  "submitted": False,
+  "tag": "123",
+  "message": "<errorMessage>",
+  "code": "<errorCode>",
+  "timestamp": "1679907302693",
+  "data": {
+           "timestamp": 1607639739098,
+           "recvWindow": 500,
+           "clientOrderId": 1679907301552,
+           "marketCode": "BTC-USDT-SWAP-LIN",
+           "side": "SELL",
+           "orderType": "STOP_MARKET",
+           "quantity": 0.012,
+           "timeInForce": "IOC",
+           "stopPrice": 22279.29
+          }
+}
+```
+
+Requires an authenticated websocket connection.
+Please also subscribe to the **User Order Channel** to receive push notifications for all message updates in relation to an account or sub-account (e.g. OrderOpened, OrderMatched etc......).
+
+<aside class="notice">
+One account can only place up to 50 orders per second via websocket.
+</aside>
+
+<sub>**Request Parameters**</sub> 
+
+Parameters | Type | Required |Description|
+-------------------------- | -----|--------- | -------------|
+op | STRING | Yes | `placeorder`
+tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
+data | DICTIONARY object | Yes |
+clientOrderId | ULONG | No | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
+marketCode| STRING| Yes| Market code e.g. `BTC-USDT-SWAP-LIN`|
+orderType|STRING| Yes|  `STOP_MARKET` |
+quantity|FLOAT|Yes|Quantity (denominated by contractValCurrency)|
+side|STRING| Yes| `BUY ` or `SELL`|
+stopPrice| FLOAT |Yes|Stop price for the stop-market order.<p><p>Triggered by the best bid price for the **SELL** stop-market order.<p><p>Triggered by the best ask price for the **BUY** stop-market order. |
+timestamp | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
+recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
+
+
+
 ### Place Batch Orders
 
 > **Request format**
@@ -939,6 +1093,7 @@ All existing single order placement methods are supported:-
 * LIMIT
 * MARKET
 * STOP LIMIT
+* STOP MARKET
 
 The websocket reply from the exchange will repond to each order in the batch separately, one order at a time, and has the same message format as the reponse for the single order placement method.
 

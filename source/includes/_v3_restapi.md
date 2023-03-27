@@ -988,7 +988,7 @@ avgFillPrice | STRING | Average of filled price |
 avgLeg1Price | STRING | Average of leg1 price |
 avgLeg2Price | STRING | Average of leg2 price |
 fees | LIST of dictionaries | Overall fees with instrument ID, if FLEX is no enough to pay the fee then USDT will be paid |
-orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT` |
+orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT`,`STOP_MARKET` |
 timeInForce | STRING | Client submitted time in force. <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade) |
 source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `101`, `102`, `103`, `111`. <p>Enumeration: `0: GUI`, `2: Borrow`, `10: AMM`, `11: REST`, `13: Websocket`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `111: Automatic repayment`</p> |
 createdAt | STRING | Millisecond timestamp of the order created time |
@@ -1054,7 +1054,7 @@ isTriggered | BOOL | `true` for a STOP order |
 quantity | STRING |  Quantity |
 remainQuantity | STRING | Remaining quantity |
 matchedQuantity | STRING | Matched Quantity |
-orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT` |
+orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT`,`STOP_MARKET` |
 timeInForce | STRING | Client submitted time in force. <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade) |
 source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `101`, `102`, `103`, `111`. <p>Enumeration: `0: GUI`, `2: Borrow`, `10: AMM`, `11: REST`, `13: Websocket`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `111: Automatic repayment`</p> |
 createdAt | STRING | Millisecond timestamp of the order created time |
@@ -1166,7 +1166,7 @@ quantity | STRING | YES | Quantity |
 amount | STRING | YES | Amount |
 quantity | STRING | YES | displayQuantity |
 timeInForce | STRING | NO | Default `GTC` |
-orderType | STRING | YES | `LIMIT` or `MARKET` or `STOP` |
+orderType | STRING | YES | `LIMIT` or `MARKET` or `STOP` or `STOP_MARKET`|
 price | STRING | NO | Limit price for the limit order |
 stopPrice | STRING | NO | Stop price for the stop order |
 limitPrice | STRING | NO | Limit price for the stop limit order |
@@ -1194,7 +1194,7 @@ matchQuantity | STRING | |
 matchQuantity | STRING | Matched quantity |
 feeInstrumentId | STRING | Instrument ID of fees paid from this match ID |
 fees | STRING | Amount of fees paid from this match ID |
-orderType | STRING | `MARKET` or `LIMIT` or `STOP` |
+orderType | STRING | `MARKET` or `LIMIT` or `STOP` or or `STOP_MARKET` |
 timeInForce | STRING | |
 source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `101`, `102`, `103`, `111`. <p>Enumeration: `0: GUI`, `2: Borrow`, `10: AMM`, `11: REST`, `13: Websocket`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `111: Automatic repayment`</p> |
 createdAt | STRING | Millisecond timestamp of the order created time |
@@ -1299,7 +1299,7 @@ stopPrice | STRING | |
 isTriggered | STRING | false (or true for STOP order types) |
 quantity | STRING | |
 remainQuantity | STRING | Remaining quantity |
-orderType | STRING | `MARKET` or `LIMIT` or `STOP` |
+orderType | STRING | `MARKET` or `LIMIT` or `STOP` or `STOP_MARKET` |
 timeInForce | STRING | |
 canceledAt | STRING | Millisecond timestamp of the order cancel time |
 
