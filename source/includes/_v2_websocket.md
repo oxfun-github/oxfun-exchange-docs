@@ -738,7 +738,7 @@ tag | INTEGER or STRING | No | If given it will be echoed in the reply and the m
 data | DICTIONARY object | Yes |
 clientOrderId | ULONG | No | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
 marketCode| STRING| Yes| Market code e.g. `ETH-USDT-SWAP-LIN`|
-orderType|STRING| Yes|  `STOP_LIMIT` for stop-limit orders (stop-market orders not supported)|
+orderType|STRING| Yes|  `STOP_LIMIT` for stop-limit orders |
 quantity|FLOAT|Yes|Quantity (denominated by contractValCurrency)|
 side|STRING| Yes| `BUY ` or `SELL`|
 limitPrice| FLOAT |Yes | Limit price for the stop-limit order. <p><p>For **BUY** the limit price must be greater or equal to the stop price.<p><p>For **SELL** the limit price must be less or equal to the stop price.|

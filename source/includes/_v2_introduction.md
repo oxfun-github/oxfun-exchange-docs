@@ -9,6 +9,15 @@
     * Response fields:
         * Added new field `displayQuantity`
         * Added new field `amount`
+     
+        
+**2023-03-27**
+
+* Add new OrderType `STOP_MARKET`
+* Updated REST  API [POST /v3/orders/place](#post-v3-orders-place)
+* Add WebSocket API [Place Stop Market Order](#place-stop-market-order)  WebSocket api
+
+
 
 
 # Introduction
