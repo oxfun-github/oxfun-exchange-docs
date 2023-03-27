@@ -111,7 +111,7 @@ Websocket commands can be sent in either of the following two formats:
 
 `data`: JSON string of the request object containing the required parameters
 
-Further information regarding the error codes and corresponding error messages from a failed subscription or order command request can be found in a later section of this documentation [Error Codes](#websocket-api-error-codes).
+Further information regarding the error codes and corresponding error messages from a failed subscription or order command request can be found in a later section of this documentation [Error Codes](#error-codes).
 
 **WebSocket adapter**
 
