@@ -43,7 +43,7 @@ GET v2/borrowingSummary
     "accountId": "3123",
     "data": [
         {
-            "borrowAsset": "USD",
+            "borrowAsset": "USDT",
             "borrowedAmount": "109031.8252978",
             "collateralAsset": "BTC",
             "collateralizedAmount": "3.65800000",
@@ -58,7 +58,7 @@ GET v2/borrowingSummary
 Response Fields | Type | Description |
 ----------------| ---- | ----------- |
 accountId | STRING | Account ID |
-borrowAsset | STRING | Borrow asset, can only be `USD` for now |
+borrowAsset | STRING | Borrow asset, can only be `USDT` for now |
 borrowedAmount | STRING | Total borrowed amount of the borrow asset |
 collateralAsset | STRING | Collateral asset |
 collateralizedAmount | STRING | Total collateralized amount of the collateral asset |
@@ -75,7 +75,7 @@ Close borrow.
 POST /v2/borrow/close
 
 {
-    "marketCode": "BTC-USD-SWAP-LIN",
+    "marketCode": "BTC-USDT-SWAP-LIN",
     "price": "29633.5",
     "quantity": "1"
 }
@@ -97,7 +97,7 @@ POST /v2/borrow/close
         "quantity": "1.0",
         "side": "SELL",
         "status": "CANCELED_BY_FOK",
-        "marketCode": "BTC-USD-SWAP-LIN",
+        "marketCode": "BTC-USDT-SWAP-LIN",
         "timeInForce": "FOK",
         "notice": "OrderClosed",
         "orderType": "MARKET",
@@ -108,7 +108,7 @@ POST /v2/borrow/close
 
 Request Parameters | Type | Required | Description |
 ------------------ | ---- | -------- | ----------- |
-marketCode | STRING | YES | Borrow asset, can only be `USD` for now |
+marketCode | STRING | YES | Borrow asset, can only be `USDT` for now |
 price | STRING | NO | The price to close the borrow, default is the market price |
 collateralAmount | STRING | NO | The quantity to close the borrow, default is full position |
 
@@ -146,7 +146,7 @@ GET /v3/orders?marketCode={marketCode}&orderId={orderId}&clientOrderId={clientOr
     "data": {
         "orderId": "1000387920513",
         "clientOrderId": "1612249737434",
-        "marketCode": "FLEX-USD",
+        "marketCode": "FLEX-USDT",
         "status": "OPEN",
         "side": "BUY",
         "price": "5.200",
@@ -158,7 +158,7 @@ GET /v3/orders?marketCode={marketCode}&orderId={orderId}&clientOrderId={clientOr
         "avgFillPrice": "null",
         "avgLeg1Price": "",
         "avgLeg2Price": "",
-        "fees": {"USD": "0", "FLEX": "0"},
+        "fees": {"USDT": "0", "FLEX": "0"},
         "orderType": "LIMIT",
         "timeInForce": "GTC",
         "source": "0",
@@ -198,7 +198,7 @@ matchedQuantity | STRING | Matched Quantity |
 avgFillPrice | STRING | Average of filled price |
 leg1Price | STRING | Leg1 price |
 leg2Price | STRING | Leg2 price |
-fees | LIST of dictionaries | Overall fees with instrument ID, if FLEX is no enough to pay the fee then USD will be paid |
+fees | LIST of dictionaries | Overall fees with instrument ID, if FLEX is no enough to pay the fee then USDT will be paid |
 orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT` |
 timeInForce | STRING | Client submitted time in force. <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade) |
 source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `22`, `101`, `102`, `103`, `111`. <p>Enumeration: `0: Websocket`, `2: Borrow`, `10: AMM`, `11: REST`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `111: Automatic repayment`</p> |
@@ -215,7 +215,7 @@ POST /v2.1/delivery/orders
 ```
 ```json
 {
-    "instrumentId": "BTC-USD-SWAP-LIN",
+    "instrumentId": "BTC-USDT-SWAP-LIN",
     "qtyDeliver": "0.1"
 }
 ```
@@ -240,7 +240,7 @@ nonce = 123
 # REST API method
 method = '/v2.1/delivery/orders'
 
-params = json.dumps({"instrumentId": "BTC-USD-SWAP-LIN", "qtyDeliver": "0.1"})
+params = json.dumps({"instrumentId": "BTC-USDT-SWAP-LIN", "qtyDeliver": "0.1"})
 
 msg_string = '{}\n{}\n{}\n{}\n{}\n{}'.format(ts, nonce, 'POST', rest_path, method, params)
 sig = base64.b64encode(hmac.new(api_secret.encode('utf-8'), msg_string.encode('utf-8'), hashlib.sha256).digest()).decode('utf-8')
@@ -267,7 +267,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "deliverOrderId": "749507542787358724",
             "accountId": "3101",
             "clientOrderId": null,
-            "instrumentId": "BTC-USD-SWAP-LIN",
+            "instrumentId": "BTC-USDT-SWAP-LIN",
             "deliverPrice": "45285",
             "deliverPosition": "0.100",
             "deliverType": "NEXT_CYCLE",
@@ -275,7 +275,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "deliverQty": "0.100",
             "remainingQty": "0.100",
             "remainingPosition": "0.100",
-            "transferAsset": "USD",
+            "transferAsset": "USDT",
             "transferQty": "4528.500",
             "auctionTime": "1648801949919",
             "created": "1648801949919",
@@ -296,7 +296,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "deliverOrderId": "749507542787358724", 
             "accountId": "3101", 
             "clientOrderId": null, 
-            "instrumentId": "BTC-USD-SWAP-LIN", 
+            "instrumentId": "BTC-USDT-SWAP-LIN", 
             "deliverPrice": "45285", 
             "deliverPosition": "0.100", 
             "deliverType": "NEXT_CYCLE", 
@@ -304,7 +304,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "deliverQty": "0.100", 
             "remainingQty": "0.100", 
             "remainingPosition": "0.100", 
-            "transferAsset": "USD", 
+            "transferAsset": "USDT", 
             "transferQty": "4528.500", 
             "auctionTime": "1648801949919", 
             "created": "1648801949919", 
@@ -339,7 +339,7 @@ instrumentId | STRING | Perpetual swap market code
 deliverPrice | STRING|  Mark price at delivery
 deliverPosition | STRING | Delivered position size
 deliverType | STRING| "NEXT_CYCLE": Queueing for the upcoming auction
-instrumentIdDeliver | STRING |Asset being received: long position = coin, short position = USD
+instrumentIdDeliver | STRING |Asset being received: long position = coin, short position = USDT
 deliverQty | STRING |  Quantity of the received asset
 remainingQty | STRING | Remaining quantity
 remainingPosition | STRING | Remaining position
@@ -467,7 +467,7 @@ Borrow.
 POST /v2/borrow
 
 {
-    "borrowAsset": "USD",
+    "borrowAsset": "USDT",
     "collateralAsset": "BTC",
     "collateralAmount": "0.01"
 }
@@ -481,7 +481,7 @@ POST /v2/borrow
     "timestamp": "1626433827430",
     "accountId": "3123",
     "data": {
-        "borrowAsset": "USD",
+        "borrowAsset": "USDT",
         "borrowedAmount": "296.21588287",
         "collateralAsset": "BTC",
         "collateralizedAmount": "0.01",
@@ -495,14 +495,14 @@ POST /v2/borrow
 
 Request Parameters | Type | Required | Description |
 ------------------ | ---- | -------- | ----------- |
-borrowAsset | STRING | YES | Borrow asset, can only be `USD` for now |
+borrowAsset | STRING | YES | Borrow asset, can only be `USDT` for now |
 collateralAsset | STRING | YES | Collateral asset |
 collateralAmount | STRING | YES | Collateral amount of the collateral asset |
 
 Response Fields | Type | Description |
 ----------------| ---- | ----------- |
 accountId | STRING | Account ID |
-borrowAsset | STRING | Borrow asset, can only be `USD` for now |
+borrowAsset | STRING | Borrow asset, can only be `USDT` for now |
 borrowedAmount | STRING | Borrowed amount of the borrow asset |
 collateralAsset | STRING | Collateral asset |
 collateralizedAmount | STRING | Collateralized amount of the collateral asset |
@@ -521,7 +521,7 @@ Repay.
 POST /v2/repay
 
 {
-    "repayAsset": "USD",
+    "repayAsset": "USDT",
     "regainAsset": "BTC",
     "regainAmount": "0.001"
 }
@@ -535,7 +535,7 @@ POST /v2/repay
     "timestamp": "1626433876060",
     "accountId": "3123",
     "data": {
-        "repayAsset": "USD",
+        "repayAsset": "USDT",
         "repaidAmount": "31.33109616",
         "regainAsset": "BTC",
         "regainedAmount": "0.001",
@@ -548,14 +548,14 @@ POST /v2/repay
 
 Request Parameters | Type | Required | Description |
 ------------------ | ---- | -------- | ----------- |
-repayAsset | STRING | YES | Repay asset, can only be `USD` for now |
+repayAsset | STRING | YES | Repay asset, can only be `USDT` for now |
 regainAsset | STRING | YES | Regain asset |
 regainAmount | STRING | YES | Regain amount of the regain asset |
 
 Response Fields | Type | Description |
 ----------------| ---- | ----------- |
 accountId | STRING | Account ID |
-repayAsset | STRING | Repay asset, can only be `USD` for now |
+repayAsset | STRING | Repay asset, can only be `USDT` for now |
 repaidAmount | STRING | Repaid amount of the repay asset |
 regainAsset | STRING | Regain asset |
 regainedAmount | STRING | Already regained amount of the regain asset |
@@ -572,7 +572,7 @@ Get working delivery orders
 > **Request**
 
 ```
-GET /v3/delivery/working?marketCode=SUSHI-USD-SWAP-LIN
+GET /v3/delivery/working?marketCode=SUSHI-USDT-SWAP-LIN
 ```
 
 > **Successful response format**
@@ -583,11 +583,11 @@ GET /v3/delivery/working?marketCode=SUSHI-USD-SWAP-LIN
     "data": [
         {
             "deliveryId": "777227682229354499",
-            "marketCode": "SUSHI-USD-SWAP-LIN",
+            "marketCode": "SUSHI-USDT-SWAP-LIN",
             "status": "PENDING",
             "deliveryPrice": "1.189000000",
             "deliveryPosition": "5.000000000",
-            "deliveryAsset": "USD",
+            "deliveryAsset": "USDT",
             "deliveryQuantity": "5.945000000",
             "receiveAsset": "SUSHI",
             "receiveQuantity": "5.000000000",
@@ -598,11 +598,11 @@ GET /v3/delivery/working?marketCode=SUSHI-USD-SWAP-LIN
         },
         {
             "deliveryId": "777227603892338692",
-            "marketCode": "SUSHI-USD-SWAP-LIN",
+            "marketCode": "SUSHI-USDT-SWAP-LIN",
             "status": "ROLLED_DELIVERY",
             "deliveryPrice": "1.190000000",
             "deliveryPosition": "2.000000000",
-            "deliveryAsset": "USD",
+            "deliveryAsset": "USDT",
             "deliveryQuantity": "2.380000000",
             "receiveAsset": "SUSHI",
             "receiveQuantity": "2.000000000",
@@ -649,12 +649,12 @@ GET /v2/delivery/public/funding?limit={limit}&startTime={startTime}&endTime{endT
 [
     {
         "timestamp": "2020-12-08 04:00:00",
-        "instrumentId": "COMP-USD-SWAP-LIN",
+        "instrumentId": "COMP-USDT-SWAP-LIN",
         "fundingRate": "0.000000000"
     },
     {
         "timestamp": "2020-12-08 04:00:00",
-        "instrumentId": "CRV-USD-SWAP-LIN",
+        "instrumentId": "CRV-USDT-SWAP-LIN",
         "fundingRate": "0.000000000"
     },
     ...
@@ -665,7 +665,7 @@ Get funding rate
 Request Parameters | Type | Description| 
 -------------------------- | -----|--------- |
 column | STRING | limit size of results, e.g. 3 |
-instrumentId | STRING | e.g. UNI-USD-SWAP-LIN |
+instrumentId | STRING | e.g. UNI-USDT-SWAP-LIN |
 limit | STRING | default `100`, max `500` |
 startTime | STRING | STRING. e.g. `2021-12-08 08:00:00`. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
 endTime | STRING | STRING. e.g. `2021-12-08 08:00:00`. Default time now. startTime and endTime must be within 7 days of each other |
@@ -673,7 +673,7 @@ endTime | STRING | STRING. e.g. `2021-12-08 08:00:00`. Default time now. startTi
 Response Parameters | Type | Description| 
 -------------------------- | -----|--------- |
 timestamp | STRING | Timestamp of this response |
-instrumentId | STRING | "BTC-USD-SWAP-LIN" |
+instrumentId | STRING | "BTC-USDT-SWAP-LIN" |
 fundingRate| STRING | e.g. 0.000060000 |
 
 
@@ -694,7 +694,7 @@ GET /v2.1/deliver-auction/<instrumentId>
     "timestamp": "1596620815090",
     "data": [
         {
-            "instrumentId": "BTC-USD-SWAP-LIN",
+            "instrumentId": "BTC-USDT-SWAP-LIN",
             "auctionTime": "1596620805000",
             "netDeliver": "-5.100000000",
             "estFundingRate": "0.0001"
@@ -726,7 +726,7 @@ GET /v2/funding-rates/{marketCode}?startTime={startTime}&endTime={endTime}&limit
 
 Request Parameters | Type | Required | Description |
 ------------------ | ---- | -------- | ----------- |
-marketCode | STRING | YES | e.g. BTC-USD-REPO-LIN , available values: BTC-USD-REPO-LIN, ETH-USD-REPO-LIN |
+marketCode | STRING | YES | e.g. BTC-USDT-REPO-LIN , available values: BTC-USDT-REPO-LIN, ETH-USDT-REPO-LIN |
 limit | LONG | NO | default is `50` |
 startTime | LONG | NO | millisecond timestamp, e.g. `1579450778000`, default is 7 days ago from time now |
 endTime | LONG | NO | millisecond timestamp, e.g. `1613978625000`, default is time now |
@@ -742,7 +742,7 @@ endTime | LONG | NO | millisecond timestamp, e.g. `1613978625000`, default is ti
             "fundingRate": "0.00008",
             "index": "2.78222423",
             "markPrice": "33937.2848",
-            "marketCode": "BTC-USD-REPO-LIN",
+            "marketCode": "BTC-USDT-REPO-LIN",
             "timestamp": "1606461774458"
         },
         ...
@@ -777,13 +777,13 @@ GET /v3/funding-rates?marketCode={marketCode}&limit={limit}
     "success": true,
     "data": [
         {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "fundingRate": "0.0",
             "netDelivered": "0",
             "createdAt": "1628362803134"
         },
         {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "fundingRate": "0.0",
             "netDelivered": "0",
             "createdAt": "1628359202941"
@@ -824,7 +824,7 @@ GET /v3/auction?marketCode={marketCode}
     "success": true,
     "data": [
         {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "auctionTime": "1642590000000",
             "netDelivered": "0",
             "estFundingRate": "0"
@@ -868,7 +868,7 @@ POST /v3/AMM/create
 {
     "leverage": "5",
     "direction": "BUY",
-    "marketCode": "BCH-USD-SWAP-LIN",
+    "marketCode": "BCH-USDT-SWAP-LIN",
     "collateralAsset": "BCH",
     "collateralQuantity": "50",
     "minPriceBound": "200",
@@ -885,7 +885,7 @@ POST /v3/AMM/create
         "hashToken": "CF-BCH-AMM-ABCDE3iy",
         "leverage": "5",
         "direction": "BUY",
-        "marketCode": "BCH-USD-SWAP-LIN",
+        "marketCode": "BCH-USDT-SWAP-LIN",
         "collateralAsset": "BCH",    
         "collateralQuantity": "50",                
         "minPriceBound": "200",
@@ -928,7 +928,7 @@ maxPriceBound | STRING | Maximum price bound |
 ```json
 {
     "direction": "BUY",
-    "marketCode": "BCH-USD-SWAP-LIN",
+    "marketCode": "BCH-USDT-SWAP-LIN",
     "counterQuantity": "250",
     "minPriceBound": "200",
     "maxPriceBound": "800"
@@ -943,8 +943,8 @@ maxPriceBound | STRING | Maximum price bound |
     "data": {
         "hashToken": "CF-BCH-AMM-ABCDE3iy",
         "direction": "BUY",
-        "marketCode": "BCH-USD-SWAP-LIN",
-        "counterAsset": "USD",
+        "marketCode": "BCH-USDT-SWAP-LIN",
+        "counterAsset": "USDT",
         "counterQuantity": "50",
         "minPriceBound": "200",
         "maxPriceBound": "800"
@@ -962,7 +962,7 @@ For unleveraged neutral AMMs the mid point of the price bounds has to equal coun
 ```json
 {
     "direction": "NEUTRAL",
-    "marketCode": "BCH-USD-SWAP-LIN",
+    "marketCode": "BCH-USDT-SWAP-LIN",
     "baseQuantity": "1",
     "counterQuantity": "500",
     "minPriceBound": "200",
@@ -978,9 +978,9 @@ For unleveraged neutral AMMs the mid point of the price bounds has to equal coun
     "data": {
         "hashToken": "CF-BCH-AMM-ABCDE3iy",
         "direction": "BUY",
-        "marketCode": "BCH-USD-SWAP-LIN",
+        "marketCode": "BCH-USDT-SWAP-LIN",
         "baseAsset": "BCH",
-        "counterAsset": "USD",
+        "counterAsset": "USDT",
         "baseQuantity": "1",
         "counterQuantity": "500",
         "minPriceBound": "200",
@@ -1056,7 +1056,7 @@ GET /v3/AMM?hashToken={hashToken},{hashToken}
         "hashToken": "CF-BCH-AMM-ABCDE3iy",
         "leverage": "3",
         "direction": "BUY",
-        "marketCode": "BCH-USD-SWAP-LIN",
+        "marketCode": "BCH-USDT-SWAP-LIN",
         "initialCollateral": {
             "BCH": "123"
         },
@@ -1065,9 +1065,9 @@ GET /v3/AMM?hashToken={hashToken},{hashToken}
         "status": "ENDED",
         "positions": [
             {
-                "marketCode": "BTC-USD-SWAP-LIN",
+                "marketCode": "BTC-USDT-SWAP-LIN",
                 "baseAsset": "BTC",
-                "counterAsset": "USD",
+                "counterAsset": "USDT",
                 "position": "0.94",
                 "entryPrice": "7800.00",
                 "markPrice": "33000.00",
@@ -1135,7 +1135,7 @@ asset | STRING | Asset |
 total | STRING | Total balance |
 available | STRING | Available balance |
 reserved | STRING | Reserved balance |
-usdReward | STRING | USD reward from scalping |
+usdReward | STRING | USDT reward from scalping |
 flexReward | STRING | FLEX reward from fee rebates |
 interestPaid | STRING | Interest paid, positive values imply interest was paid to the AMM, negative values imply interest was paid by the AMM |
 apr | STRING | APR denotes annual percentage rate |
@@ -1225,9 +1225,9 @@ GET /v3/AMM/positions?hashToken={hashToken},{hashToken}&marketCode={marketCode}
             "hashToken": "CF-BCH-AMM-ABCDE3iy",
             "positions": [
                 {
-                    "marketCode": "BTC-USD-SWAP-LIN",
+                    "marketCode": "BTC-USDT-SWAP-LIN",
                     "baseAsset": "BTC",
-                    "counterAsset": "USD",
+                    "counterAsset": "USDT",
                     "position": "0.94",
                     "entryPrice": "7800.00", 
                     "markPrice": "33000.00", 
@@ -1280,7 +1280,7 @@ GET /v3/AMM/orders?hashToken={hashToken}
         {
             "orderId": "304354590153349202",
             "clientOrderId": "1",
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "status": "OPEN",
             "side": "BUY", 
             "price": "1.0",
@@ -1340,7 +1340,7 @@ GET /v3/AMM/trades?hashToken={hashToken}&marketCode={marketCode}&limit={limit}&s
             "orderId": "1000099731323", 
             "clientOrderId": "16", 
             "matchId": "2001011000000", 
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "side": "SELL", 
             "matchedQuantity": "0.001", 
             "matchPrice": "50625", 
@@ -1403,7 +1403,7 @@ GET /v3/AMM/hash-token?status={status}&marketCode={marketCode}&limit={limit}&sta
         {
             "hashToken": "CF-ETH-AMM-607973",
             "direction": "BUY",
-            "marketCode": "ETH-USD-SWAP-LIN",
+            "marketCode": "ETH-USDT-SWAP-LIN",
             "minPriceBound": "3340",
             "maxPriceBound": "3380",
             "status": "EXECUTING",
@@ -1412,7 +1412,7 @@ GET /v3/AMM/hash-token?status={status}&marketCode={marketCode}&limit={limit}&sta
         {
             "hashToken": "CF-BCH-AMM-607818",
             "direction": "SELL",
-            "marketCode": "BCH-USD-SWAP-LIN",
+            "marketCode": "BCH-USDT-SWAP-LIN",
             "minPriceBound": "300",
             "maxPriceBound": "1500",
             "status": "EXECUTING",
@@ -1684,7 +1684,7 @@ GET /v3/flexasset/balances?flexasset={flexasset}
     "flexasset": "flexUSD", 
     "data": [
         {
-            "asset": "USD", 
+            "asset": "USDT", 
             "total": "110.78000000", 
             "available": "110.78000000", 
             "reserved": "0", 
@@ -1725,9 +1725,9 @@ GET /v3/flexasset/positions?flexasset={flexasset}
     "flexasset": "flexUSD",
     "data": [
         {
-            "marketCode": "BCH-USD-SWAP-LIN",
+            "marketCode": "BCH-USDT-SWAP-LIN",
             "baseAsset": "BCH",
-            "counterAsset": "USD",
+            "counterAsset": "USDT",
             "quantity": "-4363.81",
             "entryPrice": "380.69",
             "markPrice": "297.74",
@@ -1736,9 +1736,9 @@ GET /v3/flexasset/positions?flexasset={flexasset}
             "lastUpdatedAt": "1643173228911"
         },
         {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "baseAsset": "BTC",
-            "counterAsset": "USD",
+            "counterAsset": "USDT",
             "quantity": "-28.931000000",
             "entryPrice": "43100.5",
             "markPrice": "37850.2",
@@ -1825,7 +1825,7 @@ POST /v3/leverage
 ```
 ```json
 {
-    "marketCode": "BTC-USD-SWAP-LIN",
+    "marketCode": "BTC-USDT-SWAP-LIN",
     "leverage": 3
 }
 ```
@@ -1836,7 +1836,7 @@ POST /v3/leverage
 {
     "success": true,
     "data":{
-        "marketCode": "BTC-USD-SWAP-LIN",
+        "marketCode": "BTC-USDT-SWAP-LIN",
         "leverage": 2,
         "maxPositionSize": "1000000"
     }
@@ -1866,7 +1866,7 @@ POST /v3/position/adjust
 ```
 ```json
 {
-    "marketCode": "BTC-USD-SWAP-LIN",
+    "marketCode": "BTC-USDT-SWAP-LIN",
     "amount": "100",
     "type": "ADD"
 }

@@ -94,8 +94,8 @@ Websocket commands can be sent in either of the following two formats:
 
 `args`: the value(s) will be the instrument ID(s) or asset ID(s), for example:
 
-* order:BTC-USD-SWAP-LIN
-* depth:ETH-USD-REPO-LIN
+* order:BTC-USDT-SWAP-LIN
+* depth:ETH-USDT-REPO-LIN
 * position:all
 
 **All other commands**
@@ -303,7 +303,7 @@ To maintain an active WebSocket connection it is imperative to either be subscri
             "timestamp": 1638237934061,
             "recvWindow": 500,
             "clientOrderId": 1,
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "quantity": 1.5,
@@ -345,7 +345,7 @@ place_order = \
             "timestamp": 1638237934061,
             "recvWindow": 500,
             "clientOrderId": 1,
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "quantity": 1.5,
@@ -384,7 +384,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1592491945248",
   "data": {
             "clientOrderId": 1,
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "quantity": "1.5",
@@ -408,7 +408,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1592491945248",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "quantity": "1.5",
@@ -434,7 +434,7 @@ op | STRING | Yes | `placeorder`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
 data | DICTIONARY object | Yes |
 clientOrderId | ULONG | No | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
-marketCode | STRING | Yes | Market code e.g. `BTC-USD-SWAP-LIN` |
+marketCode | STRING | Yes | Market code e.g. `BTC-USDT-SWAP-LIN` |
 orderType | STRING | Yes |  `LIMIT` |
 price | FLOAT |  No | Price |
 quantity |  FLOAT | Yes | Quantity (denominated by contractValCurrency) |
@@ -457,7 +457,7 @@ recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engin
             "timestamp": 1638237934061,
             "recvWindow": 500,
             "clientOrderId": 1,
-            "marketCode": "ETH-USD-SWAP-LIN",
+            "marketCode": "ETH-USDT-SWAP-LIN",
             "side": "SELL",
             "orderType": "MARKET",
             "quantity": 5
@@ -497,7 +497,7 @@ place_order = \
             "timestamp": 1638237934061,
             "recvWindow": 500,
             "clientOrderId": 1,
-            "marketCode": "ETH-USD-SWAP-LIN",
+            "marketCode": "ETH-USDT-SWAP-LIN",
             "side": "SELL",
             "orderType": "MARKET",
             "quantity": 5
@@ -535,7 +535,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1592491945248",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "ETH-USD-SWAP-LIN",
+            "marketCode": "ETH-USDT-SWAP-LIN",
             "side": "SELL",
             "orderType": "MARKET",
             "quantity": "5",
@@ -557,7 +557,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1592491503359",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "ETH-USD-SWAP-LIN",
+            "marketCode": "ETH-USDT-SWAP-LIN",
             "side": "SELL",
             "orderType": "MARKET",
             "quantity": "5",
@@ -581,7 +581,7 @@ op | STRING | Yes | `placeorder`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
 data | DICTIONARY object | Yes |
 clientOrderId | ULONG | No | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
-marketCode | STRING | Yes | Market code e.g. `BTC-USD-SWAP-LIN` |
+marketCode | STRING | Yes | Market code e.g. `BTC-USDT-SWAP-LIN` |
 orderType | STRING | Yes |  `MARKET` |
 quantity |  FLOAT | Yes | Quantity (denominated by contractValCurrency) |
 side | STRING | Yes | `BUY` or `SELL` |
@@ -601,7 +601,7 @@ recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engin
             "timestamp": 1638237934061,
             "recvWindow": 500,
             "clientOrderId": 1,
-            "marketCode": "ETH-USD-SWAP-LIN",
+            "marketCode": "ETH-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "STOP_LIMIT",
             "quantity": 10,
@@ -644,7 +644,7 @@ place_order = \
             "timestamp": 1638237934061,
             "recvWindow": 500,
             "clientOrderId": 1,
-            "marketCode": "ETH-USD-SWAP-LIN",
+            "marketCode": "ETH-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "STOP",
             "quantity": 10,
@@ -685,7 +685,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1607639739098",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "ETH-USD-SWAP-LIN",
+            "marketCode": "ETH-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "STOP_LIMIT",
             "quantity": "10",
@@ -710,7 +710,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1592491503359",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "ETH-USD-SWAP-LIN",
+            "marketCode": "ETH-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "STOP_LIMIT",
             "quantity": "10",
@@ -737,7 +737,7 @@ op | STRING | Yes | `placeorder`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
 data | DICTIONARY object | Yes |
 clientOrderId | ULONG | No | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
-marketCode| STRING| Yes| Market code e.g. `ETH-USD-SWAP-LIN`|
+marketCode| STRING| Yes| Market code e.g. `ETH-USDT-SWAP-LIN`|
 orderType|STRING| Yes|  `STOP_LIMIT` for stop-limit orders (stop-market orders not supported)|
 quantity|FLOAT|Yes|Quantity (denominated by contractValCurrency)|
 side|STRING| Yes| `BUY ` or `SELL`|
@@ -760,7 +760,7 @@ recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engin
                   "timestamp": 1638237934061,
                   "recvWindow": 500,
                   "clientOrderId": 1,
-                  "marketCode": "ETH-USD-SWAP-LIN",
+                  "marketCode": "ETH-USDT-SWAP-LIN",
                   "side": "BUY",
                   "orderType": "LIMIT",
                   "quantity": 10,
@@ -771,7 +771,7 @@ recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engin
                   "timestamp": 1638237934061,
                   "recvWindow": 500,
                   "clientOrderId": 2,
-                  "marketCode": "BTC-USD",
+                  "marketCode": "BTC-USDT",
                   "side": "SELL",
                   "orderType": "MARKET",
                   "quantity": 0.2
@@ -811,7 +811,7 @@ place_batch_order =\
                   "timestamp": 1638237934061,
                   "recvWindow": 500,
                   "clientOrderId": 1,
-                  "marketCode": "ETH-USD-SWAP-LIN",
+                  "marketCode": "ETH-USDT-SWAP-LIN",
                   "side": "BUY",
                   "orderType": "LIMIT",
                   "quantity": 10,
@@ -822,7 +822,7 @@ place_batch_order =\
                   "timestamp": 1638237934061,
                   "recvWindow": 500,
                   "clientOrderId": 2,
-                  "marketCode": "BTC-USD",
+                  "marketCode": "BTC-USDT",
                   "side": "SELL",
                   "orderType": "MARKET",
                   "quantity": 0.2
@@ -859,7 +859,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1607639739098",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "ETH-USD-SWAP-LIN",
+            "marketCode": "ETH-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "quantity": "10",
@@ -879,7 +879,7 @@ AND
   "timestamp": "1607639739136",
   "data": {
             "clientOrderId": "2",
-            "marketCode": "BTC-USD",
+            "marketCode": "BTC-USDT",
             "side": "SELL",
             "orderType": "MARKET",
             "quantity": "0.2",
@@ -901,7 +901,7 @@ AND
   "timestamp": "1592491503359",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "ETH-USD-SWAP-LIN",
+            "marketCode": "ETH-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "quantity": "10",
@@ -922,7 +922,7 @@ AND
   "timestamp": "1592491503457",
   "data": {
             "clientOrderId": "2",
-            "marketCode": "BTC-USD",
+            "marketCode": "BTC-USDT",
             "side": "SELL",
             "orderType": "MARKET",
             "quantity": "0.2",
@@ -962,7 +962,7 @@ recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engin
   "op": "cancelorder",
   "tag": 456,
   "data": {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "orderId": 12
           }
 }
@@ -997,7 +997,7 @@ cancel_order = \
   "op": "cancelorder",
   "tag": 456,
   "data": {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "orderId": 12
           }
 }
@@ -1032,7 +1032,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "tag": "456",
   "timestamp": "1592491173964",
   "data": {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "clientOrderId": "1",
             "orderId": "12"
           }
@@ -1050,7 +1050,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "code": "<errorCode>",
   "timestamp": "1592491173964",
   "data": {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "orderId": "12"
           }
 }
@@ -1068,7 +1068,7 @@ Parameters | Type | Required | Description
 op | STRING | Yes | `cancelorder`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
 data | DICTIONARY object | Yes |
-marketCode|STRING|Yes|Market code e.g. `BTC-USD-SWAP-LIN`|
+marketCode|STRING|Yes|Market code e.g. `BTC-USDT-SWAP-LIN`|
 orderId|INTEGER|Yes|Unique order ID from the exchange|
 
 
@@ -1081,11 +1081,11 @@ orderId|INTEGER|Yes|Unique order ID from the exchange|
   "op": "cancelorders",
   "tag": 456,
   "dataArray": [{
-                  "marketCode": "BTC-USD-SWAP-LIN",
+                  "marketCode": "BTC-USDT-SWAP-LIN",
                   "orderId": 12
                 },
                 {
-                  "marketCode": "BCH-USD",
+                  "marketCode": "BCH-USDT",
                   "orderId": 34
                 }]
 }
@@ -1120,11 +1120,11 @@ cancel_batch_order = \
   "op": "cancelorders",
   "tag": 456,
   "dataArray": [{
-                  "marketCode": "BTC-USD-SWAP-LIN",
+                  "marketCode": "BTC-USDT-SWAP-LIN",
                   "orderId": 12
                 },
                 {
-                  "marketCode": "BCH-USD",
+                  "marketCode": "BCH-USDT",
                   "orderId": 34
                 }]
 }
@@ -1159,7 +1159,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "tag": "456",
   "timestamp": "1592491173964",
   "data": {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "clientOrderId": "1",
             "orderId": "12"
           }
@@ -1173,7 +1173,7 @@ AND
   "tag": "456",
   "timestamp": "1592491173978",
   "data": {
-            "marketCode": "BCH-USD",
+            "marketCode": "BCH-USDT",
             "orderId": "34"
           }
 }
@@ -1191,7 +1191,7 @@ AND
   "code": "<errorCode>",
   "timestamp": "1592491173964",
   "data": {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "orderId": "12"
           }
 }
@@ -1206,7 +1206,7 @@ AND
   "code": "<errorCode>",
   "timestamp": "1592491173989",
   "data": {
-            "marketCode": "BCH-USD",
+            "marketCode": "BCH-USDT",
             "orderId": "12"
           }
 }
@@ -1235,7 +1235,7 @@ dataArray | LIST of dictionaries | A list of orders with each order in JSON form
   "data": {
             "timestamp": 1638237934061,
             "recvWindow": 500,
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "orderId": 888,
             "side": "BUY",
             "price": 9800,
@@ -1275,7 +1275,7 @@ modify_order = \
   "data": {
             "timestamp": 1638237934061,
             "recvWindow": 500,
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "orderId": 888,
             "side": "BUY",
             "price": 9800,
@@ -1317,7 +1317,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
           "quantity": 2
           "price": 9800,
           "orderType": "LIMIT",
-          "marketCode": "BTC-USD-SWAP-LIN"
+          "marketCode": "BTC-USDT-SWAP-LIN"
          }
 }
 ```
@@ -1337,7 +1337,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "side": "BUY",
             "quantity": 2,
             "price": 9800,
-            "marketCode": "BTC-USD-SWAP-LIN"
+            "marketCode": "BTC-USDT-SWAP-LIN"
           }
 }
 ```
@@ -1368,7 +1368,7 @@ Parameters | Type | Required | Description|
 op | STRING | Yes | `modifyorder`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
 data | DICTIONARY object | Yes |
-marketCode|STRING|Yes| Market code e.g. `BTC-USD-SWAP-LIN`|
+marketCode|STRING|Yes| Market code e.g. `BTC-USDT-SWAP-LIN`|
 orderId|INTEGER|Yes|Unique order ID from the exchange|
 side| STRING|No| `BUY` or `SELL`|
 price|FLOAT|No|Price for limit orders|
@@ -1388,7 +1388,7 @@ recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engin
   "dataArray": [{
                   "timestamp": 1638237934061,
                   "recvWindow": 500,
-                  "marketCode": "ETH-USD-SWAP-LIN",
+                  "marketCode": "ETH-USDT-SWAP-LIN",
                   "side": "BUY",
                   "orderID": 304304315061932310,
                   "price": 101,
@@ -1396,7 +1396,7 @@ recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engin
                 {
                   "timestamp": 1638237934061,
                   "recvWindow": 500,
-                  "marketCode": "BTC-USD",
+                  "marketCode": "BTC-USDT",
                   "orderID": 304304315061864646,
                   "price": 10001,
                   "quantity": 0.21
@@ -1435,7 +1435,7 @@ modify_batch_order = \
   "dataArray": [{
                   "timestamp": 1638237934061,
                   "recvWindow": 500,
-                  "marketCode": "ETH-USD-SWAP-LIN",
+                  "marketCode": "ETH-USDT-SWAP-LIN",
                   "side": "BUY",
                   "orderID": 304304315061932310,
                   "price": 101,
@@ -1443,7 +1443,7 @@ modify_batch_order = \
                 {
                   "timestamp": 1638237934061,
                   "recvWindow": 500,
-                  "marketCode": "BTC-USD",
+                  "marketCode": "BTC-USDT",
                   "orderID": 304304315061864646,
                   "price": 10001,
                   "quantity": 0.21
@@ -1485,7 +1485,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "quantity": "5"
             "price": "101",
             "orderType": "LIMIT",
-            "marketCode": "ETH-USD-SWAP-LIN"
+            "marketCode": "ETH-USDT-SWAP-LIN"
           }
 }
 
@@ -1502,7 +1502,7 @@ AND
             "quantity": 0.21,
             "price": "10001",
             "orderType": "LIMIT",
-            "marketCode": "BTC-USD"
+            "marketCode": "BTC-USDT"
           }
 }
 ```
@@ -1521,7 +1521,7 @@ AND
             "orderID": 304304315061932310,
             "side": "BUY",
             "price": 101,
-            "marketCode": "ETH-USD-SWAP-LIN"
+            "marketCode": "ETH-USDT-SWAP-LIN"
           }
 }
 
@@ -1538,7 +1538,7 @@ AND
             "orderID": 304304315061864646,
             "quantity": 0.21,
             "price": 10001,
-            "marketCode": "BTC-USD"
+            "marketCode": "BTC-USDT"
           }
 }
 ```
@@ -1583,7 +1583,7 @@ OR
 
 {
   "op": "subscribe", 
-  "args": ["balance:USD", "balance:FLEX", ........], 
+  "args": ["balance:USDT", "balance:FLEX", ........], 
   "tag": 101
 }
 ```
@@ -1662,7 +1662,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "data": [{
               "total": "10000",
               "reserved": "1000",
-              "instrumentId": "USD",
+              "instrumentId": "USDT",
               "available": "9000",
               "locked": "0"
               "quantityLastUpdated": "1599694369431",
@@ -1724,7 +1724,7 @@ OR
 
 {
   "op": "subscribe",
-  "args": ["position:BTC-USD-SWAP-LIN", "position:BCH-USD-SWAP-LIN", ........], 
+  "args": ["position:BTC-USDT-SWAP-LIN", "position:BCH-USDT-SWAP-LIN", ........], 
   "tag": 102
 }
 ```
@@ -1801,7 +1801,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "accountId": "<Your account ID>",
   "timestamp": "1607985371481",
   "data": [ {
-              "instrumentId": "ETH-USD-SWAP-LIN",
+              "instrumentId": "ETH-USDT-SWAP-LIN",
               "quantity" : "0.1",
               "lastUpdated": "1616053755423",
               "contractValCurrency": "ETH",
@@ -1812,7 +1812,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
               "leverage": "0"
             },
             {
-              "instrumentId": "WBTC-USD-SWAP-LIN",
+              "instrumentId": "WBTC-USDT-SWAP-LIN",
               "quantity" : "0.542",
               "lastUpdated": "1617099855968",
               "contractValCurrency": "WBTC",
@@ -1849,7 +1849,7 @@ table | STRING | `position` |
 accountId | STRING | Account identifier |
 timestamp | STRING | Current millisecond timestamp |
 data | LIST of dictionaries | |
-instrumentId | STRING | e.g. `ETH-USD-SWAP-LIN` |
+instrumentId | STRING | e.g. `ETH-USDT-SWAP-LIN` |
 quantity | STRING | Position size (+/-) |
 lastUpdated | STRING | Millisecond timestamp |
 contractValCurrency | STRING | Base asset ID e.g. `ETH` |
@@ -1875,7 +1875,7 @@ OR
 
 {
   "op": "subscribe", 
-  "args": ["order:FLEX-USD", "order:ETH-USD-SWAP-LIN", .....], 
+  "args": ["order:FLEX-USDT", "order:ETH-USDT-SWAP-LIN", .....], 
   "tag": 102
 }
 ```
@@ -1973,7 +1973,7 @@ tag | INTEGER or STRING | No | If given it will be echoed in the reply and the m
               "quantity": "2" ,
               "side": "BUY",
               "status": "OPEN",
-              "marketCode": "BTC-USD-SWAP-LIN",
+              "marketCode": "BTC-USDT-SWAP-LIN",
               "timeInForce": "MAKER_ONLY",
               "timestamp": "1594943491077"
               "orderType": "LIMIT",
@@ -1995,7 +1995,7 @@ tag | INTEGER or STRING | No | If given it will be echoed in the reply and the m
               "quantity": "2",
               "side": "BUY",
               "status": "OPEN",
-              "marketCode": "USDT-USD-SWAP-LIN",
+              "marketCode": "USDT-USDT-SWAP-LIN",
               "timeInForce": "IOC",
               "timestamp": "1594943491077",
               "stopPrice": "9280",
@@ -2020,7 +2020,7 @@ price |STRING | Limit price submitted (only applicable for LIMIT order types)
 quantity | STRING| Quantity submitted
 side|STRING|`BUY` or `SELL`
 status|STRING|  Order status
-marketCode | STRING |  Market code e.g. `FLEX-USD`
+marketCode | STRING |  Market code e.g. `FLEX-USDT`
 timeInForce|STRING| Client submitted time in force, `GTC` by default
 timestamp|STRING |Current millisecond timestamp
 orderType| STRING | `LIMIT` or `STOP_LIMIT`
@@ -2045,7 +2045,7 @@ isTriggered|STRING|`False` or `True`
               "quantity": "2",
               "side": "BUY",
               "status": "<Canceled status>",
-              "marketCode": "BTC-USD-SWAP-LIN",
+              "marketCode": "BTC-USDT-SWAP-LIN",
               "timeInForce": "<Time in force>",
               "timestamp": "1594943491077",
               "remainQuantity": "1.5",
@@ -2068,7 +2068,7 @@ isTriggered|STRING|`False` or `True`
               "quantity": "2",
               "side": "BUY",
               "status": "CANCELED_BY_USER",
-              "marketCode": "BTC-USD-SWAP-LIN",
+              "marketCode": "BTC-USDT-SWAP-LIN",
               "timeInForce": "<Time in force>",
               "timestamp": "1594943491077",
               "remainQuantity": "1.5",
@@ -2103,7 +2103,7 @@ price|STRING |Limit price of closed order (only applicable for LIMIT order types
 quantity|STRING |Original order quantity of closed order
 side|STRING |`BUY` or `SELL`
 status|STRING | <ul><li>`CANCELED_BY_USER`</li><li>`CANCELED_BY_MAKER_ONLY`</li><li>`CANCELED_BY_FOK`</li><li>`CANCELED_ALL_BY_IOC`</li><li>`CANCELED_PARTIAL_BY_IOC`</li><li>`CANCELED_BY_AMEND`</li></ul>
-marketCode|STRING |  Market code e.g. `BTC-USD-SWAP-LIN`
+marketCode|STRING |  Market code e.g. `BTC-USDT-SWAP-LIN`
 timeInForce|STRING |Time in force of closed order
 timestamp|STRING |Current millisecond timestamp
 remainQuantity|STRING |Historical remaining order quantity of closed order
@@ -2138,7 +2138,7 @@ isTriggered | STRING | `False` or `True`
             "side": "BUY", 
             "status": "REJECT_CANCEL_ORDER_ID_NOT_FOUND", 
             "timeCondition": "GTC", 
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "timestampEpochMs": 1615377638518, 
             "orderType": "LIMIT",
             "price": 0.0, 
@@ -2200,7 +2200,7 @@ isTriggered | BOOL | `False` or `True`
               "quantity": "1",
               "side": "BUY",
               "status": "OPEN",
-              "marketCode": "BTC-USD-SWAP-LIN",    
+              "marketCode": "BTC-USDT-SWAP-LIN",    
               "timeInForce": "GTC",
               "timestamp": "1594943491077"
               "orderType": "LIMIT",
@@ -2229,7 +2229,7 @@ price |STRING | Limit price of modified order (only applicable for LIMIT order t
 quantity | STRING| Quantity of modified order
 side|STRING|`BUY` or `SELL`
 status|STRING|  Order status
-marketCode | STRING |  Market code e.g. `BTC-USD-SWAP-LIN`
+marketCode | STRING |  Market code e.g. `BTC-USDT-SWAP-LIN`
 timeInForce|STRING| Client submitted time in force, `GTC` by default
 timestamp|STRING |Current millisecond timestamp
 orderType| STRING | `LIMIT` or `STOP_LIMIT`
@@ -2263,7 +2263,7 @@ isTriggered|STRING|`False` or `True` |
             "side": "BUY", 
             "status": "REJECT_AMEND_ORDER_ID_NOT_FOUND", 
             "timeCondition": "GTC", 
-            "marketCode": "SUSHI-USD-SWAP-LIN", 
+            "marketCode": "SUSHI-USDT-SWAP-LIN", 
             "timestampEpochMs": 1615377638518, 
             "orderType": "LIMIT", 
             "price": 22, 
@@ -2322,7 +2322,7 @@ isTriggered | BOOL
               "quantity": "20",
               "side": "BUY",
               "status": "<Matched status>",
-              "marketCode": "BTC-USD-SWAP-LIN",
+              "marketCode": "BTC-USDT-SWAP-LIN",
               "timeInForce": "GTC",
               "timestamp": "1592490254168",
               "matchId": "11568123",
@@ -2357,7 +2357,7 @@ limitPrice|STRING| Limit price submitted (only applicable for STOP LIMIT order t
 quantity|STRING|Order quantity submitted
 side|STRING|`BUY` or `SELL`
 status|STRING|`FILLED` or `PARTIAL_FILL`
-marketCode|STRING| Market code i.e. `BTC-USD-SWAP-LIN`
+marketCode|STRING| Market code i.e. `BTC-USDT-SWAP-LIN`
 timeInForce|STRING|Client submitted time in force (only applicable for LIMIT and STOP LIMIT order types)
 timestamp|STRING|Millisecond timestamp of order match
 matchID|STRING|Exchange match ID
@@ -2387,7 +2387,7 @@ Multiple subscriptions to different channels both public and private can be made
 {
   "op": "subscribe",
   "tag": 103,
-  "args": ["depthL10:BTC-USD-SWAP-LIN"]
+  "args": ["depthL10:BTC-USDT-SWAP-LIN"]
 }
 ```
 ```python
@@ -2399,7 +2399,7 @@ orderbook_depth = \
 {
   "op": "subscribe",
   "tag": 103,
-  "args": ["depthL10:BTC-USD-SWAP-LIN"]
+  "args": ["depthL10:BTC-USDT-SWAP-LIN"]
 }
 
 url= 'wss://stgapi.opnx.com/v2/websocket'
@@ -2428,7 +2428,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
     "success": true,
     "tag": "103",
     "event": "subscribe",
-    "channel": "depthL10:BTC-USD-SWAP-LIN",
+    "channel": "depthL10:BTC-USDT-SWAP-LIN",
     "timestamp": "1665454814275"
 }
 ```
@@ -2468,7 +2468,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
                 8.414
             ]
         ],
-        "marketCode": "BTC-USD-SWAP-LIN",
+        "marketCode": "BTC-USDT-SWAP-LIN",
         "timestamp": "1665454814328"
     },
     "action": "partial"
@@ -2485,7 +2485,7 @@ Parameters |Type| Required| Description |
 --------|-----|---|-----------|
 op | STRING| Yes | `subscribe` |
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
-args | LIST | Yes | List of individual markets `<depth>:<marketCode>` e.g: `[depthL10:BTC-USD-SWAP-LIN]`, valid book sizes are: `depthL5` `depthL10` `depthL25` |
+args | LIST | Yes | List of individual markets `<depth>:<marketCode>` e.g: `[depthL10:BTC-USDT-SWAP-LIN]`, valid book sizes are: `depthL5` `depthL10` `depthL25` |
 
 <sub>**Channel Update Fields**</sub>
 
@@ -2509,7 +2509,7 @@ action| STRING |  |
 {
   "op": "subscribe",
   "tag": 103,
-  "args": ["depth:BTC-USD-SWAP-LIN"]
+  "args": ["depth:BTC-USDT-SWAP-LIN"]
 }
 ```
 ```python
@@ -2521,7 +2521,7 @@ orderbook_depth = \
 {
   "op": "subscribe",
   "tag": 103,
-  "args": ["depth:BTC-USD-SWAP-LIN"]
+  "args": ["depth:BTC-USDT-SWAP-LIN"]
 }
 
 url= 'wss://stgapi.opnx.com/v2/websocket'
@@ -2550,7 +2550,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
     "success": true,
     "tag": "103",
     "event": "subscribe",
-    "channel": "depth:BTC-USD-SWAP-LIN",
+    "channel": "depth:BTC-USDT-SWAP-LIN",
     "timestamp": "1665454814275"
 }
 ```
@@ -2591,7 +2591,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             ]
         ],
         "checksum": 3475315026,
-        "marketCode": "BTC-USD-SWAP-LIN",
+        "marketCode": "BTC-USDT-SWAP-LIN",
         "timestamp": 1665454814328
     },
     "action": "partial"
@@ -2608,7 +2608,7 @@ Parameters |Type| Required| Description |
 --------|-----|---|-----------|
 op | STRING| Yes | `subscribe` |
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
-args | LIST | Yes | List of individual markets `<depth>:<marketCode>` e.g: `[depth:BTC-USD-SWAP-LIN]`|
+args | LIST | Yes | List of individual markets `<depth>:<marketCode>` e.g: `[depth:BTC-USDT-SWAP-LIN]`|
 
 <sub>**Channel Update Fields**</sub>
 
@@ -2634,7 +2634,7 @@ action| STRING |  |
     "op": "subscribe",
     "tag": "test1",
     "args": [
-        "depthUpdate:BTC-USD-SWAP-LIN"
+        "depthUpdate:BTC-USDT-SWAP-LIN"
     ]
 }
 ```
@@ -2646,7 +2646,7 @@ action| STRING |  |
     "success": true,
     "tag": "test1",
     "event": "subscribe",
-    "channel": "depthUpdate:BTC-USD-SWAP-LIN",
+    "channel": "depthUpdate:BTC-USDT-SWAP-LIN",
     "timestamp": "1665456142779"
 }
 ```
@@ -2661,7 +2661,7 @@ action| STRING |  |
         "asks": [],
         "bids": [],
         "checksum": 364462986,
-        "marketCode": "BTC-USD-SWAP-LIN",
+        "marketCode": "BTC-USDT-SWAP-LIN",
         "timestamp": "1665456142843"
     },
     "action": "increment"
@@ -2686,7 +2686,7 @@ action| STRING |  |
             ]
         ],
         "checksum": 2688268653,
-        "marketCode": "BTC-USD-SWAP-LIN",
+        "marketCode": "BTC-USDT-SWAP-LIN",
         "timestamp": "1665456142843"
     },
     "action": "partial"
@@ -2714,7 +2714,7 @@ Parameters |Type| Required| Description |
 --------|-----|---|-----------|
 op | STRING| Yes | `subscribe` |
 tag | INTEGER or STRING | No | If given it will be echoed in the reply |
-args | LIST | Yes | List of individual markets `<depthUpdate>:<marketCode>` e.g: `["depthUpdate:BTC-USD-SWAP-LIN"]`|
+args | LIST | Yes | List of individual markets `<depthUpdate>:<marketCode>` e.g: `["depthUpdate:BTC-USDT-SWAP-LIN"]`|
 
 <sub>**Channel Update Fields**</sub>
 
@@ -2740,7 +2740,7 @@ action| STRING | `partial` `increment` |
     "op": "subscribe",
     "tag": "test1",
     "args": [
-        "bestBidAsk:BTC-USD-SWAP-LIN"
+        "bestBidAsk:BTC-USDT-SWAP-LIN"
     ]
 }
 ```
@@ -2752,7 +2752,7 @@ action| STRING | `partial` `increment` |
     "success": true,
     "tag": "test1",
     "event": "subscribe",
-    "channel": "bestBidAsk:BTC-USD-SWAP-LIN",
+    "channel": "bestBidAsk:BTC-USDT-SWAP-LIN",
     "timestamp": "1665456882918"
 }
 ```
@@ -2768,7 +2768,7 @@ action| STRING | `partial` `increment` |
             1.0
         ],
         "checksum": 3790706311,
-        "marketCode": "BTC-USD-SWAP-LIN",
+        "marketCode": "BTC-USDT-SWAP-LIN",
         "bid": [
             19015.0,
             1.0
@@ -2788,7 +2788,7 @@ Parameters |Type| Required| Description |
 --------|-----|---|-----------|
 op | STRING| Yes | `subscribe` |
 tag | INTEGER or STRING | No | If given it will be echoed in the reply |
-args | LIST | Yes | List of individual markets `<bestBidAsk>:<marketCode>` e.g: `["bestBidAsk:BTC-USD-SWAP-LIN"]` |
+args | LIST | Yes | List of individual markets `<bestBidAsk>:<marketCode>` e.g: `["bestBidAsk:BTC-USDT-SWAP-LIN"]` |
 
 <sub>**Channel Update Fields**</sub>
 
@@ -2811,7 +2811,7 @@ timestamp| STRING | Millisecond timestamp |
 {
   "op": "subscribe",
   "tag": 1,
-  "args": ["trade:BTC-USD-SWAP-LIN"]
+  "args": ["trade:BTC-USDT-SWAP-LIN"]
 }
 ```
 ```python
@@ -2823,7 +2823,7 @@ trade = \
 {
   "op": "subscribe",
   "tag": 1,
-  "args": ["trade:BTC-USD-SWAP-LIN"]
+  "args": ["trade:BTC-USDT-SWAP-LIN"]
 }
 
 url= 'wss://stgapi.opnx.com/v2/websocket'
@@ -2849,7 +2849,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
 ```json
 {
   "event": "subscribe", 
-  "channel": ["trade:BTC-USD-SWAP-LIN"], 
+  "channel": ["trade:BTC-USDT-SWAP-LIN"], 
   "success": True, 
   "tag": "1", 
   "timestamp": "1594299886880"
@@ -2867,7 +2867,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
               "price": "5556.91",
               "quantity": "5",
               "matchType": "MAKER",
-              "marketCode": "BTC-USD-SWAP-LIN",
+              "marketCode": "BTC-USDT-SWAP-LIN",
               "timestamp": "1594299886890"
             } ]
 }
@@ -2916,7 +2916,7 @@ OR
 {
   "op": "subscribe", 
   "tag": 1,
-  "args": ["ticker:FLEX-USD", ........]
+  "args": ["ticker:FLEX-USDT", ........]
 }
 ```
 ```python
@@ -2974,7 +2974,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "volume24h": "0",
             "currencyVolume24h": "0",
             "openInterest": "0",
-            "marketCode": "1INCH-USD",
+            "marketCode": "1INCH-USDT",
             "timestamp": "1622020931049",
             "lastQty": "0",
             "markPrice": "3.304",
@@ -2988,7 +2988,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "volume24h": "0",
             "currencyVolume24h": "0",
             "openInterest": "0",
-            "marketCode": "1INCH-USD-SWAP-LIN",
+            "marketCode": "1INCH-USDT-SWAP-LIN",
             "timestamp": "1622020931046",
             "lastQty": "0",
             "markPrice": "3.304",
@@ -3044,7 +3044,7 @@ timestamp   | STRING   | Millisecond timestamp|
 {
   "op": "subscribe", 
   "tag": 1,
-  "args": ["candles60s:BTC-USD-SWAP-LIN"]
+  "args": ["candles60s:BTC-USDT-SWAP-LIN"]
 }
 ```
 ```python
@@ -3056,7 +3056,7 @@ candles = \
 {
   "op": "subscribe",
   "tag": 1,
-  "args": ["candles60s:BTC-USD-SWAP-LIN"]
+  "args": ["candles60s:BTC-USDT-SWAP-LIN"]
 }
 
 url= 'wss://stgapi.opnx.com/v2/websocket'
@@ -3081,7 +3081,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
 ```json
 {
   "event": "subscribe", 
-  "channel": ["candles60s:BTC-USD-SWAP-LIN"], 
+  "channel": ["candles60s:BTC-USDT-SWAP-LIN"], 
   "success": True, 
   "tag": "1", 
   "timestamp": "1594313762698"
@@ -3094,7 +3094,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
 {
   "table": "candle60s",
   "data": [ {
-              "marketCode": "BTC-USD-SWAP-LIN",
+              "marketCode": "BTC-USDT-SWAP-LIN",
               "candle": [
                 "1594313762698", //timestamp
                 "9633.1",        //open
@@ -3191,7 +3191,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
 {
   "table": "liquidationRFQ",
   "data": [ {
-              "marketCode": "BTC-USD-SWAP-LIN"
+              "marketCode": "BTC-USDT-SWAP-LIN"
               "timestamp": "1613774607889"
           } ]
 }
@@ -3202,8 +3202,8 @@ asyncio.get_event_loop().run_until_complete(subscribe())
 The liquidation RFQ (request for quotes) channel publishes a message 50ms before a liquidation event is due to occur.  A liquidation event can be classed as one of the following:-
 
 * liquidation of a clients traded position (perps, futures or index)
-* an auto-borrow (in a repo order book) of USD because a clients account has negative USD balances greater than the allowable threshold
-* an auto-repayment (in a repo order book) of a previous auto-borrow because a clients account now has sufficient USD balances to repay the loan
+* an auto-borrow (in a repo order book) of USDT because a clients account has negative USDT balances greater than the allowable threshold
+* an auto-repayment (in a repo order book) of a previous auto-borrow because a clients account now has sufficient USDT balances to repay the loan
 
 The message will contain the market code and is designed to give users an opportunity to make a 2 way market for the upcoming liquidation event.
 
@@ -3241,7 +3241,7 @@ OR
 {
   "op": "subscribe", 
   "tag": 1,
-  "args": ["market:FLEX-USD", ........]
+  "args": ["market:FLEX-USDT", ........]
 }
 ```
 ```python
@@ -3296,16 +3296,16 @@ asyncio.get_event_loop().run_until_complete(subscribe())
               "qtyIncrement": "0.1", 
               "upperPriceBound": "0.417", 
               "lowerPriceBound": "0.317", 
-              "counter": "USD", 
+              "counter": "USDT", 
               "type": "SPOT", 
               "marketId": "3001000000000", 
-              "referencePair": "FLEX/USD", 
+              "referencePair": "FLEX/USDT", 
               "tickSize": "0.001", 
               "marketPriceLastUpdated": "1613769981920", 
               "contractValCurrency": "FLEX", 
-              "name": "FLEX/USD Spot", 
-              "marketCode": "FLEX-USD", 
-              "marginCurrency": "USD", 
+              "name": "FLEX/USDT Spot", 
+              "marketCode": "FLEX-USDT", 
+              "marginCurrency": "USDT", 
               "base": "FLEX"
           }, 
           ........

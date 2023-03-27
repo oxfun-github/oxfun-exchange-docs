@@ -75,7 +75,7 @@ Nonce | Yes | 123 | User generated
 Verb | Yes| 'GET' | Uppercase
 Path | Yes | 'v2stgapi.opnx.com' |
 Method | Yes | '/v2/positions | Available REST methods: <li>`V2/positions`</li><li>`V2/orders`</li><li>`V2/balances`</li>
-Body | No | instrumentID=BTC-USD-SWAP-LIN | Optional and dependent on the REST method being called
+Body | No | instrumentID=BTC-USDT-SWAP-LIN | Optional and dependent on the REST method being called
 
 The constructed message string should look like:-
 
@@ -84,7 +84,7 @@ The constructed message string should look like:-
   GET\n
   v2stgapi.opnx.com\n
   /v2/positions\n
-  instrumentID=BTC-USD-SWAP-LIN`
+  instrumentID=BTC-USDT-SWAP-LIN`
 
 Note the newline characters after each component in the message string. 
 If *Body* is ommitted it's treated as an empty string.
@@ -158,7 +158,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
         {
             "accountId": "677473",
             "tradeType": "LINEAR",
-            "marginCurrency": "USD",
+            "marginCurrency": "USDT",
             "totalBalance": "33860283.6914636",
             "availableBalance": "33860283.6914636",
             "collateralBalance": "28661274.5806472",
@@ -179,7 +179,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
         {
             "accountId": "677473",
             "tradeType": "LINEAR",
-            "marginCurrency": "USD",
+            "marginCurrency": "USDT",
             "totalBalance": "33860283.6914636",
             "availableBalance": "33860283.6914636",
             "collateralBalance": "28661274.5806472",
@@ -203,7 +203,7 @@ accountId | STRING | Account ID
 data | LIST of dictionary |
 accountId | STRING | Account ID
 tradeType | STRING | Account type `LINEAR`
-marginCurrency | STRING | Asset `USD`
+marginCurrency | STRING | Asset `USDT`
 totalBalance | STRING | Total balance denoted in marginCurrency
 collateralBalance | STRING | Collateral balance with LTV applied
 availableBalance | STRING | Available balance
@@ -494,7 +494,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
   "timestamp": 1593627415000,
   "accountId":"<Your Account ID>",
   "data": [ {
-              "instrumentId": "BTC-USD-SWAP-LIN",
+              "instrumentId": "BTC-USDT-SWAP-LIN",
               "quantity": "0.542000000",
               "lastUpdated": "1617099855966",
               "contractValCurrency": "BTC",
@@ -518,7 +518,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
     "accountId": "677473", 
     "data": [
         {
-            "instrumentId": "ETH-USD-SWAP-LIN", 
+            "instrumentId": "ETH-USDT-SWAP-LIN", 
             "quantity": "-461.64", 
             "lastUpdated": "1648518794680", 
             "contractValCurrency": "ETH", 
@@ -527,7 +527,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "estLiquidationPrice": "64473.25"，
         }, 
         {
-            "instrumentId": "FLEX-USD-SWAP-LIN", 
+            "instrumentId": "FLEX-USDT-SWAP-LIN", 
             "quantity": "38742.4", 
             "lastUpdated": "1648174875502", 
             "contractValCurrency": "FLEX", 
@@ -536,7 +536,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "estLiquidationPrice": "0",
         }, 
         {
-            "instrumentId": "BTC-USD-SWAP-LIN", 
+            "instrumentId": "BTC-USDT-SWAP-LIN", 
             "quantity": "65.889", 
             "lastUpdated": "1648806900492", 
             "contractValCurrency": "BTC", 
@@ -564,7 +564,7 @@ event | STRING | `positions` |
 timestamp | INTEGER | Millisecond timestamp |
 accountId | STRING | Account ID |
 data | LIST of dictionaries | |
-instrumentId | STRING | Contract symbol, e.g. 'BTC-USD-SWAP-LIN' |
+instrumentId | STRING | Contract symbol, e.g. 'BTC-USDT-SWAP-LIN' |
 quantity | STRING | Quantity of position, e.g. '0.94' |
 lastUpdated | STRING| Timestamp when position was last updated |
 contractValCurrency | STRING | Contract valuation currency |
@@ -634,7 +634,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
   "timestamp": 1593617005438,
   "accountId":"<Your Account ID>",
   "data": [ {
-              "instrumentId": "BTC-USD-SWAP-LIN",
+              "instrumentId": "BTC-USDT-SWAP-LIN",
               "quantity": "0.542000000",
               "lastUpdated": "1617099855966",
               "contractValCurrency": "BTC",
@@ -655,7 +655,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
     "timestamp": "1648812534064",
     "accountId": "677473",
     "data": {
-        "instrumentId": "FLEX-USD-SWAP-LIN",
+        "instrumentId": "FLEX-USDT-SWAP-LIN",
         "quantity": "38742.4",
         "lastUpdated": "1648174875502",
         "contractValCurrency": "FLEX",
@@ -686,7 +686,7 @@ event | STRING | `positionsById` |
 timestamp | INTEGER | Millisecond timestamp |
 accountId | STRING | Account ID |
 data | LIST of dictionaries | |
-instrumentId | STRING | Contract symbol, e.g. 'FLEX-USD-SWAP-LIN' |
+instrumentId | STRING | Contract symbol, e.g. 'FLEX-USDT-SWAP-LIN' |
 quantity | STRING | Quantity of position, e.g. '0.94' |
 lastUpdated | STRING | Timestamp when position was last updated |
 contractValCurrency | STRING | Contract valuation currency |
@@ -757,7 +757,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
   "data": [ {
               "matchId": "160067484555913077", 
               "matchTimestamp": "1595514663626", 
-              "marketCode": "FLEX-USD", 
+              "marketCode": "FLEX-USDT", 
               "matchQuantity": "0.1", 
               "matchPrice": "0.065", 
               "total": "0.0065", 
@@ -782,7 +782,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
         {
             "matchId": "448821476099870304",
             "matchTimestamp": "1648809926245",
-            "marketCode": "FLEX-USD",
+            "marketCode": "FLEX-USDT",
             "matchQuantity": "1",
             "matchPrice": "10",
             "total": "10",
@@ -796,7 +796,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
         {
             "matchId": "448821476099870303",
             "matchTimestamp": "1648809926245",
-            "marketCode": "FLEX-USD",
+            "marketCode": "FLEX-USDT",
             "matchQuantity": "1",
             "matchPrice": "10",
             "total": "10",
@@ -810,7 +810,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
         {
             "matchId": "448821476099861874",
             "matchTimestamp": "1648807731185",
-            "marketCode": "FLEX-USD",
+            "marketCode": "FLEX-USDT",
             "matchQuantity": "1",
             "matchPrice": "10",
             "total": "10",
@@ -915,7 +915,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
   "accountId": "<Your Account ID>",
   "data": [ {
               "orderId": "160039151345856176",
-              "marketCode": "BTC-USD-SWAP-LIN",
+              "marketCode": "BTC-USDT-SWAP-LIN",
               "clientOrderId": null|"<clientOrderId>",              
               "side": "BUY",
               "orderType": "LIMIT"|"STOP",
@@ -942,7 +942,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
     "data": [
         {
             "orderId": "1000200608142", 
-            "marketCode": "FLEX-USD", 
+            "marketCode": "FLEX-USDT", 
             "clientOrderId": "1612249737434", 
             "side": "SELL", 
             "orderType": "LIMIT", 
@@ -958,7 +958,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
         }, 
         {
             "orderId": "1000200608140", 
-            "marketCode": "FLEX-USD", 
+            "marketCode": "FLEX-USDT", 
             "clientOrderId": "1612249737434", 
             "side": "SELL", 
             "orderType": "LIMIT", 
@@ -1029,7 +1029,7 @@ nonce = 123
 # REST API method
 method = '/v2.1/orders'
 
-params = "marketCode=FLEX-USD&limit=1"
+params = "marketCode=FLEX-USDT&limit=1"
 
 if params:
     path = method + '?' + params
@@ -1061,7 +1061,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "status": "OrderClosed",
             "orderId": "304408197314577142",
             "clientOrderId": "1",
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "price": "10006.0",
@@ -1074,7 +1074,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "status": "OrderOpened",
             "orderId": "304408197314577143",
             "clientOrderId": "2",
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "side": "SELL",
             "orderType": "LIMIT",
             "price": "60006.0",
@@ -1087,7 +1087,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "status": "OrderMatched",
             "orderId": "448528458527567629",
             "clientOrderId": "1618870087524",
-            "marketCode": "FLEX-USD-SWAP-LIN",
+            "marketCode": "FLEX-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "MARKET",
             "price": "0.194",
@@ -1116,7 +1116,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "status": "OrderPartiallyMatched",
             "orderId": "1000028616860",
             "clientOrderId": "1619090944648",
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "side": "SELL",
             "orderType": "MARKET",
             "price": "42970.5",
@@ -1158,7 +1158,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "status": "OrderMatched",
             "orderId": "1000200596577",
             "clientOrderId": "1612249737434",
-            "marketCode": "FLEX-USD",
+            "marketCode": "FLEX-USDT",
             "side": "SELL",
             "orderType": "LIMIT",
             "price": "10.000",
@@ -1224,7 +1224,7 @@ orderMatchType | STRING | `MAKER` or `TAKER` |
 timestamp in matchIds | STRING | Time matched at|
 leg1Price | STRING | |
 leg2Price | STRING | |
-fees | LIST of dictionaries | Overall fees with instrument ID, if FLEX is no enough to pay the fee then USD will be paid |
+fees | LIST of dictionaries | Overall fees with instrument ID, if FLEX is no enough to pay the fee then USDT will be paid |
 timeInForce | STRING | Time in force |
 isTriggered | STRING | `true`(for stop order) or `false` |
 orderOpenedTimestamp | STRING | Order opened at |
@@ -1366,7 +1366,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
   "timestamp": 1594412077100,
   "accountId": "<AccountID>",
   "data": {
-            "marketCode": "FLEX-USD",
+            "marketCode": "FLEX-USDT",
             "msg": "All open orders for the specified market have been queued for cancellation"
           }
 }
@@ -1378,7 +1378,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
     "timestamp": "1648807731741",
     "accountId": "3101",
     "data": {
-        "marketCode": "BTC-USD-SWAP-LIN",
+        "marketCode": "BTC-USDT-SWAP-LIN",
         "msg": "All open orders for the specified market have been queued for cancellation"
     }
 }
@@ -1458,11 +1458,11 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
   "timestamp": "1596685339910",
   "data": [ {
               "timestamp": "1595781719394",
-              "instrumentId": "BTC-USD-SWAP-LIN",
+              "instrumentId": "BTC-USDT-SWAP-LIN",
               "status": "DELIVERED",
               "quantity": null,
               "deliverPrice": "9938.480000000",
-              "transferAsset": "USD",
+              "transferAsset": "USDT",
               "transferQty": "993.848000000",
               "instrumentIdDeliver": "BTC",
               "deliverQty": "0.100000000",
@@ -1471,11 +1471,11 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             },
             {
               "timestamp": "1595786511155",
-              "instrumentId": "BTC-USD-SWAP-LIN",
+              "instrumentId": "BTC-USDT-SWAP-LIN",
               "status": "CANCELLED",
               "quantity": null,
               "deliverPrice": "9911.470000000",
-              "transferAsset": "USD",
+              "transferAsset": "USDT",
               "transferQty": "0.000000000",
               "instrumentIdDeliver": "BTC",
               "deliverQty": "0.000000000",
@@ -1493,11 +1493,11 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
     "data": [
         {
             "timestamp": "1648806900463",
-            "instrumentId": "BTC-USD-SWAP-LIN",
+            "instrumentId": "BTC-USDT-SWAP-LIN",
             "status": "PENDING",
             "quantity": "0.100000000",
             "deliverPrice": "45131.000000000",
-            "transferAsset": "USD",
+            "transferAsset": "USDT",
             "transferQty": "4513.100000000",
             "instrumentIdDeliver": "BTC",
             "deliverQty": "0.000000000",
@@ -1532,7 +1532,7 @@ quantity | Null Type | Quantity
 deliverPrice | STRING|  Mark price at delivery
 transferAsset | STRING | Asset being sent
 transferQty | STRING | Quantity being sent
-instrumentIdDeliver | STRING |Asset being received: long position = coin, short position = USD
+instrumentIdDeliver | STRING |Asset being received: long position = coin, short position = USDT
 deliverQty | STRING |  Quantity of the received asset
 deliverOrderId | STRING | Order id
 clientOrderId | Null Type |  null
@@ -1551,7 +1551,7 @@ POST /v2/orders/place
     "orders": [
         {
             "clientOrderId": 1612249737724, 
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "side": "SELL", 
             "quantity": "0.001", 
             "timeInForce": "GTC", 
@@ -1560,7 +1560,7 @@ POST /v2/orders/place
         }, 
         {
             "clientOrderId": 1612249737724, 
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "side": "BUY", 
             "quantity": "0.002", 
             "timeInForce": "GTC", 
@@ -1569,7 +1569,7 @@ POST /v2/orders/place
         }, 
         {
             "clientOrderId": 1612249737723, 
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "side": "SELL", 
             "quantity": "0.003", 
             "timeInForce": "GTC", 
@@ -1598,7 +1598,7 @@ nonce = 123
 
 method = '/v2/orders/place'
 
-params = json.dumps({"recvWindow":3000, "timestamp": 1737100050453, "responseType":"FULL","orders":[{"clientOrderId":1612249737434,"marketCode":"BTC-USD-SWAP-LIN","side":"SELL","quantity":"1","timeInForce":"GTC","orderType":"LIMIT","price":"49995"}]})
+params = json.dumps({"recvWindow":3000, "timestamp": 1737100050453, "responseType":"FULL","orders":[{"clientOrderId":1612249737434,"marketCode":"BTC-USDT-SWAP-LIN","side":"SELL","quantity":"1","timeInForce":"GTC","orderType":"LIMIT","price":"49995"}]})
 
 msg_string = '{}\n{}\n{}\n{}\n{}\n{}'.format(ts, nonce, 'POST', rest_path, method, params)
 sig = base64.b64encode(hmac.new(api_secret.encode('utf-8'), msg_string.encode('utf-8'), hashlib.sha256).digest()).decode('utf-8')
@@ -1630,7 +1630,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "price": "52888.0",
             "quantity": "0.001",
             "side": "SELL",
-            "marketCode": "BTC-USD",
+            "marketCode": "BTC-USDT",
             "timeInForce": "GTC",
             "orderType": "LIMIT"
         },
@@ -1643,7 +1643,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "quantity": "0.7",
             "side": "BUY",
             "status": "OPEN",
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "timeInForce": "GTC",
             "matchId": "0",
             "notice": "OrderOpened",
@@ -1659,7 +1659,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "quantity": "0.1",
             "side": "BUY",
             "status": "PARTIAL_FILL",
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "timeInForce": "GTC",
             "matchId": "304638880616112239",
             "lastTradedPrice": "42731.5",
@@ -1690,7 +1690,7 @@ print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
             "quantity": "1.0", 
             "side": "SELL", 
             "status": "OPEN", 
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "timeInForce": "GTC", 
             "matchId": "0", 
             "notice": "OrderOpened", 
@@ -1766,21 +1766,21 @@ POST /v2/orders/modify
         {
             "clientOrderId": 1614330009059, 
             "orderId": "304369975621712260", 
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "side": "BUY", 
             "quantity": "0.007", 
             "price": "40001.0"
         }, 
         {
             "clientOrderId": 161224973777800, 
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "side": "SELL", 
             "quantity": "0.002", 
             "price": "40003.0"
         }, 
         {
             "clientOrderId": 161224973777900, 
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "side": "SELL", 
             "quantity": "0.003", 
             "price": "40004.0"
@@ -1806,7 +1806,7 @@ POST /v2/orders/modify
             "price": "40003.0", 
             "quantity": "0.002", 
             "side": "SELL", 
-            "marketCode": "BTC-USD-SWAP-LIN"
+            "marketCode": "BTC-USDT-SWAP-LIN"
         }, 
         {
             "success": "false", 
@@ -1817,7 +1817,7 @@ POST /v2/orders/modify
             "price": "40004.0", 
             "quantity": "0.003", 
             "side": "SELL", 
-            "marketCode": "BTC-USD-SWAP-LIN"
+            "marketCode": "BTC-USDT-SWAP-LIN"
         }, 
         {
             "success": "true", 
@@ -1828,7 +1828,7 @@ POST /v2/orders/modify
             "quantity": "0.007", 
             "side": "BUY", 
             "status": "OPEN", 
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "timeInForce": "GTC", 
             "notice": "OrderOpened", 
             "orderType": "LIMIT", 
@@ -1895,12 +1895,12 @@ DELETE /v2/orders/cancel
     "timestamp": 1615454880374, 
     "orders": [
         {
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "orderId": "304384250571714215", 
             "clientOrderId": 1615453494726
         }, 
         {
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "clientOrderId": 1612249737724
         }
     ]
@@ -1924,7 +1924,7 @@ DELETE /v2/orders/cancel
             "quantity": "0.006", 
             "side": "SELL", 
             "status": "CANCELED_BY_USER", 
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "timeInForce": "GTC", 
             "remainQuantity": "0.006", 
             "notice": "OrderClosed", 
@@ -1937,7 +1937,7 @@ DELETE /v2/orders/cancel
             "code": "40035", 
             "message": "Open order not found with id", 
             "clientOrderId": "1612249737724", 
-            "marketCode": "BTC-USD-SWAP-LIN"
+            "marketCode": "BTC-USDT-SWAP-LIN"
         }
     ]
 }
@@ -2197,7 +2197,7 @@ GET v2/borrow/{asset}?limit={limit}&startTime={startTime}&endTime={endTime}
     "accountId": "3123",
     "data": [
         {
-            "borrowAsset": "USD",
+            "borrowAsset": "USDT",
             "borrowedAmount": "296.2158828",
             "collateralAsset": "BTC",
             "collateralizedAmount": "0.01000000",
@@ -2207,7 +2207,7 @@ GET v2/borrow/{asset}?limit={limit}&startTime={startTime}&endTime={endTime}
             "borrowedAt": "1626433827613"
         },
         {
-            "borrowAsset": "USD",
+            "borrowAsset": "USDT",
             "borrowedAmount": "0.0000000",
             "collateralAsset": "BTC",
             "collateralizedAmount": "0.00000000",
@@ -2232,7 +2232,7 @@ endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and end
 Response Fields | Type | Description |
 ----------------| ---- | ----------- |
 accountId | STRING | Account ID |
-borrowAsset | STRING | Borrow asset, can only be `USD` for now |
+borrowAsset | STRING | Borrow asset, can only be `USDT` for now |
 borrowedAmount | STRING | Borrowed amount of the borrow asset |
 collateralAsset | STRING | Collateral asset |
 collateralizedAmount | STRING | Collateralized amount of the collateral asset |
@@ -2260,7 +2260,7 @@ GET v2/repay/{asset}?limit={limit}&startTime={startTime}&endTime={endTime}
     "accountId": "3123",
     "data": [
         {
-            "repayAsset": "USD",
+            "repayAsset": "USDT",
             "repaidAmount": "0",
             "regainAsset": "BTC",
             "regainedAmount": "0",
@@ -2269,7 +2269,7 @@ GET v2/repay/{asset}?limit={limit}&startTime={startTime}&endTime={endTime}
             "repaidAt": "1626747403329"
         },
         {
-            "repayAsset": "USD",
+            "repayAsset": "USDT",
             "repaidAmount": "31863.01677",
             "regainAsset": "BTC",
             "regainedAmount": "1",
@@ -2292,7 +2292,7 @@ endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and end
 Response Fields | Type | Description |
 ----------------| ---- | ----------- |
 accountId | STRING | Account ID |
-repayAsset | STRING | Repay asset, can only be `USD` for now |
+repayAsset | STRING | Repay asset, can only be `USDT` for now |
 repaidAmount | STRING | Repaid amount of the repay asset |
 regainAsset | STRING | Regain asset |
 regainedAmount | STRING | Already regained amount of the regain asset |
@@ -2314,7 +2314,7 @@ GET v2/funding-payments?marketCode={marketCode}&limit={limit}&startTime={startTi
 
 Request Parameters | Type | Required | Description |
 ------------------ | ---- | -------- | ----------- |
-marketCode | STRING | NO | e.g. `BTC-USD-REPO-LIN` |
+marketCode | STRING | NO | e.g. `BTC-USDT-REPO-LIN` |
 limit | LONG | NO | default is `500`, max is `500` |
 startTime | LONG | NO | millisecond timestamp, e.g. `1579450778000`, default is `500 hours ago` |
 endTime | LONG | NO | millisecond timestamp, e.g. `1613978625000`, default is time now |
@@ -2328,7 +2328,7 @@ endTime | LONG | NO | millisecond timestamp, e.g. `1613978625000`, default is ti
     "accountId": "276007",
     "data": [
         {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "payment": "-122.17530872",
             "rate": "-0.00005",
             "position": "-61.093",
@@ -2336,7 +2336,7 @@ endTime | LONG | NO | millisecond timestamp, e.g. `1613978625000`, default is ti
             "timestamp": "1627617632190"
         },
         {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "payment": "98.71895684",
             "rate": "0.00005",
             "position": "-61.093",
@@ -2370,10 +2370,10 @@ POST /v2/AMM/create
 
 {
     "direction": "NEUTRAL",
-    "marketCode": "BTC-USD-SWAP-LIN",
+    "marketCode": "BTC-USDT-SWAP-LIN",
     "collateralAsset":"BTC",
     "assetQuantity":"0.1",
-    "collateralCounterAsset":"USD",
+    "collateralCounterAsset":"USDT",
     "counterAssetQuantity":"4000",
     "minPriceBound":"28000",
     "maxPriceBound":"52000"
@@ -2390,10 +2390,10 @@ POST /v2/AMM/create
     "data": {
         "hashToken": "CF-BTC-AMM-mz7WAOZc",
         "direction": "NEUTRAL",
-        "marketCode": "BTC-USD-SWAP-LIN",
+        "marketCode": "BTC-USDT-SWAP-LIN",
         "collateralAsset": "BTC",
         "assetQuantity": "0.1",
-        "collateralCounterAsset": "USD",
+        "collateralCounterAsset": "USDT",
         "counterAssetQuantity": "4000",
         "minPriceBound": "28000",
         "maxPriceBound": "52000"
@@ -2405,7 +2405,7 @@ Request Parameters | Type | Required | Description |
 ------------------ | ---- | -------- | ----------- |
 leverage | STRING | NO | Maximum leverage, with USDT the range of leverage is 1 to 40X otherwise is 1 to 10X |
 direction | STRING | YES | Value can be `BUY` or `SELL` or `NEUTRAL` |
-marketCode | STRING | YES | Market code e.g. `BCH-USD-SWAP-LIN` |
+marketCode | STRING | YES | Market code e.g. `BCH-USDT-SWAP-LIN` |
 collateralAsset | STRING | NO | Required unless unleveraged and direction is `BUY` |
 assetQuantity | STRING | NO | Required unless unleveraged and direction is `BUY`. Minimum is $200 notional |
 collateralCounterAsset | STRING | NO | Required if unleveraged and direction is `NEUTRAL` or `BUY` |
@@ -2418,7 +2418,7 @@ Response Fields | Type | Description |
 hashToken | STRING | Identity of the AMM |
 leverage | STRING | Leverage of the AMM |
 direction | STRING | Value can be `BUY` or `SELL` or `NEUTRAL` |
-marketCode | STRING | Market code e.g. `BCH-USD-SWAP-LIN` |
+marketCode | STRING | Market code e.g. `BCH-USDT-SWAP-LIN` |
 collateralAsset | STRING | Collateral asset |
 assetQuantity | STRING | Quantity of the collateral asset |
 collateralCounterAsset | STRING | Collateral counter asset |
@@ -2474,7 +2474,7 @@ Get AMMs.
 > **Request**
 
 ```json
-GET v2/AMM?hashToken=CF-BTC-AMM-RoBwokR&marketCode=BTC-USD-SWAP-LIN
+GET v2/AMM?hashToken=CF-BTC-AMM-RoBwokR&marketCode=BTC-USDT-SWAP-LIN
 ```
 
 > **SUCCESSFUL RESPONSE**
@@ -2488,11 +2488,11 @@ GET v2/AMM?hashToken=CF-BTC-AMM-RoBwokR&marketCode=BTC-USD-SWAP-LIN
         {
             "hashToken": "CF-BTC-AMM-RoBwokR",
             "direction": "NEUTRAL",
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "status": "EXECUTING",
             "collateralAsset": "BTC",
             "assetQuantity": "0.4",
-            "collateralCounterAsset": "USD",
+            "collateralCounterAsset": "USDT",
             "counterAssetQuantity": "5000",
             "minPriceBound": "8750",
             "maxPriceBound": "16250",
@@ -2513,14 +2513,14 @@ GET v2/AMM?hashToken=CF-BTC-AMM-RoBwokR&marketCode=BTC-USD-SWAP-LIN
 Request Parameters | Type | Required |Description| 
 -------------------------- | -----|--------- | -------------|
 hashToken | STRING | NO | Multiple hashTokens can be separated by a comma |
-marketCode| STRING | NO | Market code e.g. `BTC-USD-SWAP-LIN` |
+marketCode| STRING | NO | Market code e.g. `BTC-USDT-SWAP-LIN` |
 status | STRING | NO | Value can be `ENDED` or `EXECUTING` or `PENDING` |
 
 Response Fields | Type | Description |
 ----------------| ---- | ----------- |
 hashToken | STRING | Identity of the AMM |
 direction | STRING | Value can be `BUY` or `SELL` or `NEUTRAL` |
-marketCode | STRING | Market code e.g. `BTC-USD-SWAP-LIN` |
+marketCode | STRING | Market code e.g. `BTC-USDT-SWAP-LIN` |
 status | STRING | Value can be `ENDED` or `EXECUTING` or `PENDING` |
 collateralAsset | STRING | Collateral asset |
 assetQuantity | STRING | Quantity of the collateral asset |
@@ -2529,7 +2529,7 @@ counterAssetQuantity | STRING | Quantity of the collateral counter asset |
 minPriceBound | STRING | Minimum price of the range |
 maxPriceBound | STRING | Maximum price of the range |
 position | STRING | Current position |
-usdEarned | STRING | USD already earned |
+usdEarned | STRING | USDT already earned |
 flexReward | STRING | Amount of FLEX reward | 
 apr | STRING | APR(annual percentage rate) |
 createdAt | STRING | The time that AMM was created at |
@@ -2557,17 +2557,17 @@ GET/v2/all/markets`
     "data": [
         {
             "marketId": "2001000000000",
-            "marketCode": "BTC-USD",
-            "name": "BTC/USD",
-            "referencePair": "BTC/USD",
+            "marketCode": "BTC-USDT",
+            "name": "BTC/USDT",
+            "referencePair": "BTC/USDT",
             "base": "BTC",
-            "counter": "USD",
+            "counter": "USDT",
             "type": "SPOT",
             "tickSize": "0.1",
             "qtyIncrement": "0.001",
             "listingDate": 2208988800000,
             "endDate": 0,
-            "marginCurrency": "USD",
+            "marginCurrency": "USDT",
             "contractValCurrency": "BTC",
             "upperPriceBound": "11000.00",
             "lowerPriceBound": "9000.00",
@@ -2617,12 +2617,12 @@ GET/v2/all/assets
     "timestamp":"1593617008698",
     "data": [
         {
-            "instrumentId": "BTC-USD-200626-LIN",
-            "name": "BTC/USD 20-06-26 Future (Linear)",
+            "instrumentId": "BTC-USDT-200626-LIN",
+            "name": "BTC/USDT 20-06-26 Future (Linear)",
             "base": "BTC",
-            "counter": "USD",
+            "counter": "USDT",
             "type": "FUTURE",
-            "marginCurrency": "USD",
+            "marginCurrency": "USDT",
             "contractValCurrency": "BTC",
             "deliveryDate": null,
             "deliveryInstrument": null
@@ -2672,7 +2672,7 @@ GET/v2/publictrades/{marketCode}?limit={limit}&startTime={startTime}&endTime{end
 {
   "event": "publicTrades", 
   "timestamp": "1595636619410", 
-  "marketCode": "BTC-USD-SWAP-LIN", 
+  "marketCode": "BTC-USDT-SWAP-LIN", 
   "data": [
     {
       "matchId": "160070803925856675", 
@@ -2722,7 +2722,7 @@ GET/v2/ticker
   "data" :
   [
       {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "last": "43.259", 
             "markPrice": "11012.80409769",  
             "open24h": "49.375",
@@ -2743,11 +2743,11 @@ Get a list of all of the tickers.
 Response Parameters | Type | Description| 
 -------------------------- | -----|--------- |
 timestamp | STRING | Timestamp of this response|
-marketCode | STRING | "BTC-USD-SWAP-LIN",
+marketCode | STRING | "BTC-USDT-SWAP-LIN",
 last| STRING | Last traded price
 markPrice| STRING | Mark price
 open24h| STRING | Daily opening price
-volume24h| STRING | 24 hour volume (USD)
+volume24h| STRING | 24 hour volume (USDT)
 currencyVolume24h| STRING | 24 hour volume (coin)
 high24h| STRING | 24 hour high
 low24h| STRING | 24 hour low
@@ -2767,7 +2767,7 @@ GET /v2/candles/{marketCode}?timeframe={timeframe}&limit={limit}&startTime={star
 
 Request Parameters | Type | Required | Description |
 ------------------ | ---- | -------- | ----------- |
-marketCode | STRING | YES | When marketCode is expired market like `BTC-USD-201225-LIN`, the startTime and the endTime should be explicitly set in `2020` |
+marketCode | STRING | YES | When marketCode is expired market like `BTC-USDT-201225-LIN`, the startTime and the endTime should be explicitly set in `2020` |
 timeframe | STRING | NO | e.g. `60s`, `300s`, `900s`, `1800s`, `3600s`, `7200s`, `14400s`, `86400s`, default `3600s ` |
 limit | LONG | NO | max `5000 `, default `500`|
 startTime | LONG | NO | Millisecond timestamp, e.g. `1579450778000`, default is `limit` times `timeframe` ago, if the limit is `300` and the timeframe is `3600s` then the default startTime is `time now - 300x3600s`, if the limit is not present and the timeframe is `3600s` then the default startTime is `time now - 500x3600s` |
@@ -2824,7 +2824,7 @@ Get order book by marketCode and level.
 > **Request**
 
 ```json
-GET /v2/depth/BTC-USD-SWAP-LIN/5 
+GET /v2/depth/BTC-USDT-SWAP-LIN/5 
 ```
 
 > **SUCCESSFUL RESPONSE**
@@ -2879,7 +2879,7 @@ GET /v2/depth/BTC-USD-SWAP-LIN/5
                     0.339
                 ]
             ], 
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "timestamp": "1615457834388"
         }
     ]
@@ -2947,7 +2947,7 @@ GET /v2/flex-protocol/balances/{flexProtocol}
             "markPrice":"39203",
             "quantityLastUpdated":"1645228442021"
         },
-        {   "instrumentId":"USD",
+        {   "instrumentId":"USDT",
             "total":"56.3903310956678000",
             "available":"56.3903310956678000",
             "reserved":"0",
@@ -2994,7 +2994,7 @@ GET /v2/flex-protocol/positions/{flexProtocol}
     "flexProtocol": "flexUSD",
     "data": [
         {
-            "instrumentId": "BTC-USD-SWAP-LIN",
+            "instrumentId": "BTC-USDT-SWAP-LIN",
             "quantity": "-169.048",
             "lastUpdated": "1621590364988",
             "contractValCurrency": "BTC",
@@ -3002,7 +3002,7 @@ GET /v2/flex-protocol/positions/{flexProtocol}
             "positionPnl": "-23506.2934480"
         },
         {
-            "instrumentId": "ETH-USD-SWAP-LIN",
+            "instrumentId": "ETH-USDT-SWAP-LIN",
             "quantity": "-1279.83",
             "lastUpdated": "1621587180441",
             "contractValCurrency": "ETH",
@@ -3010,7 +3010,7 @@ GET /v2/flex-protocol/positions/{flexProtocol}
             "positionPnl": "53420.104200"
         },
         {
-            "instrumentId": "LTC-USD-SWAP-LIN",
+            "instrumentId": "LTC-USDT-SWAP-LIN",
             "quantity": "-299.49",
             "lastUpdated": "1621585374591",
             "contractValCurrency": "LTC",
@@ -3030,7 +3030,7 @@ flexProtocol | STRING | YES | Available values `flexUSD`, `flexBTC`, `flexETH`, 
 Response Fields | Type | Description |
 ----------------| ---- | ----------- |
 flexProtocol | STRING | Available values `flexUSD`, `flexBTC`, `flexETH`, `flexFLEX` |
-instrumentId | STRING | Contract symbol, e.g. `FLEX-USD-SWAP-LIN` |
+instrumentId | STRING | Contract symbol, e.g. `FLEX-USDT-SWAP-LIN` |
 quantity | STRING | Quantity of position, e.g. `0.94` |
 lastUpdated | STRING | Timestamp when position was last updated |
 contractValCurrency | STRING | Contract valuation currency |
@@ -3057,7 +3057,7 @@ GET /v2/flex-protocol/orders/{flexProtocol}
     "data": [
         {
             "orderId": "1000085820424",
-            "marketCode": "COMP-USD-REPO-LIN",
+            "marketCode": "COMP-USDT-REPO-LIN",
             "clientOrderId": "20",
             "side": "BUY",
             "orderType": "LIMIT",
@@ -3073,7 +3073,7 @@ GET /v2/flex-protocol/orders/{flexProtocol}
         },
         {
             "orderId": "1000085820409",
-            "marketCode": "COMP-USD-REPO-LIN",
+            "marketCode": "COMP-USDT-REPO-LIN",
             "clientOrderId": "5",
             "side": "BUY",
             "orderType": "LIMIT",
@@ -3089,7 +3089,7 @@ GET /v2/flex-protocol/orders/{flexProtocol}
         },
         {
             "orderId": "1000085820408",
-            "marketCode": "COMP-USD-REPO-LIN",
+            "marketCode": "COMP-USDT-REPO-LIN",
             "clientOrderId": "4",
             "side": "BUY",
             "orderType": "LIMIT",
@@ -3156,10 +3156,10 @@ GET /v2/flex-protocol/trades/{flexProtocol}/{marketCode}?limit={limit}&startTime
             "side": "BUY",
             "orderMatchType": "MAKER",
             "matchTimestamp": "1621483974496",
-            "feeInstrumentId": "USD",
+            "feeInstrumentId": "USDT",
             "orderId": "1000009522024",
             "clientOrderId": "1621483945643",
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "matchPrice": "39400",
             "matchId": "2001011000000"
         },
@@ -3170,10 +3170,10 @@ GET /v2/flex-protocol/trades/{flexProtocol}/{marketCode}?limit={limit}&startTime
             "side": "BUY",
             "orderMatchType": "MAKER",
             "matchTimestamp": "1621483973636",
-            "feeInstrumentId": "USD",
+            "feeInstrumentId": "USDT",
             "orderId": "1000009522024",
             "clientOrderId": "1621483945643",
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "matchPrice": "39400",
             "matchId": "2001011000000"
         },
@@ -3184,10 +3184,10 @@ GET /v2/flex-protocol/trades/{flexProtocol}/{marketCode}?limit={limit}&startTime
             "side": "BUY",
             "orderMatchType": "MAKER",
             "matchTimestamp": "1621483973476",
-            "feeInstrumentId": "USD",
+            "feeInstrumentId": "USDT",
             "orderId": "1000009522024",
             "clientOrderId": "1621483945643",
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "matchPrice": "39400",
             "matchId": "2001011000000"
         },
@@ -3242,39 +3242,39 @@ GET /v2/flex-protocol/delivery/orders/{flexProtocol}?limit={limit}&startTime={st
     "data": [
         {
             "timestamp": "1621411380000",
-            "instrumentId": "BTC-USD-SWAP-LIN",
+            "instrumentId": "BTC-USDT-SWAP-LIN",
             "status": "DELIVERED",
             "quantity": null,
             "deliverPrice": "40225.4",
             "transferAsset": "BTC",
             "transferQty": "0.001",
-            "instrumentIdDeliver": "USD",
+            "instrumentIdDeliver": "USDT",
             "deliverQty": "40.2254",
             "deliverOrderId": "659754125496582148",
             "clientOrderId": null
         },
         {
             "timestamp": "1621411378000",
-            "instrumentId": "BTC-USD-SWAP-LIN",
+            "instrumentId": "BTC-USDT-SWAP-LIN",
             "status": "DELIVERED",
             "quantity": null,
             "deliverPrice": "40217.8",
             "transferAsset": "BTC",
             "transferQty": "0.001",
-            "instrumentIdDeliver": "USD",
+            "instrumentIdDeliver": "USDT",
             "deliverQty": "40.2178",
             "deliverOrderId": "659754119608827908",
             "clientOrderId": null
         },
         {
             "timestamp": "1621411376000",
-            "instrumentId": "BTC-USD-SWAP-LIN",
+            "instrumentId": "BTC-USDT-SWAP-LIN",
             "status": "DELIVERED",
             "quantity": null,
             "deliverPrice": "40226.5",
             "transferAsset": "BTC",
             "transferQty": "0.001",
-            "instrumentIdDeliver": "USD",
+            "instrumentIdDeliver": "USDT",
             "deliverQty": "40.2265",
             "deliverOrderId": "659754113236107267",
             "clientOrderId": null
@@ -3301,7 +3301,7 @@ quantity | Null Type | null |
 deliverPrice | STRING |  Mark price at delivery |
 transferAsset | STRING | Asset being sent |
 transferQty | STRING | Quantity being sent |
-instrumentIdDeliver | STRING | Asset being received: long position is `coin`, short position is `USD` |
+instrumentIdDeliver | STRING | Asset being received: long position is `coin`, short position is `USDT` |
 deliverQty | STRING | Quantity of the received asset |
 deliverOrderId | STRING | Order id |
 clientOrderId | Null Type | null |

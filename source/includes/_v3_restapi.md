@@ -119,7 +119,7 @@ Nonce | Yes | 123 | User generated
 Verb | Yes| GET | Uppercase
 Path | Yes | v2stgapi.opnx.com |
 Method | Yes | /v3/positions | Available REST methods
-Body | No | marketCode=BTC-USD-SWAP-LIN | Optional and dependent on the REST method being called
+Body | No | marketCode=BTC-USDT-SWAP-LIN | Optional and dependent on the REST method being called
 
 The constructed message string should look like:-
 
@@ -128,7 +128,7 @@ The constructed message string should look like:-
   GET\n
   v2stgapi.opnx.com\n
   /v3/positions\n
-  marketCode=BTC-USD-SWAP-LIN`
+  marketCode=BTC-USDT-SWAP-LIN`
 
 Note the newline characters after each component in the message string. 
 If *Body* is omitted it's treated as an empty string.
@@ -184,9 +184,9 @@ GET v3/account?subAcc={subAcc},{subAcc}
             ],
             "positions": [
                 {
-                    "marketCode": "FLEX-USD-SWAP-LIN", 
+                    "marketCode": "FLEX-USDT-SWAP-LIN", 
                     "baseAsset": "FLEX", 
-                    "counterAsset": "USD", 
+                    "counterAsset": "USDT", 
                     "position": "11411.1", 
                     "entryPrice": "3.590", 
                     "markPrice": "6.360", 
@@ -312,7 +312,7 @@ GET v3/wallet?subAcc={name1},{name2}&type={type}&limit={limit}&startTime={startT
              "walletHistory": [
                   {
                     "id": "810583329159217160",
-                    "asset": "USD",
+                    "asset": "USDT",
                     "type": "DEPOSIT", 
                     "amount": "10",
                     "createdAt": "162131535213"  
@@ -528,9 +528,9 @@ GET /v3/positions?subAcc={name1},{name2}&marketCode={marketCode}
         "name": "PERMISSIONLESS_1234",
         "positions": [
             {
-              "marketCode": "XYZ-USD-SWAP-LIN",
+              "marketCode": "XYZ-USDT-SWAP-LIN",
               "baseAsset": "XYZ",
-              "counterAsset": "USD",
+              "counterAsset": "USDT",
               "position": "566.0",
               "entryPrice": "7.3400",
               "markPrice": "9.94984016",
@@ -566,7 +566,7 @@ Response Fields | Type | Description |
 accountId | STRING | Account ID |
 name | STRING | Parent account with the name “main” and take the first place|
 positions | LIST of dictionaries | |
-marketCode | STRING | Contract symbol, e.g. 'BTC-USD-SWAP-LIN' |
+marketCode | STRING | Contract symbol, e.g. 'BTC-USDT-SWAP-LIN' |
 baseAsset | STRING |
 counterAsset | STRING |
 position | STRING | Position size, e.g. '0.94' |
@@ -593,7 +593,7 @@ GET v3/funding?marketCode={marketCode}&limit={limit}&startTime={startTime}&endTi
 
 Request Parameters | Type | Required | Description |
 ------------------ | ---- | -------- | ----------- |
-marketCode | STRING | NO | e.g. `BTC-USD-REPO-LIN` |
+marketCode | STRING | NO | e.g. `BTC-USDT-REPO-LIN` |
 limit | LONG | NO | default is `200`, max is `500` |
 startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
 endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
@@ -606,7 +606,7 @@ endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and end
     "data": [
         {
             "id": "810583329213284361",
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "payment": "-122.17530872",
             "fundingRate": "-0.00005",
             "position": "-61.093",
@@ -944,7 +944,7 @@ GET /v3/orders/status?orderId={orderId}&clientOrderId={clientOrderId}
     "data": {
         "orderId": "1000387920513",
         "clientOrderId": "1612249737434",
-        "marketCode": "FLEX-USD",
+        "marketCode": "FLEX-USDT",
         "status": "FILLED",
         "side": "BUY",
         "price": "5.200",
@@ -987,7 +987,7 @@ cumulativeMatchedQuantity | STRING | Cumulative quantity of the matches |
 avgFillPrice | STRING | Average of filled price |
 avgLeg1Price | STRING | Average of leg1 price |
 avgLeg2Price | STRING | Average of leg2 price |
-fees | LIST of dictionaries | Overall fees with instrument ID, if FLEX is no enough to pay the fee then USD will be paid |
+fees | LIST of dictionaries | Overall fees with instrument ID, if FLEX is no enough to pay the fee then USDT will be paid |
 orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT` |
 timeInForce | STRING | Client submitted time in force. <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade) |
 source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `101`, `102`, `103`, `111`. <p>Enumeration: `0: GUI`, `2: Borrow`, `10: AMM`, `11: REST`, `13: Websocket`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `111: Automatic repayment`</p> |
@@ -1015,7 +1015,7 @@ GET /v3/orders/working?marketCode={marketCode}&orderId={orderId}&clientOrderId={
     "data":  [ {		
                 "orderId": "160067484555913076",
                 "clientOrderId": "123",
-                "marketCode": "BTC-USD-SWAP-LIN",
+                "marketCode": "BTC-USDT-SWAP-LIN",
                 "status": "LIMIT"|"STOP",
                 "side": "SELL",
                 "price": "1.0",
@@ -1079,7 +1079,7 @@ POST /v3/orders/place
     "orders": [
              {
                    "clientOrderId": 1612249737724, 
-                   "marketCode": "BTC-USD-SWAP-LIN", 
+                   "marketCode": "BTC-USDT-SWAP-LIN", 
                    "side": "SELL", 
                    "quantity": "0.001", 
                    "timeInForce": "GTC", 
@@ -1088,7 +1088,7 @@ POST /v3/orders/place
                }, 
                {
                    "clientOrderId": 1612249737724, 
-                   "marketCode": "BTC-USD-SWAP-LIN", 
+                   "marketCode": "BTC-USDT-SWAP-LIN", 
                    "side": "BUY", 
                    "quantity": "0.002", 
                    "timeInForce": "GTC", 
@@ -1110,7 +1110,7 @@ POST /v3/orders/place
                     "message": "FAILED balance check as balance (0E-9) < value (0.001)",
                     "submitted": false,
                     "clientOrderId": "1612249737724",
-                    "marketCode": "BTC-USD-SWAP-LIN",
+                    "marketCode": "BTC-USDT-SWAP-LIN",
                     "side": "SELL",
                     "price": "52888.0",
                     "quantity": "0.001",   
@@ -1125,7 +1125,7 @@ POST /v3/orders/place
                     "orderId": "1000132664173",
                     "submitted": false,
                     "clientOrderId": "1612249737724",
-                    "marketCode": "BTC-USD-SWAP-LIN",
+                    "marketCode": "BTC-USDT-SWAP-LIN",
                     "status": "OPEN",
                     "price": "23641.0",
                     "stopPrice": null,
@@ -1217,12 +1217,12 @@ DELETE /v3/orders/cancel
     "timestamp": 1615454880374, 
     "orders": [
         {
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "orderId": "304384250571714215", 
             "clientOrderId": 1615453494726
         }, 
         {
-            "marketCode": "BTC-USD-SWAP-LIN", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
             "clientOrderId": 1612249737724
         }
     ]
@@ -1241,7 +1241,7 @@ DELETE /v3/orders/cancel
                     "orderId": "304384250571714215",
                     "submitted": true,
                     "clientOrderId": "1615453494726", 
-                    "marketCode": "BTC-USD-SWAP-LIN", 
+                    "marketCode": "BTC-USDT-SWAP-LIN", 
                     "status": "CANCELED_BY_USER", 
                     "side": "BUY", 
                     "price": "4870.0", 
@@ -1259,7 +1259,7 @@ DELETE /v3/orders/cancel
                     "submitted": false,
                      "orderId": "204285250571714316",
                      "clientOrderId": "1612249737724",
-                     "marketCode": "BTC-USD-SWAP-LIN",
+                     "marketCode": "BTC-USDT-SWAP-LIN",
                      "canceledAt": "1615454881433"
                  }
     	]
@@ -1315,7 +1315,7 @@ DELETE  /v3/orders/cancel-all
 
 ```json
 {
-            "marketCode": "BTC-USD-SWAP-LIN"
+            "marketCode": "BTC-USDT-SWAP-LIN"
 }
 ```
 
@@ -1368,7 +1368,7 @@ GET /v3/trades?marketCode={marketCode}&limit={limit}&startTime={startTime}&endTi
                     "orderId": "160067484555913076",
                     "clientOrderId": "123",
                     "matchId": "160067484555913077",
-                    "marketCode": "FLEX-USD",
+                    "marketCode": "FLEX-USDT",
                     "side": "SELL",
                     "matchedQuantity": "0.1",
                     "matchPrice": "0.065",
@@ -1431,11 +1431,11 @@ GET /v3/markets?marketCode={marketCode}
     "success": true,
     "data": [
         {
-            "marketCode": "BTC-USD",
-            "name": "BTC/USD",
-            "referencePair": "BTC/USD",
+            "marketCode": "BTC-USDT",
+            "name": "BTC/USDT",
+            "referencePair": "BTC/USDT",
             "base": "BTC",
-            "counter": "USD",
+            "counter": "USDT",
             "type": "SPOT",
             "tickSize": "0.1",
             "minSize": "0.001",
@@ -1489,7 +1489,7 @@ GET /v3/assets?asset={asset}
     "success": true,
     "data": [
         {
-            "asset": "USD",
+            "asset": "USDT",
             "isCollateral": true,
             "loanToValue": "1.000000000",
             "networkList": [
@@ -1562,7 +1562,7 @@ GET /v3/tickers?marketCode={marketCode}
     "success": true,
     "data": [
         {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "markPrice": "41512.4",
             "open24h": "41915.3",
             "high24h": "42662.2",
@@ -1612,12 +1612,12 @@ GET /v3/funding/estimates?marketCode={marketCode}
     "success": true,
     "data": [
         {
-            "marketCode": "WBTC-USD-SWAP-LIN",
+            "marketCode": "WBTC-USDT-SWAP-LIN",
             "fundingAt": "1667012400000",
             "estFundingRate": "0"
         },
         {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "fundingAt": "1667012400000",
             "estFundingRate": "0"
         }
@@ -1714,7 +1714,7 @@ GET /v3/depth?marketCode={marketCode}&level={level}
     "success": true, 
     "level": "5", 
     "data": {
-        "marketCode": "BTC-USD-SWAP-LIN", 
+        "marketCode": "BTC-USDT-SWAP-LIN", 
         "lastUpdatedAt": "1643016065958", 
         "asks": [
             [
@@ -1795,7 +1795,7 @@ GET /v3/markets/operational?marketCode={marketCode}
     "success": true,
     "data": [
         {
-            "marketCode": "BTC-USD",
+            "marketCode": "BTC-USDT",
             "operational": true 
         }
     ]
@@ -1827,7 +1827,7 @@ GET /v3/exchange-trades?marketCode={marketCode}&limit={limit}&startTime={startTi
     "success": true,
     "data": [
         {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "matchPrice": "9600.00000" ,
             "matchQuantity": "0.100000" ,
             "side": "BUY" ,
@@ -1872,7 +1872,7 @@ GET /v3/funding/rates?marketCode={marketCode}&limit={limit}&startTime={startTime
     "success": true,
     "data": [
         {
-            "marketCode": "BTC-USD-SWAP-LIN",
+            "marketCode": "BTC-USDT-SWAP-LIN",
             "fundingRate": "0.0",
             "createdAt": "1628362803134"
         }
