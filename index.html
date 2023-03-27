@@ -710,6 +710,14 @@
 </ul></li>
 </ul></li>
 </ul>
+
+<p><strong>2023-03-27</strong></p>
+
+<ul>
+<li>Add new OrderType <code>STOP_MARKET</code></li>
+<li>Updated REST  API <a href="#post-v3-orders-place">POST /v3/orders/place</a></li>
+<li>Add WebSocket API <a href="#place-stop-market-order">Place Stop Market Order</a>  WebSocket api</li>
+</ul>
 <h1 id='introduction'>Introduction</h1>
 <p>Welcome to Opnx&#39;s v2 application programming interface (API). Opnx&#39;s APIs provide clients programmatic access to control aspects of their accounts and to place orders on Opnx&#39;s trading platform. Opnx supports the following types of APIs:</p>
 
@@ -1668,7 +1676,7 @@ One account can only place up to 50 orders per second via websocket.
 <td>orderType</td>
 <td>STRING</td>
 <td>Yes</td>
-<td><code>STOP_LIMIT</code> for stop-limit orders (stop-market orders not supported)</td>
+<td><code>STOP_LIMIT</code> for stop-limit orders</td>
 </tr>
 <tr>
 <td>quantity</td>
