@@ -2364,7 +2364,7 @@ isTriggered | BOOL | `False` or `True`
 }
 ```
 
-As described in a previous section [Order Commands - Modify Order](#websocket-api-order-commands-modify-order), the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified.
+As described in a previous section [Order Commands - Modify Order](json#ordermodified), the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified.
 
 If the orders queue position is **unchanged** because the orders quantity has been **reduced** and no other order parameter has been changed then this **OrderModified** message will be sent via the Order Channel giving the full details of the modified order.  In this case the order ID is unchanged.
 
