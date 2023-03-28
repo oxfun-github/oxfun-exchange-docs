@@ -1,16 +1,20 @@
 # REST API V3
 
-**TEST** 
+**TEST SITE**
+
+* `https://stg.opnx.com/`
 
 * `https://stgapi.opnx.com`
 
-**LIVE** site
+**LIVE SITE**
+
+* `https://opnx.com`
 
 * `https://api.opnx.com`
 
-For clients who do not wish to take advantage of Opnx's native WebSocket API, Opnx offers a RESTful API that implements much of the same functionality.
+Opnx offers a powerful RESTful API to empower traders.
 
-## Error Code
+## Error Codes
 
 Code | Description |
 ---- | ----------- |
@@ -67,10 +71,10 @@ import json
 
 
 # rest_url = 'https://api.opnx.com'
-# rest_path = 'v2api.opnx.com'
+# rest_path = 'api.opnx.com'
 
 rest_url = 'https://stgapi.opnx.com'
-rest_path = 'v2stgapi.opnx.com'
+rest_path = 'stgapi.opnx.com'
 
 api_key = "API-KEY"
 api_secret = "API-SECRET"
@@ -112,7 +116,7 @@ Component | Required | Example | Description|
 Timestamp | Yes | 2020-04-30T15:20:30 | YYYY-MM-DDThh:mm:ss
 Nonce | Yes | 123 | User generated
 Verb | Yes| GET | Uppercase
-Path | Yes | v2stgapi.opnx.com |
+Path | Yes | stgapi.opnx.com |
 Method | Yes | /v3/positions | Available REST methods
 Body | No | marketCode=BTC-USDT-SWAP-LIN | Optional and dependent on the REST method being called
 
@@ -121,7 +125,7 @@ The constructed message string should look like:-
   `2020-04-30T15:20:30\n
   123\n
   GET\n
-  v2stgapi.opnx.com\n
+  stgapi.opnx.com\n
   /v3/positions\n
   marketCode=BTC-USDT-SWAP-LIN`
 
@@ -173,7 +177,7 @@ GET v3/account?subAcc={subAcc},{subAcc}
                     "asset": "FLEX",
                     "total": "1585.890",
                     "available": "325.890",
-                    "reserved": "1260.21",
+                    "reserved": "1260.0",
                     "lastUpdatedAt": "1593627415123"
                 }
             ],
@@ -188,16 +192,11 @@ GET v3/account?subAcc={subAcc},{subAcc}
                     "positionPnl": "31608.7470", 
                     "estLiquidationPrice": "2.59", 
                     "lastUpdatedAt": "1637876701404",
-                    "marginBalance": "45264.03",
-                    "maintenanceMargin": "10886.1894",
-                    "marginRatio": "0.24",
-                    "leverage": "3"
 	            }
             ],
             "collateral": "1231231",
             "notionalPositionSize": "50000.0",
             "portfolioVarMargin": "500",
-            "riskRatio": "20000.0000",
             "maintenanceMargin": "1231",
             "marginRatio": "12.3179",
             "liquidating": false,
@@ -223,7 +222,7 @@ total | STRING | Total balance|
 available | STRING | Available balance |
 reserved | STRING | Reserved balance |
 lastUpdatedAt | STRING | Last balance update timestamp |
-positions | LIST of dictionaries | Positions if applicable|
+positions | LIST of dictionaries | Positions - only returned if the account has open positions|
 marketCode | STRING | Market code |
 baseAsset | STRING | Base asset |
 counterAsset | STRING | Counter asset |
@@ -233,13 +232,12 @@ markPrice | STRING | Mark price |
 positionPnl | STRING | Position PNL |
 estLiquidationPrice | STRING | Estimated liquidation price |
 lastUpdatedAt | STRING | Last position update timestamp |
-marginBalance | STRING |Appears in the position section only for positions using isolated margin. Isolated margin + Unrealized position PnL|
-maintenanceMargin | STRING |Appears in the position section only for positions using isolated margin|
-marginRatio | STRING | Appears in the position section only for positions using isolated margin|
-leverage | STRING | Appears in the position section only for positions using isolated margin|
+marginBalance | STRING | [Currently Unavailable] Appears in the position section only for positions using isolated margin. Isolated margin + Unrealized position PnL|
+maintenanceMargin | STRING |[Currently Unavailable] Appears in the position section only for positions using isolated margin|
+marginRatio | STRING |[Currently Unavailable] Appears in the position section only for positions using isolated margin|
+leverage | STRING | [Currently Unavailable] Appears in the position section only for positions using isolated margin|
 notionalPositionSize | STRING | Notional position size |
-portfolioVarMargin | STRING | Portfolio margin |
-riskRatio | STRING | collateralBalance / portfolioVarMargin. Orders are rejected/cancelled if the risk ratio drops below 1, and liquidation occurs if the risk ratio drops below 0.5 |
+portfolioVarMargin | STRING | Initial margin |
 maintenanceMargin | STRING | Maintenance margin. The minimum amount of collateral required to avoid liquidation |
 marginRatio | STRING | Margin ratio. Orders are rejected/cancelled if the margin ratio reaches 50, and liquidation occurs if the margin ratio reaches 100  |
 liquidating | BOOL | Available values: `true` and `false` |
@@ -266,15 +264,16 @@ GET v3/account/names
 ```json
 {
     "success": true,
-    "data":  [  {
-                    "accountId": "21213",
-                    "name": "Test 1"
-                }, 
-                {
-                    "accountId": "21214",
-	                "name": "Test 2"
-              }
-          ] 
+    "data": [  
+        {
+          "accountId": "21213",
+          "name": "Test 1"
+        }, 
+        {
+          "accountId": "21214",
+          "name": "Test 2"
+        }
+    ] 
 }
 ```
 
@@ -311,8 +310,8 @@ GET v3/wallet?subAcc={name1},{name2}&type={type}&limit={limit}&startTime={startT
                     "type": "DEPOSIT", 
                     "amount": "10",
                     "createdAt": "162131535213"  
-                    }  	
-                    	]
+                  }  	
+             ]
         }
     ]
 }
@@ -357,7 +356,7 @@ POST /v3/transfer
 ```
 ```json
 {
-    "asset": "flexUSD",
+    "asset": "USDT",
     "quantity": "1000",
     "fromAccount": "14320",
     "toAccount": "15343"
@@ -370,7 +369,7 @@ POST /v3/transfer
 {
     "success": true,
     "data": {
-        "asset": "flexUSD", 
+        "asset": "USDT", 
         "quantity": "1000",
         "fromAccount": "14320",
         "toAccount": "15343",
@@ -412,7 +411,7 @@ GET /v3/transfer?asset={asset}&limit={limit}&startTime={startTime}&endTime={endT
     "success": true,
     "data": [
         {
-            "asset": "flexUSD", 
+            "asset": "USDT", 
             "quantity": "1000",
             "fromAccount": "14320",
             "toAccount": "15343",
@@ -479,7 +478,7 @@ GET /v3/balances?subAcc={name1},{name2}&asset={asset}
                    "reserved": "1260",
                    "lastUpdatedAt": "1593627415123"
                }
-                       ]
+            ]
         }
     ]
 }
@@ -497,7 +496,7 @@ subAcc | STRING | NO | Name of sub account. If no subAcc is given, then the resp
 Response Field | Type | Description | 
 -------------- | ---- | ----------- |
 accountId | STRING | Account ID |
-name | STRING | Parent account with the name “main” and take the first place|
+name | STRING | The parent account is named "main" and comes first|
 balances | LIST of dictionaries | |
 asset | STRING | Asset name |
 available | STRING | 	Available balance |
@@ -520,7 +519,7 @@ GET /v3/positions?subAcc={name1},{name2}&marketCode={marketCode}
   "data": [
       {
         "accountId": "1234",
-        "name": "PERMISSIONLESS_1234",
+        "name": "main",
         "positions": [
             {
               "marketCode": "XYZ-USDT-SWAP-LIN",
@@ -532,11 +531,7 @@ GET /v3/positions?subAcc={name1},{name2}&marketCode={marketCode}
               "positionPnl": "1477.169530560",
               "estLiquidationPrice": "0",
               "lastUpdatedAt": "1673231134601",
-              "marginBalance": "61350.82873932",
-              "maintenanceMargin": "988.61",
-              "marginRatio": "0.01611209",
-              "leverage": "2"
-             }
+            }
         ]
       }
   ]
@@ -559,7 +554,7 @@ subAcc | STRING | NO | Name of sub account. If no subAcc is given, then the resp
 Response Fields | Type | Description |
 --------------- | ---- | ----------- |
 accountId | STRING | Account ID |
-name | STRING | Parent account with the name “main” and take the first place|
+name | STRING | The parent account is named "main" and comes first|
 positions | LIST of dictionaries | |
 marketCode | STRING | Contract symbol, e.g. 'BTC-USDT-SWAP-LIN' |
 baseAsset | STRING |
@@ -570,10 +565,10 @@ markPrice | STRING |
 positionPnl | STRING | Postion profit and lost |
 estLiquidationPrice | STRING | Estimated liquidation price, return 0 if it is negative(<0) |
 lastUpdated | STRING| Timestamp when position was last updated |
-marginBalance | STRING |Appears in the position section only for positions using isolated margin. Isolated margin + Unrealized position PnL|
-maintenanceMargin | STRING |Appears in the position section only for positions using isolated margin|
-marginRatio | STRING | Appears in the position section only for positions using isolated margin|
-leverage | STRING | Appears in the position section only for positions using isolated margin|
+marginBalance | STRING | [Currently Unavailable] Appears in the position section only for positions using isolated margin. Isolated margin + Unrealized position PnL|
+maintenanceMargin | STRING |[Currently Unavailable] Appears in the position section only for positions using isolated margin|
+marginRatio | STRING |[Currently Unavailable] Appears in the position section only for positions using isolated margin|
+leverage | STRING | [Currently Unavailable] Appears in the position section only for positions using isolated margin|
 
 
 ### GET `/v3/funding`
@@ -588,7 +583,7 @@ GET v3/funding?marketCode={marketCode}&limit={limit}&startTime={startTime}&endTi
 
 Request Parameters | Type | Required | Description |
 ------------------ | ---- | -------- | ----------- |
-marketCode | STRING | NO | e.g. `BTC-USDT-REPO-LIN` |
+marketCode | STRING | NO | e.g. `BTC-USDT-SWAP-LIN` |
 limit | LONG | NO | default is `200`, max is `500` |
 startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
 endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
@@ -675,13 +670,13 @@ GET /v3/deposit?asset={asset}&limit={limit}&startTime={startTime}&endTime={endTi
     "success": true,
     "data": [
         {
-            "asset": "flexUSD",
-            "network": "SLP",
-            "address": "simpleledger:qzlg6uvceehgzgtz6phmvy8gtdqyt6vf35fxqwx3p7",
-            "quantity": "1000.0",
+            "asset": "USDT",
+            "network": "ERC20",
+            "address": "0xEf1c6E67703c7BD7107eed8303Fbe6EC2554BF6B",
+            "quantity": "100.0",
             "id": "651573911056351237",
             "status": "COMPLETED",
-            "txId": "38c09755bff75d33304a3cb6ee839fcb78bbb38b6e3e16586f20852cdec4886d",
+            "txId": "0x2b2f01a3cbe5165c883e3b338441182f309ddb8f504b52a2e9e15f17ea9af044",
             "creditedAt": "1617940800000"
         }
     ]
@@ -770,7 +765,7 @@ GET /v3/withdrawal?id={id}&asset={asset}&limit={limit}&startTime={startTime}&end
     "data": [
         {
             "id": "651573911056351237",
-            "asset": "flexUSD",
+            "asset": "USDT",
             "network": "SLP",
             "address": "simpleledger:qzlg6uvceehgzgtz6phmvy8gtdqyt6vf35fxqwx3p7",
             "quantity": "1000.0",
@@ -801,7 +796,7 @@ address | STRING | |
 memo | STRING | Memo (tag) if applicable |
 quantity | STRING | |
 fee | STRING | |
-status | STRING | COMPLETED, PROCESSING, PENDING, ON HOLD, CANCELED, or FAILED| 
+status | STRING | `COMPLETED`, `PROCESSING`, `IN SWEEPING`, `PENDING`, `ON HOLD`, `CANCELED`, or `FAILED`| 
 txId | STRING | |
 requestedAt | STRING | Millisecond timestamp |
 completedAt | STRING | Millisecond timestamp |
@@ -818,9 +813,9 @@ POST /v3/withdrawal
 ```
 ```json
 {
-    "asset": "flexUSD",
-    "network": "SLP",
-    "address": "simpleledger:qzlg6uvceehgzgtz6phmvy8gtdqyt6vf35fxqwx3p7",
+    "asset": "USDT",
+    "network": "ERC20",
+    "address": "0xEf1c6E67703c7BD7107eed8303Fbe6EC2554BF6B",
     "quantity": "100",
     "externalFee": true,
     "tfaType": "GOOGLE",
@@ -835,10 +830,10 @@ POST /v3/withdrawal
     "success": true,
     "data": {
         "id": "752907053614432259",
-        "asset": "flexUSD",
-        "network": "SLP",
-        "address": "simpleledger:qzlg6uvceehgzgtz6phmvy8gtdqyt6vf35fxqwx3p7",
-        "quantity": "1000.0",
+        "asset": "USDT",
+        "network": "ERC20",
+        "address": "0xEf1c6E67703c7BD7107eed8303Fbe6EC2554BF6B",
+        "quantity": "100.0",
         "externalFee": true,
         "fee": "0",
         "status": "PENDING",
@@ -889,12 +884,12 @@ GET /v3/withdrawal-fee?asset={asset}&network={network}&address={address}&memo={m
 {
     "success": true,
     "data": {
-        "asset": "flexUSD",
-        "network": "SLP",
-        "address": "simpleledger:qzlg6uvceehgzgtz6phmvy8gtdqyt6vf35fxqwx3p7",
+        "asset": "USDT",
+        "network": "ERC20",
+        "address": "0xEf1c6E67703c7BD7107eed8303Fbe6EC2554BF6B",
         "quantity": "1000.0",
         "externalFee": true,
-        "estimatedFee": "0"
+        "estimatedFee": "0.01"
     }
 }
 ```
@@ -985,7 +980,7 @@ avgLeg2Price | STRING | Average of leg2 price |
 fees | LIST of dictionaries | Overall fees with instrument ID, if FLEX is no enough to pay the fee then USDT will be paid |
 orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT`,`STOP_MARKET` |
 timeInForce | STRING | Client submitted time in force. <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade) |
-source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `101`, `102`, `103`, `111`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `111: Automatic repayment`</p> |
+source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `31`, `32`, `33`, `101`, `102`, `103`, `108`, `111`, `150`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `31: Physical settlement`, `32: Cash settlement`, `33: transfer`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Position liquidation`, `108: ADL`, `111: Automatic repayment`, `150: BLP assignment`</p> |
 createdAt | STRING | Millisecond timestamp of the order created time |
 lastModifiedAt | STRING | Millisecond timestamp of the order last modified time |
 lastMatchedAt | STRING | Millisecond timestamp of the order last matched time |
@@ -1007,25 +1002,27 @@ GET /v3/orders/working?marketCode={marketCode}&orderId={orderId}&clientOrderId={
 ```json
 {
     "success": true,
-    "data":  [ {		
-                "orderId": "160067484555913076",
-                "clientOrderId": "123",
-                "marketCode": "BTC-USDT-SWAP-LIN",
-                "status": "LIMIT"|"STOP",
-                "side": "SELL",
-                "price": "1.0",
-                "stopPrice": "0.9",
-                "isTriggered": true,
-                "quantity": "0.001",
-                "remainQuantity": "0.001",
-                "matchedQuantity": "0",
-                "orderType": "LIMIT", 
-                "timeInForce": "GTC",
-                "source": "0",
-                "createdAt": "1613089383656", 
-                "lastModifiedAt": null,
-                "lastMatchedAt": null
-               }]
+    "data":  [ 
+        {		
+          "orderId": "160067484555913076",
+          "clientOrderId": "123",
+          "marketCode": "BTC-USDT-SWAP-LIN",
+          "status": "LIMIT"|"STOP",
+          "side": "SELL",
+          "price": "1.0",
+          "stopPrice": "0.9",
+          "isTriggered": true,
+          "quantity": "0.001",
+          "remainQuantity": "0.001",
+          "matchedQuantity": "0",
+          "orderType": "LIMIT", 
+          "timeInForce": "GTC",
+          "source": "0",
+          "createdAt": "1613089383656", 
+          "lastModifiedAt": null,
+          "lastMatchedAt": null
+        }
+    ]
 }
 ```
 
@@ -1051,7 +1048,7 @@ remainQuantity | STRING | Remaining quantity |
 matchedQuantity | STRING | Matched Quantity |
 orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT`,`STOP_MARKET` |
 timeInForce | STRING | Client submitted time in force. <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade) |
-source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `101`, `102`, `103`, `111`. <p>Enumeration: `0: GUI`, `2: Borrow`,  `11: REST`, `13: Websocket`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `111: Automatic repayment`</p> |
+source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `31`, `32`, `33`, `101`, `102`, `103`, `108`, `111`, `150`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `31: Physical settlement`, `32: Cash settlement`, `33: transfer`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Position liquidation`, `108: ADL`, `111: Automatic repayment`, `150: BLP assignment`</p> |
 createdAt | STRING | Millisecond timestamp of the order created time |
 lastModifiedAt | STRING | Millisecond timestamp of the order last modified time |
 lastMatchedAt | STRING | Millisecond timestamp of the order last matched time |
@@ -1072,24 +1069,24 @@ POST /v3/orders/place
     "responseType": "FULL", 
     "timestamp": 1615430912440, 
     "orders": [
-             {
-                   "clientOrderId": 1612249737724, 
-                   "marketCode": "BTC-USDT-SWAP-LIN", 
-                   "side": "SELL", 
-                   "quantity": "0.001", 
-                   "timeInForce": "GTC", 
-                   "orderType": "LIMIT", 
-                   "price": "50007"
-               }, 
-               {
-                   "clientOrderId": 1612249737724, 
-                   "marketCode": "BTC-USDT-SWAP-LIN", 
-                   "side": "BUY", 
-                   "quantity": "0.002", 
-                   "timeInForce": "GTC", 
-                   "orderType": "LIMIT", 
-                   "price": "54900"
-               }
+         {
+             "clientOrderId": 1612249737724, 
+             "marketCode": "BTC-USDT-SWAP-LIN", 
+             "side": "SELL", 
+             "quantity": "0.001", 
+             "timeInForce": "GTC", 
+             "orderType": "LIMIT", 
+             "price": "50007"
+         }, 
+         {
+             "clientOrderId": 1612249737724, 
+             "marketCode": "BTC-USDT-SWAP-LIN", 
+             "side": "BUY", 
+             "quantity": "0.002", 
+             "timeInForce": "GTC", 
+             "orderType": "LIMIT", 
+             "price": "54900"
+         }
     ]
 }
 ```
@@ -1100,45 +1097,45 @@ POST /v3/orders/place
 {
     "success": true,
     "data": [
-               {
-                    "code": "710006",
-                    "message": "FAILED balance check as balance (0E-9) < value (0.001)",
-                    "submitted": false,
-                    "clientOrderId": "1612249737724",
-                    "marketCode": "BTC-USDT-SWAP-LIN",
-                    "side": "SELL",
-                    "price": "52888.0",
-                    "quantity": "0.001",   
-                    "orderType": "LIMIT",
-                    "timeInForce": "GTC",
-                    "createdAt": "16122497377340",
-                    "source": "0"
-                },
-                {
-                    "notice": "OrderOpened", 
-                    "accountId": "1076", 
-                    "orderId": "1000132664173",
-                    "submitted": false,
-                    "clientOrderId": "1612249737724",
-                    "marketCode": "BTC-USDT-SWAP-LIN",
-                    "status": "OPEN",
-                    "price": "23641.0",
-                    "stopPrice": null,
-                    "isTriggered": "false",
-                    "quantity": "0.01", 
-                    "remainQuantity": "0.01",
-                    "matchId": null,
-                    "matchPrice": null, 
-                    "matchQuantity": null, 
-                    "feeInstrumentId": null,
-                    "fees": null,
-                    "orderType": "LIMIT", 
-                    "timeInForce": "GTC", 
-                    "createdAt": "1629192975532",    	
-                    "lastModifiedAt": null,			
-                    "lastMatchedAt": null	
-                }
-          ]
+       {
+            "code": "710006",
+            "message": "FAILED balance check as balance (0E-9) < value (0.001)",
+            "submitted": false,
+            "clientOrderId": "1612249737724",
+            "marketCode": "BTC-USDT-SWAP-LIN",
+            "side": "SELL",
+            "price": "52888.0",
+            "quantity": "0.001",   
+            "orderType": "LIMIT",
+            "timeInForce": "GTC",
+            "createdAt": "16122497377340",
+            "source": "0"
+        },
+        {
+            "notice": "OrderOpened", 
+            "accountId": "1076", 
+            "orderId": "1000132664173",
+            "submitted": false,
+            "clientOrderId": "1612249737724",
+            "marketCode": "BTC-USDT-SWAP-LIN",
+            "status": "OPEN",
+            "price": "23641.0",
+            "stopPrice": null,
+            "isTriggered": "false",
+            "quantity": "0.01", 
+            "remainQuantity": "0.01",
+            "matchId": null,
+            "matchPrice": null, 
+            "matchQuantity": null, 
+            "feeInstrumentId": null,
+            "fees": null,
+            "orderType": "LIMIT", 
+            "timeInForce": "GTC", 
+            "createdAt": "1629192975532",    	
+            "lastModifiedAt": null,			
+            "lastMatchedAt": null	
+        }
+    ]
 }
 ```
 
@@ -1230,35 +1227,34 @@ DELETE /v3/orders/cancel
 {
     "success": true,
     "data": [
-                {
-                    "notice": "OrderClosed", 
-                    "accountId": "12005486", 
-                    "orderId": "304384250571714215",
-                    "submitted": true,
-                    "clientOrderId": "1615453494726", 
-                    "marketCode": "BTC-USDT-SWAP-LIN", 
-                    "status": "CANCELED_BY_USER", 
-                    "side": "BUY", 
-                    "price": "4870.0", 
-                    "stopPrice": null,
-                    "isTriggered": false,
-                    "quantity": "0.001", 
-                    "remainQuantity": "0.001",
-                    "orderType": "LIMIT",  
-                    "timeInForce": "GTC", 
-                    "canceledAt": "1629712561919"
-                 },
-                 {
-                    "code": "40035",
-                    "message": "Open order not found with id",
-                    "submitted": false,
-                     "orderId": "204285250571714316",
-                     "clientOrderId": "1612249737724",
-                     "marketCode": "BTC-USDT-SWAP-LIN",
-                     "canceledAt": "1615454881433"
-                 }
-    	]
-
+        {
+            "notice": "OrderClosed", 
+            "accountId": "12005486", 
+            "orderId": "304384250571714215",
+            "submitted": true,
+            "clientOrderId": "1615453494726", 
+            "marketCode": "BTC-USDT-SWAP-LIN", 
+            "status": "CANCELED_BY_USER", 
+            "side": "BUY", 
+            "price": "4870.0", 
+            "stopPrice": null,
+            "isTriggered": false,
+            "quantity": "0.001", 
+            "remainQuantity": "0.001",
+            "orderType": "LIMIT",  
+            "timeInForce": "GTC", 
+            "canceledAt": "1629712561919"
+        },
+        {
+            "code": "40035",
+            "message": "Open order not found with id",
+            "submitted": false,
+             "orderId": "204285250571714316",
+             "clientOrderId": "1612249737724",
+             "marketCode": "BTC-USDT-SWAP-LIN",
+             "canceledAt": "1615454881433"
+         }
+    ]
 }
 ```
 
@@ -1310,7 +1306,7 @@ DELETE  /v3/orders/cancel-all
 
 ```json
 {
-            "marketCode": "BTC-USDT-SWAP-LIN"
+    "marketCode": "BTC-USDT-SWAP-LIN"
 }
 ```
 
@@ -1319,9 +1315,10 @@ DELETE  /v3/orders/cancel-all
 ```json
 {
     "success": true,
-    "data":  {
-                   "notice": "Orders queued for cancelation"
-              }
+    "data":  
+        {
+            "notice": "Orders queued for cancelation"
+        }
 }
 ```
 
@@ -1345,7 +1342,7 @@ notice | STRING | `Orders queued for cancelation` or `No working orders found”
 
 ### GET `/v3/trades`
 
-Returns the most recent trades of the account connected to the API key initiating the request.
+Returns your most recent trades.
 
 > **Request**
 
@@ -1359,25 +1356,25 @@ GET /v3/trades?marketCode={marketCode}&limit={limit}&startTime={startTime}&endTi
 {
     "success": true,
     "data": [
-                {
-                    "orderId": "160067484555913076",
-                    "clientOrderId": "123",
-                    "matchId": "160067484555913077",
-                    "marketCode": "FLEX-USDT",
-                    "side": "SELL",
-                    "matchedQuantity": "0.1",
-                    "matchPrice": "0.065",
-                    "total": "0.0065",	
-                    "leg1Price'": "0.0065", 		
-                    "leg2Price": "0.0065",			
-                    "orderMatchType": "TAKER",
-                    "feeAsset": "FLEX",
-                    "fee":"0.0196",
-                    "source": "10",
-                    "matchedAt": "1595514663626"
+        {
+            "orderId": "160067484555913076",
+            "clientOrderId": "123",
+            "matchId": "160067484555913077",
+            "marketCode": "FLEX-USDT",
+            "side": "SELL",
+            "matchedQuantity": "0.1",
+            "matchPrice": "0.065",
+            "total": "0.0065",	
+            "leg1Price'": "0.0065", 		
+            "leg2Price": "0.0065",			
+            "orderMatchType": "TAKER",
+            "feeAsset": "FLEX",
+            "fee":"0.0196",
+            "source": "10",
+            "matchedAt": "1595514663626"
 
-               }
-            ]
+       }
+    ]
 }
 ```
 
