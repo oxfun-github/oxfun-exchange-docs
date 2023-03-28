@@ -118,7 +118,7 @@ Further information regarding the error codes and corresponding error messages f
 [opnx-ws](https://pypi.org/project/opnx-ws/) is a websocket wrapper to easily connect to Opnx's websockets.
 
 
-## Authentication
+##Authentication
 
 > **Request format**
 

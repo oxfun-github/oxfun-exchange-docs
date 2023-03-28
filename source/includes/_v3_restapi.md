@@ -10,7 +10,7 @@
 
 For clients who do not wish to take advantage of Opnx's native WebSocket API, Opnx offers a RESTful API that implements much of the same functionality.
 
-## Error Codes
+## Error Code
 
 Code | Description |
 ---- | ----------- |
@@ -43,7 +43,7 @@ Affected APIs:
 * [POST /v3/withdrawal](?json#post-v3-withdrawal)
 * [POST /v3/transfer](?json#post-v3-transfer)
 
-## Authentication
+## Rest Api Authentication
 
 > **Request**
 
