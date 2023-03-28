@@ -3945,7 +3945,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
             </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>As described in a previous section <a href="#websocket-api-order-commands-modify-order">Order Commands - Modify Order</a>, the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified.</p>
+<p>As described in a previous section <a href="json#ordermodified">Order Commands - Modify Order</a>, the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified.</p>
 
 <p>If the orders queue position is <strong>unchanged</strong> because the orders quantity has been <strong>reduced</strong> and no other order parameter has been changed then this <strong>OrderModified</strong> message will be sent via the Order Channel giving the full details of the modified order.  In this case the order ID is unchanged.</p>
 
@@ -6142,11 +6142,10 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 
 <ul>
 <li><code>s</code> denotes a second</li>
-<li>Requests limited to <code>1/s</code> &amp; <code>2/10s</code> &amp; <code>4/10s(only for the AMM POST requests)</code>
+<li>Requests limited to <code>1/s</code> &amp; <code>2/10s</code> &amp; <code>4/10s</code>
 
 <ul>
 <li>Only 1 request is permitted per second and only 2 requests are permitted within 10 seconds</li>
-<li>Only 4 requests are permitted within 10 seconds for the AMM POST requests</li>
 </ul></li>
 <li>Request limit <code>1/10s</code>
 
@@ -6160,10 +6159,6 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <ul>
 <li><a href="?json#rest-api-v3-deposits-and-withdrawals-post-v3-withdrawal">POST /v3/withdrawal</a></li>
 <li><a href="?json#rest-api-v3-deposits-and-withdrawals-post-v3-transfer">POST /v3/transfer</a></li>
-<li><a href="?json#rest-api-v3-flex-assets-post-v3-flexasset-mint">POST /v3/flexasset/mint</a></li>
-<li><a href="?json#rest-api-v3-flex-assets-post-v3-flexasset-redeem">POST /v3/flexasset/redeem</a></li>
-<li><a href="?json#rest-api-v3-amm-post-v3-amm-create">POST /v3/AMM/create</a>(<code>4/10s</code>)</li>
-<li><a href="?json#rest-api-v3-amm-post-v3-amm-redeem">POST /v3/AMM/redeem</a>(<code>4/10s</code>)</li>
 </ul>
 <h2 id='authentication'>Authentication</h2>
 <blockquote>
@@ -8080,7 +8075,7 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 <tr>
 <td>source</td>
 <td>STRING</td>
-<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>10: AMM</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>111: Automatic repayment</code></p></td>
+<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>111: Automatic repayment</code></p></td>
 </tr>
 <tr>
 <td>createdAt</td>
@@ -8240,7 +8235,7 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 <tr>
 <td>source</td>
 <td>STRING</td>
-<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>10: AMM</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>111: Automatic repayment</code></p></td>
+<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>,  <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>111: Automatic repayment</code></p></td>
 </tr>
 <tr>
 <td>createdAt</td>
@@ -8567,7 +8562,7 @@ You can place up to 8 orders at a time in REST API
 <tr>
 <td>source</td>
 <td>STRING</td>
-<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>10: AMM</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>111: Automatic repayment</code></p></td>
+<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>111: Automatic repayment</code></p></td>
 </tr>
 <tr>
 <td>createdAt</td>
@@ -8988,7 +8983,7 @@ Cancels all open orders for the **specified market** for the account connected t
 <tr>
 <td>source</td>
 <td>STRING</td>
-<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>10: AMM</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>111: Automatic repayment</code></p></td>
+<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>111: Automatic repayment</code></p></td>
 </tr>
 <tr>
 <td>matchedAt</td>
