@@ -40,8 +40,8 @@ Certain endpoints have extra IP restrictions:
 
 Affected APIs:
 
-* [POST /v3/withdrawal](?json#rest-api-v3-deposits-and-withdrawals-post-v3-withdrawal)
-* [POST /v3/transfer](?json#rest-api-v3-deposits-and-withdrawals-post-v3-transfer)
+* [POST /v3/withdrawal](?json#post-v3-withdrawal)
+* [POST /v3/transfer](?json#post-v3-transfer)
 
 ## Authentication
 
