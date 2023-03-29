@@ -451,7 +451,7 @@
             <a href="#rest-api-v3" class="toc-h1 toc-link" data-title="REST API V3">REST API V3</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#error-code" class="toc-h2 toc-link" data-title="Error Code">Error Code</a>
+                    <a href="#error-codes" class="toc-h2 toc-link" data-title="Error Codes">Error Codes</a>
                   </li>
                   <li>
                     <a href="#rate-limits" class="toc-h2 toc-link" data-title="Rate Limits">Rate Limits</a>
@@ -6080,20 +6080,22 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 </tr>
 </tbody></table>
 <h1 id='rest-api-v3'>REST API V3</h1>
-<p><strong>TEST</strong> </p>
+<p><strong>TEST SITE</strong></p>
 
 <ul>
-<li><code>https://stgapi.opnx.com</code></li>
+<li><p><code>https://stg.opnx.com/</code></p></li>
+<li><p><code>https://stgapi.opnx.com</code></p></li>
 </ul>
 
-<p><strong>LIVE</strong> site</p>
+<p><strong>LIVE SITE</strong></p>
 
 <ul>
-<li><code>https://api.opnx.com</code></li>
+<li><p><code>https://opnx.com</code></p></li>
+<li><p><code>https://api.opnx.com</code></p></li>
 </ul>
 
-<p>For clients who do not wish to take advantage of Opnx&#39;s native WebSocket API, Opnx offers a RESTful API that implements much of the same functionality.</p>
-<h2 id='error-code'>Error Code</h2>
+<p>Opnx offers a powerful RESTful API to empower traders.</p>
+<h2 id='error-codes'>Error Codes</h2>
 <table><thead>
 <tr>
 <th>Code</th>
@@ -6180,10 +6182,10 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 
 
 <span class="c1"># rest_url = 'https://api.opnx.com'
-# rest_path = 'v2api.opnx.com'
+# rest_path = 'api.opnx.com'
 </span>
 <span class="n">rest_url</span> <span class="o">=</span> <span class="s">'https://stgapi.opnx.com'</span>
-<span class="n">rest_path</span> <span class="o">=</span> <span class="s">'v2stgapi.opnx.com'</span>
+<span class="n">rest_path</span> <span class="o">=</span> <span class="s">'stgapi.opnx.com'</span>
 
 <span class="n">api_key</span> <span class="o">=</span> <span class="s">"API-KEY"</span>
 <span class="n">api_secret</span> <span class="o">=</span> <span class="s">"API-SECRET"</span>
@@ -6248,7 +6250,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>Path</td>
 <td>Yes</td>
-<td>v2stgapi.opnx.com</td>
+<td>stgapi.opnx.com</td>
 <td></td>
 </tr>
 <tr>
@@ -6270,7 +6272,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <p><code>2020-04-30T15:20:30\n
   123\n
   GET\n
-  v2stgapi.opnx.com\n
+  stgapi.opnx.com\n
   /v3/positions\n
   marketCode=BTC-USDT-SWAP-LIN</code></p>
 
@@ -6316,7 +6318,7 @@ Calling this endpoint using an API key pair linked to the parent account with th
                     </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1585.890"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"325.890"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1260.21"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1260.0"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"lastUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1593627415123"</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
@@ -6331,16 +6333,11 @@ Calling this endpoint using an API key pair linked to the parent account with th
                     </span><span class="nl">"positionPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31608.7470"</span><span class="p">,</span><span class="w"> 
                     </span><span class="nl">"estLiquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.59"</span><span class="p">,</span><span class="w"> 
                     </span><span class="nl">"lastUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1637876701404"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"marginBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45264.03"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"maintenanceMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10886.1894"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"marginRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.24"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="nl">"collateral"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1231231"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"notionalPositionSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000.0"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"portfolioVarMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"riskRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000.0000"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"maintenanceMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1231"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"marginRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.3179"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"liquidating"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -6421,7 +6418,7 @@ Calling this endpoint using an API key pair linked to the parent account with th
 <tr>
 <td>positions</td>
 <td>LIST of dictionaries</td>
-<td>Positions if applicable</td>
+<td>Positions - only returned if the account has open positions</td>
 </tr>
 <tr>
 <td>marketCode</td>
@@ -6471,22 +6468,22 @@ Calling this endpoint using an API key pair linked to the parent account with th
 <tr>
 <td>marginBalance</td>
 <td>STRING</td>
-<td>Appears in the position section only for positions using isolated margin. Isolated margin + Unrealized position PnL</td>
+<td>[Currently Unavailable] Appears in the position section only for positions using isolated margin. Isolated margin + Unrealized position PnL</td>
 </tr>
 <tr>
 <td>maintenanceMargin</td>
 <td>STRING</td>
-<td>Appears in the position section only for positions using isolated margin</td>
+<td>[Currently Unavailable] Appears in the position section only for positions using isolated margin</td>
 </tr>
 <tr>
 <td>marginRatio</td>
 <td>STRING</td>
-<td>Appears in the position section only for positions using isolated margin</td>
+<td>[Currently Unavailable] Appears in the position section only for positions using isolated margin</td>
 </tr>
 <tr>
 <td>leverage</td>
 <td>STRING</td>
-<td>Appears in the position section only for positions using isolated margin</td>
+<td>[Currently Unavailable] Appears in the position section only for positions using isolated margin</td>
 </tr>
 <tr>
 <td>notionalPositionSize</td>
@@ -6496,12 +6493,7 @@ Calling this endpoint using an API key pair linked to the parent account with th
 <tr>
 <td>portfolioVarMargin</td>
 <td>STRING</td>
-<td>Portfolio margin</td>
-</tr>
-<tr>
-<td>riskRatio</td>
-<td>STRING</td>
-<td>collateralBalance / portfolioVarMargin. Orders are rejected/cancelled if the risk ratio drops below 1, and liquidation occurs if the risk ratio drops below 0.5</td>
+<td>Initial margin</td>
 </tr>
 <tr>
 <td>maintenanceMargin</td>
@@ -6546,15 +6538,16 @@ This endpoint can only be called using API keys paired with the parent account! 
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">  </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21213"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test 1"</span><span class="w">
-                </span><span class="p">},</span><span class="w"> 
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21214"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test 2"</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w"> 
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">  
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21213"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test 1"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21214"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test 2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -6599,8 +6592,8 @@ This endpoint can only be called using API keys paired with the parent account! 
                     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEPOSIT"</span><span class="p">,</span><span class="w"> 
                     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"162131535213"</span><span class="w">  
-                    </span><span class="p">}</span><span class="w">   
-                        </span><span class="p">]</span><span class="w">
+                  </span><span class="p">}</span><span class="w">     
+             </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -6709,7 +6702,7 @@ Transferring funds between sub-accounts is restricted to API keys linked to the 
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>POST /v3/transfer
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flexUSD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fromAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14320"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"toAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15343"</span><span class="w">
@@ -6721,7 +6714,7 @@ Transferring funds between sub-accounts is restricted to API keys linked to the 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flexUSD"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"fromAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14320"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"toAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15343"</span><span class="p">,</span><span class="w">
@@ -6811,7 +6804,7 @@ Transferring funds between sub-accounts is restricted to API keys linked to the 
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flexUSD"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"fromAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14320"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"toAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15343"</span><span class="p">,</span><span class="w">
@@ -6934,7 +6927,7 @@ while API keys linked to a sub-account can only see transfers where the sub-acco
                    </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1260"</span><span class="p">,</span><span class="w">
                    </span><span class="nl">"lastUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1593627415123"</span><span class="w">
                </span><span class="p">}</span><span class="w">
-                       </span><span class="p">]</span><span class="w">
+            </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -6980,7 +6973,7 @@ Calling this endpoint using an API key pair linked to the parent account with th
 <tr>
 <td>name</td>
 <td>STRING</td>
-<td>Parent account with the name “main” and take the first place</td>
+<td>The parent account is named &quot;main&quot; and comes first</td>
 </tr>
 <tr>
 <td>balances</td>
@@ -7022,7 +7015,7 @@ Calling this endpoint using an API key pair linked to the parent account with th
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERMISSIONLESS_1234"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"positions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XYZ-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
@@ -7034,11 +7027,7 @@ Calling this endpoint using an API key pair linked to the parent account with th
               </span><span class="nl">"positionPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1477.169530560"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"estLiquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"lastUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1673231134601"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"marginBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61350.82873932"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"maintenanceMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"988.61"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"marginRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01611209"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
-             </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -7089,7 +7078,7 @@ Returns an empty array `[]` when no positions were found
 <tr>
 <td>name</td>
 <td>STRING</td>
-<td>Parent account with the name “main” and take the first place</td>
+<td>The parent account is named &quot;main&quot; and comes first</td>
 </tr>
 <tr>
 <td>positions</td>
@@ -7144,22 +7133,22 @@ Returns an empty array `[]` when no positions were found
 <tr>
 <td>marginBalance</td>
 <td>STRING</td>
-<td>Appears in the position section only for positions using isolated margin. Isolated margin + Unrealized position PnL</td>
+<td>[Currently Unavailable] Appears in the position section only for positions using isolated margin. Isolated margin + Unrealized position PnL</td>
 </tr>
 <tr>
 <td>maintenanceMargin</td>
 <td>STRING</td>
-<td>Appears in the position section only for positions using isolated margin</td>
+<td>[Currently Unavailable] Appears in the position section only for positions using isolated margin</td>
 </tr>
 <tr>
 <td>marginRatio</td>
 <td>STRING</td>
-<td>Appears in the position section only for positions using isolated margin</td>
+<td>[Currently Unavailable] Appears in the position section only for positions using isolated margin</td>
 </tr>
 <tr>
 <td>leverage</td>
 <td>STRING</td>
-<td>Appears in the position section only for positions using isolated margin</td>
+<td>[Currently Unavailable] Appears in the position section only for positions using isolated margin</td>
 </tr>
 </tbody></table>
 <h3 id='get-v3-funding'>GET <code>/v3/funding</code></h3>
@@ -7182,7 +7171,7 @@ Returns an empty array `[]` when no positions were found
 <td>marketCode</td>
 <td>STRING</td>
 <td>NO</td>
-<td>e.g. <code>BTC-USDT-REPO-LIN</code></td>
+<td>e.g. <code>BTC-USDT-SWAP-LIN</code></td>
 </tr>
 <tr>
 <td>limit</td>
@@ -7338,13 +7327,13 @@ Returns an empty array `[]` when no positions were found
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flexUSD"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SLP"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simpleledger:qzlg6uvceehgzgtz6phmvy8gtdqyt6vf35fxqwx3p7"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERC20"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xEf1c6E67703c7BD7107eed8303Fbe6EC2554BF6B"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651573911056351237"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38c09755bff75d33304a3cb6ee839fcb78bbb38b6e3e16586f20852cdec4886d"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x2b2f01a3cbe5165c883e3b338441182f309ddb8f504b52a2e9e15f17ea9af044"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"creditedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1617940800000"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -7539,7 +7528,7 @@ Returns an empty array `[]` when no positions were found
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651573911056351237"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flexUSD"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SLP"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simpleledger:qzlg6uvceehgzgtz6phmvy8gtdqyt6vf35fxqwx3p7"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0"</span><span class="p">,</span><span class="w">
@@ -7637,7 +7626,7 @@ Returns an empty array `[]` when no positions were found
 <tr>
 <td>status</td>
 <td>STRING</td>
-<td>COMPLETED, PROCESSING, PENDING, ON HOLD, CANCELED, or FAILED</td>
+<td><code>COMPLETED</code>, <code>PROCESSING</code>, <code>IN SWEEPING</code>, <code>PENDING</code>, <code>ON HOLD</code>, <code>CANCELED</code>, or <code>FAILED</code></td>
 </tr>
 <tr>
 <td>txId</td>
@@ -7663,9 +7652,9 @@ Returns an empty array `[]` when no positions were found
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>POST /v3/withdrawal
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flexUSD"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SLP"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simpleledger:qzlg6uvceehgzgtz6phmvy8gtdqyt6vf35fxqwx3p7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERC20"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xEf1c6E67703c7BD7107eed8303Fbe6EC2554BF6B"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"externalFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tfaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOOGLE"</span><span class="p">,</span><span class="w">
@@ -7679,10 +7668,10 @@ Returns an empty array `[]` when no positions were found
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"752907053614432259"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flexUSD"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SLP"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simpleledger:qzlg6uvceehgzgtz6phmvy8gtdqyt6vf35fxqwx3p7"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERC20"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xEf1c6E67703c7BD7107eed8303Fbe6EC2554BF6B"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"externalFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
@@ -7822,12 +7811,12 @@ Returns an empty array `[]` when no positions were found
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flexUSD"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SLP"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simpleledger:qzlg6uvceehgzgtz6phmvy8gtdqyt6vf35fxqwx3p7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERC20"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xEf1c6E67703c7BD7107eed8303Fbe6EC2554BF6B"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"externalFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"estimatedFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+        </span><span class="nl">"estimatedFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -8075,7 +8064,7 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 <tr>
 <td>source</td>
 <td>STRING</td>
-<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>111: Automatic repayment</code></p></td>
+<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>31</code>, <code>32</code>, <code>33</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>108</code>, <code>111</code>, <code>150</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>31: Physical settlement</code>, <code>32: Cash settlement</code>, <code>33: transfer</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Position liquidation</code>, <code>108: ADL</code>, <code>111: Automatic repayment</code>, <code>150: BLP assignment</code></p></td>
 </tr>
 <tr>
 <td>createdAt</td>
@@ -8111,25 +8100,27 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">        
-                </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160067484555913076"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="err">|</span><span class="s2">"STOP"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"matchedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
-                </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1613089383656"</span><span class="p">,</span><span class="w"> 
-                </span><span class="nl">"lastModifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"lastMatchedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-               </span><span class="p">}]</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">       
+          </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160067484555913076"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="err">|</span><span class="s2">"STOP"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"matchedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1613089383656"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"lastModifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"lastMatchedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -8235,7 +8226,7 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 <tr>
 <td>source</td>
 <td>STRING</td>
-<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>,  <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>111: Automatic repayment</code></p></td>
+<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>31</code>, <code>32</code>, <code>33</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>108</code>, <code>111</code>, <code>150</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>31: Physical settlement</code>, <code>32: Cash settlement</code>, <code>33: transfer</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Position liquidation</code>, <code>108: ADL</code>, <code>111: Automatic repayment</code>, <code>150: BLP assignment</code></p></td>
 </tr>
 <tr>
 <td>createdAt</td>
@@ -8263,24 +8254,24 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
     </span><span class="nl">"responseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FULL"</span><span class="p">,</span><span class="w"> 
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1615430912440</span><span class="p">,</span><span class="w"> 
     </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-             </span><span class="p">{</span><span class="w">
-                   </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612249737724</span><span class="p">,</span><span class="w"> 
-                   </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
-                   </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w"> 
-                   </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
-                   </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
-                   </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
-                   </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50007"</span><span class="w">
-               </span><span class="p">},</span><span class="w"> 
-               </span><span class="p">{</span><span class="w">
-                   </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612249737724</span><span class="p">,</span><span class="w"> 
-                   </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
-                   </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w"> 
-                   </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w"> 
-                   </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
-                   </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
-                   </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54900"</span><span class="w">
-               </span><span class="p">}</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612249737724</span><span class="p">,</span><span class="w"> 
+             </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w"> 
+             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
+             </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
+             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
+             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50007"</span><span class="w">
+         </span><span class="p">},</span><span class="w"> 
+         </span><span class="p">{</span><span class="w">
+             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1612249737724</span><span class="p">,</span><span class="w"> 
+             </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w"> 
+             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w"> 
+             </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
+             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
+             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54900"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -8290,45 +8281,45 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-               </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"710006"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAILED balance check as balance (0E-9) &lt; value (0.001)"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1612249737724"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52888.0"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">   
-                    </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16122497377340"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderOpened"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1076"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000132664173"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1612249737724"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23641.0"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"matchId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"matchPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"matchQuantity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"feeInstrumentId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"fees"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1629192975532"</span><span class="p">,</span><span class="w">       
-                    </span><span class="nl">"lastModifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">         
-                    </span><span class="nl">"lastMatchedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">   
-                </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"710006"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAILED balance check as balance (0E-9) &lt; value (0.001)"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1612249737724"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52888.0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">   
+            </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16122497377340"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderOpened"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1076"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000132664173"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1612249737724"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23641.0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"matchQuantity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"feeInstrumentId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fees"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1629192975532"</span><span class="p">,</span><span class="w">       
+            </span><span class="nl">"lastModifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">         
+            </span><span class="nl">"lastMatchedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">   
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Place orders.</p>
@@ -8608,35 +8599,34 @@ You can place up to 8 orders at a time in REST API
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderClosed"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12005486"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"304384250571714215"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1615453494726"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED_BY_USER"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4870.0"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">  
-                    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
-                    </span><span class="nl">"canceledAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1629712561919"</span><span class="w">
-                 </span><span class="p">},</span><span class="w">
-                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40035"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open order not found with id"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                     </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"204285250571714316"</span><span class="p">,</span><span class="w">
-                     </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1612249737724"</span><span class="p">,</span><span class="w">
-                     </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
-                     </span><span class="nl">"canceledAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1615454881433"</span><span class="w">
-                 </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderClosed"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12005486"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"304384250571714215"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1615453494726"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED_BY_USER"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4870.0"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">  
+            </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"canceledAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1629712561919"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40035"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open order not found with id"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"204285250571714316"</span><span class="p">,</span><span class="w">
+             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1612249737724"</span><span class="p">,</span><span class="w">
+             </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
+             </span><span class="nl">"canceledAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1615454881433"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Cancel orders.</p>
@@ -8791,7 +8781,7 @@ You can cancel up to 8 orders at a time in REST API
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>DELETE  /v3/orders/cancel-all
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="w">
+    </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -8799,9 +8789,10 @@ You can cancel up to 8 orders at a time in REST API
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w">
-                   </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Orders queued for cancelation"</span><span class="w">
-              </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">  
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Orders queued for cancelation"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Cancel orders.</p>
@@ -8840,7 +8831,7 @@ Cancels all open orders for the **specified market** for the account connected t
 </tr>
 </tbody></table>
 <h2 id='trades-private'>Trades - Private</h2><h3 id='get-v3-trades'>GET <code>/v3/trades</code></h3>
-<p>Returns the most recent trades of the account connected to the API key initiating the request.</p>
+<p>Returns your most recent trades.</p>
 
 <blockquote>
 <p><strong>Request</strong></p>
@@ -8853,25 +8844,25 @@ Cancels all open orders for the **specified market** for the account connected t
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160067484555913076"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"matchId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160067484555913077"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX-USDT"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"matchedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"matchPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.065"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0065"</span><span class="p">,</span><span class="w">  
-                    </span><span class="nl">"leg1Price'"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0065"</span><span class="p">,</span><span class="w">         
-                    </span><span class="nl">"leg2Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0065"</span><span class="p">,</span><span class="w">          
-                    </span><span class="nl">"orderMatchType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAKER"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"feeAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.0196"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"matchedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1595514663626"</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160067484555913076"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160067484555913077"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX-USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.065"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0065"</span><span class="p">,</span><span class="w">  
+            </span><span class="nl">"leg1Price'"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0065"</span><span class="p">,</span><span class="w">         
+            </span><span class="nl">"leg2Price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0065"</span><span class="p">,</span><span class="w">          
+            </span><span class="nl">"orderMatchType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAKER"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"feeAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.0196"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1595514663626"</span><span class="w">
 
-               </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+       </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
