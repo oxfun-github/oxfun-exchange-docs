@@ -7747,12 +7747,12 @@ Returns an empty array `[]` when no positions were found
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651573911056351237"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SLP"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simpleledger:qzlg6uvceehgzgtz6phmvy8gtdqyt6vf35fxqwx3p7"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERC20"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0xEf1c6E67703c7BD7107eed8303Fbe6EC2554BF6B"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000000"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38c09755bff75d33304a3cb6ee839fcb78bbb38b6e3e16586f20852cdec4886d"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x2b2f01a3cbe5165c883e3b338441182f309ddb8f504b52a2e9e15f17ea9af044"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"requestedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1617940800000"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"completedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16003243243242"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -8317,29 +8317,29 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 <p><strong>Successful response format</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w"> 
-        </span><span class="p">{</span><span class="w">       
-          </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160067484555913076"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="err">|</span><span class="s2">"STOP"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"matchedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
-          </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1613089383656"</span><span class="p">,</span><span class="w"> 
-          </span><span class="nl">"lastModifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"lastMatchedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000026408953"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"matchedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680113440852"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastModifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680113440875"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
+
 </span></code></pre></div>
 <table><thead>
 <tr>
@@ -8517,15 +8517,16 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
             </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderOpened"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1076"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000132664173"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"submitted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1612249737724"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23641.0"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w"> 
-            </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nl">"matchId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nl">"matchPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"matchQuantity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
@@ -8612,7 +8613,7 @@ You can place up to 8 orders at a time in REST API
 <td>displayQuantity</td>
 <td>STRING</td>
 <td>NO</td>
-<td>displayQuantity  (For limit order, pass both  <code>quantity</code> and <code>displayQuantity</code> fields in the order request.)</td>
+<td>displayQuantity  (For an iceberg order, pass both  <code>quantity</code> and <code>displayQuantity</code> fields in the order request.)</td>
 </tr>
 <tr>
 <td>timeInForce</td>
@@ -8674,6 +8675,11 @@ You can place up to 8 orders at a time in REST API
 <td>Error message</td>
 </tr>
 <tr>
+<td>submitted</td>
+<td>BOOL</td>
+<td>Denotes whether the order was submitted to the matching engine or not</td>
+</tr>
+<tr>
 <td>orderId</td>
 <td>STRING</td>
 <td></td>
@@ -8705,8 +8711,8 @@ You can place up to 8 orders at a time in REST API
 </tr>
 <tr>
 <td>isTriggered</td>
-<td>STRING</td>
-<td>false (or true for STOP order types)</td>
+<td>BOOL</td>
+<td>false (can be true for STOP order types)</td>
 </tr>
 <tr>
 <td>quantity</td>
@@ -8829,7 +8835,8 @@ You can place up to 8 orders at a time in REST API
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4870.0"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">  
             </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
@@ -8913,6 +8920,11 @@ You can cancel up to 8 orders at a time in REST API
 </tr>
 </thead><tbody>
 <tr>
+<td>submitted</td>
+<td>BOOL</td>
+<td>Denotes if the cancel request was submitted to the matching engine or not</td>
+</tr>
+<tr>
 <td>notice</td>
 <td>STRING</td>
 <td><code>OrderClosed</code></td>
@@ -8964,11 +8976,16 @@ You can cancel up to 8 orders at a time in REST API
 </tr>
 <tr>
 <td>isTriggered</td>
-<td>STRING</td>
-<td>false (or true for STOP order types)</td>
+<td>BOOL</td>
+<td>false (can be true for STOP order types)</td>
 </tr>
 <tr>
 <td>quantity</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
+<td>amount</td>
 <td>STRING</td>
 <td></td>
 </tr>
