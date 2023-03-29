@@ -1156,7 +1156,7 @@ marketCode | STRING | YES | Market code |
 side | STRING | YES | `BUY` or `SELL` |
 quantity | STRING | YES | Quantity |
 amount | STRING | NO | Amount (only allow amount field when market is spot and direction is BUY) |
-displayQuantity | STRING | NO | displayQuantity  (For limit order, pass both “quantity” and “displayQuantity” fields in the order request.)|
+displayQuantity | STRING | NO | displayQuantity  (For limit order, pass both  `quantity` and `displayQuantity` fields in the order request.)|
 timeInForce | STRING | NO | Default `GTC` |
 orderType | STRING | YES | `LIMIT` or `MARKET` or `STOP` or `STOP_MARKET`|
 price | STRING | NO | Limit price for the limit order |
