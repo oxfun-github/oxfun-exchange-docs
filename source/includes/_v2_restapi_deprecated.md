@@ -2290,3 +2290,180 @@ instrumentIdDeliver | STRING | Asset being received: long position is `coin`, sh
 deliverQty | STRING | Quantity of the received asset |
 deliverOrderId | STRING | Order id |
 clientOrderId | Null Type | null |
+
+  
+ ### POST `/v2/AMM/create`
+
+Create AMM
+
+> **Request**
+
+```json
+POST /v2/AMM/create
+
+{
+    "direction": "NEUTRAL",
+    "marketCode": "BTC-USDT-SWAP-LIN",
+    "collateralAsset":"BTC",
+    "assetQuantity":"0.1",
+    "collateralCounterAsset":"USDT",
+    "counterAssetQuantity":"4000",
+    "minPriceBound":"28000",
+    "maxPriceBound":"52000"
+}
+```
+
+> **SUCCESSFUL RESPONSE**
+
+```json
+{
+    "event": "createAMM",
+    "timestamp": "1628491099751",
+    "accountId": "3101",
+    "data": {
+        "hashToken": "CF-BTC-AMM-mz7WAOZc",
+        "direction": "NEUTRAL",
+        "marketCode": "BTC-USDT-SWAP-LIN",
+        "collateralAsset": "BTC",
+        "assetQuantity": "0.1",
+        "collateralCounterAsset": "USDT",
+        "counterAssetQuantity": "4000",
+        "minPriceBound": "28000",
+        "maxPriceBound": "52000"
+    }
+}
+```
+
+Request Parameters | Type | Required | Description |
+------------------ | ---- | -------- | ----------- |
+leverage | STRING | NO | Maximum leverage, with USDT the range of leverage is 1 to 40X otherwise is 1 to 10X |
+direction | STRING | YES | Value can be `BUY` or `SELL` or `NEUTRAL` |
+marketCode | STRING | YES | Market code e.g. `BCH-USDT-SWAP-LIN` |
+collateralAsset | STRING | NO | Required unless unleveraged and direction is `BUY` |
+assetQuantity | STRING | NO | Required unless unleveraged and direction is `BUY`. Minimum is $200 notional |
+collateralCounterAsset | STRING | NO | Required if unleveraged and direction is `NEUTRAL` or `BUY` |
+counterAssetQuantity | STRING | NO | Required if unleveraged and direction is `NEUTRAL` or `BUY`. Minimum is $200 notional |
+minPriceBound | STRING | YES | When unleveraged and direction is `NEUTRAL`, minPriceBound and maxPriceBound should be stuck to the formula `mid = counterAssetQuantity/collateralAssetQuantity` `maxPriceBound - mid = mid - minPriceBound` |
+maxPriceBound | STRING | YES | When unleveraged and direction is `NEUTRAL`, minPriceBound and maxPriceBound should be stuck to the formula `mid = counterAssetQuantity/collateralAssetQuantity` `maxPriceBound - mid = mid - minPriceBound` |
+
+Response Fields | Type | Description |
+----------------| ---- | ----------- |
+hashToken | STRING | Identity of the AMM |
+leverage | STRING | Leverage of the AMM |
+direction | STRING | Value can be `BUY` or `SELL` or `NEUTRAL` |
+marketCode | STRING | Market code e.g. `BCH-USDT-SWAP-LIN` |
+collateralAsset | STRING | Collateral asset |
+assetQuantity | STRING | Quantity of the collateral asset |
+collateralCounterAsset | STRING | Collateral counter asset |
+counterAssetQuantity | STRING | Quantity of the collateral counter asset |
+minPriceBound | STRING | Minimum price of the range |
+maxPriceBound | STRING | Maximum price of the range |
+
+
+### POST `/v2/AMM/redeem`
+
+Redeem AMM
+
+> **Request**
+
+```json
+POST /v2/AMM/redeem
+
+{
+    "hashToken": "CF-BTC-AMM-WJRzxzb",
+    "redeemType": "DELIVER"
+}
+```
+
+> **SUCCESSFUL RESPONSE**
+
+```json
+{
+    "event": "redeemAMM",
+    "timestamp": "1628502282362",
+    "accountId": "3101",
+    "data": {
+        "hashToken": "CF-BTC-AMM-mz7WAOZc",
+        "redeemType": "DELIVER"
+    }
+}
+```
+
+Request Parameters | Type | Required | Description |
+------------------ | ---- | -------- | ----------- |
+hashToken | STRING | YES | Identity of the AMM |
+redeemType | STRING | YES | Value can be `DELIVER` or `MANUAL` |
+
+Response Fields | Type | Description |
+----------------| ---- | ----------- |
+hashToken | STRING | Identity of the AMM |
+redeemType | STRING | YES | Value can be `DELIVER` or `MANUAL` |
+
+
+### GET `/v2/AMM`
+
+Get AMMs.
+
+> **Request**
+
+```json
+GET v2/AMM?hashToken=CF-BTC-AMM-RoBwokR&marketCode=BTC-USDT-SWAP-LIN
+```
+
+> **SUCCESSFUL RESPONSE**
+
+```json
+{
+    "event": "infoAMM",
+    "timestamp": "1628508877030",
+    "accountId": "3101",
+    "data": [
+        {
+            "hashToken": "CF-BTC-AMM-RoBwokR",
+            "direction": "NEUTRAL",
+            "marketCode": "BTC-USDT-SWAP-LIN",
+            "status": "EXECUTING",
+            "collateralAsset": "BTC",
+            "assetQuantity": "0.4",
+            "collateralCounterAsset": "USDT",
+            "counterAssetQuantity": "5000",
+            "minPriceBound": "8750",
+            "maxPriceBound": "16250",
+            "assetBalance": "0",
+            "counterAssetBalance": "19894.5719512",
+            "position": "-0.433",
+            "entryPrice": "37758.38",
+            "usdEarned": "95",
+            "flexReward": "675",
+            "apr": "86.64",
+            "createdAt": "1628066890178",
+            "updatedAt": "1628476562875"
+        }
+    ]
+}
+```
+
+Request Parameters | Type | Required |Description| 
+-------------------------- | -----|--------- | -------------|
+hashToken | STRING | NO | Multiple hashTokens can be separated by a comma |
+marketCode| STRING | NO | Market code e.g. `BTC-USDT-SWAP-LIN` |
+status | STRING | NO | Value can be `ENDED` or `EXECUTING` or `PENDING` |
+
+Response Fields | Type | Description |
+----------------| ---- | ----------- |
+hashToken | STRING | Identity of the AMM |
+direction | STRING | Value can be `BUY` or `SELL` or `NEUTRAL` |
+marketCode | STRING | Market code e.g. `BTC-USDT-SWAP-LIN` |
+status | STRING | Value can be `ENDED` or `EXECUTING` or `PENDING` |
+collateralAsset | STRING | Collateral asset |
+assetQuantity | STRING | Quantity of the collateral asset |
+collateralCounterAsset | STRING | Collateral counter asset |
+counterAssetQuantity | STRING | Quantity of the collateral counter asset |
+minPriceBound | STRING | Minimum price of the range |
+maxPriceBound | STRING | Maximum price of the range |
+position | STRING | Current position |
+usdEarned | STRING | USDT already earned |
+flexReward | STRING | Amount of FLEX reward | 
+apr | STRING | APR(annual percentage rate) |
+createdAt | STRING | The time that AMM was created at |
+updatedAt | STRING | The time that AMM was updated at |
