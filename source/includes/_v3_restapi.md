@@ -14,7 +14,7 @@
 
 Opnx offers a powerful RESTful API to empower traders.
 
-## Error Codes
+## RESTful Error Codes
 
 Code | Description |
 ---- | ----------- |
