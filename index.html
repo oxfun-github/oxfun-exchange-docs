@@ -2714,7 +2714,7 @@ One account can only place up to 50 orders per second via websocket.
 <li>Modifying the side will <strong>always</strong> move the modified order to the back of the order queue, resulting in a new order ID.</li>
 </ul>
 
-<p>Please note that when a new order ID is issued the original order is actually <strong>closed</strong> and a new order with a new order ID is <strong>opened</strong>, replacing the original order.  This is described in further detail in the section <a href="#websocket-api-subscriptions-private-order-channel-ordermodified">Order Channel - OrderModified</a>.    </p>
+<p>Please note that when a new order ID is issued the original order is actually <strong>closed</strong> and a new order with a new order ID is <strong>opened</strong>, replacing the original order.  This is described in further detail in the section <a href="?json#ordermodified">Order Channel - OrderModified</a>.    </p>
 
 <p>Please be aware that modifying the side of an existing GTC LIMIT order from BUY to SELL or vice versa <strong>without</strong> modifying the price could result in the order matching immediately since its quite likely the new order will become an agressing taker order.  </p>
 
@@ -4116,7 +4116,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>As described in a previous section <a href="?json#ordermodified">Order Commands - Modify Order</a>, the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified.</p>
+<p>As described in a previous section <a href="?json#modify-order">Order Commands - Modify Order</a>, the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified.</p>
 
 <p>If the orders queue position is <strong>unchanged</strong> because the orders quantity has been <strong>reduced</strong> and no other order parameter has been changed then this <strong>OrderModified</strong> message will be sent via the Order Channel giving the full details of the modified order.  In this case the order ID is unchanged.</p>
 
