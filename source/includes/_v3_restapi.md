@@ -1156,7 +1156,7 @@ marketCode | STRING | YES | Market code |
 side | STRING | YES | `BUY` or `SELL` |
 quantity | STRING | YES | Quantity |
 amount | STRING | YES | Amount |
-quantity | STRING | YES | displayQuantity |
+displayQuantity | STRING | NO | displayQuantity |
 timeInForce | STRING | NO | Default `GTC` |
 orderType | STRING | YES | `LIMIT` or `MARKET` or `STOP` or `STOP_MARKET`|
 price | STRING | NO | Limit price for the limit order |
