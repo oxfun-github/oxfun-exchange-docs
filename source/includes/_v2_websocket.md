@@ -113,10 +113,6 @@ Websocket commands can be sent in either of the following two formats:
 
 Further information regarding the error codes and corresponding error messages from a failed subscription or order command request can be found in a later section of this documentation [Error Codes](#error-codes).
 
-**WebSocket adapter**
-
-[opnx-ws](https://pypi.org/project/opnx-ws/) is a websocket wrapper to easily connect to Opnx's websockets.
-
 
 ##Authentication
 
@@ -391,6 +387,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "timeInForce": "GTC",
             "orderId": "1000000700008",
             "price": "9431.48",
+            "limitPrice": "9431.48",
             "source": 0
           }
 }
@@ -414,6 +411,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "quantity": "1.5",
             "timeInForce": "GTC",
             "price": "9431.48",
+            "limitPrice": "9431.48",
             "source": 0
           }
 }
@@ -540,6 +538,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "orderType": "MARKET",
             "quantity": "5",
             "orderId": "1000000700008",
+            "limitPrice": "1700.00",
             "source": 0
           }
 }
@@ -561,6 +560,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "side": "SELL",
             "orderType": "MARKET",
             "quantity": "5",
+            "limitPrice": "1700.00",
             "source": 0
           }
 }
@@ -646,7 +646,7 @@ place_order = \
             "clientOrderId": 1,
             "marketCode": "ETH-USDT-SWAP-LIN",
             "side": "BUY",
-            "orderType": "STOP",
+            "orderType": "STOP_LIMIT",
             "quantity": 10,
             "timeInForce": "MAKER_ONLY_REPRICE",
             "stopPrice": 100,
@@ -690,10 +690,12 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "orderType": "STOP_LIMIT",
             "quantity": "10",
             "timeInForce": "MAKER_ONLY_REPRICE",
-            "stopPrice": "100",
+            "price": "120",
             "limitPrice": "120",
+            "stopPrice": "100",
             "orderId": "1000000700008",
             "source": 0
+            "triggerType": "MARK_PRICE"
           }
 }
 ```
@@ -715,9 +717,11 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "orderType": "STOP_LIMIT",
             "quantity": "10",
             "timeInForce": "MAKER_ONLY_REPRICE",
+            "price": "120",
             "stopPrice": "100",
             "limitPrice": "120",
-            "source": 0
+            "source": 0,
+            "triggerType": "MARK_PRICE"
           }
 }
 ```
@@ -749,6 +753,8 @@ recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engin
 
 
 ### Place Stop Market Order
+
+Stop market orders are only available in Perp markets.
 
 > **Request format**
 
@@ -842,9 +848,11 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "clientOrderId": "1679907301552",
             "marketCode": "BTC-USDT-SWAP-LIN",
             "side": "SELL",
-            "status":"OPEN",
             "orderType": "STOP_MARKET",
             "quantity": "0.012",
+            "timeInForce": "IOC",
+            "price": "25000",
+            "limitPrice": "25000",
             "stopPrice": "22279.29",
             "orderId": "1000001680990",
             "triggerType": "MARK_PRICE",
@@ -864,15 +872,17 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "code": "<errorCode>",
   "timestamp": "1679907302693",
   "data": {
-           "timestamp": 1607639739098,
-           "recvWindow": 500,
-           "clientOrderId": 1679907301552,
+           "clientOrderId": "1679907301552",
            "marketCode": "BTC-USDT-SWAP-LIN",
            "side": "SELL",
            "orderType": "STOP_MARKET",
-           "quantity": 0.012,
+           "quantity": "0.012",
            "timeInForce": "IOC",
-           "stopPrice": 22279.29
+           "price": "25000",
+           "limitPrice": "25000",
+           "stopPrice": "22279.29"
+           "triggerType": "MARK_PRICE",
+           "source": 0
           }
 }
 ```
@@ -1019,6 +1029,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "quantity": "10",
             "timeInForce": "MAKER_ONLY",
             "price": "100",
+            "limitPrice": "100",
             "orderId": "1000003700008",
             "source": 0
           }
@@ -1038,6 +1049,7 @@ AND
             "orderType": "MARKET",
             "quantity": "0.2",
             "orderId": "1000004700009",
+            "limitPrice": "20000",
             "source": 0
           }
 }
@@ -1061,6 +1073,7 @@ AND
             "quantity": "10",
             "timeInForce": "MAKER_ONLY",
             "price": "100",
+            "limitPrice": "100",
             "source": 0
           }
 }
@@ -1080,6 +1093,7 @@ AND
             "side": "SELL",
             "orderType": "MARKET",
             "quantity": "0.2",
+            "limitPrice": "20000",
             "source": 0
           }
 }
@@ -1467,13 +1481,15 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "tag": "1",
   "timestamp": "1592491032427",
   "data":{
-          "orderId": 888,
-          "side": "BUY",
-          "quantity": 2
-          "price": 9800,
-          "orderType": "LIMIT",
-          "marketCode": "BTC-USDT-SWAP-LIN"
-         }
+      "clientOrderId": "1",
+      "orderId": "888",
+      "side": "BUY",
+      "quantity": "2"
+      "price": "9800",
+      "limitPrice": "9800",
+      "orderType": "LIMIT",
+      "marketCode": "BTC-USDT-SWAP-LIN"
+  }
 }
 ```
 
@@ -1488,10 +1504,11 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "code": "<errorCode>",
   "timestamp": "1592491032427",
   "data": {
-            "orderId": 888,
+            "orderId": "888",
             "side": "BUY",
-            "quantity": 2,
-            "price": 9800,
+            "quantity": "2",
+            "price": "9800",
+            "limitPrice": "9800",
             "marketCode": "BTC-USDT-SWAP-LIN"
           }
 }
@@ -1635,10 +1652,12 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "tag": "123",
   "timestamp": "1607639739098",
   "data": {
+            "clientOrderId": "100"
             "orderId": "304304315061932310",
             "side": "BUY",
-            "quantity": "5"
+            "quantity": "5",
             "price": "101",
+            "limitPrice": "101",
             "orderType": "LIMIT",
             "marketCode": "ETH-USDT-SWAP-LIN"
           }
@@ -1652,10 +1671,12 @@ AND
   "tag": "123",
   "timestamp": "1607639739136",
   "data": {
+            "clientOrderId": "200"
             "orderId": "304304315061864646",
             "side": "SELL",
-            "quantity": 0.21,
+            "quantity": "0.21",
             "price": "10001",
+            "limitPrice": "10001",
             "orderType": "LIMIT",
             "marketCode": "BTC-USDT"
           }
@@ -1673,9 +1694,10 @@ AND
   "code": "<errorCode>",
   "timestamp": "1592491503359",
   "data": {
-            "orderID": 304304315061932310,
+            "orderID": "304304315061932310",
             "side": "BUY",
-            "price": 101,
+            "price": "101",
+            "limitPrice": "101",
             "marketCode": "ETH-USDT-SWAP-LIN"
           }
 }
@@ -1690,9 +1712,10 @@ AND
   "code": "<errorCode>",
   "timestamp": "1592491503457",
   "data": {
-            "orderID": 304304315061864646,
-            "quantity": 0.21,
-            "price": 10001,
+            "orderID": "304304315061864646",
+            "quantity": "0.21",
+            "price": "10001",
+            "limitPrice": "10001",
             "marketCode": "BTC-USDT"
           }
 }
@@ -1814,23 +1837,24 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "accountId": "<Your account ID>",
   "timestamp": "1599693365059",
   "tradeType": "LINEAR",
-  "data": [{
-              "total": "10000",
-              "reserved": "1000",
-              "instrumentId": "USDT",
-              "available": "9000",
-              "locked": "0"
-              "quantityLastUpdated": "1599694369431",
-            },
-            {
-              "total": "100000",
-              "reserved": "0",
-              "instrumentId": "FLEX",
-              "available": "100000",
-              "locked": "0"
-              "quantityLastUpdated": "1599694343242",
-            }
-          ]
+  "data":[
+      {
+          "total": "10000",
+          "reserved": "1000",
+          "instrumentId": "USDT",
+          "available": "9000",
+          "locked": "0"
+          "quantityLastUpdated": "1599694369431",
+       },
+       {
+          "total": "100000",
+          "reserved": "0",
+          "instrumentId": "FLEX",
+          "available": "100000",
+          "locked": "0"
+          "quantityLastUpdated": "1599694343242",
+        }
+  ]
 }
 ```
 
@@ -1955,7 +1979,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "table": "position",
   "accountId": "<Your account ID>",
   "timestamp": "1607985371481",
-  "data": [ {
+  "data":[ {
               "instrumentId": "ETH-USDT-SWAP-LIN",
               "quantity" : "0.1",
               "lastUpdated": "1616053755423",
@@ -1967,15 +1991,15 @@ asyncio.get_event_loop().run_until_complete(subscribe())
               "leverage": "0"
             },
             {
-              "instrumentId": "WBTC-USDT-SWAP-LIN",
-              "quantity" : "0.542",
+              "instrumentId": "ETH-USDT-SWAP-LIN",
+              "quantity" : "50.54",
               "lastUpdated": "1617099855968",
-              "contractValCurrency": "WBTC",
-              "entryPrice": "20000.0",
+              "contractValCurrency": "ETH",
+              "entryPrice": "2000.0",
               "positionPnl": "1220.9494164000000",
-              "estLiquidationPrice": "5317.2",
-              "margin": "5420.0",
-              "leverage": "2"
+              "estLiquidationPrice": "1317.2",
+              "margin": "0",
+              "leverage": "0"
             },
             ...
           ]
@@ -2011,8 +2035,8 @@ contractValCurrency | STRING | Base asset ID e.g. `ETH` |
 entryPrice | STRING | Average entry price of total position (Cost / Size) |
 positionPnl | STRING | Postion profit and lost |
 estLiquidationPrice | STRING | Estimated liquidation price, return 0 if it is negative(<0) |
-margin | STRING | Used in permissionless perps to signify the amount of margin isolated by the position. Shows as `0` in non-permissionless markets |
-leverage | STRING | Used in permissionless perps to signify the selected leverage. Shows as `0` in non-permissionless markets |
+margin | STRING | Currently always reports 0
+leverage | STRING | Currently always reports 0
 
 
 ### Order Channel
@@ -2119,46 +2143,60 @@ tag | INTEGER or STRING | No | If given it will be echoed in the reply and the m
 ```json
 {
   "table": "order",
-  "data": [ {
-              "notice": "OrderOpened",
-              "accountId": "<Your account ID>",
-              "clientOrderId": "16",
-              "orderId" : "123",
-              "price": "9600",
-              "quantity": "2" ,
-              "side": "BUY",
-              "status": "OPEN",
-              "marketCode": "BTC-USDT-SWAP-LIN",
-              "timeInForce": "MAKER_ONLY",
-              "timestamp": "1594943491077"
-              "orderType": "LIMIT",
-              "isTriggered": "False"
-            } ]
+  "data": [ 
+      {
+          "notice": "OrderOpened",
+          "accountId": "<Your account ID>",
+          "clientOrderId": "16",
+          "orderId" : "123",
+          "price": "9600",
+          "limitPrice": "9600",
+          "quantity": "2",
+          "remainQuantity": "2",
+          "amount": "0.0",
+          "side": "BUY",
+          "status": "OPEN",
+          "marketCode": "BTC-USDT-SWAP-LIN",
+          "timeInForce": "MAKER_ONLY",
+          "timestamp": "1594943491077",
+          "orderType": "LIMIT",
+          "isTriggered": "False",
+          "displayQuantity": "2"
+       }
+  ]
 }
 ```
 
-> **OrderOpened message format - STOP LIMIT order**
+> **OrderOpened message format - STOP MARKET order**
 
 ```json
 {
   "table": "order",
-  "data": [ {
-              "notice": "OrderOpened",
-              "accountId": "<Your account ID>",
-              "clientOrderId": "17",
-              "orderId": "2245",
-              "quantity": "2",
-              "side": "BUY",
-              "status": "OPEN",
-              "marketCode": "USDT-USDT-SWAP-LIN",
-              "timeInForce": "IOC",
-              "timestamp": "1594943491077",
-              "stopPrice": "9280",
-              "limitPrice": "9300",
-              "orderType": "STOP_LIMIT",
-              "isTriggered": "True"
-            } ]
+  "data": [
+      {
+          "accountId": "<Your account ID>", 
+          "clientOrderId": "1", 
+          "orderId": "1000021706785", 
+          "price": "12000.0", 
+          "quantity": "0.001", 
+          "amount": "0.0", 
+          "side": "BUY", 
+          "status": "OPEN", 
+          "marketCode": "BTC-USDT-SWAP-LIN", 
+          "timeInForce": "IOC", 
+          "timestamp": "1680042503604", 
+          "remainQuantity": "0.001", 
+          "stopPrice": "10000.0", 
+          "limitPrice": "12000.0", 
+          "notice": "OrderOpened", 
+          "orderType": "STOP_MARKET", 
+          "isTriggered": "false", 
+          "triggerType": "MARK_PRICE", 
+          "displayQuantity": "0.001"
+      }
+  ]
 }
+
 ```
 
 <sub>**Channel Update Fields**</sub>
@@ -2173,15 +2211,20 @@ clientOrderId |  STRING | Client assigned ID to help manage and identify orders 
 orderId | STRING | Unique order ID from the exchange
 price |STRING | Limit price submitted (only applicable for LIMIT order types)
 quantity | STRING| Quantity submitted
+amount | STRING |
 side|STRING|`BUY` or `SELL`
 status|STRING|  Order status
 marketCode | STRING |  Market code e.g. `FLEX-USDT`
 timeInForce|STRING| Client submitted time in force, `GTC` by default
 timestamp|STRING |Current millisecond timestamp
+remainQuantity | STRING | Working quantity
 orderType| STRING | `LIMIT` or `STOP_LIMIT`
-stopPrice| STRING |Stop price submitted (only applicable for STOP LIMIT order types)
-limitPrice|STRING|Limit price submitted (only applicable for STOP LIMIT order types)
-isTriggered|STRING|`False` or `True` 
+stopPrice| STRING |Stop price submitted (only applicable for STOP order types)
+limitPrice|STRING|Limit price submitted
+isTriggered|STRING|`False` or `True`
+triggerType|STRING| Stops are triggered on `MARK_PRICE`
+displayQuantity |STRING|
+
 
 
 #### OrderClosed
@@ -2190,49 +2233,63 @@ isTriggered|STRING|`False` or `True`
 
 ```json
 {
-  "table": "order",
-  "data": [ {
-              "notice": "OrderClosed",
-              "accountId": "<Your account ID>",
-              "clientOrderId": "16",
-              "orderId": "73",
-              "price": "9600",
-              "quantity": "2",
-              "side": "BUY",
-              "status": "<Canceled status>",
-              "marketCode": "BTC-USDT-SWAP-LIN",
-              "timeInForce": "<Time in force>",
-              "timestamp": "1594943491077",
-              "remainQuantity": "1.5",
-              "orderType": "LIMIT",
-              "isTriggered": "False" 
-            } ]
+  "table": "order", 
+  "data": [
+      {
+          "accountId": "<Your account ID>", 
+          "clientOrderId": "1", 
+          "orderId": "1000021764611", 
+          "price": "20000.0", 
+          "quantity": "0.001", 
+          "amount": "0.0", 
+          "side": "BUY", 
+          "status": "CANCELED_BY_USER", 
+          "marketCode": "BTC-USDT-SWAP-LIN", 
+          "timeInForce": "GTC", 
+          "timestamp": "1680043402806", 
+          "remainQuantity": "0.001", 
+          "limitPrice": "20000.0", 
+          "notice": "OrderClosed", 
+          "orderType": "LIMIT", 
+          "isTriggered": "false", 
+          "displayQuantity": "0.001"
+      }
+  ]
 }
+
 ```
 
 > **OrderClosed message format - STOP LIMIT order**
 
 ```json
 {
-  "table": "order",
-  "data": [ {
-              "notice": "OrderClosed",
-              "accountId": "<Your account ID>",
-              "clientOrderId": "16",
-              "orderId": "13",
-              "quantity": "2",
-              "side": "BUY",
-              "status": "CANCELED_BY_USER",
-              "marketCode": "BTC-USDT-SWAP-LIN",
-              "timeInForce": "<Time in force>",
-              "timestamp": "1594943491077",
-              "remainQuantity": "1.5",
-              "stopPrice": "9100",
-              "limitPrice": "9120",
-              "orderType": "STOP LIMIT",
-              "isTriggered": "True" 
-            } ]
+  "table": "order", 
+  "data": [
+      {
+          "accountId": "<Your account ID>", 
+          "clientOrderId": "1", 
+          "orderId": "1000021852415", 
+          "price": "21000.0", 
+          "quantity": "0.001", 
+          "amount": "0.0", 
+          "side": "BUY", 
+          "status": "CANCELED_BY_USER", 
+          "marketCode": "BTC-USDT-SWAP-LIN", 
+          "timeInForce": "GTC", 
+          "timestamp": "1680044038047", 
+          "remainQuantity": "0.001", 
+          "stopPrice": "20000.0", 
+          "limitPrice": "21000.0", 
+          "notice": "OrderClosed", 
+          "orderType": "LIMIT", 
+          "isTriggered": "true", 
+          "triggerType": "MARK_PRICE", 
+          "displayQuantity": "0.001"
+      }
+  ]
 }
+
+
 ```
 
 There are multiple scenarios in which an order is closed as described by the **status** field in the OrderClosed message.  In summary orders can be closed by:-
@@ -2256,16 +2313,19 @@ clientOrderId|STRING |  Client assigned ID to help manage and identify orders wi
 orderId | STRING  |  Unique order ID from the exchange
 price|STRING |Limit price of closed order (only applicable for LIMIT order types)
 quantity|STRING |Original order quantity of closed order
+amount | STRING |
 side|STRING |`BUY` or `SELL`
 status|STRING | <ul><li>`CANCELED_BY_USER`</li><li>`CANCELED_BY_MAKER_ONLY`</li><li>`CANCELED_BY_FOK`</li><li>`CANCELED_ALL_BY_IOC`</li><li>`CANCELED_PARTIAL_BY_IOC`</li><li>`CANCELED_BY_AMEND`</li></ul>
 marketCode|STRING |  Market code e.g. `BTC-USDT-SWAP-LIN`
 timeInForce|STRING |Time in force of closed order
 timestamp|STRING |Current millisecond timestamp
 remainQuantity|STRING |Historical remaining order quantity of closed order
-stopPrice|STRING|Stop price of closed stop order (only applicable for STOP LIMIT order types)
-limitPrice|STRING|Limit price of closed stop order (only applicable for STOP LIMIT order types)
+stopPrice|STRING|Stop price of closed stop order (only applicable for STOP order types)
+limitPrice|STRING|Limit price
 ordertype | STRING | `LIMIT` or `STOP_LIMIT`
-isTriggered | STRING | `False` or `True` 
+isTriggered | STRING | `False` or `True`
+triggerType|STRING| Stops are triggered on `MARK_PRICE`
+displayQuantity |STRING|
 
 
 #### OrderClosed Failure
@@ -2345,23 +2405,30 @@ isTriggered | BOOL | `False` or `True`
 
 ```json
 {
-  "table": "order",
-  "data": [ {
-              "notice": "OrderModified",
-              "accountId": "<Your account ID>",
-              "clientOrderId": "16",
-              "orderId": "94335",
-              "price": "9600",
-              "quantity": "1",
-              "side": "BUY",
-              "status": "OPEN",
-              "marketCode": "BTC-USDT-SWAP-LIN",    
-              "timeInForce": "GTC",
-              "timestamp": "1594943491077"
-              "orderType": "LIMIT",
-              "isTriggered": "False" 
-            } ]
+  "table": "order", 
+  "data": [
+      {
+          "accountId": "<Your account ID>",
+          "clientOrderId": "1",
+          "orderId": "1000021878849",
+          "price": "30.0",
+          "quantity": "0.001",
+          "amount": "0.0",
+          "side": "BUY",
+          "status": "OPEN",
+          "marketCode": "BTC-USDT-SWAP-LIN",
+          "timeInForce": "GTC",
+          "timestamp": "1680044356374",
+          "remainQuantity": "0.001",
+          "limitPrice": "30.0",
+          "notice": "OrderModified",
+          "orderType": "LIMIT",
+          "isTriggered": "false",
+          "displayQuantity": "0.001"
+      }
+  ]
 }
+
 ```
 
 As described in a previous section [Order Commands - Modify Order](?json#ordermodified), the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified.
@@ -2382,15 +2449,19 @@ clientOrderId |  STRING | Client assigned ID to help manage and identify orders 
 orderId | STRING | Unique order ID from the exchange
 price |STRING | Limit price of modified order (only applicable for LIMIT order types)
 quantity | STRING| Quantity of modified order
+remainQuantity | STRING | Working quantity
+amount|STRING|
 side|STRING|`BUY` or `SELL`
 status|STRING|  Order status
 marketCode | STRING |  Market code e.g. `BTC-USDT-SWAP-LIN`
 timeInForce|STRING| Client submitted time in force, `GTC` by default
 timestamp|STRING |Current millisecond timestamp
 orderType| STRING | `LIMIT` or `STOP_LIMIT`
-stopPrice|STRING|Stop price of modified order (only applicable for STOP LIMIT order types)
-limitPrice|STRING|Limit price of modified order (only applicable for STOP LIMIT order types)
+stopPrice|STRING|Stop price of modified order (only applicable for STOP order types)
+limitPrice|STRING|Limit price of modified order
 isTriggered|STRING|`False` or `True` |
+triggerType|STRING| Stops are triggered on `MARK_PRICE`|
+displayQuantity |STRING|
 
 
 #### OrderModified Failure
@@ -2467,33 +2538,36 @@ isTriggered | BOOL
 
 ```json
 {
-  "table": "order",
-  "data": [ {
-              "notice": "OrderMatched",
-              "accountId": "<Your account ID>",
-              "clientOrderId": "16",
-              "orderId": "567531657",
-              "price": "9300",
-              "quantity": "20",
-              "side": "BUY",
-              "status": "<Matched status>",
-              "marketCode": "BTC-USDT-SWAP-LIN",
-              "timeInForce": "GTC",
-              "timestamp": "1592490254168",
-              "matchId": "11568123",
-              "matchPrice": "9300",
-              "matchQuantity": "20",
-              "orderMatchType": "MAKER",
-              "remainQuantity": "0",
-              "orderType": "<Order type>", 
-              "stopPrice": "9000",
-              "limitPrice": "9050", 
-              "fees": "3.7",
-              "feeInstrumentId": "FLEX",   
-              "isTriggered": "False"
-        }
-    ]
+  "table": "order", 
+  "data": [
+      {
+          "accountId": "<Your account ID>",
+          "clientOrderId": "1680044888401",
+          "orderId": "1000021937814",
+          "price": "27282.73",
+          "quantity": "0.004",
+          "amount": "0.0",
+          "side": "BUY",
+          "status": "FILLED", 
+          "marketCode": "BTC-USDT-SWAP-LIN",
+          "timeInForce": "GTC",
+          "timestamp": "1680044888565",
+          "matchId": "300016799886154670",
+          "matchPrice": "27279.39",
+          "matchQuantity": "0.001",
+          "orderMatchType": "TAKER",
+          "remainQuantity": "0.0",
+          "limitPrice": "27282.73",
+          "notice": "OrderMatched",
+          "orderType": "LIMIT",
+          "fees": "0.019095573", 
+          "feeInstrumentId": "USDT",
+          "isTriggered": "false",
+          "displayQuantity": "0.004"
+      }
+  ]
 }
+
 ```
 
 <sub>**Channel Update Fields**</sub>
@@ -2507,9 +2581,10 @@ accountId | STRING | Account identifier
 clientOrderId|STRING|  Client assigned ID to help manage and identify orders with max value `9223372036854775807`
 orderId | STRING|   Unique order ID from the exchange
 price|STRING| Limit price submitted (only applicable for LIMIT order types)
-stopPrice|STRING| Stop price submitted (only applicable for STOP LIMIT order types)
-limitPrice|STRING| Limit price submitted (only applicable for STOP LIMIT order types)
+stopPrice|STRING| Stop price submitted (only applicable for STOP order types)
+limitPrice|STRING| Limit price submitted
 quantity|STRING|Order quantity submitted
+amount|STRING|
 side|STRING|`BUY` or `SELL`
 status|STRING|`FILLED` or `PARTIAL_FILL`
 marketCode|STRING| Market code i.e. `BTC-USDT-SWAP-LIN`
@@ -2523,7 +2598,9 @@ remainQuantity|STRING|Remaining order quantity
 orderType|STRING|<ul><li>`LIMIT`</li><li>`MARKET`</li><li>`STOP_LIMIT`</li></ul>
 fees|STRING|Amount of fees paid from this match ID 
 feeInstrumentId|STRING|Instrument ID of fees paid from this match ID 
-isTriggered|STRING|`False` (or `True` for STOP LIMIT order types)
+isTriggered|STRING|`False` (or `True` for STOP order types)
+triggerType|STRING| Stops are triggered on `MARK_PRICE`|
+displayQuantity |STRING|
 
 
 ## Subscriptions - Public
@@ -3049,7 +3126,7 @@ data | LIST of dictionary |
 tradeId   | STRING    | Transaction Id|
 price | STRING    | Matched price|
 quantity|STRING   | Matched quantity|
-matchType|STRING   | `TAKER` or `MAKER`|
+matchType|STRING   | `TAKER` or `MAKER`, orders that match via the implied mechanism show as MAKERs in their respective markets|
 side    |STRING   | Matched side|
 timestamp| STRING | Matched timestamp|
 marketCode| STRING | Market code |
@@ -3133,7 +3210,8 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "timestamp": "1622020931049",
             "lastQty": "0",
             "markPrice": "3.304",
-            "lastMarkPrice": "3.304"
+            "lastMarkPrice": "3.304",
+            "indexPrice": "3.304"
         },
         {
             "last": "0",
@@ -3147,7 +3225,8 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "timestamp": "1622020931046",
             "lastQty": "0",
             "markPrice": "3.304",
-            "lastMarkPrice": "3.304"
+            "lastMarkPrice": "3.304",
+            "indexPrice": "3.304"
         },
         ...
     ]
@@ -3189,6 +3268,8 @@ low24h     | STRING   | 24 hour lowest price|
 openInterest     | STRING   | Open interest|
 lastQty     | STRING   | Last traded price amount|
 timestamp   | STRING   | Millisecond timestamp|
+lastMarkPrice| STRING | Previous mark price reading|
+indexPrice | STRING | Index price |
 
 
 ### Candles
@@ -3445,26 +3526,26 @@ asyncio.get_event_loop().run_until_complete(subscribe())
 ```json
 {
   "table": "market",
-  "data": [ {
-              "marketPrice": "0.367",
-              "listingDate": "1593288000000", 
-              "qtyIncrement": "0.1", 
-              "upperPriceBound": "0.417", 
-              "lowerPriceBound": "0.317", 
-              "counter": "USDT", 
-              "type": "SPOT", 
-              "marketId": "3001000000000", 
-              "referencePair": "FLEX/USDT", 
-              "tickSize": "0.001", 
-              "marketPriceLastUpdated": "1613769981920", 
-              "contractValCurrency": "FLEX", 
-              "name": "FLEX/USDT Spot", 
-              "marketCode": "FLEX-USDT", 
-              "marginCurrency": "USDT", 
-              "base": "FLEX"
-          }, 
-          ........
-        ]
+  "data": [ 
+      {
+          "marketId": "3001000000000",
+          "marketCode": "FLEX-USDT",
+          "name": "FLEX/USDT Spot",
+          "referencePair": "FLEX/USDT",
+          "base": "FLEX",
+          "counter": "USDT",
+          "type": "SPOT",
+          "exclusive": "false",
+          "tickSize": "0.001",
+          "qtyIncrement": "0.1",
+          "marginCurrency": "USDT",
+          "contractValCurrency": "FLEX", 
+          "upperPriceBound": "0.417",
+          "lowerPriceBound": "0.317",
+          "marketPrice": "0.367",
+      }, 
+      ........
+   ]
 }
 ```
 
@@ -3491,7 +3572,6 @@ Fields |Type | Description|
 table | STRING | `market`
 data | LIST of dictionaries |
 marketPrice | STRING   | Mark price|
-listingDate | STRING   | Millisecond timestamp |
 qtyIncrement | STRING   | Quantity increment |
 upperPriceBound | STRING   | Upper sanity price bound|
 lowerPriceBound     | STRING   | Lower sanity price bound |
