@@ -766,12 +766,12 @@ GET /v3/withdrawal?id={id}&asset={asset}&limit={limit}&startTime={startTime}&end
         {
             "id": "651573911056351237",
             "asset": "USDT",
-            "network": "SLP",
-            "address": "simpleledger:qzlg6uvceehgzgtz6phmvy8gtdqyt6vf35fxqwx3p7",
+            "network": "ERC20",
+            "address": "0xEf1c6E67703c7BD7107eed8303Fbe6EC2554BF6B",
             "quantity": "1000.0",
             "fee": "0.000000000",
             "status": "COMPLETED",
-            "txId": "38c09755bff75d33304a3cb6ee839fcb78bbb38b6e3e16586f20852cdec4886d",
+            "txId": "0x2b2f01a3cbe5165c883e3b338441182f309ddb8f504b52a2e9e15f17ea9af044",
             "requestedAt": "1617940800000",
             "completedAt": "16003243243242"
         }
@@ -1001,29 +1001,29 @@ GET /v3/orders/working?marketCode={marketCode}&orderId={orderId}&clientOrderId={
 
 ```json
 {
-    "success": true,
-    "data":  [ 
-        {		
-          "orderId": "160067484555913076",
-          "clientOrderId": "123",
-          "marketCode": "BTC-USDT-SWAP-LIN",
-          "status": "LIMIT"|"STOP",
-          "side": "SELL",
-          "price": "1.0",
-          "stopPrice": "0.9",
-          "isTriggered": true,
-          "quantity": "0.001",
-          "remainQuantity": "0.001",
-          "matchedQuantity": "0",
-          "orderType": "LIMIT", 
-          "timeInForce": "GTC",
-          "source": "0",
-          "createdAt": "1613089383656", 
-          "lastModifiedAt": null,
-          "lastMatchedAt": null
-        }
-    ]
+  "success": True,
+  "data": [
+      {
+        "orderId": "1000026408953",
+        "clientOrderId": "1",
+        "marketCode": "BTC-USDT",
+        "status": "OPEN",
+        "side": "BUY",
+        "price": "1000.0",
+        "isTriggered": True,
+        "quantity": "10.0",
+        "remainQuantity": "10.0",
+        "matchedQuantity": "0.0",
+        "orderType": "LIMIT",
+        "timeInForce": "GTC",
+        "source": "11",
+        "createdAt": "1680113440852",
+        "lastModifiedAt": "1680113440875"
+      }
+  ]
 }
+
+
 ```
 
 Request Parameter | Type | Required | Description |
@@ -1115,15 +1115,16 @@ POST /v3/orders/place
             "notice": "OrderOpened", 
             "accountId": "1076", 
             "orderId": "1000132664173",
-            "submitted": false,
+            "submitted": true,
             "clientOrderId": "1612249737724",
             "marketCode": "BTC-USDT-SWAP-LIN",
             "status": "OPEN",
             "price": "23641.0",
             "stopPrice": null,
-            "isTriggered": "false",
-            "quantity": "0.01", 
-            "remainQuantity": "0.01",
+            "isTriggered": false,
+            "quantity": "0.01",
+            "amount": "0.0",
+            "remainQuantity": null,
             "matchId": null,
             "matchPrice": null, 
             "matchQuantity": null, 
@@ -1156,7 +1157,7 @@ marketCode | STRING | YES | Market code |
 side | STRING | YES | `BUY` or `SELL` |
 quantity | STRING | YES | Quantity |
 amount | STRING | NO | Amount (only allow amount field when market is spot and direction is BUY) |
-displayQuantity | STRING | NO | displayQuantity  (For limit order, pass both  `quantity` and `displayQuantity` fields in the order request.)|
+displayQuantity | STRING | NO | displayQuantity  (For an iceberg order, pass both  `quantity` and `displayQuantity` fields in the order request.)|
 timeInForce | STRING | NO | Default `GTC` |
 orderType | STRING | YES | `LIMIT` or `MARKET` or `STOP` or `STOP_MARKET`|
 price | STRING | NO | Limit price for the limit order |
@@ -1169,13 +1170,14 @@ notice | STRING | `OrderClosed` or `OrderMatched` or `OrderOpened` |
 accountId | STRING | Account ID |
 code | STRING | Error code |
 message | STRING | Error message |
+submitted | BOOL | Denotes whether the order was submitted to the matching engine or not |
 orderId | STRING | |
 clientOrderId | STRING | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
 marketCode | STRING | |
 side | STRING | `SELL` or `BUY` |
 price | STRING | |
 stopPrice | STRING | |
-isTriggered | STRING | false (or true for STOP order types) |
+isTriggered | BOOL | false (can be true for STOP order types) |
 quantity | STRING | |
 amount | STRING | |
 displayQuantity | STRING | |
@@ -1239,7 +1241,8 @@ DELETE /v3/orders/cancel
             "price": "4870.0", 
             "stopPrice": null,
             "isTriggered": false,
-            "quantity": "0.001", 
+            "quantity": "0.001",
+            "amount": "0.0",
             "remainQuantity": "0.001",
             "orderType": "LIMIT",  
             "timeInForce": "GTC", 
@@ -1277,6 +1280,7 @@ clientOrderId | ULONG | Either one of orderId or clientOrderId is required | Cli
 
 Response Fields | Type | Description | 
 --------------------| ---- | ----------- |
+submitted | BOOL | Denotes if the cancel request was submitted to the matching engine or not|
 notice | STRING | `OrderClosed` |
 accountId | STRING | Account ID |
 code | STRING | Error code |
@@ -1287,8 +1291,9 @@ marketCode | STRING | |
 side | STRING | `SELL` or `BUY` |
 price | STRING | |
 stopPrice | STRING | |
-isTriggered | STRING | false (or true for STOP order types) |
+isTriggered | BOOL | false (can be true for STOP order types) |
 quantity | STRING | |
+amount | STRING ||
 remainQuantity | STRING | Remaining quantity |
 orderType | STRING | `MARKET` or `LIMIT` or `STOP` or `STOP_MARKET` |
 timeInForce | STRING | |
