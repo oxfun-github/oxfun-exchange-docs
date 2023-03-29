@@ -1155,7 +1155,7 @@ clientOrderId | ULONG | YES | Client assigned ID to help manage and identify ord
 marketCode | STRING | YES | Market code |
 side | STRING | YES | `BUY` or `SELL` |
 quantity | STRING | YES | Quantity |
-amount | STRING | YES | Amount |
+amount | STRING | NO | Amount |
 displayQuantity | STRING | NO | displayQuantity |
 timeInForce | STRING | NO | Default `GTC` |
 orderType | STRING | YES | `LIMIT` or `MARKET` or `STOP` or `STOP_MARKET`|
