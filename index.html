@@ -709,27 +709,51 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='change-log'>Change Log</h1>
-<p><strong>2023-03-28</strong>
-* Removed WebSocket Adapter
-* Updated WebSocket API <a href="#order-commands">Order Commands</a>
-    * Response fields:
-        * Added new field <code>limitPrice</code>
-        * Added new field <code>triggerType</code>
-* Updated WebSocket API Order Channel
-    * Response fields:
-        * Added new field <code>limitPrice</code>
-        * Added new field <code>triggerType</code>
-* Updated Websocket Ticker Channel
-    * Response fields:
-        * Added new field <code>indexPrice</code>
-* Updated Websocket Market Channel
-    * Response fields:
-        * Removed field <code>listingDate</code>
-        * Removed field <code>marketPriceLastUpdated</code>
-        * Added new field <code>exclusive</code></p>
+<p><strong>2023-03-28</strong></p>
 
 <ul>
-<li>Updated REST API <a href="#get-v3-account">GET /v3/account</a> and <a href="#get-v3-positions">GET /v3/positions</a>
+<li>Removed WebSocket Adapter</li>
+<li>Updated WebSocket API <a href="#order-commands">Order Commands</a>
+
+<ul>
+<li>Response fields:
+
+<ul>
+<li>Added new field <code>limitPrice</code></li>
+<li>Added new field <code>triggerType</code></li>
+</ul></li>
+</ul></li>
+<li>Updated WebSocket API Order Channel
+
+<ul>
+<li>Response fields:
+
+<ul>
+<li>Added new field <code>limitPrice</code></li>
+<li>Added new field <code>triggerType</code></li>
+</ul></li>
+</ul></li>
+<li>Updated Websocket Ticker Channel
+
+<ul>
+<li>Response fields:
+
+<ul>
+<li>Added new field <code>indexPrice</code></li>
+</ul></li>
+</ul></li>
+<li><p>Updated Websocket Market Channel</p>
+
+<ul>
+<li>Response fields:
+
+<ul>
+<li>Removed field <code>listingDate</code></li>
+<li>Removed field <code>marketPriceLastUpdated</code></li>
+<li>Added new field <code>exclusive</code></li>
+</ul></li>
+</ul></li>
+<li><p>Updated REST API <a href="#get-v3-account">GET /v3/account</a> and <a href="#get-v3-positions">GET /v3/positions</a></p>
 
 <ul>
 <li>Response fields:
@@ -742,7 +766,7 @@
 <li>Removed field <code>riskRatio</code></li>
 </ul></li>
 </ul></li>
-<li>Updated REST API <a href="#get-v3-withdrawal">GET /v3/withdrawal</a>
+<li><p>Updated REST API <a href="#get-v3-withdrawal">GET /v3/withdrawal</a></p>
 
 <ul>
 <li>Response fields:
@@ -751,7 +775,7 @@
 <li>Added <code>IN SWEEPING</code> enum to the <code>status</code> field</li>
 </ul></li>
 </ul></li>
-<li>Updated REST API <a href="#get-v3-orders-status">GET /v3/orders/status</a> and <a href="#get-v3-orders-working">GET /v3/orders/working</a>
+<li><p>Updated REST API <a href="#get-v3-orders-status">GET /v3/orders/status</a> and <a href="#get-v3-orders-working">GET /v3/orders/working</a></p>
 
 <ul>
 <li>Response fields:
