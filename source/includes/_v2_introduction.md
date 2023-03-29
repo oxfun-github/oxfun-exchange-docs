@@ -80,7 +80,6 @@ Type                              |                            Limit |
 --------------------------------- | -------------------------------- |
 Rest API                          |                   100 per second |
 Rest API                          |                  2500 per 5 mins |
-Rest POST v2.1/delivery/orders    |                 2 per 10 seconds |
 Initialising Websocket Connection |                   200 per minute |
 Websocket API (Auth)              |                    50 per second |
 Websocket API (No Auth)           |                     1 per second |
