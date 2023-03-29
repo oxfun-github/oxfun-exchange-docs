@@ -2467,3 +2467,323 @@ flexReward | STRING | Amount of FLEX reward |
 apr | STRING | APR(annual percentage rate) |
 createdAt | STRING | The time that AMM was created at |
 updatedAt | STRING | The time that AMM was updated at |
+
+  
+### POST `/v2/mint`
+
+Mint.
+
+> **Request**
+
+```json
+POST /v2/mint
+
+{
+
+    "asset": "flexUSD",
+    "quantity": 1000
+
+}
+```
+
+> **SUCCESSFUL RESPONSE**
+
+```json
+{
+    "event":"mint",
+    "timestamp":"1620964317199",
+    "accountId":"1532",
+    "data":{
+        "asset":"flexUSD",
+        "quantity":"10"
+    }
+}
+```
+
+Request Parameters | Type | Required | Description | 
+------------------ | ---- | -------- | ----------- |
+asset | STRING | YES | Asset name, available assets: `flexUSD`, `flexBTC`, `flexETH`, `flexFLEX` |
+quantity | STRING/DECIMAL | YES | Quantity of the asset |
+
+Response Fields | Type | Description |
+----------------| ---- | ----------- |
+accountId | STRING | Account ID |
+asset | STRING | Asset name, available assets: `flexUSD`, `flexBTC`, `flexETH`, `flexFLEX` |
+quantity | STRING | Quantity of the asset |
+
+
+### GET `/v2/mint/{asset}`
+
+Get mint history by asset and sorted by time in descending order.
+
+> **Request**
+
+```json
+GET /v2/mint/{asset}?limit={limit}&startTime={startTime}&endTime={endTime}
+```
+
+> **SUCCESSFUL RESPONSE**
+
+```json
+{
+    "event":"mintHistory",
+    "timestamp":"1620964764692",
+    "accountId":"1570",
+    "data":[
+        {
+            "asset":"flexETH",
+            "quantity":"0.100000000",
+            "mintedAt":"1619779905495"
+        },
+        {
+            "asset":"flexETH",
+            "quantity":"97.800000000",
+            "mintedAt":"1619779812468"
+        },
+        {
+            "asset":"flexETH",
+            "quantity":"0.100000000",
+            "mintedAt":"1619779696705"
+        },
+        ...
+    ]
+}
+```
+
+Request Parameters | Type | Required | Description | 
+------------------ | ---- | -------- | ----------- |
+asset | STRING | YES | Asset name, available assets: `flexUSD`, `flexBTC`, `flexETH`, `flexFLEX` |
+limit | STRING | NO | max `100`, default `100`|
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+
+Response Fields | Type | Description |
+----------------| ---- | ----------- |
+accountId | STRING | Account ID |
+asset | STRING | Asset name, available assets: `flexUSD`, `flexBTC`, `flexETH`, `flexFLEX` |
+quantity | STRING | Quantity of the asset |
+mintedAt | STRING | Minted time in millisecond timestamp |
+
+
+### POST `/v2/redeem`
+
+Redeem.
+
+> **Request**
+
+```json
+POST /v2/redeem
+
+{
+
+    "asset": "flexUSD",
+    "quantity": 1000,
+    "type": "Normal"
+
+}
+```
+
+> **SUCCESSFUL RESPONSE**
+
+```json
+{
+    "event":"redeem",
+    "timestamp":"1620964351508",
+    "accountId":"1532",
+    "data":{
+        "asset":"flexUSD",
+        "quantity":"10",
+        "redeemAt":"1620964800000",
+        "type":"NORMAL"
+    }
+}
+```
+
+Request Parameters | Type | Required | Description | 
+------------------ | ---- | -------- | ----------- |
+asset | STRING | YES | Asset name, available assets: `flexUSD`, `flexBTC`, `flexETH`, `flexFLEX` |
+quantity | STRING/DECIMAL | YES | Quantity of the asset |
+type | STRING | YES | Redeem type, available types: `Normal`, `Instant` |
+
+Response Fields | Type | Description |
+----------------| ---- | ----------- |
+accountId | STRING | Account ID |
+asset | STRING | Asset name, available assets: `flexUSD`, `flexBTC`, `flexETH`, `flexFLEX` |
+quantity | STRING | Quantity of the asset |
+redeemAt | STRING | Redeemed time |
+type | STRING | Redeem type, available types: `Normal`, `Instant` |
+
+
+### GET `/v2/redeem/{asset}`
+
+Get redemption history by asset and sorted by time in descending order.
+
+> **Request**
+
+```json
+GET /v2/redeem/{asset}?limit={limit}&startTime={startTime}&endTime={endTime}
+```
+
+> **SUCCESSFUL RESPONSE**
+
+```json
+{
+  "event":"redemptionHistory",
+  "timestamp":"1620964856842",
+  "accountId":"1570",
+  "data":[
+    {
+      "asset":"ETH",
+      "quantity":"0.001000000",
+      "requestedAt":"1619788358578",
+      "redeemedAt":"1619788860219"
+    },
+    {
+      "asset":"ETH",
+      "quantity":"0.001000000",
+      "requestedAt":"1619788328760",
+      "redeemedAt":"1619788328963"
+    },
+    ...
+  ]
+}
+```
+
+Request Parameters | Type | Required | Description |
+------------------ | ---- | -------- | ----------- |
+asset | STRING | YES | Asset name, available assets: `flexUSD`, `flexBTC`, `flexETH`, `flexFLEX` |
+limit | STRING | NO | max `100`, default `100`|
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+
+Response Fields | Type | Description |
+----------------| ---- | ----------- |
+accountId | STRING | Account ID |
+asset | STRING | Asset name, available assets: `flexUSD`, `flexBTC`, `flexETH`, `flexFLEX` |
+quantity | STRING | Quantity of the asset |
+requestedAt | STRING | when the redeem request was made |
+redeemedAt | STRING | when the redemption was actually processed |
+
+
+### GET `v2/borrow/{asset}`
+
+Get borrow history by asset and sorted by time in descending order.
+
+> **Request**
+
+```json
+GET v2/borrow/{asset}?limit={limit}&startTime={startTime}&endTime={endTime}
+```
+
+> **SUCCESSFUL RESPONSE**
+
+```json
+{
+    "event": "borrowHistory",
+    "timestamp": "1626433904976",
+    "accountId": "3123",
+    "data": [
+        {
+            "borrowAsset": "USDT",
+            "borrowedAmount": "296.2158828",
+            "collateralAsset": "BTC",
+            "collateralizedAmount": "0.01000000",
+            "nonCollateralizedAmount": "0",
+            "rateType": "FLOATING_RATE",
+            "status": "COMPLETED",
+            "borrowedAt": "1626433827613"
+        },
+        {
+            "borrowAsset": "USDT",
+            "borrowedAmount": "0.0000000",
+            "collateralAsset": "BTC",
+            "collateralizedAmount": "0.00000000",
+            "nonCollateralizedAmount": "1",
+            "rateType": "FLOATING_RATE",
+            "status": "CANCELED",
+            "borrowedAt": "1626432797124"
+        },
+        ...
+    ]
+}
+```
+
+Request Parameters | Type | Required | Description |
+------------------ | ---- | -------- | ----------- |
+asset | STRING | YES | Collateral asset name |
+limit | STRING | NO | max `100`, default `100`|
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+
+
+Response Fields | Type | Description |
+----------------| ---- | ----------- |
+accountId | STRING | Account ID |
+borrowAsset | STRING | Borrow asset, can only be `USDT` for now |
+borrowedAmount | STRING | Borrowed amount of the borrow asset |
+collateralAsset | STRING | Collateral asset |
+collateralizedAmount | STRING | Collateralized amount of the collateral asset |
+nonCollateralizedAmount | STRING | `nonCollateralizedAmount` = `collateralAmount` - `collateralizedAmount` |
+rateType | STRING | `FLOATING_RATE` or `FIXED_RATE` |
+status | STRING | `COMPLETED` or `PARTIAL` or `CANCELLED` |
+borrowedAt | STRING | The time of borrowed at |
+
+### GET `v2/repay/{asset}`
+
+Get repay history by asset and sorted by time in descending order.
+
+> **Request**
+
+```json
+GET v2/repay/{asset}?limit={limit}&startTime={startTime}&endTime={endTime}
+```
+
+> **SUCCESSFUL RESPONSE**
+
+```json
+{
+    "event": "repayHistory",
+    "timestamp": "1626433953585",
+    "accountId": "3123",
+    "data": [
+        {
+            "repayAsset": "USDT",
+            "repaidAmount": "0",
+            "regainAsset": "BTC",
+            "regainedAmount": "0",
+            "nonRegainedAmount": "0.001",
+            "status": "CANCELLED",
+            "repaidAt": "1626747403329"
+        },
+        {
+            "repayAsset": "USDT",
+            "repaidAmount": "31863.01677",
+            "regainAsset": "BTC",
+            "regainedAmount": "1",
+            "nonRegainedAmount": "0",
+            "status": "COMPLETED",
+            "repaidAt": "1626676776330"
+        },
+        ...
+    ]
+}
+```
+
+Request Parameters | Type | Required | Description |
+------------------ | ---- | -------- | ----------- |
+asset | STRING | YES | Regain asset name |
+limit | STRING | NO | max `100`, default `100`|
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+
+Response Fields | Type | Description |
+----------------| ---- | ----------- |
+accountId | STRING | Account ID |
+repayAsset | STRING | Repay asset, can only be `USDT` for now |
+repaidAmount | STRING | Repaid amount of the repay asset |
+regainAsset | STRING | Regain asset |
+regainedAmount | STRING | Already regained amount of the regain asset |
+nonRegainedAmount | STRING | `nonRegainedAmount` = `regainAmount` - `regainedAmount` |
+status | STRING | `COMPLETED` or `PARTIAL` or `CANCELLED` |
+borrowedAt | STRING | The time of borrowed at |
+repaidAt | STRING | The time of repaid at |
