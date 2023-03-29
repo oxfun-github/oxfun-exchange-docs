@@ -18,7 +18,6 @@
         * Removed field `listingDate`
         * Removed field `marketPriceLastUpdated`
         * Added new field `exclusive`
-
 * Updated REST API [GET /v3/account](#get-v3-account) and [GET /v3/positions](#get-v3-positions)
     * Response fields:
         * Removed field `marginBalance`
