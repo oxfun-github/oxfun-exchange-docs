@@ -1,5 +1,6 @@
 # Change Log
 **2023-03-28**
+
 * Removed WebSocket Adapter
 * Updated WebSocket API [Order Commands](#order-commands)
     * Response fields:
