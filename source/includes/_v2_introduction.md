@@ -1,4 +1,43 @@
 # Change Log
+**2023-03-28**
+* Removed WebSocket Adapter
+* Updated WebSocket API [Order Commands](#order-commands)
+    * Response fields:
+        * Added new field `limitPrice`
+        * Added new field `triggerType`
+* Updated WebSocket API Order Channel
+    * Response fields:
+        * Added new field `limitPrice`
+        * Added new field `triggerType`
+* Updated Websocket Ticker Channel
+    * Response fields:
+        * Added new field `indexPrice`
+* Updated Websocket Market Channel
+    * Response fields:
+        * Removed field `listingDate`
+        * Removed field `marketPriceLastUpdated`
+        * Added new field `exclusive`
+
+* Updated REST API [GET /v3/account](#get-v3-account) and [GET /v3/positions](#get-v3-positions)
+    * Response fields:
+        * Removed field `marginBalance`
+        * Removed field `maintenanceMargin`
+        * Removed field `marginRatio`
+        * Removed field `leverage`
+        * Removed field `riskRatio`
+* Updated REST API [GET /v3/withdrawal](#get-v3-withdrawal)
+    * Response fields:
+        * Added `IN SWEEPING` enum to the `status` field
+* Updated REST API [GET /v3/orders/status](#get-v3-orders-status) and [GET /v3/orders/working](#get-v3-orders-working)
+    * Response fields:
+        * Added new source enums to the `source` field
+    
+**2023-03-27**
+
+* Add new OrderType `STOP_MARKET`
+* Updated REST  API [POST /v3/orders/place](#post-v3-orders-place)
+* Add WebSocket API [Place Stop Market Order](#place-stop-market-order)  WebSocket api
+
 **2023-03-22**
 
 * Updated REST  API [POST /v3/orders/place](#post-v3-orders-place)
@@ -9,16 +48,6 @@
     * Response fields:
         * Added new field `displayQuantity`
         * Added new field `amount`
-     
-        
-**2023-03-27**
-
-* Add new OrderType `STOP_MARKET`
-* Updated REST  API [POST /v3/orders/place](#post-v3-orders-place)
-* Add WebSocket API [Place Stop Market Order](#place-stop-market-order)  WebSocket api
-
-
-
 
 # Introduction
 
@@ -29,7 +58,7 @@ Welcome to Opnx's v2 application programming interface (API). Opnx's APIs provid
 
 Using these interfaces it is possible to place both authenticated and unauthenticated API commands for public and prvate commands respectively.
 
-To get started please register for a TEST account at `https://v2stg.opnx.com/register`
+To get started please register for a TEST account at `https://stg.opnx.com/register`
 
 
 # API Key Management
