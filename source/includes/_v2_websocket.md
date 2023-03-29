@@ -379,7 +379,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "tag": "123",
   "timestamp": "1592491945248",
   "data": {
-            "clientOrderId": 1,
+            "clientOrderId": "1",
             "marketCode": "BTC-USDT-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
@@ -436,7 +436,7 @@ marketCode | STRING | Yes | Market code e.g. `BTC-USDT-SWAP-LIN` |
 orderType | STRING | Yes |  `LIMIT` |
 price | FLOAT |  No | Price |
 quantity |  FLOAT | Yes | Quantity (denominated by contractValCurrency) |
-displayQuantity |  FLOAT | NO |  |
+displayQuantity |  FLOAT | NO |If given, the order becomes an iceberg order, and denotes the quantity to show on the book|
 side | STRING | Yes | `BUY` or `SELL` |
 timeInForce | ENUM | No | <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade)</li></ul>
 timestamp | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
@@ -584,6 +584,7 @@ clientOrderId | ULONG | No | Client assigned ID to help manage and identify orde
 marketCode | STRING | Yes | Market code e.g. `BTC-USDT-SWAP-LIN` |
 orderType | STRING | Yes |  `MARKET` |
 quantity |  FLOAT | Yes | Quantity (denominated by contractValCurrency) |
+amount | STRING | NO | An amount of USDT can be specified instead of a quantity. Only valid for spot market buy orders|
 side | STRING | Yes | `BUY` or `SELL` |
 timestamp | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
 recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
@@ -2211,7 +2212,7 @@ clientOrderId |  STRING | Client assigned ID to help manage and identify orders 
 orderId | STRING | Unique order ID from the exchange
 price |STRING | Limit price submitted (only applicable for LIMIT order types)
 quantity | STRING| Quantity submitted
-amount | STRING |
+amount | STRING | "0.0" if not provided in the request
 side|STRING|`BUY` or `SELL`
 status|STRING|  Order status
 marketCode | STRING |  Market code e.g. `FLEX-USDT`
@@ -2223,7 +2224,7 @@ stopPrice| STRING |Stop price submitted (only applicable for STOP order types)
 limitPrice|STRING|Limit price submitted
 isTriggered|STRING|`False` or `True`
 triggerType|STRING| Stops are triggered on `MARK_PRICE`
-displayQuantity |STRING|
+displayQuantity |STRING| Quantity displayed in the book, primarily used for iceberg orders, otherwise echos the quantity field|
 
 
 
@@ -2313,7 +2314,7 @@ clientOrderId|STRING |  Client assigned ID to help manage and identify orders wi
 orderId | STRING  |  Unique order ID from the exchange
 price|STRING |Limit price of closed order (only applicable for LIMIT order types)
 quantity|STRING |Original order quantity of closed order
-amount | STRING |
+amount | STRING | "0.0" if not provided in the request
 side|STRING |`BUY` or `SELL`
 status|STRING | <ul><li>`CANCELED_BY_USER`</li><li>`CANCELED_BY_MAKER_ONLY`</li><li>`CANCELED_BY_FOK`</li><li>`CANCELED_ALL_BY_IOC`</li><li>`CANCELED_PARTIAL_BY_IOC`</li><li>`CANCELED_BY_AMEND`</li></ul>
 marketCode|STRING |  Market code e.g. `BTC-USDT-SWAP-LIN`
@@ -2325,7 +2326,7 @@ limitPrice|STRING|Limit price
 ordertype | STRING | `LIMIT` or `STOP_LIMIT`
 isTriggered | STRING | `False` or `True`
 triggerType|STRING| Stops are triggered on `MARK_PRICE`
-displayQuantity |STRING|
+displayQuantity |STRING| Quantity displayed in the book, primarily used for iceberg orders, otherwise echos the quantity field|
 
 
 #### OrderClosed Failure
@@ -2450,7 +2451,7 @@ orderId | STRING | Unique order ID from the exchange
 price |STRING | Limit price of modified order (only applicable for LIMIT order types)
 quantity | STRING| Quantity of modified order
 remainQuantity | STRING | Working quantity
-amount|STRING|
+amount|STRING| "0.0" if not provided in the request
 side|STRING|`BUY` or `SELL`
 status|STRING|  Order status
 marketCode | STRING |  Market code e.g. `BTC-USDT-SWAP-LIN`
@@ -2461,7 +2462,7 @@ stopPrice|STRING|Stop price of modified order (only applicable for STOP order ty
 limitPrice|STRING|Limit price of modified order
 isTriggered|STRING|`False` or `True` |
 triggerType|STRING| Stops are triggered on `MARK_PRICE`|
-displayQuantity |STRING|
+displayQuantity |STRING| Quantity displayed in the book, primarily used for iceberg orders, otherwise echos the quantity field|
 
 
 #### OrderModified Failure
@@ -2584,7 +2585,7 @@ price|STRING| Limit price submitted (only applicable for LIMIT order types)
 stopPrice|STRING| Stop price submitted (only applicable for STOP order types)
 limitPrice|STRING| Limit price submitted
 quantity|STRING|Order quantity submitted
-amount|STRING|
+amount|STRING| "0.0" if not provided in the request
 side|STRING|`BUY` or `SELL`
 status|STRING|`FILLED` or `PARTIAL_FILL`
 marketCode|STRING| Market code i.e. `BTC-USDT-SWAP-LIN`
@@ -2600,7 +2601,7 @@ fees|STRING|Amount of fees paid from this match ID
 feeInstrumentId|STRING|Instrument ID of fees paid from this match ID 
 isTriggered|STRING|`False` (or `True` for STOP order types)
 triggerType|STRING| Stops are triggered on `MARK_PRICE`|
-displayQuantity |STRING|
+displayQuantity |STRING| Quantity displayed in the book, primarily used for iceberg orders, otherwise echos the quantity field|
 
 
 ## Subscriptions - Public
