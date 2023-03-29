@@ -907,10 +907,6 @@
 <p><code>data</code>: JSON string of the request object containing the required parameters</p>
 
 <p>Further information regarding the error codes and corresponding error messages from a failed subscription or order command request can be found in a later section of this documentation <a href="#error-codes">Error Codes</a>.</p>
-
-<p><strong>WebSocket adapter</strong></p>
-
-<p><a href="https://pypi.org/project/opnx-ws/">opnx-ws</a> is a websocket wrapper to easily connect to Opnx&#39;s websockets.</p>
 <h2 id='authentication'>Authentication</h2>
 <blockquote>
 <p><strong>Request format</strong></p>
@@ -1201,6 +1197,7 @@
             </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000700008"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9431.48"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9431.48"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1223,6 +1220,7 @@
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9431.48"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9431.48"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1415,6 +1413,7 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARKET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000700008"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1700.00"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1435,6 +1434,7 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARKET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1700.00"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1571,7 +1571,7 @@ One account can only place up to 50 orders per second via websocket.
             <span class="s">"clientOrderId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
             <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"ETH-USDT-SWAP-LIN"</span><span class="p">,</span>
             <span class="s">"side"</span><span class="p">:</span> <span class="s">"BUY"</span><span class="p">,</span>
-            <span class="s">"orderType"</span><span class="p">:</span> <span class="s">"STOP"</span><span class="p">,</span>
+            <span class="s">"orderType"</span><span class="p">:</span> <span class="s">"STOP_LIMIT"</span><span class="p">,</span>
             <span class="s">"quantity"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
             <span class="s">"timeInForce"</span><span class="p">:</span> <span class="s">"MAKER_ONLY_REPRICE"</span><span class="p">,</span>
             <span class="s">"stopPrice"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
@@ -1615,10 +1615,12 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP_LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAKER_ONLY_REPRICE"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000700008"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARK_PRICE"</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1639,9 +1641,11 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP_LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAKER_ONLY_REPRICE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARK_PRICE"</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1742,6 +1746,8 @@ One account can only place up to 50 orders per second via websocket.
 </tr>
 </tbody></table>
 <h3 id='place-stop-market-order'>Place Stop Market Order</h3>
+<p>Stop market orders are only available in Perp markets.</p>
+
 <blockquote>
 <p><strong>Request format</strong></p>
 </blockquote>
@@ -1832,9 +1838,11 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1679907301552"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP_MARKET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.012"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IOC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25000"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22279.29"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000001680990"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARK_PRICE"</span><span class="p">,</span><span class="w">
@@ -1853,15 +1861,17 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;errorCode&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1679907302693"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-           </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1607639739098</span><span class="p">,</span><span class="w">
-           </span><span class="nl">"recvWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-           </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679907301552</span><span class="p">,</span><span class="w">
+           </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1679907301552"</span><span class="p">,</span><span class="w">
            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
            </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP_MARKET"</span><span class="p">,</span><span class="w">
-           </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.012</span><span class="p">,</span><span class="w">
+           </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.012"</span><span class="p">,</span><span class="w">
            </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IOC"</span><span class="p">,</span><span class="w">
-           </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">22279.29</span><span class="w">
+           </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25000"</span><span class="p">,</span><span class="w">
+           </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25000"</span><span class="p">,</span><span class="w">
+           </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22279.29"</span><span class="w">
+           </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARK_PRICE"</span><span class="p">,</span><span class="w">
+           </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -2063,6 +2073,7 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAKER_ONLY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000003700008"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">}</span><span class="w">
@@ -2082,6 +2093,7 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARKET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000004700009"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2104,6 +2116,7 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAKER_ONLY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2123,6 +2136,7 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARKET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2575,13 +2589,15 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491032427"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
-          </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">888</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">9800</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="w">
-         </span><span class="p">}</span><span class="w">
+      </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9800"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9800"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -2595,10 +2611,11 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;errorCode&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491032427"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">888</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">9800</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9800"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9800"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2793,10 +2810,12 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1607639739098"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"304304315061932310"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT-SWAP-LIN"</span><span class="w">
           </span><span class="p">}</span><span class="w">
@@ -2810,10 +2829,12 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1607639739136"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"304304315061864646"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.21</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.21"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10001"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="w">
           </span><span class="p">}</span><span class="w">
@@ -2830,9 +2851,10 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;errorCode&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491503359"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="mi">304304315061932310</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"304304315061932310"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT-SWAP-LIN"</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2847,9 +2869,10 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;errorCode&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491503457"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="mi">304304315061864646</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.21</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">10001</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"304304315061864646"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.21"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10001"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2992,23 +3015,24 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1599693365059"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tradeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINEAR"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-              </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-              </span><span class="nl">"quantityLastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1599694369431"</span><span class="p">,</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-              </span><span class="nl">"quantityLastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1599694343242"</span><span class="p">,</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+          </span><span class="nl">"quantityLastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1599694369431"</span><span class="p">,</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+          </span><span class="nl">"quantityLastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1599694343242"</span><span class="p">,</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Channel Update Frequency</strong> : On update</p>
@@ -3198,7 +3222,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"position"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1607985371481"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:[</span><span class="w"> </span><span class="p">{</span><span class="w">
               </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1616053755423"</span><span class="p">,</span><span class="w">
@@ -3210,15 +3234,15 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
               </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WBTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0.542"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"50.54"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1617099855968"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"contractValCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WBTC"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"entryPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000.0"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"contractValCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"entryPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000.0"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"positionPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1220.9494164000000"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"estLiquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5317.2"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5420.0"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+              </span><span class="nl">"estLiquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1317.2"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="err">...</span><span class="w">
           </span><span class="p">]</span><span class="w">
@@ -3327,12 +3351,12 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>margin</td>
 <td>STRING</td>
-<td>Used in permissionless perps to signify the amount of margin isolated by the position. Shows as <code>0</code> in non-permissionless markets</td>
+<td>Currently always reports 0</td>
 </tr>
 <tr>
 <td>leverage</td>
 <td>STRING</td>
-<td>Used in permissionless perps to signify the selected leverage. Shows as <code>0</code> in non-permissionless markets</td>
+<td>Currently always reports 0</td>
 </tr>
 </tbody></table>
 <h3 id='order-channel'>Order Channel</h3>
@@ -3453,45 +3477,59 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderOpened"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"orderId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9600"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w"> </span><span class="p">,</span><span class="w">
-              </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAKER_ONLY"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1594943491077"</span><span class="w">
-              </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="w">
-            </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> 
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderOpened"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"orderId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9600"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9600"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAKER_ONLY"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1594943491077"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"displayQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+       </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p><strong>OrderOpened message format - STOP LIMIT order</strong></p>
+<p><strong>OrderOpened message format - STOP MARKET order</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderOpened"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2245"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IOC"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1594943491077"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9280"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9300"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP_LIMIT"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="w">
-            </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000021706785"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12000.0"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IOC"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680042503604"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000.0"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12000.0"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderOpened"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP_MARKET"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARK_PRICE"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"displayQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre></div>
 <p><sub><strong>Channel Update Fields</strong></sub></p>
 
@@ -3543,6 +3581,11 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <td>Quantity submitted</td>
 </tr>
 <tr>
+<td>amount</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
 <td>side</td>
 <td>STRING</td>
 <td><code>BUY</code> or <code>SELL</code></td>
@@ -3568,6 +3611,11 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <td>Current millisecond timestamp</td>
 </tr>
 <tr>
+<td>remainQuantity</td>
+<td>STRING</td>
+<td>Working quantity</td>
+</tr>
+<tr>
 <td>orderType</td>
 <td>STRING</td>
 <td><code>LIMIT</code> or <code>STOP_LIMIT</code></td>
@@ -3575,17 +3623,27 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>stopPrice</td>
 <td>STRING</td>
-<td>Stop price submitted (only applicable for STOP LIMIT order types)</td>
+<td>Stop price submitted (only applicable for STOP order types)</td>
 </tr>
 <tr>
 <td>limitPrice</td>
 <td>STRING</td>
-<td>Limit price submitted (only applicable for STOP LIMIT order types)</td>
+<td>Limit price submitted</td>
 </tr>
 <tr>
 <td>isTriggered</td>
 <td>STRING</td>
 <td><code>False</code> or <code>True</code></td>
+</tr>
+<tr>
+<td>triggerType</td>
+<td>STRING</td>
+<td>Stops are triggered on <code>MARK_PRICE</code></td>
+</tr>
+<tr>
+<td>displayQuantity</td>
+<td>STRING</td>
+<td></td>
 </tr>
 </tbody></table>
 <h4 id='orderclosed'>OrderClosed</h4>
@@ -3593,48 +3651,62 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <p><strong>OrderClosed message format - LIMIT order</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderClosed"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9600"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Canceled status&gt;"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Time in force&gt;"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1594943491077"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="w"> 
-            </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000021764611"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000.0"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED_BY_USER"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680043402806"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000.0"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderClosed"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"displayQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre></div>
 <blockquote>
 <p><strong>OrderClosed message format - STOP LIMIT order</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderClosed"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED_BY_USER"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Time in force&gt;"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1594943491077"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9100"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9120"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP LIMIT"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="w"> 
-            </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000021852415"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21000.0"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED_BY_USER"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680044038047"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20000.0"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21000.0"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderClosed"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARK_PRICE"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"displayQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
+
 </span></code></pre></div>
 <p>There are multiple scenarios in which an order is closed as described by the <strong>status</strong> field in the OrderClosed message.  In summary orders can be closed by:-</p>
 
@@ -3697,6 +3769,11 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <td>Original order quantity of closed order</td>
 </tr>
 <tr>
+<td>amount</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
 <td>side</td>
 <td>STRING</td>
 <td><code>BUY</code> or <code>SELL</code></td>
@@ -3729,12 +3806,12 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>stopPrice</td>
 <td>STRING</td>
-<td>Stop price of closed stop order (only applicable for STOP LIMIT order types)</td>
+<td>Stop price of closed stop order (only applicable for STOP order types)</td>
 </tr>
 <tr>
 <td>limitPrice</td>
 <td>STRING</td>
-<td>Limit price of closed stop order (only applicable for STOP LIMIT order types)</td>
+<td>Limit price</td>
 </tr>
 <tr>
 <td>ordertype</td>
@@ -3745,6 +3822,16 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <td>isTriggered</td>
 <td>STRING</td>
 <td><code>False</code> or <code>True</code></td>
+</tr>
+<tr>
+<td>triggerType</td>
+<td>STRING</td>
+<td>Stops are triggered on <code>MARK_PRICE</code></td>
+</tr>
+<tr>
+<td>displayQuantity</td>
+<td>STRING</td>
+<td></td>
 </tr>
 </tbody></table>
 <h4 id='orderclosed-failure'>OrderClosed Failure</h4>
@@ -3927,23 +4014,30 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <p><strong>OrderModified message format</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderModified"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94335"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9600"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">    
-              </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1594943491077"</span><span class="w">
-              </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="w"> 
-            </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000021878849"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30.0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680044356374"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30.0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderModified"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"displayQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre></div>
 <p>As described in a previous section <a href="?json#ordermodified">Order Commands - Modify Order</a>, the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified.</p>
 
@@ -4001,6 +4095,16 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <td>Quantity of modified order</td>
 </tr>
 <tr>
+<td>remainQuantity</td>
+<td>STRING</td>
+<td>Working quantity</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
 <td>side</td>
 <td>STRING</td>
 <td><code>BUY</code> or <code>SELL</code></td>
@@ -4033,17 +4137,27 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>stopPrice</td>
 <td>STRING</td>
-<td>Stop price of modified order (only applicable for STOP LIMIT order types)</td>
+<td>Stop price of modified order (only applicable for STOP order types)</td>
 </tr>
 <tr>
 <td>limitPrice</td>
 <td>STRING</td>
-<td>Limit price of modified order (only applicable for STOP LIMIT order types)</td>
+<td>Limit price of modified order</td>
 </tr>
 <tr>
 <td>isTriggered</td>
 <td>STRING</td>
 <td><code>False</code> or <code>True</code></td>
+</tr>
+<tr>
+<td>triggerType</td>
+<td>STRING</td>
+<td>Stops are triggered on <code>MARK_PRICE</code></td>
+</tr>
+<tr>
+<td>displayQuantity</td>
+<td>STRING</td>
+<td></td>
 </tr>
 </tbody></table>
 <h4 id='ordermodified-failure'>OrderModified Failure</h4>
@@ -4221,33 +4335,36 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <p><strong>OrderMatched message format</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderMatched"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"567531657"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9300"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Matched status&gt;"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592490254168"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"matchId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11568123"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"matchPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9300"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"matchQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"orderMatchType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAKER"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Order type&gt;"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9050"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"fees"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"feeInstrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX"</span><span class="p">,</span><span class="w">   
-              </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680044888401"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000021937814"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27282.73"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FILLED"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT-SWAP-LIN"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680044888565"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"matchId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300016799886154670"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"matchPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27279.39"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"matchQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"orderMatchType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAKER"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27282.73"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderMatched"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"fees"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.019095573"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"feeInstrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"isTriggered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"displayQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre></div>
 <p><sub><strong>Channel Update Fields</strong></sub></p>
 
@@ -4296,17 +4413,22 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>stopPrice</td>
 <td>STRING</td>
-<td>Stop price submitted (only applicable for STOP LIMIT order types)</td>
+<td>Stop price submitted (only applicable for STOP order types)</td>
 </tr>
 <tr>
 <td>limitPrice</td>
 <td>STRING</td>
-<td>Limit price submitted (only applicable for STOP LIMIT order types)</td>
+<td>Limit price submitted</td>
 </tr>
 <tr>
 <td>quantity</td>
 <td>STRING</td>
 <td>Order quantity submitted</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>STRING</td>
+<td></td>
 </tr>
 <tr>
 <td>side</td>
@@ -4376,7 +4498,17 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>isTriggered</td>
 <td>STRING</td>
-<td><code>False</code> (or <code>True</code> for STOP LIMIT order types)</td>
+<td><code>False</code> (or <code>True</code> for STOP order types)</td>
+</tr>
+<tr>
+<td>triggerType</td>
+<td>STRING</td>
+<td>Stops are triggered on <code>MARK_PRICE</code></td>
+</tr>
+<tr>
+<td>displayQuantity</td>
+<td>STRING</td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='subscriptions-public'>Subscriptions - Public</h2>
@@ -5154,7 +5286,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>matchType</td>
 <td>STRING</td>
-<td><code>TAKER</code> or <code>MAKER</code></td>
+<td><code>TAKER</code> or <code>MAKER</code>, orders that match via the implied mechanism show as MAKERs in their respective markets</td>
 </tr>
 <tr>
 <td>side</td>
@@ -5245,7 +5377,8 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
             </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1622020931049"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"lastQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"markPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.304"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"lastMarkPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.304"</span><span class="w">
+            </span><span class="nl">"lastMarkPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.304"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"indexPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.304"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -5259,7 +5392,8 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
             </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1622020931046"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"lastQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"markPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.304"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"lastMarkPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.304"</span><span class="w">
+            </span><span class="nl">"lastMarkPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.304"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"indexPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.304"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="err">...</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -5378,6 +5512,16 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <td>timestamp</td>
 <td>STRING</td>
 <td>Millisecond timestamp</td>
+</tr>
+<tr>
+<td>lastMarkPrice</td>
+<td>STRING</td>
+<td>Previous mark price reading</td>
+</tr>
+<tr>
+<td>indexPrice</td>
+<td>STRING</td>
+<td>Index price</td>
 </tr>
 </tbody></table>
 <h3 id='candles'>Candles</h3>
@@ -5702,26 +5846,26 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"marketPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.367"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"listingDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1593288000000"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"qtyIncrement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"upperPriceBound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.417"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"lowerPriceBound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.317"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"counter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"marketId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3001000000000"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"referencePair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX/USDT"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"marketPriceLastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1613769981920"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"contractValCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX/USDT Spot"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX-USDT"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"marginCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w"> 
-              </span><span class="nl">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX"</span><span class="w">
-          </span><span class="p">},</span><span class="w"> 
-          </span><span class="err">........</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> 
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"marketId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3001000000000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX-USDT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX/USDT Spot"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"referencePair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX/USDT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"counter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"exclusive"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"qtyIncrement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"marginCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"contractValCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLEX"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"upperPriceBound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.417"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"lowerPriceBound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.317"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"marketPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.367"</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w"> 
+      </span><span class="err">........</span><span class="w">
+   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><strong>Channel Update Frequency:</strong> 1s</p>
@@ -5785,11 +5929,6 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <td>marketPrice</td>
 <td>STRING</td>
 <td>Mark price</td>
-</tr>
-<tr>
-<td>listingDate</td>
-<td>STRING</td>
-<td>Millisecond timestamp</td>
 </tr>
 <tr>
 <td>qtyIncrement</td>
