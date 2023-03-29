@@ -2787,3 +2787,138 @@ nonRegainedAmount | STRING | `nonRegainedAmount` = `regainAmount` - `regainedAmo
 status | STRING | `COMPLETED` or `PARTIAL` or `CANCELLED` |
 borrowedAt | STRING | The time of borrowed at |
 repaidAt | STRING | The time of repaid at |
+
+###GET `/v2.1/delivery/orders`
+
+> **Request**
+
+```json
+GET /v2.1/delivery/orders?limit={limit}&startTime={startTime}&endTime={endTime}
+```
+
+```python
+import requests
+import hmac
+import base64
+import hashlib
+import datetime
+import json
+
+rest_url = 'https://stgapi.opnx.com'
+rest_path = 'v2stgapi.opnx.com'
+
+api_key = 'api_key'
+api_secret = 'api_secret'
+
+ts = datetime.datetime.utcnow().isoformat()
+nonce = 123
+
+# REST API method
+method = '/v2.1/delivery/orders'
+
+params = "limit=1"
+
+if params:
+    path = method + '?' + params
+else:
+    path = method
+
+msg_string = '{}\n{}\n{}\n{}\n{}\n{}'.format(ts, nonce, 'GET', rest_path, method, params)
+sig = base64.b64encode(hmac.new(api_secret.encode('utf-8'), msg_string.encode('utf-8'), hashlib.sha256).digest()).decode('utf-8')
+
+header = {'Content-Type': 'application/json', 'AccessKey': api_key,
+          'Timestamp': ts, 'Signature': sig, 'Nonce': str(nonce)}
+
+resp = requests.get(rest_url + path, headers=header)
+print(resp.url)
+print(resp.request.headers)
+print(resp.request.body)
+print(json.dumps(resp.json(), indent=4, separators=(', ', ': ')))
+```
+
+> **Response**
+
+```json
+{
+  "event": "deliverOrders",
+  "timestamp": "1596685339910",
+  "data": [ {
+              "timestamp": "1595781719394",
+              "instrumentId": "BTC-USDT-SWAP-LIN",
+              "status": "DELIVERED",
+              "quantity": null,
+              "deliverPrice": "9938.480000000",
+              "transferAsset": "USDT",
+              "transferQty": "993.848000000",
+              "instrumentIdDeliver": "BTC",
+              "deliverQty": "0.100000000",
+              "deliverOrderId": "575770851486007299",
+              "clientOrderId": null
+            },
+            {
+              "timestamp": "1595786511155",
+              "instrumentId": "BTC-USDT-SWAP-LIN",
+              "status": "CANCELLED",
+              "quantity": null,
+              "deliverPrice": "9911.470000000",
+              "transferAsset": "USDT",
+              "transferQty": "0.000000000",
+              "instrumentIdDeliver": "BTC",
+              "deliverQty": "0.000000000",
+              "deliverOrderId": "575786553086246913",
+              "clientOrderId": null
+            },
+          ]
+}
+```
+
+```python
+{
+    "event": "deliverOrders",
+    "timestamp": "1648806915444",
+    "data": [
+        {
+            "timestamp": "1648806900463",
+            "instrumentId": "BTC-USDT-SWAP-LIN",
+            "status": "PENDING",
+            "quantity": "0.100000000",
+            "deliverPrice": "45131.000000000",
+            "transferAsset": "USDT",
+            "transferQty": "4513.100000000",
+            "instrumentIdDeliver": "BTC",
+            "deliverQty": "0.000000000",
+            "deliverOrderId": "749523764730920963",
+            "clientOrderId": null
+        }
+    ]
+}
+```
+
+Returns the entire delivery history for the account connected to the API key initiating the request.
+
+<sub>**Request Parameters**</sub> 
+
+Parameters | Type | Required | Description |
+---------- | ---- | -------- | ----------- |
+limit | LONG | NO | Default `200`, max `500` |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+
+<sub>**Response Parameters**</sub> 
+
+Parameters | Type | Description |
+---------- | ---- | ----------- |
+event | STRING | `deliverOrders`
+timestamp | STRING | Millisecond timestamp of the repsonse
+data | LIST of dictionaries |
+timestamp | STRING | Millisecond timestamp of the delivery action
+instrumentId | STRING | Perpetual swap market code
+status | STRING | Request status
+quantity | Null Type | Quantity
+deliverPrice | STRING|  Mark price at delivery
+transferAsset | STRING | Asset being sent
+transferQty | STRING | Quantity being sent
+instrumentIdDeliver | STRING |Asset being received: long position = coin, short position = USDT
+deliverQty | STRING |  Quantity of the received asset
+deliverOrderId | STRING | Order id
+clientOrderId | Null Type |  null
