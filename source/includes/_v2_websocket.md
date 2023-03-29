@@ -1529,7 +1529,7 @@ Currently only LIMIT orders are supported by the modify order command.
 * Modifying the price will **always** move the modified order to the back of the order queue, resulting in a new order ID.
 * Modifying the side will **always** move the modified order to the back of the order queue, resulting in a new order ID.
 
-Please note that when a new order ID is issued the original order is actually **closed** and a new order with a new order ID is **opened**, replacing the original order.  This is described in further detail in the section [Order Channel - OrderModified](#websocket-api-subscriptions-private-order-channel-ordermodified).    
+Please note that when a new order ID is issued the original order is actually **closed** and a new order with a new order ID is **opened**, replacing the original order.  This is described in further detail in the section [Order Channel - OrderModified](?json#ordermodified).    
 
 Please be aware that modifying the side of an existing GTC LIMIT order from BUY to SELL or vice versa **without** modifying the price could result in the order matching immediately since its quite likely the new order will become an agressing taker order.  
 
@@ -2431,7 +2431,7 @@ isTriggered | BOOL | `False` or `True`
 
 ```
 
-As described in a previous section [Order Commands - Modify Order](?json#ordermodified), the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified.
+As described in a previous section [Order Commands - Modify Order](?json#modify-order), the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified.
 
 If the orders queue position is **unchanged** because the orders quantity has been **reduced** and no other order parameter has been changed then this **OrderModified** message will be sent via the Order Channel giving the full details of the modified order.  In this case the order ID is unchanged.
 
