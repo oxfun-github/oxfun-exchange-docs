@@ -709,6 +709,67 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='change-log'>Change Log</h1>
+<p><strong>2023-03-28</strong>
+* Removed WebSocket Adapter
+* Updated WebSocket API <a href="#order-commands">Order Commands</a>
+    * Response fields:
+        * Added new field <code>limitPrice</code>
+        * Added new field <code>triggerType</code>
+* Updated WebSocket API Order Channel
+    * Response fields:
+        * Added new field <code>limitPrice</code>
+        * Added new field <code>triggerType</code>
+* Updated Websocket Ticker Channel
+    * Response fields:
+        * Added new field <code>indexPrice</code>
+* Updated Websocket Market Channel
+    * Response fields:
+        * Removed field <code>listingDate</code>
+        * Removed field <code>marketPriceLastUpdated</code>
+        * Added new field <code>exclusive</code></p>
+
+<ul>
+<li>Updated REST API <a href="#get-v3-account">GET /v3/account</a> and <a href="#get-v3-positions">GET /v3/positions</a>
+
+<ul>
+<li>Response fields:
+
+<ul>
+<li>Removed field <code>marginBalance</code></li>
+<li>Removed field <code>maintenanceMargin</code></li>
+<li>Removed field <code>marginRatio</code></li>
+<li>Removed field <code>leverage</code></li>
+<li>Removed field <code>riskRatio</code></li>
+</ul></li>
+</ul></li>
+<li>Updated REST API <a href="#get-v3-withdrawal">GET /v3/withdrawal</a>
+
+<ul>
+<li>Response fields:
+
+<ul>
+<li>Added <code>IN SWEEPING</code> enum to the <code>status</code> field</li>
+</ul></li>
+</ul></li>
+<li>Updated REST API <a href="#get-v3-orders-status">GET /v3/orders/status</a> and <a href="#get-v3-orders-working">GET /v3/orders/working</a>
+
+<ul>
+<li>Response fields:
+
+<ul>
+<li>Added new source enums to the <code>source</code> field</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p><strong>2023-03-27</strong></p>
+
+<ul>
+<li>Add new OrderType <code>STOP_MARKET</code></li>
+<li>Updated REST  API <a href="#post-v3-orders-place">POST /v3/orders/place</a></li>
+<li>Add WebSocket API <a href="#place-stop-market-order">Place Stop Market Order</a>  WebSocket api</li>
+</ul>
+
 <p><strong>2023-03-22</strong></p>
 
 <ul>
@@ -730,14 +791,6 @@
 </ul></li>
 </ul></li>
 </ul>
-
-<p><strong>2023-03-27</strong></p>
-
-<ul>
-<li>Add new OrderType <code>STOP_MARKET</code></li>
-<li>Updated REST  API <a href="#post-v3-orders-place">POST /v3/orders/place</a></li>
-<li>Add WebSocket API <a href="#place-stop-market-order">Place Stop Market Order</a>  WebSocket api</li>
-</ul>
 <h1 id='introduction'>Introduction</h1>
 <p>Welcome to Opnx&#39;s v2 application programming interface (API). Opnx&#39;s APIs provide clients programmatic access to control aspects of their accounts and to place orders on Opnx&#39;s trading platform. Opnx supports the following types of APIs:</p>
 
@@ -748,7 +801,7 @@
 
 <p>Using these interfaces it is possible to place both authenticated and unauthenticated API commands for public and prvate commands respectively.</p>
 
-<p>To get started please register for a TEST account at <code>https://v2stg.opnx.com/register</code></p>
+<p>To get started please register for a TEST account at <code>https://stg.opnx.com/register</code></p>
 <h1 id='api-key-management'>API Key Management</h1>
 <p>An API key is required to make an authenticated API command.  API keys (public and corresponding secret key) can be generated via the Opnx GUI within a clients account. </p>
 
