@@ -1309,7 +1309,7 @@ One account can only place up to 50 orders per second via websocket.
 <tr>
 <td>price</td>
 <td>FLOAT</td>
-<td>No</td>
+<td>YES</td>
 <td>Price</td>
 </tr>
 <tr>
@@ -1524,7 +1524,7 @@ One account can only place up to 50 orders per second via websocket.
 <td>quantity</td>
 <td>FLOAT</td>
 <td>Yes</td>
-<td>Quantity (denominated by contractValCurrency)</td>
+<td>Quantity (denominated by contractValCurrency), not required if an <code>amount</code> is provided</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -2535,8 +2535,8 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>dataArray</td>
 <td>LIST of dictionaries</td>
+<td>Yes</td>
 <td>A list of orders with each order in JSON format, the same format/parameters as the request for cancelling a single order. The max number of orders is still limited by the message length validation so by default up to 20 orders can be placed in a batch, assuming that each order JSON has 200 characters.</td>
-<td></td>
 </tr>
 </tbody></table>
 <h3 id='modify-order'>Modify Order</h3>
@@ -2664,16 +2664,13 @@ One account can only place up to 50 orders per second via websocket.
 <p>Currently only LIMIT orders are supported by the modify order command.</p>
 
 <ul>
-<li>The price and/or quantity and/or side of an order can be modified.</li>
-<li>Reducing the quantity will leave the modified orders position in the order queue <strong>unchanged</strong> meaning the order ID is unchanged.</li>
-<li>Increasing the quantity will <strong>always</strong> move the modified order to the back of the order queue, resulting in a new order ID.</li>
-<li>Modifying the price will <strong>always</strong> move the modified order to the back of the order queue, resulting in a new order ID.</li>
-<li>Modifying the side will <strong>always</strong> move the modified order to the back of the order queue, resulting in a new order ID.</li>
+<li>The price and/or quantity of an order can be modified.</li>
+<li>Reducing the quantity will leave the modified orders position in the order queue <strong>unchanged</strong>.</li>
+<li>Increasing the quantity will <strong>always</strong> move the modified order to the back of the order queue.</li>
+<li>Modifying the price will <strong>always</strong> move the modified order to the back of the order queue.</li>
 </ul>
 
-<p>Please note that when a new order ID is issued the original order is actually <strong>closed</strong> and a new order with a new order ID is <strong>opened</strong>, replacing the original order.  This is described in further detail in the section <a href="?json#ordermodified">Order Channel - OrderModified</a>.    </p>
-
-<p>Please be aware that modifying the side of an existing GTC LIMIT order from BUY to SELL or vice versa <strong>without</strong> modifying the price could result in the order matching immediately since its quite likely the new order will become an agressing taker order.  </p>
+<p>Modified orders retain their original orderId.</p>
 
 <p><sub><strong>Request Parameters</strong></sub> </p>
 
@@ -2736,13 +2733,13 @@ One account can only place up to 50 orders per second via websocket.
 <tr>
 <td>timestamp</td>
 <td>LONG</td>
-<td>NO</td>
+<td>No</td>
 <td>In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected.</td>
 </tr>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
-<td>NO</td>
+<td>No</td>
 <td>In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected.</td>
 </tr>
 </tbody></table>
@@ -2914,7 +2911,7 @@ One account can only place up to 50 orders per second via websocket.
 <p>Requires an authenticated websocket connection.
 Please also subscribe to the <strong>User Order Channel</strong> to receive push notifications for all message updates in relation to an account or sub-account (e.g. OrderOpened, OrderMatched etc......).</p>
 
-<p>The websocket reply from the exchange will repond to each order in the batch separately, one order at a time, and has the same message format as the reponse for the single order modify method.</p>
+<p>The websocket responses from the exchange will come separately for each order in the batch, one order at a time, and the message has the same format as the single <code>modifyorder</code> method.</p>
 
 <p><sub><strong>Request Parameters</strong></sub> </p>
 
@@ -2947,13 +2944,13 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>timestamp</td>
 <td>LONG</td>
-<td>NO</td>
+<td>No</td>
 <td>In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected.</td>
 </tr>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
-<td>NO</td>
+<td>No</td>
 <td>In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected.</td>
 </tr>
 </tbody></table>
@@ -3652,7 +3649,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>orderType</td>
 <td>STRING</td>
-<td><code>LIMIT</code> or <code>STOP_LIMIT</code></td>
+<td><code>LIMIT</code>, <code>STOP_LIMIT</code>, or <code>STOP_MARKET</code></td>
 </tr>
 <tr>
 <td>stopPrice</td>
@@ -3750,7 +3747,6 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <li><code>CANCELED_BY_FOK</code> - since fill-or-kill orders requires <strong>all</strong> of the order quantity to immediately take and match at the submitted limit price or better, if no such match is possible then the whole order quantity is canceled</li>
 <li><code>CANCELED_ALL_BY_IOC</code> - since immediate-or-cancel orders also requires an immediate match at the specified limit price or better, if no such match price is possible for <strong>any</strong> of the submitted order quantity then the whole order quantity is canceled</li>
 <li><code>CANCELED_PARTIAL_BY_IOC</code> - since immediate-or-cancel orders only requires <strong>some</strong> of the submitted order quantity to immediately take and match at the specified limit price or better, if a match is possible for only a <strong>partial</strong> quantity then only the remaining order quantity which didn&#39;t immediately match is canceled</li>
-<li><code>CANCELED_BY_AMEND</code> - if a <strong>Modify Order</strong> command updated an order such that it changed its position in the order queue, the original order would be closed and an OrderClosed notice would be broadcasted in the Order Channel with this status</li>
 </ul>
 
 <p><sub><strong>Channel Update Fields</strong></sub></p>
@@ -3815,7 +3811,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>status</td>
 <td>STRING</td>
-<td><ul><li><code>CANCELED_BY_USER</code></li><li><code>CANCELED_BY_MAKER_ONLY</code></li><li><code>CANCELED_BY_FOK</code></li><li><code>CANCELED_ALL_BY_IOC</code></li><li><code>CANCELED_PARTIAL_BY_IOC</code></li><li><code>CANCELED_BY_AMEND</code></li></ul></td>
+<td><ul><li><code>CANCELED_BY_USER</code></li><li><code>CANCELED_BY_MAKER_ONLY</code></li><li><code>CANCELED_BY_FOK</code></li><li><code>CANCELED_ALL_BY_IOC</code></li><li><code>CANCELED_PARTIAL_BY_IOC</code></li></ul></td>
 </tr>
 <tr>
 <td>marketCode</td>
@@ -4073,11 +4069,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>As described in a previous section <a href="?json#modify-order">Order Commands - Modify Order</a>, the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified.</p>
-
-<p>If the orders queue position is <strong>unchanged</strong> because the orders quantity has been <strong>reduced</strong> and no other order parameter has been changed then this <strong>OrderModified</strong> message will be sent via the Order Channel giving the full details of the modified order.  In this case the order ID is unchanged.</p>
-
-<p>If however the order queue position has changed becuase the orders: (1) side was modified, (2) quantity was increased, (3) price was changed or any combination of these, then the exchange will close the orginal order with an <strong>OrderClosed</strong> message with <strong>status</strong> <code>CANCELED_BY_AMEND</code>, followed by the opening of a new order with an <strong>OrderOpened</strong> message containing a new order ID to reflect the orders new position in the order queue.</p>
+<p>As described in a previous section <a href="?json#modify-order">Order Commands - Modify Order</a>, the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified. Orders retain their orderIds after modification.</p>
 
 <p><sub><strong>Channel Update Fields</strong></sub></p>
 
@@ -4517,7 +4509,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>orderType</td>
 <td>STRING</td>
-<td><ul><li><code>LIMIT</code></li><li><code>MARKET</code></li><li><code>STOP_LIMIT</code></li></ul></td>
+<td><ul><li><code>LIMIT</code></li><li><code>MARKET</code></li></ul> triggered <code>STOP_LIMIT</code> and <code>STOP_MARKET</code> orders are converted to <code>LIMIT</code> and <code>MARKET</code> orders respectively</td>
 </tr>
 <tr>
 <td>fees</td>
@@ -4885,7 +4877,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>checksum</td>
 <td>INTEGER</td>
-<td>marketCode</td>
+<td>checksum</td>
 </tr>
 <tr>
 <td>marketCode</td>
