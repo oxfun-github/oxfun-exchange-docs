@@ -236,6 +236,7 @@ marginBalance | STRING | [Currently Unavailable] Appears in the position section
 maintenanceMargin | STRING |[Currently Unavailable] Appears in the position section only for positions using isolated margin|
 marginRatio | STRING |[Currently Unavailable] Appears in the position section only for positions using isolated margin|
 leverage | STRING | [Currently Unavailable] Appears in the position section only for positions using isolated margin|
+collateral | STRING | Total collateral balance |
 notionalPositionSize | STRING | Notional position size |
 portfolioVarMargin | STRING | Initial margin |
 maintenanceMargin | STRING | Maintenance margin. The minimum amount of collateral required to avoid liquidation |
@@ -499,6 +500,7 @@ accountId | STRING | Account ID |
 name | STRING | The parent account is named "main" and comes first|
 balances | LIST of dictionaries | |
 asset | STRING | Asset name |
+total | STRING | Total balance (available + reserved)
 available | STRING | 	Available balance |
 reserved | STRING | Reserved balance |
 lastUpdatedAt | STRING | Timestamp of updated at |
@@ -975,8 +977,8 @@ remainQuantity | STRING | Remaining quantity |
 totalQuantity | STRING | Total quantity |
 cumulativeMatchedQuantity | STRING | Cumulative quantity of the matches |
 avgFillPrice | STRING | Average of filled price |
-avgLeg1Price | STRING | Average of leg1 price |
-avgLeg2Price | STRING | Average of leg2 price |
+avgLeg1Price | STRING | Returned for repo orders, leg1 denotes the spot leg |
+avgLeg2Price | STRING | Returned for repo orders, leg2 denotes the perp leg |
 fees | LIST of dictionaries | Overall fees with instrument ID, if FLEX is no enough to pay the fee then USDT will be paid |
 orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT`,`STOP_MARKET` |
 timeInForce | STRING | Client submitted time in force. <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade) |
@@ -1042,7 +1044,7 @@ status | STRING | Available values: `OPEN`, `PARTIALLY_FILLED` |
 side | STRING | Side of the order, `BUY` or `SELL` |
 price | STRING | Price or limit price in the case of a STOP order |
 stopPrice | STRING | Trigger price for a STOP order |
-isTriggered | BOOL | `true` for a STOP order |
+isTriggered | BOOL | Returns `true` if a STOP order has been triggered |
 quantity | STRING |  Quantity |
 remainQuantity | STRING | Remaining quantity |
 matchedQuantity | STRING | Matched Quantity |
@@ -1159,7 +1161,7 @@ quantity | STRING | YES | Quantity |
 amount | STRING | NO | Amount (only allow amount field when market is spot and direction is BUY) |
 displayQuantity | STRING | NO | displayQuantity  (For an iceberg order, pass both  `quantity` and `displayQuantity` fields in the order request.)|
 timeInForce | STRING | NO | Default `GTC` |
-orderType | STRING | YES | `LIMIT` or `MARKET` or `STOP` or `STOP_MARKET`|
+orderType | STRING | YES | `LIMIT` or `MARKET` or `STOP_LIMIT` or `STOP_MARKET`|
 price | STRING | NO | Limit price for the limit order |
 stopPrice | STRING | NO | Stop price for the stop order |
 limitPrice | STRING | NO | Limit price for the stop limit order |
@@ -1184,11 +1186,10 @@ displayQuantity | STRING | |
 remainQuantity | STRING | Remaining quantity |
 matchId | STRING | |
 matchPrice | STRING | |
-matchQuantity | STRING | |
 matchQuantity | STRING | Matched quantity |
 feeInstrumentId | STRING | Instrument ID of fees paid from this match ID |
 fees | STRING | Amount of fees paid from this match ID |
-orderType | STRING | `MARKET` or `LIMIT` or `STOP` or or `STOP_MARKET` |
+orderType | STRING | `MARKET` or `LIMIT` or `STOP_LIMIT` or or `STOP_MARKET` |
 timeInForce | STRING | |
 source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `101`, `102`, `103`, `111`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `111: Automatic repayment`</p> |
 createdAt | STRING | Millisecond timestamp of the order created time |
