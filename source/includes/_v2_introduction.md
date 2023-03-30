@@ -56,7 +56,7 @@ Welcome to Opnx's v2 application programming interface (API). Opnx's APIs provid
 * a WebSocket API
 * a REST API
 
-Using these interfaces it is possible to place both authenticated and unauthenticated API commands for public and prvate commands respectively.
+Using these interfaces it is possible to place both authenticated and unauthenticated API commands for public and private commands respectively.
 
 To get started please register for a TEST account at `https://stg.opnx.com/register`
 
