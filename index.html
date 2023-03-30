@@ -6651,6 +6651,11 @@ Calling this endpoint using an API key pair linked to the parent account with th
 <td>[Currently Unavailable] Appears in the position section only for positions using isolated margin</td>
 </tr>
 <tr>
+<td>collateral</td>
+<td>STRING</td>
+<td>Total collateral balance</td>
+</tr>
+<tr>
 <td>notionalPositionSize</td>
 <td>STRING</td>
 <td>Notional position size</td>
@@ -7149,6 +7154,11 @@ Calling this endpoint using an API key pair linked to the parent account with th
 <td>asset</td>
 <td>STRING</td>
 <td>Asset name</td>
+</tr>
+<tr>
+<td>total</td>
+<td>STRING</td>
+<td>Total balance (available + reserved)</td>
 </tr>
 <tr>
 <td>available</td>
@@ -8204,12 +8214,12 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 <tr>
 <td>avgLeg1Price</td>
 <td>STRING</td>
-<td>Average of leg1 price</td>
+<td>Returned for repo orders, leg1 denotes the spot leg</td>
 </tr>
 <tr>
 <td>avgLeg2Price</td>
 <td>STRING</td>
-<td>Average of leg2 price</td>
+<td>Returned for repo orders, leg2 denotes the perp leg</td>
 </tr>
 <tr>
 <td>fees</td>
@@ -8361,7 +8371,7 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 <tr>
 <td>isTriggered</td>
 <td>BOOL</td>
-<td><code>true</code> for a STOP order</td>
+<td>Returns <code>true</code> if a STOP order has been triggered</td>
 </tr>
 <tr>
 <td>quantity</td>
@@ -8572,7 +8582,7 @@ You can place up to 8 orders at a time in REST API
 <td>orderType</td>
 <td>STRING</td>
 <td>YES</td>
-<td><code>LIMIT</code> or <code>MARKET</code> or <code>STOP</code> or <code>STOP_MARKET</code></td>
+<td><code>LIMIT</code> or <code>MARKET</code> or <code>STOP_LIMIT</code> or <code>STOP_MARKET</code></td>
 </tr>
 <tr>
 <td>price</td>
@@ -8694,11 +8704,6 @@ You can place up to 8 orders at a time in REST API
 <tr>
 <td>matchQuantity</td>
 <td>STRING</td>
-<td></td>
-</tr>
-<tr>
-<td>matchQuantity</td>
-<td>STRING</td>
 <td>Matched quantity</td>
 </tr>
 <tr>
@@ -8714,7 +8719,7 @@ You can place up to 8 orders at a time in REST API
 <tr>
 <td>orderType</td>
 <td>STRING</td>
-<td><code>MARKET</code> or <code>LIMIT</code> or <code>STOP</code> or or <code>STOP_MARKET</code></td>
+<td><code>MARKET</code> or <code>LIMIT</code> or <code>STOP_LIMIT</code> or or <code>STOP_MARKET</code></td>
 </tr>
 <tr>
 <td>timeInForce</td>
