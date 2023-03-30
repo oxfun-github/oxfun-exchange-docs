@@ -434,7 +434,7 @@ data | DICTIONARY object | Yes |
 clientOrderId | ULONG | No | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
 marketCode | STRING | Yes | Market code e.g. `BTC-USDT-SWAP-LIN` |
 orderType | STRING | Yes |  `LIMIT` |
-price | FLOAT |  No | Price |
+price | FLOAT |  YES | Price |
 quantity |  FLOAT | Yes | Quantity (denominated by contractValCurrency) |
 displayQuantity |  FLOAT | NO |If given, the order becomes an iceberg order, and denotes the quantity to show on the book|
 side | STRING | Yes | `BUY` or `SELL` |
@@ -583,7 +583,7 @@ data | DICTIONARY object | Yes |
 clientOrderId | ULONG | No | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
 marketCode | STRING | Yes | Market code e.g. `BTC-USDT-SWAP-LIN` |
 orderType | STRING | Yes |  `MARKET` |
-quantity |  FLOAT | Yes | Quantity (denominated by contractValCurrency) |
+quantity |  FLOAT | Yes | Quantity (denominated by contractValCurrency), not required if an `amount` is provided |
 amount | STRING | NO | An amount of USDT can be specified instead of a quantity. Only valid for spot market buy orders|
 side | STRING | Yes | `BUY` or `SELL` |
 timestamp | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
@@ -1391,7 +1391,7 @@ Parameters | Type | Required | Description
 -------------------------- | -----|--------- | -------------|
 op | STRING | Yes | `cancelorders`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
-dataArray | LIST of dictionaries | A list of orders with each order in JSON format, the same format/parameters as the request for cancelling a single order. The max number of orders is still limited by the message length validation so by default up to 20 orders can be placed in a batch, assuming that each order JSON has 200 characters.
+dataArray | LIST of dictionaries | Yes |A list of orders with each order in JSON format, the same format/parameters as the request for cancelling a single order. The max number of orders is still limited by the message length validation so by default up to 20 orders can be placed in a batch, assuming that each order JSON has 200 characters.|
 
 
 ### Modify Order
@@ -1524,15 +1524,12 @@ One account can only place up to 50 orders per second via websocket.
 
 Currently only LIMIT orders are supported by the modify order command.
 
-* The price and/or quantity and/or side of an order can be modified.
-* Reducing the quantity will leave the modified orders position in the order queue **unchanged** meaning the order ID is unchanged.
-* Increasing the quantity will **always** move the modified order to the back of the order queue, resulting in a new order ID.
-* Modifying the price will **always** move the modified order to the back of the order queue, resulting in a new order ID.
-* Modifying the side will **always** move the modified order to the back of the order queue, resulting in a new order ID.
+* The price and/or quantity of an order can be modified.
+* Reducing the quantity will leave the modified orders position in the order queue **unchanged**.
+* Increasing the quantity will **always** move the modified order to the back of the order queue.
+* Modifying the price will **always** move the modified order to the back of the order queue.
 
-Please note that when a new order ID is issued the original order is actually **closed** and a new order with a new order ID is **opened**, replacing the original order.  This is described in further detail in the section [Order Channel - OrderModified](?json#ordermodified).    
-
-Please be aware that modifying the side of an existing GTC LIMIT order from BUY to SELL or vice versa **without** modifying the price could result in the order matching immediately since its quite likely the new order will become an agressing taker order.  
+Modified orders retain their original orderId.
 
 <sub>**Request Parameters**</sub> 
 
@@ -1546,8 +1543,8 @@ orderId|INTEGER|Yes|Unique order ID from the exchange|
 side| STRING|No| `BUY` or `SELL`|
 price|FLOAT|No|Price for limit orders|
 quantity|FLOAT|No|  Quantity (denominated by `contractValCurrency`)|
-timestamp | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
-recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
+timestamp | LONG | No | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
+recvWindow | LONG | No | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
 
 
 ### Modify Batch Orders
@@ -1725,7 +1722,7 @@ AND
 Requires an authenticated websocket connection.
 Please also subscribe to the **User Order Channel** to receive push notifications for all message updates in relation to an account or sub-account (e.g. OrderOpened, OrderMatched etc......).
 
-The websocket reply from the exchange will repond to each order in the batch separately, one order at a time, and has the same message format as the reponse for the single order modify method.
+The websocket responses from the exchange will come separately for each order in the batch, one order at a time, and the message has the same format as the single `modifyorder` method.
 
 <sub>**Request Parameters**</sub> 
 
@@ -1734,8 +1731,8 @@ Parameters | Type | Required |Description|
 op | STRING | Yes | `modifyorders`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
 dataArray | LIST of dictionaries | Yes | A list of orders with each order in JSON format, the same format/parameters as the request for modifying a single order.  The max number of orders is still limited by the message length validation so by default up to 20 orders can be modified in a batch, assuming that each order JSON has 200 characters.
-timestamp | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
-recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
+timestamp | LONG | No | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
+recvWindow | LONG | No | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
 
 
 ## Subscriptions - Private
@@ -2219,7 +2216,7 @@ marketCode | STRING |  Market code e.g. `FLEX-USDT`
 timeInForce|STRING| Client submitted time in force, `GTC` by default
 timestamp|STRING |Current millisecond timestamp
 remainQuantity | STRING | Working quantity
-orderType| STRING | `LIMIT` or `STOP_LIMIT`
+orderType| STRING | `LIMIT`, `STOP_LIMIT`, or `STOP_MARKET`
 stopPrice| STRING |Stop price submitted (only applicable for STOP order types)
 limitPrice|STRING|Limit price submitted
 isTriggered|STRING|`False` or `True`
@@ -2300,7 +2297,6 @@ There are multiple scenarios in which an order is closed as described by the **s
 * `CANCELED_BY_FOK` - since fill-or-kill orders requires **all** of the order quantity to immediately take and match at the submitted limit price or better, if no such match is possible then the whole order quantity is canceled
 * `CANCELED_ALL_BY_IOC` - since immediate-or-cancel orders also requires an immediate match at the specified limit price or better, if no such match price is possible for **any** of the submitted order quantity then the whole order quantity is canceled
 * `CANCELED_PARTIAL_BY_IOC` - since immediate-or-cancel orders only requires **some** of the submitted order quantity to immediately take and match at the specified limit price or better, if a match is possible for only a **partial** quantity then only the remaining order quantity which didn't immediately match is canceled
-* `CANCELED_BY_AMEND` - if a **Modify Order** command updated an order such that it changed its position in the order queue, the original order would be closed and an OrderClosed notice would be broadcasted in the Order Channel with this status
 
 <sub>**Channel Update Fields**</sub>
 
@@ -2316,7 +2312,7 @@ price|STRING |Limit price of closed order (only applicable for LIMIT order types
 quantity|STRING |Original order quantity of closed order
 amount | STRING | "0.0" if not provided in the request
 side|STRING |`BUY` or `SELL`
-status|STRING | <ul><li>`CANCELED_BY_USER`</li><li>`CANCELED_BY_MAKER_ONLY`</li><li>`CANCELED_BY_FOK`</li><li>`CANCELED_ALL_BY_IOC`</li><li>`CANCELED_PARTIAL_BY_IOC`</li><li>`CANCELED_BY_AMEND`</li></ul>
+status|STRING | <ul><li>`CANCELED_BY_USER`</li><li>`CANCELED_BY_MAKER_ONLY`</li><li>`CANCELED_BY_FOK`</li><li>`CANCELED_ALL_BY_IOC`</li><li>`CANCELED_PARTIAL_BY_IOC`</li></ul>
 marketCode|STRING |  Market code e.g. `BTC-USDT-SWAP-LIN`
 timeInForce|STRING |Time in force of closed order
 timestamp|STRING |Current millisecond timestamp
@@ -2432,11 +2428,7 @@ isTriggered | BOOL | `False` or `True`
 
 ```
 
-As described in a previous section [Order Commands - Modify Order](?json#modify-order), the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified.
-
-If the orders queue position is **unchanged** because the orders quantity has been **reduced** and no other order parameter has been changed then this **OrderModified** message will be sent via the Order Channel giving the full details of the modified order.  In this case the order ID is unchanged.
-
-If however the order queue position has changed becuase the orders: (1) side was modified, (2) quantity was increased, (3) price was changed or any combination of these, then the exchange will close the orginal order with an **OrderClosed** message with **status** `CANCELED_BY_AMEND`, followed by the opening of a new order with an **OrderOpened** message containing a new order ID to reflect the orders new position in the order queue.
+As described in a previous section [Order Commands - Modify Order](?json#modify-order), the Modify Order command can potentially affect the queue position of the order depending on which parameter of the original order has been modified. Orders retain their orderIds after modification.
 
 <sub>**Channel Update Fields**</sub>
 
@@ -2596,7 +2588,7 @@ matchPrice|STRING|Match price of order from this match ID
 matchQuantity|STRING|Match quantity of order from this match ID
 orderMatchType|STRING|`MAKER` or `TAKER`
 remainQuantity|STRING|Remaining order quantity
-orderType|STRING|<ul><li>`LIMIT`</li><li>`MARKET`</li><li>`STOP_LIMIT`</li></ul>
+orderType|STRING|<ul><li>`LIMIT`</li><li>`MARKET`</li></ul> triggered `STOP_LIMIT` and `STOP_MARKET` orders are converted to `LIMIT` and `MARKET` orders respectively
 fees|STRING|Amount of fees paid from this match ID 
 feeInstrumentId|STRING|Instrument ID of fees paid from this match ID 
 isTriggered|STRING|`False` (or `True` for STOP order types)
@@ -2852,7 +2844,7 @@ data | DICTIONARY |
 seqNum | INTEGER | Sequence number of the order book snapshot |
 asks| LIST of floats | Sell side depth; <ol><li>price</li><li>quantity</li> |
 bids| LIST of floats | Buy side depth; <ol><li>price</li><li>quantity</li> |
-checksum | INTEGER |marketCode |
+checksum | INTEGER |checksum |
 marketCode | STRING |marketCode |
 timestamp| INTEGER | Millisecond timestamp |
 action| STRING |  |
