@@ -2365,6 +2365,7 @@ This order message can occur if:-
 * an order has already been matched by the time the cancel order command is recieved and processed by the exchange which means this order is no longer active and therefore cannot be closed.
 * multiple cancel order commands for the **same** orderID have been sent in quick sucession to the exchange by mistake and only the first cancel order command is accepted and processed by the exchange which means this order is no longer active and therefore cannot be closed again.
 * For more error messages and code, you can see them here[Error Codes](#error-codes)
+
 <sub>**Channel Update Fields**</sub>
 
 Fields | Type | Description
