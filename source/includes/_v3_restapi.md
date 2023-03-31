@@ -972,6 +972,9 @@ status | STRING | Available values: `CANCELED`, `OPEN`, `PARTIAL_FILL`, `FILLED`
 side | STRING | Side of the order, `BUY` or `SELL` |
 price | STRING | Price or limit price in the case of a STOP order |
 stopPrice | STRING | Trigger price for a STOP order |
+amount | STRING | Amount (only allow amount field when market is spot and direction is BUY) |
+displayQuantity | STRING |  |
+triggerType | STRING |  |
 isTriggered | BOOL | `true` for a STOP order |
 remainQuantity | STRING | Remaining quantity |
 totalQuantity | STRING | Total quantity |
@@ -1048,6 +1051,9 @@ isTriggered | BOOL | Returns `true` if a STOP order has been triggered |
 quantity | STRING |  Quantity |
 remainQuantity | STRING | Remaining quantity |
 matchedQuantity | STRING | Matched Quantity |
+amount | STRING | Amount (only allow amount field when market is spot and direction is BUY) |
+displayQuantity | STRING |  |
+triggerType | STRING |  |
 orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT`,`STOP_MARKET` |
 timeInForce | STRING | Client submitted time in force. <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade) |
 source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `31`, `32`, `33`, `101`, `102`, `103`, `108`, `111`, `150`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `31: Physical settlement`, `32: Cash settlement`, `33: transfer`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Position liquidation`, `108: ADL`, `111: Automatic repayment`, `150: BLP assignment`</p> |

@@ -19,6 +19,12 @@
     * 710004    Position quantity exceeds the limit
     * 710005    Insufficient margin
     * 710006    Insufficient balance
+    
+* Updated REST API [GET /v3/orders/status](#get-v3-orders-status) and [GET /v3/orders/working](#get-v3-orders-working)
+    * Response fields:
+        * Added new field  `amount`
+        * Added new field  `displayQuantity`
+        * Added new field  `triggerType`
 
 
 **2023-03-28**
