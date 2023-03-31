@@ -2364,7 +2364,7 @@ This order message can occur if:-
 
 * an order has already been matched by the time the cancel order command is recieved and processed by the exchange which means this order is no longer active and therefore cannot be closed.
 * multiple cancel order commands for the **same** orderID have been sent in quick sucession to the exchange by mistake and only the first cancel order command is accepted and processed by the exchange which means this order is no longer active and therefore cannot be closed again.
-
+* For more error messages and code, you can see them here[Error Codes](#error-codes)
 <sub>**Channel Update Fields**</sub>
 
 Fields | Type | Description
@@ -2493,6 +2493,7 @@ displayQuantity |STRING| Quantity displayed in the book, primarily used for iceb
 ```
 
 This order message can occur if an order has already been matched by the time the modify order command is recieved and processed by the exchange which means this order is no longer active and therefore cannot be modified.
+* For more error messages and code, you can see them here[Error Codes](#error-codes)
 
 <sub>**Channel Update Fields**</sub>
 
@@ -3654,13 +3655,21 @@ Code | Error Message
 20032 | Failed to submit due to timeout in server side |
 20033 | triggerType is invalid |
 20034 | The size of tag must be less than 32 |
+20034 | The size of tag must be less than 32 |
+300001| Invalid account status xxx, please contact administration if any questions
 300011| Repo market orders are not allowed during the auction window
 300012| Repo bids above 0 and offers below 0 are not allowed during the auction window
-100005| Open order not found with id
-100006| Open order does not match to the given account
+100005| Open order not found
+100006| Open order is not owned by the user
+100008| Quantity cannot be less than the quantity increment xxx"
+100015| recvWindow xxx has expired
 200050| The market is not active
-710002| FAILED sanity bound check as price (.....) < lower bound (.....)
-710003| FAILED sanity bound check as price (.....) > upper bound (.....)
-710004| FAILED net position check as position (.....) > threshold (.....)
-710005| FAILED margin check as collateral (.....) < var (.....)   
-710006| FAILED balance check as balance (.....) < value (.....)
+710001| System failure, exception thrown -> xxx
+710002| The price is lower than the minimum
+710003| The price is higher than the maximum
+710004| Position quantity exceeds the limit
+710005| Insufficient margin
+710006| Insufficient balance
+710007| Insufficient position
+000101| Internal server is unavailable temporary, try again later
+000201| Trade service is busy, try again later

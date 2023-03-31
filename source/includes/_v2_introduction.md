@@ -1,4 +1,25 @@
 # Change Log
+**2023-03-31**
+* Updated WebSocket Error Codes[Error Codes](#error-codes)
+    * Added error code and message:
+        * 000101    Internal server is unavailable temporary, try again later
+        * 000201    Trade service is busy, try again later
+        * 100008    Quantity cannot be less than the quantity increment xxx
+        * 100015    recvWindow xxx has expired
+        * 300001    Invalid account status xxx, please contact administration if any questions
+        * 710001    System failure, exception thrown -> xxx
+        * 710007    Insufficient position
+    * Updated error code and message:
+        * 100005    Open order not found
+        * 100006    Open order is not owned by the user
+        * 200050    The market xxx is inactive
+        * 710002    The price is lower than the minimum
+        * 710003    The price is higher than the maximum
+        * 710004    Position quantity exceeds the limit
+        * 710005    Insufficient margin
+        * 710006    Insufficient balance
+
+
 **2023-03-28**
 
 * Removed WebSocket Adapter
