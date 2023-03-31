@@ -3661,7 +3661,7 @@ Code | Error Message
 300012| Repo bids above 0 and offers below 0 are not allowed during the auction window
 100005| Open order not found
 100006| Open order is not owned by the user
-100008| Quantity cannot be less than the quantity increment xxx"
+100008| Quantity cannot be less than the quantity increment xxx
 100015| recvWindow xxx has expired
 200050| The market is not active
 710001| System failure, exception thrown -> xxx
