@@ -679,7 +679,7 @@
 <li>710001    System failure, exception thrown -&gt; xxx</li>
 <li>710007    Insufficient position</li>
 </ul></li>
-<li>Updated error code and message:
+<li><p>Updated error code and message:</p>
 
 <ul>
 <li>100005    Open order not found</li>
@@ -690,6 +690,17 @@
 <li>710004    Position quantity exceeds the limit</li>
 <li>710005    Insufficient margin</li>
 <li>710006    Insufficient balance</li>
+</ul></li>
+<li><p>Updated REST API <a href="#get-v3-orders-status">GET /v3/orders/status</a> and <a href="#get-v3-orders-working">GET /v3/orders/working</a></p>
+
+<ul>
+<li>Response fields:
+
+<ul>
+<li>Added new field  <code>amount</code></li>
+<li>Added new field  <code>displayQuantity</code></li>
+<li>Added new field  <code>triggerType</code></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -8250,6 +8261,21 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 <td>Trigger price for a STOP order</td>
 </tr>
 <tr>
+<td>amount</td>
+<td>STRING</td>
+<td>Amount (only allow amount field when market is spot and direction is BUY)</td>
+</tr>
+<tr>
+<td>displayQuantity</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
+<td>triggerType</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
 <td>isTriggered</td>
 <td>BOOL</td>
 <td><code>true</code> for a STOP order</td>
@@ -8450,6 +8476,21 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 <td>matchedQuantity</td>
 <td>STRING</td>
 <td>Matched Quantity</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>STRING</td>
+<td>Amount (only allow amount field when market is spot and direction is BUY)</td>
+</tr>
+<tr>
+<td>displayQuantity</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
+<td>triggerType</td>
+<td>STRING</td>
+<td></td>
 </tr>
 <tr>
 <td>orderType</td>
