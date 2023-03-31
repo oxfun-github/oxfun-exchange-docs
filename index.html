@@ -668,7 +668,7 @@
 
 <ul>
 <li>Updated WebSocket Error Codes <a href="#error-codes">Error Codes</a></li>
-<li>Added error code and message:
+<li><p>Added new error code and message:</p>
 
 <ul>
 <li>000101    Internal server is unavailable temporary, try again later</li>
@@ -691,7 +691,7 @@
 <li>710005    Insufficient margin</li>
 <li>710006    Insufficient balance</li>
 </ul></li>
-<li><p>Updated REST API <a href="#get-v3-orders-status">GET /v3/orders/status</a> and <a href="#get-v3-orders-working">GET /v3/orders/working</a></p>
+<li><p>Updated REST API <a href="#get-v3-orders-status">GET /v3/orders/status</a> and <a href="#get-v3-orders-working">GET /v3/orders/working</a> and <a href="#post-v3-orders-place">POST /v3/orders/place</a> and <a href="#delete-v3-orders-cancel">DELETE /v3/orders/cancel</a></p>
 
 <ul>
 <li>Response fields:
@@ -8826,6 +8826,11 @@ You can place up to 8 orders at a time in REST API
 <td><code>MARKET</code> or <code>LIMIT</code> or <code>STOP_LIMIT</code> or or <code>STOP_MARKET</code></td>
 </tr>
 <tr>
+<td>triggerType</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
 <td>timeInForce</td>
 <td>STRING</td>
 <td></td>
@@ -9046,6 +9051,11 @@ You can cancel up to 8 orders at a time in REST API
 <td></td>
 </tr>
 <tr>
+<td>displayQuantity</td>
+<td>STRING</td>
+<td></td>
+</tr>
+<tr>
 <td>remainQuantity</td>
 <td>STRING</td>
 <td>Remaining quantity</td>
@@ -9054,6 +9064,11 @@ You can cancel up to 8 orders at a time in REST API
 <td>orderType</td>
 <td>STRING</td>
 <td><code>MARKET</code> or <code>LIMIT</code> or <code>STOP</code> or <code>STOP_MARKET</code></td>
+</tr>
+<tr>
+<td>triggerType</td>
+<td>STRING</td>
+<td></td>
 </tr>
 <tr>
 <td>timeInForce</td>
