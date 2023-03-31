@@ -1196,6 +1196,7 @@ matchQuantity | STRING | Matched quantity |
 feeInstrumentId | STRING | Instrument ID of fees paid from this match ID |
 fees | STRING | Amount of fees paid from this match ID |
 orderType | STRING | `MARKET` or `LIMIT` or `STOP_LIMIT` or or `STOP_MARKET` |
+triggerType | STRING |  |
 timeInForce | STRING | |
 source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `101`, `102`, `103`, `111`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `111: Automatic repayment`</p> |
 createdAt | STRING | Millisecond timestamp of the order created time |
@@ -1301,8 +1302,10 @@ stopPrice | STRING | |
 isTriggered | BOOL | false (can be true for STOP order types) |
 quantity | STRING | |
 amount | STRING ||
+displayQuantity | STRING | |
 remainQuantity | STRING | Remaining quantity |
 orderType | STRING | `MARKET` or `LIMIT` or `STOP` or `STOP_MARKET` |
+triggerType | STRING |  |
 timeInForce | STRING | |
 canceledAt | STRING | Millisecond timestamp of the order cancel time |
 
