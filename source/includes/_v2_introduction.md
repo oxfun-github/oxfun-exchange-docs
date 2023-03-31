@@ -1,7 +1,7 @@
 # Change Log
 **2023-03-31**
 
-* Updated WebSocket Error Codes[Error Codes](#error-codes)
+* Updated WebSocket Error Codes [Error Codes](#error-codes)
 * Added error code and message:
     * 000101    Internal server is unavailable temporary, try again later
     * 000201    Trade service is busy, try again later
