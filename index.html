@@ -664,6 +664,26 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='change-log'>Change Log</h1>
+<p><strong>2023-03-31</strong>
+* Updated WebSocket Error Codes<a href="#error-codes">Error Codes</a>
+    * Added error code and message:
+        * 000101    Internal server is unavailable temporary, try again later
+        * 000201    Trade service is busy, try again later
+        * 100008    Quantity cannot be less than the quantity increment xxx
+        * 100015    recvWindow xxx has expired
+        * 300001    Invalid account status xxx, please contact administration if any questions
+        * 710001    System failure, exception thrown -&gt; xxx
+        * 710007    Insufficient position
+    * Updated error code and message:
+        * 100005    Open order not found
+        * 100006    Open order is not owned by the user
+        * 200050    The market xxx is inactive
+        * 710002    The price is lower than the minimum
+        * 710003    The price is higher than the maximum
+        * 710004    Position quantity exceeds the limit
+        * 710005    Insufficient margin
+        * 710006    Insufficient balance</p>
+
 <p><strong>2023-03-28</strong></p>
 
 <ul>
@@ -3902,9 +3922,9 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <ul>
 <li>an order has already been matched by the time the cancel order command is recieved and processed by the exchange which means this order is no longer active and therefore cannot be closed.</li>
 <li>multiple cancel order commands for the <strong>same</strong> orderID have been sent in quick sucession to the exchange by mistake and only the first cancel order command is accepted and processed by the exchange which means this order is no longer active and therefore cannot be closed again.</li>
+<li>For more error messages and code, you can see them here<a href="#error-codes">Error Codes</a>
+<sub><strong>Channel Update Fields</strong></sub></li>
 </ul>
-
-<p><sub><strong>Channel Update Fields</strong></sub></p>
 
 <table><thead>
 <tr>
@@ -4219,7 +4239,8 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This order message can occur if an order has already been matched by the time the modify order command is recieved and processed by the exchange which means this order is no longer active and therefore cannot be modified.</p>
+<p>This order message can occur if an order has already been matched by the time the modify order command is recieved and processed by the exchange which means this order is no longer active and therefore cannot be modified.
+* For more error messages and code, you can see them here<a href="#error-codes">Error Codes</a></p>
 
 <p><sub><strong>Channel Update Fields</strong></sub></p>
 
@@ -6204,6 +6225,14 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <td>The size of tag must be less than 32</td>
 </tr>
 <tr>
+<td>20034</td>
+<td>The size of tag must be less than 32</td>
+</tr>
+<tr>
+<td>300001</td>
+<td>Invalid account status xxx, please contact administration if any questions</td>
+</tr>
+<tr>
 <td>300011</td>
 <td>Repo market orders are not allowed during the auction window</td>
 </tr>
@@ -6213,35 +6242,59 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 </tr>
 <tr>
 <td>100005</td>
-<td>Open order not found with id</td>
+<td>Open order not found</td>
 </tr>
 <tr>
 <td>100006</td>
-<td>Open order does not match to the given account</td>
+<td>Open order is not owned by the user</td>
+</tr>
+<tr>
+<td>100008</td>
+<td>Quantity cannot be less than the quantity increment xxx&quot;</td>
+</tr>
+<tr>
+<td>100015</td>
+<td>recvWindow xxx has expired</td>
 </tr>
 <tr>
 <td>200050</td>
 <td>The market is not active</td>
 </tr>
 <tr>
+<td>710001</td>
+<td>System failure, exception thrown -&gt; xxx</td>
+</tr>
+<tr>
 <td>710002</td>
-<td>FAILED sanity bound check as price (.....) &lt; lower bound (.....)</td>
+<td>The price is lower than the minimum</td>
 </tr>
 <tr>
 <td>710003</td>
-<td>FAILED sanity bound check as price (.....) &gt; upper bound (.....)</td>
+<td>The price is higher than the maximum</td>
 </tr>
 <tr>
 <td>710004</td>
-<td>FAILED net position check as position (.....) &gt; threshold (.....)</td>
+<td>Position quantity exceeds the limit</td>
 </tr>
 <tr>
 <td>710005</td>
-<td>FAILED margin check as collateral (.....) &lt; var (.....)</td>
+<td>Insufficient margin</td>
 </tr>
 <tr>
 <td>710006</td>
-<td>FAILED balance check as balance (.....) &lt; value (.....)</td>
+<td>Insufficient balance</td>
+</tr>
+<tr>
+<td>710007</td>
+<td>Insufficient position</td>
+</tr>
+<tr>
+<td>000101</td>
+<td>Internal server is unavailable temporary, try again later</td>
+</tr>
+<tr>
+<td>000201</td>
+<td>Trade service is busy, try again later</td>
 </tr>
 </tbody></table>
 <h1 id='rest-api-v3'>REST API V3</h1>
