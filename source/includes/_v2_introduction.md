@@ -6,16 +6,6 @@
     * Response fields:
         * Updated field `canceledAt` to  `closedAt`
 
-* Updated WebSocket Error Codes [Error Codes](#error-codes)
-* Added new error code and message:
-    * 000101    Internal server is unavailable temporary, try again later
-    * 000201    Trade service is busy, try again later
-    * 100008    Quantity cannot be less than the quantity increment xxx
-    * 100015    recvWindow xxx has expired
-    * 300001    Invalid account status xxx, please contact administration if any questions
-    * 710001    System failure, exception thrown -> xxx
-    * 710007    Insufficient position
-    
 
 
 **2023-03-31**
