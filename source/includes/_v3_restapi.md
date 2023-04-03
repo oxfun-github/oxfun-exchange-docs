@@ -1254,7 +1254,7 @@ DELETE /v3/orders/cancel
             "remainQuantity": "0.001",
             "orderType": "LIMIT",  
             "timeInForce": "GTC", 
-            "canceledAt": "1629712561919"
+            "closedAt": "1629712561919"
         },
         {
             "code": "40035",
@@ -1263,7 +1263,7 @@ DELETE /v3/orders/cancel
              "orderId": "204285250571714316",
              "clientOrderId": "1612249737724",
              "marketCode": "BTC-USDT-SWAP-LIN",
-             "canceledAt": "1615454881433"
+             "closedAt": "1615454881433"
          }
     ]
 }
@@ -1307,7 +1307,7 @@ remainQuantity | STRING | Remaining quantity |
 orderType | STRING | `MARKET` or `LIMIT` or `STOP` or `STOP_MARKET` |
 triggerType | STRING |  |
 timeInForce | STRING | |
-canceledAt | STRING | Millisecond timestamp of the order cancel time |
+closedAt | STRING | Millisecond timestamp of the order close time |
 
 
 
