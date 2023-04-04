@@ -8638,8 +8638,8 @@ You can place up to 8 orders at a time in REST API
 <tr>
 <td>timestamp</td>
 <td>STRING</td>
-<td>NO</td>
-<td>In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected</td>
+<td>YES</td>
+<td>In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected.</td>
 </tr>
 <tr>
 <td>responseType</td>
@@ -8951,7 +8951,7 @@ You can cancel up to 8 orders at a time in REST API
 <tr>
 <td>timestamp</td>
 <td>LONG</td>
-<td>NO</td>
+<td>YES</td>
 <td></td>
 </tr>
 <tr>
