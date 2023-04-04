@@ -2,7 +2,7 @@
 
 **TEST SITE**
 
-* `https://stg.opnx.com/`
+* `https://stg.opnx.com`
 
 * `https://stgapi.opnx.com`
 
