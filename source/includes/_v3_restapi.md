@@ -1157,7 +1157,7 @@ You can place up to 8 orders at a time in REST API
 Request Parameters | Type | Required | Description | 
 ------------------ | ---- | -------- | ----------- |
 recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected |
-timestamp | STRING | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected |
+timestamp | STRING | YES | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected.  |
 responseType | STRING | YES | `FULL` or `ACK` |
 orders | LIST | YES | |
 clientOrderId | ULONG | YES | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
@@ -1278,7 +1278,7 @@ You can cancel up to 8 orders at a time in REST API
 Request Parameters | Type | Required | Description | 
 ------------------ | ---- | -------- | ----------- |
 recvWindow | LONG | NO | |
-timestamp | LONG | NO | |
+timestamp | LONG | YES | |
 responseType | STRING | YES | `FULL` or `ACK` |
 orders | LIST | YES | |
 marketCode | STRING | YES | |
