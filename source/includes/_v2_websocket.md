@@ -283,7 +283,7 @@ signature | STRING | Yes | `Base64(HmacSHA256(current_ms_timestamp + 'GET/auth/s
 
 ## Session Keep Alive
 
-To maintain an active WebSocket connection it is imperative to either be subscribed to a channel that pushes data at least once per minute (Depth) or send a ping to the server once per minute.
+To maintain an active WebSocket connection it is imperative to either be subscribed to a channel that pushes data at least once per minute (Depth) or periodically send a text “ping” (without the quotation mark) to the server within an minute and then the server will reply text “pong” (without quotation mark) to you.
 
 ## Order Commands
 
