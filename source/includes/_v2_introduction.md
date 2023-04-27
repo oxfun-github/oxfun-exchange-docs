@@ -1,6 +1,14 @@
 # Change Log
-**2023-04-03**
+**2023-04-28**
+* Updated REST API  [GET /v3/assets](#get-v3-assets)
+    * Response fields:
+        * Added new field  `loanToValueFactor`
+             
+* Added new REST API  [GET /v3/leverage/tiers](#get-v3-leverage-tiers)
+   
 
+
+**2023-04-03**
 
 * Updated REST API  [DELETE /v3/orders/cancel](#delete-v3-orders-cancel)
     * Response fields:

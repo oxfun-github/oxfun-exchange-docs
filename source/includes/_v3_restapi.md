@@ -1499,6 +1499,7 @@ GET /v3/assets?asset={asset}
             "asset": "USDT",
             "isCollateral": true,
             "loanToValue": "1.000000000",
+            "loanToValueFactor": "0",
             "networkList": [
                 {
                     "network": "ERC20",
@@ -1899,3 +1900,68 @@ Response Field | Type | Description |
 marketCode | STRING | Market code |
 fundingRate | STRING | Funding rate |
 createdAt | STRING | Millisecond timestamp |
+
+
+### GET `/v3/leverage/tiers`
+
+Get markets leverage tiers
+
+> **Request**
+
+```
+GET  /v3/leverage/tiers?marketCode={marketCode}
+```
+
+> **Successful response format**
+
+```json
+{
+    "success": true,
+    "data": [
+        {
+            "marketCode": "FLEX-USDT-SWAP-LIN",
+            "tiers": [
+                {
+                    "tier": 1,
+                    "leverage": "100",
+                    "positionFloor": "0",
+                    "positionCap": "100",
+                    "initialMargin": "0.01",
+                    "maintenanceMargin": "0.005"
+                },
+                {
+                    "tier": 2,
+                    "leverage": "50",
+                    "positionFloor": "100",
+                    "positionCap": "250",
+                    "initialMargin": "0.02",
+                    "maintenanceMargin": "0.01"
+                },
+                {
+                    "tier": 3,
+                    "leverage": "10",
+                    "positionFloor": "250",
+                    "positionCap": "1000",
+                    "initialMargin": "0.1",
+                    "maintenanceMargin": "0.05"
+                }
+            ]
+        }
+    ]
+}
+```
+
+Request Parameter | Type | Required | Description |
+----------------- | ---- | -------- | ----------- |
+marketCode | STRING | NO | Market code |
+
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+marketCode | STRING | Market code |
+tier | STRING | Leverage tier  |
+leverage | STRING | Market leverage |
+positionFloor | STRING | The lower position limit |
+positionCap | STRING | The upper position limit |
+initialMargin | STRING | Initial margin |
+maintenanceMargin | STRING | Maintenance margin |
