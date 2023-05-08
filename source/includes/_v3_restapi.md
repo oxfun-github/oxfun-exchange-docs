@@ -1542,6 +1542,7 @@ Response Field | Type | Description |
 asset | STRING | Asset name |
 isCollateral | BOOL | Indicates it is collateral or not |
 loanToValue | STRING | Loan to value of the asset |
+loanToValueFactor | STRING |  |
 networkList | LIST | List of dictionaries |
 network | STRING | Network for deposit and withdrawal |
 tokenId | STRING | Token ID |
