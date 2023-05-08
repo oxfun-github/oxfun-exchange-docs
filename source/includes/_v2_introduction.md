@@ -1,5 +1,5 @@
 # Change Log
-**2023-04-28**
+**2023-05-08**
 * Updated REST API  [GET /v3/assets](#get-v3-assets)
     * Response fields:
         * Added new field  `loanToValueFactor`
