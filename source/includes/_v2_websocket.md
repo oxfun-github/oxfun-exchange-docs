@@ -2123,7 +2123,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
 
 **Channel Update Frequency** : real-time, on order update
 
-The websocket will reply with the shown success response format for EACH order channel which has been successfully subscribed to.
+Every order update for a particular sub-account will be relayed to all of its active connections. This implies that for each sub-account, the order responses for all connected markets will be sent to all active subscriptions, even if a specific connection is only subscribed to a single market.
 
 <sub>**Request Parameters**</sub> 
 

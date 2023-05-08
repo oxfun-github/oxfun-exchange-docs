@@ -1469,7 +1469,7 @@ base | STRING | Base asset |
 counter | STRING | Counter asset |
 type | STRING | Type of the contract |
 tickSize | STRING | Tick size of the contract |
-minSize | STRING | Minimum quantity |
+minSize | STRING | Minimum tradable quantity and quantity increment |
 listedAt | STRING | Listing date of the contract |
 settlementAt | STRING | Timestamp of settlement if applicable i.e. Quarterlies and Spreads |
 upperPriceBound | STRING | Sanity bound |
