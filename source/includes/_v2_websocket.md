@@ -3024,8 +3024,8 @@ Fields | Type | Description|
 -------------------------- | -----| -------------|
 table | STRING | `bestBidAsk` |
 data | DICTIONARY |
-asks| LIST of floats | Sell side depth; <ol><li>price</li><li>quantity</li> |
-bids| LIST of floats | Buy side depth; <ol><li>price</li><li>quantity</li> |
+ask| LIST of floats | Sell side depth; <ol><li>price</li><li>quantity</li> |
+bid| LIST of floats | Buy side depth; <ol><li>price</li><li>quantity</li> |
 checksum | LONG |  |
 marketCode | STRING |marketCode |
 timestamp| STRING | Millisecond timestamp |
