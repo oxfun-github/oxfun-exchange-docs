@@ -1636,7 +1636,7 @@ GET /v3/funding/estimates?marketCode={marketCode}
 
 Request Parameter | Type | Required | Description |
 ----------------- | ---- | -------- | ----------- |
-marketCode | STRING | YES | Market code |
+marketCode | STRING | NO | Market code |
 
 
 Response Field | Type | Description |
