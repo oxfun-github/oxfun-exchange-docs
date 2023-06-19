@@ -1849,7 +1849,7 @@ GET /v3/exchange-trades?marketCode={marketCode}&limit={limit}&startTime={startTi
 
 Request Parameter | Type | Required | Description |
 ----------------- | ---- | -------- | ----------- |
-marketCode | STRING | YES | Market code |
+marketCode | STRING | NO | Market code |
 limit | LONG | NO | Default 200, max 500 |
 startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
 endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
