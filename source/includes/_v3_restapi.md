@@ -1802,12 +1802,10 @@ GET /v3/markets/operational?marketCode={marketCode}
 ```json
 {
     "success": true,
-    "data": [
-        {
-            "marketCode": "BTC-USDT",
-            "operational": true 
-        }
-    ]
+    "data": {
+        "marketCode": "BTC-USDT-SWAP-LIN",
+        "operational": true
+    }
 }
 ```
 
