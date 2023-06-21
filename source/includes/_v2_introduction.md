@@ -121,6 +121,16 @@ If you wish to execute orders with your API Key, clients must select the `Can Tr
 
 API keys are also only bound to a single sub-account, defined upon creation. This means that an API key will only ever interact and return account information for a single sub-account.
 
+
+# API Library
+
+We recommend implementing your own API connector to minimize dependencies on external software, as well as optimize performance and security.
+
+However, to help speed up your development we have produced a lightweight Java connector, with complete API coverage, supporting synchronous and asynchronous requests, and event streaming using WebSockets. 
+
+https://github.com/opnx-github/opnx-api-client
+
+
 # Rate Limit
 
 Opnx's APIs allows our clients to access and control their accounts or view our market data using custom-written software. To protect the performance of the system, we impose certain limits:
