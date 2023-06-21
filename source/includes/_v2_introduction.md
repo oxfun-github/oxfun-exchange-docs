@@ -108,7 +108,7 @@ Welcome to Opnx's v2 application programming interface (API). Opnx's APIs provid
 
 Using these interfaces it is possible to place both authenticated and unauthenticated API commands for public and private commands respectively.
 
-To get started please register for a TEST account at [stg.opnx.com/register](stg.opnx.com/register) or a LIVE account at [opnx.com/register](opnx.com/register)
+To get started please register for a TEST account at [stg.opnx.com/register](https://stg.opnx.com/register) or a LIVE account at [opnx.com/register](https://opnx.com/register)
 
 
 # API Key Management
@@ -128,7 +128,7 @@ We recommend implementing your own API connector to minimize dependencies on ext
 
 However, to help speed up your development we have produced a lightweight Java connector, with complete API coverage, supporting synchronous and asynchronous requests, and event streaming using WebSockets. 
 
-[github.com/opnx-github/opnx-api-client](github.com/opnx-github/opnx-api-client)
+[github.com/opnx-github/opnx-api-client](https://github.com/opnx-github/opnx-api-client)
 
 
 # Rate Limit
