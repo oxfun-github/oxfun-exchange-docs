@@ -712,7 +712,7 @@ Withdrawal addresses
 > **Request**
 
 ```
-GET /v3/withdrawal-addresses?asset={asset}?network={network}
+GET /v3/withdrawal-addresses?asset={asset}&network={network}
 ```
 
 > **Successful response format**
