@@ -1834,7 +1834,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "table": "balance",
   "accountId": "<Your account ID>",
   "timestamp": "1599693365059",
-  "tradeType": "LINEAR",
+  "tradeType": "STANDARD",
   "data":[
       {
           "total": "10000",
@@ -1877,7 +1877,7 @@ Fields |Type| Description |
 table | STRING| `balance`
 accountId | STRING|  Account identifier
 timestamp|STRING | Current millisecond timestamp
-tradeType|STRING | `LINEAR`
+tradeType|STRING | `LINEAR`, `STANDARD`, `PORTFOLIO`
 data | LIST of dictionaries |
 total | STRING | Total spot asset balance
 reserved | STRING | Reserved asset balance for working spot and repo orders
