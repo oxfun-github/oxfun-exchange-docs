@@ -164,7 +164,7 @@ GET v3/account?subAcc={subAcc},{subAcc}
         {
             "accountId": "21213",
             "name": "main",
-            "accountType": "LINEAR",
+            "accountType": "STANDARD",
             "balances": [
                 {
                     "asset": "BTC",
@@ -215,7 +215,7 @@ Response Field | Type | Description |
 -------------- | ---- | ----------- |
 accountId | STRING | Account ID |
 name | STRING | Account name |
-accountType | STRING | Account type |
+accountType | STRING | Account type  `LINEAR`, `STANDARD`, `PORTFOLIO`|
 balances | LIST of dictionaries | |
 asset | STRING | Asset name |
 total | STRING | Total balance|
