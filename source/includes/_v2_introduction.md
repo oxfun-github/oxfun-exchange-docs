@@ -1,4 +1,10 @@
 # Change Log
+**2023-07-10**
+* Updated REST API [GET /v3/account](#get-v3-account)
+    * Introduced `STANDARD` and `PORTFOLIO` account types
+* Updated WebSocket API [Balance Channel](#balance-channel)
+    * Introduced `STANDARD` and `PORTFOLIO` trade types
+
 **2023-05-08**
 
 * Updated REST API  [GET /v3/assets](#get-v3-assets)
