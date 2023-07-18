@@ -1,5 +1,6 @@
 # Change Log
 **2023-07-18**
+
 * Added new REST API  [GET /v3/positions/largest](#get-v3-positions-largest)
 
 * Added new REST API  [GET /v3/positions/liquidation/closest](#get-v3-positions-liquidation-closest)
