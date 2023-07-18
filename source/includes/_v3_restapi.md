@@ -1964,3 +1964,121 @@ positionFloor | STRING | The lower position limit |
 positionCap | STRING | The upper position limit |
 initialMargin | STRING | Initial margin |
 maintenanceMargin | STRING | Maintenance margin |
+
+### GET `/v3/positions/largest`
+
+Every minute,retrieves information about the largest open positions on the exchange.
+
+> **Request**
+
+```
+GET  /v3/positions/largest?top=2&marketCode=BTC-USDT-SWAP-LIN
+```
+
+> **Successful response format**
+
+```json
+{
+    "success": true,
+    "data": [
+        {
+            "positionId": "874435025344430081",
+            "marketCode": "BTC-USDT-SWAP-LIN",
+            "position": "5.583",
+            "notionalValue": "176540.043000",
+            "estLiquidationPrice": "0.000000"
+        },
+        {
+            "positionId": "879460833696219139",
+            "marketCode": "BTC-USDT-SWAP-LIN",
+            "position": "-3.928",
+            "notionalValue": "123394.192000",
+            "estLiquidationPrice": "52769.000000"
+        }
+    ]
+}
+```
+
+Request Parameter | Type | Required | Description |
+----------------- | ---- | -------- | ----------- |
+marketCode | STRING | NO | Filter the positions by a specific market. If not provided, positions for all markets will be included |
+top | Long | NO | Default 20, max 200 |
+timestamp | Long | NO | Specify a specific timestamp to retrieve the positions as of that time. Use millisecond unix time (e.g., 1684262917000). If not provided, the latest available positions will be returned. |
+
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+positionId | STRING | Unique identifier for the position. |
+marketCode | STRING | The market associated with the position.  |
+position | STRING | The value of the position in asset denomination. |
+notionalValue | STRING | The value of the position in USDT denomination. |
+estLiquidationPrice | STRING | The liquidation price of the position. |
+
+
+### GET `/v3/positions/liquidation/closest`
+
+Every 5 minutes,display position sizes, leverage ratios, and unrealized PnL of positions closest to liquidation.
+
+> **Request**
+
+```
+GET  /v3/positions/liquidation/closest?limit=3&marketCode=BTC-USDT-SWAP-LIN
+```
+
+> **Successful response format**
+
+```json
+{
+    "success": true,
+    "data": [
+        {
+            "positionId": "2B205DE2E5EB26AC26B692B179981181",
+            "marketCode": "BTC-USDT-SWAP-LIN",
+            "position": "0.4",
+            "notionalValue": "12539.20000000",
+            "leverageRatio": "10.45838595",
+            "unrealizedPnl": "1702.67206000",
+            "estLiqPrice": "28350.59675462",
+            "liqGap": "2997.40324537"
+        },
+        {
+            "positionId": "59E80C18421948694E461F045BFCF099",
+            "marketCode": "BTC-USDT-SWAP-LIN",
+            "position": "0.002",
+            "notionalValue": "62.69600000",
+            "leverageRatio": "7.37325273",
+            "unrealizedPnl": "9.04030000",
+            "estLiqPrice": "27856.46620500",
+            "liqGap": "3491.53379500"
+        },
+        {
+            "positionId": "F53BDA0E9973EC9B12A827F1369FCDA8",
+            "marketCode": "BTC-USDT-SWAP-LIN",
+            "position": "-0.004",
+            "notionalValue": "125.39200000",
+            "leverageRatio": "5.06917453",
+            "unrealizedPnl": "-17.62486800",
+            "estLiqPrice": "36773.41931995",
+            "liqGap": "5425.41931995"
+        }
+    ]
+}
+```
+
+Request Parameter | Type | Required | Description |
+----------------- | ---- | -------- | ----------- |
+marketCode | STRING | YES | Market Code |
+top | Long | NO | Default 20, max 200 |
+
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+positionId | STRING | Unique identifier for the position. |
+marketCode | STRING | The market associated with the position.  |
+position | STRING | The value of the position in asset denomination. |
+notionalValue | STRING | The value of the position in USDT denomination. |
+estLiquidationPrice | STRING | The liquidation price of the position. |
+estLiqPrice | STRING | pnl of the positioin - (market price - entry price) / quantity |
+unrealizedPnl | STRING | everage ratio of the position - (quantity * market price) / collateral balance |
+liqGap | STRING | market price - estimate liquidation price |
+
