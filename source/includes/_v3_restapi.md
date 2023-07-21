@@ -985,7 +985,7 @@ avgLeg2Price | STRING | Returned for repo orders, leg2 denotes the perp leg |
 fees | LIST of dictionaries | Overall fees with instrument ID, if FLEX is no enough to pay the fee then USDT will be paid |
 orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT`,`STOP_MARKET` |
 timeInForce | STRING | Client submitted time in force. <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade) |
-source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `31`, `32`, `33`, `101`, `102`, `103`, `108`, `111`, `150`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `31: Physical settlement`, `32: Cash settlement`, `33: transfer`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Position liquidation`, `108: ADL`, `111: Automatic repayment`, `150: BLP assignment`</p> |
+source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `31`, `32`, `33`, `101`, `102`, `103`, `104`, `108`, `111`, `150`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `31: Physical settlement`, `32: Cash settlement`, `33: transfer`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Position liquidation`, `104: Liquidation revert`, `108: ADL`, `111: Automatic repayment`, `150: BLP assignment`</p> |
 createdAt | STRING | Millisecond timestamp of the order created time |
 lastModifiedAt | STRING | Millisecond timestamp of the order last modified time |
 lastMatchedAt | STRING | Millisecond timestamp of the order last matched time |
@@ -1056,7 +1056,7 @@ displayQuantity | STRING |  |
 triggerType | STRING |  |
 orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT`,`STOP_MARKET` |
 timeInForce | STRING | Client submitted time in force. <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade) |
-source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `31`, `32`, `33`, `101`, `102`, `103`, `108`, `111`, `150`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `31: Physical settlement`, `32: Cash settlement`, `33: transfer`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Position liquidation`, `108: ADL`, `111: Automatic repayment`, `150: BLP assignment`</p> |
+source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `31`, `32`, `33`, `101`, `102`, `103`, `104`, `108`, `111`, `150`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `31: Physical settlement`, `32: Cash settlement`, `33: transfer`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Position liquidation`, `104: Liquidation revert`, `108: ADL`, `111: Automatic repayment`, `150: BLP assignment`</p> |
 createdAt | STRING | Millisecond timestamp of the order created time |
 lastModifiedAt | STRING | Millisecond timestamp of the order last modified time |
 lastMatchedAt | STRING | Millisecond timestamp of the order last matched time |
@@ -1198,7 +1198,7 @@ fees | STRING | Amount of fees paid from this match ID |
 orderType | STRING | `MARKET` or `LIMIT` or `STOP_LIMIT` or or `STOP_MARKET` |
 triggerType | STRING |  |
 timeInForce | STRING | |
-source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `101`, `102`, `103`, `111`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `111: Automatic repayment`</p> |
+source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `101`, `102`, `103`, `104`, `111`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `104: Liquidation revert`, `111: Automatic repayment`</p> |
 createdAt | STRING | Millisecond timestamp of the order created time |
 lastModifiedAt | STRING | Millisecond timestamp of the order last modified time |
 lastMatchedAt | STRING | Millisecond timestamp of the order last matched time |
@@ -1415,7 +1415,7 @@ leg2Price | STRING | `REPO & SPREAD` |
 orderMatchType | STRING | `TAKER`,`MAKER` |
 feeAsset | STRING | Instrument ID of the fees |
 fee | STRING | Fees |
-source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `101`, `102`, `103`, `111`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `111: Automatic repayment`</p> |
+source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `101`, `102`, `103`, `104`, `111`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Contract liquidation`, `104: Liquidation revert`, `111: Automatic repayment`</p> |
 matchedAt | STRING | Millisecond timestamp of the order matched time |
 
 
