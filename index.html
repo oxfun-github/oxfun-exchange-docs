@@ -8396,7 +8396,7 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 <tr>
 <td>source</td>
 <td>STRING</td>
-<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>31</code>, <code>32</code>, <code>33</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>108</code>, <code>111</code>, <code>150</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>31: Physical settlement</code>, <code>32: Cash settlement</code>, <code>33: transfer</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Position liquidation</code>, <code>108: ADL</code>, <code>111: Automatic repayment</code>, <code>150: BLP assignment</code></p></td>
+<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>31</code>, <code>32</code>, <code>33</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>104</code>, <code>108</code>, <code>111</code>, <code>150</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>31: Physical settlement</code>, <code>32: Cash settlement</code>, <code>33: transfer</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Position liquidation</code>, <code>104: Liquidation revert</code>, <code>108: ADL</code>, <code>111: Automatic repayment</code>, <code>150: BLP assignment</code></p></td>
 </tr>
 <tr>
 <td>createdAt</td>
@@ -8573,7 +8573,7 @@ CANCELED orders are not in the orderbook, the remainQuantity in the CANCELED ord
 <tr>
 <td>source</td>
 <td>STRING</td>
-<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>31</code>, <code>32</code>, <code>33</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>108</code>, <code>111</code>, <code>150</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>31: Physical settlement</code>, <code>32: Cash settlement</code>, <code>33: transfer</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Position liquidation</code>, <code>108: ADL</code>, <code>111: Automatic repayment</code>, <code>150: BLP assignment</code></p></td>
+<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>31</code>, <code>32</code>, <code>33</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>104</code>, <code>108</code>, <code>111</code>, <code>150</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>31: Physical settlement</code>, <code>32: Cash settlement</code>, <code>33: transfer</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Position liquidation</code>, <code>104: Liquidation revert</code>, <code>108: ADL</code>, <code>111: Automatic repayment</code>, <code>150: BLP assignment</code></p></td>
 </tr>
 <tr>
 <td>createdAt</td>
@@ -8906,7 +8906,7 @@ You can place up to 8 orders at a time in REST API
 <tr>
 <td>source</td>
 <td>STRING</td>
-<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>111: Automatic repayment</code></p></td>
+<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>104</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>104: Liquidation revert</code>, <code>111: Automatic repayment</code></p></td>
 </tr>
 <tr>
 <td>createdAt</td>
@@ -9348,7 +9348,7 @@ Cancels all open orders for the **specified market** for the account connected t
 <tr>
 <td>source</td>
 <td>STRING</td>
-<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>111: Automatic repayment</code></p></td>
+<td>Source of the request, available values: <code>0</code>, <code>2</code>, <code>10</code>, <code>11</code>, <code>13</code>, <code>22</code>, <code>101</code>, <code>102</code>, <code>103</code>, <code>104</code>, <code>111</code>. <p>Enumeration: <code>0: GUI</code>, <code>2: Borrow</code>, <code>11: REST</code>, <code>13: Websocket</code>, <code>22: Delivery</code>, <code>101: Automatic borrow</code>, <code>102: Borrow position liquidation</code>, <code>103: Contract liquidation</code>, <code>104: Liquidation revert</code>, <code>111: Automatic repayment</code></p></td>
 </tr>
 <tr>
 <td>matchedAt</td>
