@@ -340,6 +340,9 @@
                     <a href="#session-keep-alive" class="toc-h2 toc-link" data-title="Session Keep Alive">Session Keep Alive</a>
                   </li>
                   <li>
+                    <a href="#self-trade-prevention-modes" class="toc-h2 toc-link" data-title="Self Trade Prevention Modes">Self Trade Prevention Modes</a>
+                  </li>
+                  <li>
                     <a href="#order-commands" class="toc-h2 toc-link" data-title="Order Commands">Order Commands</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -1237,6 +1240,21 @@
 </tbody></table>
 <h2 id='session-keep-alive'>Session Keep Alive</h2>
 <p>To maintain an active WebSocket connection it is imperative to either be subscribed to a channel that pushes data at least once per minute (Depth) or periodically send a text “ping” (without the quotation mark) to the server within an minute and then the server will reply text “pong” (without quotation mark) to you.</p>
+<h2 id='self-trade-prevention-modes'>Self Trade Prevention Modes</h2>
+<p>Self trade prevention (STP) helps traders avoid costly self-matching within an account and between subaccounts.
+There are 4 STP modes available to traders <code>NONE</code>, <code>EXPIRE_MAKER</code>, <code>EXPIRE_TAKER</code>, <code>EXPIRE_BOTH</code>.</p>
+
+<p><code>NONE</code> - has no protection meaning self-matching is possible.</p>
+
+<p><code>EXPIRE_MAKER</code> - cancels the resting (would-be maker) order <strong>regardless</strong> of its STP mode, the aggressing order continues to match and/or is placed into the book.</p>
+
+<p><code>EXPIRE_TAKER</code> - cancels the aggressing order to avoid self-matching, acts similar to an IOC that is cancelled in the event of a self-match.</p>
+
+<p><code>EXPIRE_BOTH</code> - cancels both the agressing order and the resting (would-be maker) order <strong>regardless</strong> of the resting order&#39;s STP mode.</p>
+
+<p>Note that the STP system uses the aggressing (would-be taker) order to decide which action to take, for example:</p>
+
+<p>Placing an <code>EXPIRE_TAKER</code> order which collides with a resting <code>EXPIRE_MAKER</code> order causes the aggressing <code>EXPIRE_TAKER</code> order to be cancelled, while the <code>EXPIRE_MAKER</code> order will remain.</p>
 <h2 id='order-commands'>Order Commands</h2><h3 id='place-limit-order'>Place Limit Order</h3>
 <blockquote>
 <p><strong>Request format</strong></p>
@@ -1418,7 +1436,7 @@ One account can only place up to 50 orders per second via websocket.
 <tr>
 <td>price</td>
 <td>FLOAT</td>
-<td>YES</td>
+<td>Yes</td>
 <td>Price</td>
 </tr>
 <tr>
@@ -1448,14 +1466,20 @@ One account can only place up to 50 orders per second via websocket.
 <tr>
 <td>timestamp</td>
 <td>LONG</td>
-<td>NO</td>
+<td>No</td>
 <td>In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected.</td>
 </tr>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
-<td>NO</td>
+<td>No</td>
 <td>In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected.</td>
+</tr>
+<tr>
+<td>selfTradePreventionMode</td>
+<td>STRING</td>
+<td>No</td>
+<td><code>NONE</code>, <code>EXPIRE_MAKER</code>, <code>EXPIRE_TAKER</code>, <code>EXPIRE_BOTH</code></td>
 </tr>
 </tbody></table>
 <h3 id='place-market-order'>Place Market Order</h3>
@@ -1658,6 +1682,12 @@ One account can only place up to 50 orders per second via websocket.
 <td>LONG</td>
 <td>NO</td>
 <td>In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected.</td>
+</tr>
+<tr>
+<td>selfTradePreventionMode</td>
+<td>STRING</td>
+<td>No</td>
+<td><code>NONE</code>, <code>EXPIRE_MAKER</code>, <code>EXPIRE_TAKER</code>, <code>EXPIRE_BOTH</code></td>
 </tr>
 </tbody></table>
 <h3 id='place-stop-limit-order'>Place Stop Limit Order</h3>
@@ -1887,6 +1917,12 @@ One account can only place up to 50 orders per second via websocket.
 <td>NO</td>
 <td>In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected.</td>
 </tr>
+<tr>
+<td>selfTradePreventionMode</td>
+<td>STRING</td>
+<td>No</td>
+<td><code>NONE</code>, <code>EXPIRE_MAKER</code>, <code>EXPIRE_TAKER</code>, <code>EXPIRE_BOTH</code></td>
+</tr>
 </tbody></table>
 <h3 id='place-stop-market-order'>Place Stop Market Order</h3>
 <p>Stop market orders are only available in Perp markets.</p>
@@ -2100,6 +2136,12 @@ One account can only place up to 50 orders per second via websocket.
 <td>LONG</td>
 <td>NO</td>
 <td>In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected.</td>
+</tr>
+<tr>
+<td>selfTradePreventionMode</td>
+<td>STRING</td>
+<td>No</td>
+<td><code>NONE</code>, <code>EXPIRE_MAKER</code>, <code>EXPIRE_TAKER</code>, <code>EXPIRE_BOTH</code></td>
 </tr>
 </tbody></table>
 <h3 id='place-batch-orders'>Place Batch Orders</h3>
@@ -3851,11 +3893,12 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <p>There are multiple scenarios in which an order is closed as described by the <strong>status</strong> field in the OrderClosed message.  In summary orders can be closed by:-</p>
 
 <ul>
-<li><code>CANCELED_BY_USER</code> - the client themselves initiating this action or the liquidation engine on the clients behalf if the clients account is below the maintenance margin threshold</li>
+<li><code>CANCELED_BY_USER</code> - the client themselves initiating this action or the liquidation engine on the clients behalf</li>
 <li><code>CANCELED_BY_MAKER_ONLY</code> - if a maker-only order is priced such that it would actually be an agressing taker trade, the order is automatically canceled to prevent this order from matching as a taker</li>
 <li><code>CANCELED_BY_FOK</code> - since fill-or-kill orders requires <strong>all</strong> of the order quantity to immediately take and match at the submitted limit price or better, if no such match is possible then the whole order quantity is canceled</li>
 <li><code>CANCELED_ALL_BY_IOC</code> - since immediate-or-cancel orders also requires an immediate match at the specified limit price or better, if no such match price is possible for <strong>any</strong> of the submitted order quantity then the whole order quantity is canceled</li>
 <li><code>CANCELED_PARTIAL_BY_IOC</code> - since immediate-or-cancel orders only requires <strong>some</strong> of the submitted order quantity to immediately take and match at the specified limit price or better, if a match is possible for only a <strong>partial</strong> quantity then only the remaining order quantity which didn&#39;t immediately match is canceled</li>
+<li><code>CANCELED_BY_SELF_TRADE_PROTECTION</code> - orders canceled by your selected selfTradePreventionMode settings</li>
 </ul>
 
 <p><sub><strong>Channel Update Fields</strong></sub></p>
@@ -6316,6 +6359,10 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <tr>
 <td>20034</td>
 <td>The size of tag must be less than 32</td>
+</tr>
+<tr>
+<td>20050</td>
+<td>selfTradePreventionMode is invalid</td>
 </tr>
 <tr>
 <td>300001</td>
