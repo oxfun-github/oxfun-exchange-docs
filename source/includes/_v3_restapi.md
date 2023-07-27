@@ -1171,7 +1171,7 @@ orderType | STRING | YES | `LIMIT` or `MARKET` or `STOP_LIMIT` or `STOP_MARKET`|
 price | STRING | NO | Limit price for the limit order |
 stopPrice | STRING | NO | Stop price for the stop order |
 limitPrice | STRING | NO | Limit price for the stop limit order |
-selfTradePreventionMode | STRING | No | `NONE`, `EXPIRE_MAKER`, `EXPIRE_TAKER`, `EXPIRE_BOTH` For more info check here [Self Trade Prevention Modes](https://docs.opnx.com/#self-trade-prevention-modes)|
+selfTradePreventionMode | STRING | No | `NONE`, `EXPIRE_MAKER`, `EXPIRE_TAKER`, `EXPIRE_BOTH` for more info check here [Self Trade Prevention Modes](#self-trade-prevention-modes)|
 
 Response Fields | Type | Description | 
 --------------------| ---- | ----------- |
