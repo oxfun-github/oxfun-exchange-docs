@@ -1,4 +1,8 @@
 # Change Log
+**2023-07-27**
+
+* Added Self Trade Prevention Modes to WebSocket and REST place order requests [Self Trade Prevention Modes](#self-trade-prevention-modes)
+
 **2023-07-18**
 
 * Added new REST API  [GET /v3/positions/largest](#get-v3-positions-largest)
@@ -21,7 +25,6 @@
         
              
 * Added new REST API  [GET /v3/leverage/tiers](#get-v3-leverage-tiers)
-   
 
 
 **2023-04-03**
