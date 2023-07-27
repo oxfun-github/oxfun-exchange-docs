@@ -285,6 +285,24 @@ signature | STRING | Yes | `Base64(HmacSHA256(current_ms_timestamp + 'GET/auth/s
 
 To maintain an active WebSocket connection it is imperative to either be subscribed to a channel that pushes data at least once per minute (Depth) or periodically send a text “ping” (without the quotation mark) to the server within an minute and then the server will reply text “pong” (without quotation mark) to you.
 
+## Self Trade Prevention Modes
+
+Self trade prevention (STP) helps traders avoid costly self-matching within an account and between subaccounts.
+There are 4 STP modes available to traders `NONE`, `EXPIRE_MAKER`, `EXPIRE_TAKER`, `EXPIRE_BOTH`.
+
+`NONE` - has no protection meaning self-matching is possible.
+
+`EXPIRE_MAKER` - cancels the resting (would-be maker) order **regardless** of its STP mode, the aggressing order continues to match and/or is placed into the book.
+
+`EXPIRE_TAKER` - cancels the aggressing order to avoid self-matching, acts similar to an IOC that is cancelled in the event of a self-match.
+
+`EXPIRE_BOTH` - cancels both the agressing order and the resting (would-be maker) order **regardless** of the resting order's STP mode.
+
+Note that the STP system uses the aggressing (would-be taker) order to decide which action to take, for example:
+
+Placing an `EXPIRE_TAKER` order which collides with a resting `EXPIRE_MAKER` order causes the aggressing `EXPIRE_TAKER` order to be cancelled, while the `EXPIRE_MAKER` order will remain.
+
+
 ## Order Commands
 
 ### Place Limit Order
@@ -434,13 +452,14 @@ data | DICTIONARY object | Yes |
 clientOrderId | ULONG | No | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
 marketCode | STRING | Yes | Market code e.g. `BTC-oUSD-SWAP-LIN` |
 orderType | STRING | Yes |  `LIMIT` |
-price | FLOAT |  YES | Price |
+price | FLOAT |  Yes | Price |
 quantity |  FLOAT | Yes | Quantity (denominated by contractValCurrency) |
 displayQuantity |  FLOAT | NO |If given, the order becomes an iceberg order, and denotes the quantity to show on the book|
 side | STRING | Yes | `BUY` or `SELL` |
 timeInForce | ENUM | No | <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade)</li></ul>
-timestamp | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
-recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
+timestamp | LONG | No | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
+recvWindow | LONG | No | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
+selfTradePreventionMode | STRING | No | `NONE`, `EXPIRE_MAKER`, `EXPIRE_TAKER`, `EXPIRE_BOTH`|
 
 
 ### Place Market Order
@@ -588,7 +607,7 @@ amount | STRING | NO | An amount of USDT can be specified instead of a quantity.
 side | STRING | Yes | `BUY` or `SELL` |
 timestamp | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
 recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
-
+selfTradePreventionMode | STRING | No | `NONE`, `EXPIRE_MAKER`, `EXPIRE_TAKER`, `EXPIRE_BOTH`|
 
 ### Place Stop Limit Order
 
@@ -751,7 +770,7 @@ stopPrice| FLOAT |Yes|Stop price for the stop-limit order.<p><p>Triggered by the
 timeInForce | ENUM | No | <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade)</li></ul>
 timestamp | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
 recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
-
+selfTradePreventionMode | STRING | No | `NONE`, `EXPIRE_MAKER`, `EXPIRE_TAKER`, `EXPIRE_BOTH`|
 
 ### Place Stop Market Order
 
@@ -910,7 +929,7 @@ side|STRING| Yes| `BUY ` or `SELL`|
 stopPrice| FLOAT |Yes|Stop price for the stop-market order.<p><p>Triggered by the best bid price for the **SELL** stop-market order.<p><p>Triggered by the best ask price for the **BUY** stop-market order. |
 timestamp | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
 recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engine and the current timestamp exceeds timestamp + recvWindow, then the order will be rejected. If timestamp is provided without recvWindow, then a default recvWindow of 1000ms is used. If recvWindow is provided with no timestamp, then the request will not be rejected. If neither timestamp nor recvWindow are provided, then the request will not be rejected. |
-
+selfTradePreventionMode | STRING | No | `NONE`, `EXPIRE_MAKER`, `EXPIRE_TAKER`, `EXPIRE_BOTH`|
 
 
 ### Place Batch Orders
@@ -2292,11 +2311,12 @@ displayQuantity |STRING| Quantity displayed in the book, primarily used for iceb
 
 There are multiple scenarios in which an order is closed as described by the **status** field in the OrderClosed message.  In summary orders can be closed by:-
 
-* `CANCELED_BY_USER` - the client themselves initiating this action or the liquidation engine on the clients behalf if the clients account is below the maintenance margin threshold
+* `CANCELED_BY_USER` - the client themselves initiating this action or the liquidation engine on the clients behalf
 * `CANCELED_BY_MAKER_ONLY` - if a maker-only order is priced such that it would actually be an agressing taker trade, the order is automatically canceled to prevent this order from matching as a taker
 * `CANCELED_BY_FOK` - since fill-or-kill orders requires **all** of the order quantity to immediately take and match at the submitted limit price or better, if no such match is possible then the whole order quantity is canceled
 * `CANCELED_ALL_BY_IOC` - since immediate-or-cancel orders also requires an immediate match at the specified limit price or better, if no such match price is possible for **any** of the submitted order quantity then the whole order quantity is canceled
 * `CANCELED_PARTIAL_BY_IOC` - since immediate-or-cancel orders only requires **some** of the submitted order quantity to immediately take and match at the specified limit price or better, if a match is possible for only a **partial** quantity then only the remaining order quantity which didn't immediately match is canceled
+* `CANCELED_BY_SELF_TRADE_PROTECTION` - orders canceled by your selected selfTradePreventionMode settings
 
 <sub>**Channel Update Fields**</sub>
 
@@ -3657,6 +3677,7 @@ Code | Error Message
 20033 | triggerType is invalid |
 20034 | The size of tag must be less than 32 |
 20034 | The size of tag must be less than 32 |
+20050 | selfTradePreventionMode is invalid |
 300001| Invalid account status xxx, please contact administration if any questions
 300011| Repo market orders are not allowed during the auction window
 300012| Repo bids above 0 and offers below 0 are not allowed during the auction window
