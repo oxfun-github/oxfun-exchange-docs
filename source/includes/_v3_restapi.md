@@ -1171,6 +1171,7 @@ orderType | STRING | YES | `LIMIT` or `MARKET` or `STOP_LIMIT` or `STOP_MARKET`|
 price | STRING | NO | Limit price for the limit order |
 stopPrice | STRING | NO | Stop price for the stop order |
 limitPrice | STRING | NO | Limit price for the stop limit order |
+selfTradePreventionMode | STRING | No | `NONE`, `EXPIRE_MAKER`, `EXPIRE_TAKER`, `EXPIRE_BOTH` For more info check here [Self Trade Prevention Modes](https://docs.opnx.com/#self-trade-prevention-modes)|
 
 Response Fields | Type | Description | 
 --------------------| ---- | ----------- |
@@ -1182,6 +1183,7 @@ submitted | BOOL | Denotes whether the order was submitted to the matching engin
 orderId | STRING | |
 clientOrderId | STRING | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
 marketCode | STRING | |
+status |STRING | Order status |
 side | STRING | `SELL` or `BUY` |
 price | STRING | |
 stopPrice | STRING | |
