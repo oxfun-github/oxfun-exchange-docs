@@ -1,7 +1,7 @@
 # Change Log
 **2023-07-27**
 
-* Added Self Trade Prevention Modes to WebSocket and REST place order requests [Self Trade Prevention Modes](#self-trade-prevention-modes)
+* Added [Self Trade Prevention Modes](#self-trade-prevention-modes) to WebSocket and REST place order requests
 
 **2023-07-18**
 
