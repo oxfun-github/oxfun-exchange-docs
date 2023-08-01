@@ -1,6 +1,5 @@
 # Change Log
 **2023-07-27**
-
 * Added [Self Trade Prevention Modes](#self-trade-prevention-modes) to WebSocket and REST place order requests
 
 **2023-07-18**
@@ -118,12 +117,14 @@
 
 # Introduction
 
-Welcome to Opnx's v2 application programming interface (API). Opnx's APIs provide clients programmatic access to control aspects of their accounts and to place orders on Opnx's trading platform. Opnx supports the following types of APIs:
+OPNX offers a REST API and streaming WebSocket API that allows traders and developers to integrate their algorithms, trading strategies, risk management systems, and order execution software with our trading platform. 
+OPNX's API emphasizes performance and security, enabling users to access the full range of our platform's features: order placement, account/subaccount management, and market data.
 
-* a WebSocket API
-* a REST API
+**REST API**\
+OPNX's REST API allows users to execute trades, manage their accounts, and access market data. With extensive documentation and sample python code, the REST API is easy to use and can be integrated with a wide variety of trading software. The REST API also offers SSL/TLS connections, rate limiting, and IP whitelisting, ensuring that all communication between the user and the server is secure.
 
-Using these interfaces it is possible to place both authenticated and unauthenticated API commands for public and private commands respectively.
+**WebSocket API**\
+OPNX's WebSocket API provides real-time market data and order updates with ultra-low latency. With the WebSocket API, users can subscribe to real-time price updates and order book changes, enabling them to make faster and more informed trading decisions. The Websocket API also offers a real-time streaming interface for order placement and cancellation, enabling users to respond to market changes quickly and efficiently.
 
 To get started please register for a TEST account at [stg.opnx.com/register](https://stg.opnx.com/register) or a LIVE account at [opnx.com/register](https://opnx.com/register)
 
