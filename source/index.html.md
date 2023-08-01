@@ -3,7 +3,6 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - json: curl
-  - javascript
   - python
 
 toc_footers:
