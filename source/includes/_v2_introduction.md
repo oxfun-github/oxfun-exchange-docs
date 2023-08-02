@@ -120,10 +120,12 @@
 OPNX offers a REST API and streaming WebSocket API that allows traders and developers to integrate their algorithms, trading strategies, risk management systems, and order execution software with our trading platform. 
 OPNX's API emphasizes performance and security, enabling users to access the full range of our platform's features: order placement, account/subaccount management, and market data.
 
-**REST API**\
+**REST API**
+
 OPNX's REST API allows users to execute trades, manage their accounts, and access market data. With extensive documentation and sample python code, the REST API is easy to use and can be integrated with a wide variety of trading software. The REST API also offers SSL/TLS connections, rate limiting, and IP whitelisting, ensuring that all communication between the user and the server is secure.
 
-**WebSocket API**\
+**WebSocket API**
+
 OPNX's WebSocket API provides real-time market data and order updates with ultra-low latency. With the WebSocket API, users can subscribe to real-time price updates and order book changes, enabling them to make faster and more informed trading decisions. The Websocket API also offers a real-time streaming interface for order placement and cancellation, enabling users to respond to market changes quickly and efficiently.
 
 To get started please register for a TEST account at [stg.opnx.com/register](https://stg.opnx.com/register) or a LIVE account at [opnx.com/register](https://opnx.com/register)
