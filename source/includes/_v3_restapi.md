@@ -2070,7 +2070,7 @@ GET  /v3/positions/liquidation/closest?limit=3&marketCode=BTC-oUSD-SWAP-LIN
 Request Parameter | Type | Required | Description |
 ----------------- | ---- | -------- | ----------- |
 marketCode | STRING | YES | Market Code |
-top | Long | NO | Default 20, max 200 |
+limit | Long | NO | Default 20, max 200 |
 
 
 Response Field | Type | Description |
