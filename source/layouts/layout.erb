@@ -27,10 +27,21 @@ under the License.
 <html>
   <head>
     <meta charset="utf-8">
+    <title>OPNX API docs-web socket and REST libraries for algo traders</title>
+    <meta name="description" content="OPNX docs and libraries for the REST api and web socket for pro traders and developers - integrate algorithms, trading strategies, and order execution tools">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="canonical" href="https://docs.opnx.com/">
-    <title>OPNX API docs-web socket and REST libraries for algo traders</title>
+    <% if current_page.data.key?('meta') %>
+      <% current_page.data.meta.each do |meta| %>
+        <meta
+          <% meta.each do |key, value| %>
+            <%= "#{key}=\"#{value}\"" %>
+          <% end %>
+        >
+      <% end %>
+    <% end %>
+    <title><%= current_page.data.title || "API Documentation" %></title>
 
     <style media="screen">
       <%= Rouge::Themes::MonokaiSublimeSlate.render(:scope => '.highlight') %>
