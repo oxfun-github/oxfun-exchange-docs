@@ -3,6 +3,8 @@
 <html>
   <head>
     <meta charset="utf-8">
+     <title>OPNX API docs-web socket and REST libraries for algo traders</title>
+     <meta name="description" content="OPNX docs and libraries for the REST api and web socket for pro traders and developers - integrate algorithms, trading strategies, and order execution tools">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="canonical" href="https://docs.opnx.com/">
@@ -541,6 +543,38 @@
                       <ul class="toc-list-h3">
                           <li>
                             <a href="#get-v3-trades" class="toc-h3 toc-link" data-title="GET <code>/v3/trades</code>">GET <code>/v3/trades</code></a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#vault-ousd-private" class="toc-h2 toc-link" data-title="Vault oUSD - Private">Vault oUSD - Private</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#post-v3-vault-stake" class="toc-h3 toc-link" data-title="POST <code>/v3/vault/stake</code>">POST <code>/v3/vault/stake</code></a>
+                          </li>
+                          <li>
+                            <a href="#post-v3-vault-redeem" class="toc-h3 toc-link" data-title="POST <code>/v3/vault/redeem</code>">POST <code>/v3/vault/redeem</code></a>
+                          </li>
+                          <li>
+                            <a href="#get-v3-vault-staking-active" class="toc-h3 toc-link" data-title="GET <code>/v3/vault/staking/active</code>">GET <code>/v3/vault/staking/active</code></a>
+                          </li>
+                          <li>
+                            <a href="#get-v3-vault-staking-history" class="toc-h3 toc-link" data-title="GET <code>/v3/vault/staking/history</code>">GET <code>/v3/vault/staking/history</code></a>
+                          </li>
+                          <li>
+                            <a href="#get-v3-vault-redemption-history" class="toc-h3 toc-link" data-title="GET <code>/v3/vault/redemption/history</code>">GET <code>/v3/vault/redemption/history</code></a>
+                          </li>
+                          <li>
+                            <a href="#get-v3-vault-interest-history" class="toc-h3 toc-link" data-title="GET <code>/v3/vault/interest/history</code>">GET <code>/v3/vault/interest/history</code></a>
+                          </li>
+                          <li>
+                            <a href="#get-v3-ousd-interest-payments" class="toc-h3 toc-link" data-title="GET <code>/v3/ousd/interest/payments</code>">GET <code>/v3/ousd/interest/payments</code></a>
+                          </li>
+                          <li>
+                            <a href="#get-v3-vault-data" class="toc-h3 toc-link" data-title="GET <code>/v3/vault/data</code>">GET <code>/v3/vault/data</code></a>
+                          </li>
+                          <li>
+                            <a href="#get-v3-vault-earnings-history" class="toc-h3 toc-link" data-title="GET <code>/v3/vault/earnings/history</code>">GET <code>/v3/vault/earnings/history</code></a>
                           </li>
                       </ul>
                   </li>
@@ -9416,6 +9450,756 @@ Cancels all open orders for the **specified market** for the account connected t
 <td>matchedAt</td>
 <td>STRING</td>
 <td>Millisecond timestamp of the order matched time</td>
+</tr>
+</tbody></table>
+<h2 id='vault-ousd-private'>Vault oUSD - Private</h2><h3 id='post-v3-vault-stake'>POST <code>/v3/vault/stake</code></h3>
+<blockquote>
+<p><strong>Request</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>POST /v3/vault/stake
+</code></pre></div>
+<blockquote>
+<p><strong>Successful response format</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalStaked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1213.44624647"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stakeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1699246825410600960"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vaultPositionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689522308660449280"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stakedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693966988314"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Request Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>String</td>
+<td>YES</td>
+<td><code>oUSD</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>YES</td>
+<td>vault stake amount</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Response Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>Asset</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>STRING</td>
+<td>Staked amount</td>
+</tr>
+<tr>
+<td>totalStaked</td>
+<td>STRING</td>
+<td>Total staked amount</td>
+</tr>
+<tr>
+<td>stakeId</td>
+<td>STRING</td>
+<td>Stake Id</td>
+</tr>
+<tr>
+<td>vaultPositionId</td>
+<td>STRING</td>
+<td>An Id to map the vault position with interest payments</td>
+</tr>
+<tr>
+<td>stakedAt</td>
+<td>STRING</td>
+<td>Millisecond timestamp of the vault staked time</td>
+</tr>
+</tbody></table>
+<h3 id='post-v3-vault-redeem'>POST <code>/v3/vault/redeem</code></h3>
+<blockquote>
+<p><strong>Request</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>POST /v3/vault/redeem
+</code></pre></div>
+<blockquote>
+<p><strong>Successful response format</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalStaked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1213.44624647"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"redeemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1699254205225574400"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vaultPositionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689522308660449280"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"redemptionAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693968747802"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Request Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>String</td>
+<td>YES</td>
+<td><code>oUSD</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>YES</td>
+<td>vault redeem amount</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Response Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>Asset</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>STRING</td>
+<td>Staked amount</td>
+</tr>
+<tr>
+<td>totalStaked</td>
+<td>STRING</td>
+<td>Total staked amount</td>
+</tr>
+<tr>
+<td>redeemId</td>
+<td>STRING</td>
+<td>Redeem Id</td>
+</tr>
+<tr>
+<td>vaultPositionId</td>
+<td>STRING</td>
+<td>An Id to map the vault position with interest payments</td>
+</tr>
+<tr>
+<td>redemptionAt</td>
+<td>STRING</td>
+<td>Millisecond timestamp of the vault redemption time</td>
+</tr>
+</tbody></table>
+<h3 id='get-v3-vault-staking-active'>GET <code>/v3/vault/staking/active</code></h3>
+<blockquote>
+<p><strong>Request</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>GET /v3/vault/staking/active
+</code></pre></div>
+<blockquote>
+<p><strong>Successful response format</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"staked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176.6"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interestEarned"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1041.9524316"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalStaked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1216.5524316"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"redeemableAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vaultPositionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689522308660449280"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastStakedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693969214924"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1691648484605"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Request Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>String</td>
+<td>NO</td>
+<td><code>oUSD</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Response Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>Asset</td>
+</tr>
+<tr>
+<td>staked</td>
+<td>STRING</td>
+<td>Staked amount</td>
+</tr>
+<tr>
+<td>interestEarned</td>
+<td>STRING</td>
+<td>Interest earned amount</td>
+</tr>
+<tr>
+<td>totalStaked</td>
+<td>STRING</td>
+<td>Total staked amount</td>
+</tr>
+<tr>
+<td>redeemableAmount</td>
+<td>STRING</td>
+<td>Redeemable amount</td>
+</tr>
+<tr>
+<td>vaultPositionId</td>
+<td>STRING</td>
+<td>An Id to map the vault position with interest payments</td>
+</tr>
+<tr>
+<td>lastStakedAt</td>
+<td>STRING</td>
+<td>Millisecond timestamp of the vault last staked time</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>STRING</td>
+<td>Millisecond timestamp</td>
+</tr>
+</tbody></table>
+<h3 id='get-v3-vault-staking-history'>GET <code>/v3/vault/staking/history</code></h3>
+<blockquote>
+<p><strong>Request</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>GET /v3/vault/staking/history
+</code></pre></div>
+<blockquote>
+<p><strong>Successful response format</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stakeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689522308660449280"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vaultPositionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689522308660449280"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stakedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693966988314"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Request Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>String</td>
+<td>NO</td>
+<td><code>oUSD</code> default All</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>LONG</td>
+<td>NO</td>
+<td>max 500, default 200</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Response Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>Asset</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>STRING</td>
+<td>Staked amount</td>
+</tr>
+<tr>
+<td>stakeId</td>
+<td>STRING</td>
+<td>Staked Id</td>
+</tr>
+<tr>
+<td>vaultPositionId</td>
+<td>STRING</td>
+<td>An Id to map the vault position with interest payments</td>
+</tr>
+<tr>
+<td>stakedAt</td>
+<td>STRING</td>
+<td>Millisecond timestamp of the vault  staked time</td>
+</tr>
+</tbody></table>
+<h3 id='get-v3-vault-redemption-history'>GET <code>/v3/vault/redemption/history</code></h3>
+<blockquote>
+<p><strong>Request</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>GET /v3/vault/redemption/history
+</code></pre></div>
+<blockquote>
+<p><strong>Successful response format</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"redeemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689522308660449280"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vaultPositionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689522308660449280"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"requestedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693968747802"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Request Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>String</td>
+<td>NO</td>
+<td><code>oUSD</code> default All</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>LONG</td>
+<td>NO</td>
+<td>max 500, default 200</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Response Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>Asset</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>STRING</td>
+<td>Staked amount</td>
+</tr>
+<tr>
+<td>redeemId</td>
+<td>STRING</td>
+<td>Redeem Id</td>
+</tr>
+<tr>
+<td>vaultPositionId</td>
+<td>STRING</td>
+<td>An Id to map the vault position with interest payments</td>
+</tr>
+<tr>
+<td>status</td>
+<td>STRING</td>
+<td><code>COMPLETED</code></td>
+</tr>
+<tr>
+<td>requestedAt</td>
+<td>STRING</td>
+<td>Millisecond timestamp of the vault redemption time</td>
+</tr>
+</tbody></table>
+<h3 id='get-v3-vault-interest-history'>GET <code>/v3/vault/interest/history</code></h3>
+<blockquote>
+<p><strong>Request</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>GET /v3/vault/interest/history
+</code></pre></div>
+<blockquote>
+<p><strong>Successful response format</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalStaked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1213.44624647"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.10618513"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hourlyRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00256403"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"apr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.4609028"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vaultPositionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689522308660449280"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1699256154977148928"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"paidAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693969213337"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalStaked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1209.3377037"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.10854277"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hourlyRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00257045"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"apr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.517142"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vaultPositionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689522308660449280"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1699241062147497984"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"paidAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693965614947"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Request Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>String</td>
+<td>NO</td>
+<td><code>oUSD</code> default All</td>
+</tr>
+<tr>
+<td>vaultPositionId</td>
+<td>String</td>
+<td>NO</td>
+<td>default All</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>LONG</td>
+<td>NO</td>
+<td>max 500, default 200</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Response Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>Asset</td>
+</tr>
+<tr>
+<td>totalStaked</td>
+<td>STRING</td>
+<td>Total staked amount</td>
+</tr>
+<tr>
+<td>interest</td>
+<td>STRING</td>
+<td>Interest</td>
+</tr>
+<tr>
+<td>hourlyRate</td>
+<td>STRING</td>
+<td>Redeem Id</td>
+</tr>
+<tr>
+<td>apr</td>
+<td>STRING</td>
+<td>Apr rate</td>
+</tr>
+<tr>
+<td>vaultPositionId</td>
+<td>STRING</td>
+<td>An Id to map the vault position with interest payments</td>
+</tr>
+<tr>
+<td>interestId</td>
+<td>STRING</td>
+<td>Interest Id</td>
+</tr>
+<tr>
+<td>paidAt</td>
+<td>STRING</td>
+<td>Millisecond timestamp</td>
+</tr>
+</tbody></table>
+<h3 id='get-v3-ousd-interest-payments'>GET <code>/v3/ousd/interest/payments</code></h3>
+<p>Personalized oUSD interest payment history</p>
+
+<blockquote>
+<p><strong>Request</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>GET /v3/ousd/interest/payments
+</code></pre></div>
+<blockquote>
+<p><strong>Successful response format</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.15"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hourlyBorrowingRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0015"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"apr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1314"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1659241061147445612"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"paidAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1618123100000"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Response Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total</td>
+<td>STRING</td>
+<td>Asset</td>
+</tr>
+<tr>
+<td>payment</td>
+<td>STRING</td>
+<td>Total oUSD balance</td>
+</tr>
+<tr>
+<td>hourlyBorrowingRate</td>
+<td>STRING</td>
+<td>Hourly borrowing rate</td>
+</tr>
+<tr>
+<td>apr</td>
+<td>STRING</td>
+<td>Apr rate</td>
+</tr>
+<tr>
+<td>interestId</td>
+<td>STRING</td>
+<td>Interest Id</td>
+</tr>
+<tr>
+<td>paidAt</td>
+<td>STRING</td>
+<td>Millisecond timestamp</td>
+</tr>
+</tbody></table>
+<h3 id='get-v3-vault-data'>GET <code>/v3/vault/data</code></h3>
+<blockquote>
+<p><strong>Request</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>GET /v3/vault/data
+</code></pre></div>
+<blockquote>
+<p><strong>Successful response format</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalStaked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65144.78674115"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estHourlyStakingRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00253811"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estHourlyBorrowingRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000046423"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693983612885"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Response Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>Asset</td>
+</tr>
+<tr>
+<td>totalStaked</td>
+<td>STRING</td>
+<td>Total staked amount</td>
+</tr>
+<tr>
+<td>estHourlyStakingRate</td>
+<td>STRING</td>
+<td>Hourly staking rate</td>
+</tr>
+<tr>
+<td>estHourlyBorrowingRate</td>
+<td>STRING</td>
+<td>Hourly borrowing rate</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>STRING</td>
+<td>Millisecond timestamp</td>
+</tr>
+</tbody></table>
+<h3 id='get-v3-vault-earnings-history'>GET <code>/v3/vault/earnings/history</code></h3>
+<blockquote>
+<p><strong>Request</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>GET /v3/vault/earnings/history
+</code></pre></div>
+<blockquote>
+<p><strong>Successful response format</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"164.9255123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hourlyStakingRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000046423"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"apr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.40666548"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"paidAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693983612885"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"164.91688883"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hourlyStakingRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000046423"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"apr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.40666548"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"paidAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693980013888"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Request Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>LONG</td>
+<td>NO</td>
+<td>max 500, default 200</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Response Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>Asset</td>
+</tr>
+<tr>
+<td>interest</td>
+<td>STRING</td>
+<td>Interest rate</td>
+</tr>
+<tr>
+<td>hourlyStakingRate</td>
+<td>STRING</td>
+<td>Hourly staking rate</td>
+</tr>
+<tr>
+<td>apr</td>
+<td>STRING</td>
+<td>Apr rate</td>
+</tr>
+<tr>
+<td>paidAt</td>
+<td>STRING</td>
+<td>Millisecond timestamp</td>
 </tr>
 </tbody></table>
 <h2 id='market-data-public'>Market Data - Public</h2><h3 id='get-v3-markets'>GET <code>/v3/markets</code></h3>
