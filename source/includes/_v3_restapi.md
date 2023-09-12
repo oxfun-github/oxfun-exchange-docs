@@ -1421,6 +1421,393 @@ source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`,
 matchedAt | STRING | Millisecond timestamp of the order matched time |
 
 
+## Vault oUSD - Private
+
+### POST `/v3/vault/stake`
+
+
+> **Request**
+
+```
+POST /v3/vault/stake
+```
+
+> **Successful response format**
+
+```json
+{
+	"success": true,
+	"data": {
+		"asset": "oUSD",
+		"amount": "1",
+		"totalStaked": "1213.44624647",
+		"stakeId": "1699246825410600960",
+		"vaultPositionId": "1689522308660449280",
+		"stakedAt": "1693966988314"
+	}
+}
+```
+
+Request Parameter | Type | Required | Description |
+----------------- | ---- | -------- | ----------- |
+asset | String | YES | `oUSD` |
+amount | String | YES | vault stake amount |
+
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+asset | STRING | Asset |
+amount | STRING | Staked amount |
+totalStaked | STRING | Total staked amount |
+stakeId | STRING | Stake Id |
+vaultPositionId | STRING | An Id to map the vault position with interest payments |
+stakedAt | STRING | Millisecond timestamp of the vault staked time |
+
+
+### POST `/v3/vault/redeem`
+
+
+> **Request**
+
+```
+POST /v3/vault/redeem
+```
+
+> **Successful response format**
+
+```json
+{
+	"success": true,
+	"data": {
+		"asset": "oUSD",
+		"amount": "1",
+		"totalStaked": "1213.44624647",
+		"redeemId": "1699254205225574400",
+		"vaultPositionId": "1689522308660449280",
+		"redemptionAt": "1693968747802"
+	}
+}
+```
+
+Request Parameter | Type | Required | Description |
+----------------- | ---- | -------- | ----------- |
+asset | String | YES | `oUSD` |
+amount | String | YES | vault redeem amount |
+
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+asset | STRING | Asset |
+amount | STRING | Staked amount |
+totalStaked | STRING | Total staked amount |
+redeemId | STRING | Redeem Id |
+vaultPositionId | STRING | An Id to map the vault position with interest payments |
+redemptionAt | STRING | Millisecond timestamp of the vault redemption time |
+
+
+### GET `/v3/vault/staking/active`
+
+
+> **Request**
+
+```
+GET /v3/vault/staking/active
+```
+
+> **Successful response format**
+
+```json
+{
+	"success": true,
+	"data": [{
+		"asset": "oUSD",
+		"staked": "176.6",
+		"interestEarned": "1041.9524316",
+		"totalStaked": "1216.5524316",
+		"redeemableAmount": "2",
+		"vaultPositionId": "1689522308660449280",
+		"lastStakedAt": "1693969214924",
+		"timestamp": "1691648484605"
+	}]
+}
+```
+
+Request Parameter | Type | Required | Description |
+----------------- | ---- | -------- | ----------- |
+asset | String | NO | `oUSD` |
+
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+asset | STRING | Asset |
+staked | STRING | Staked amount |
+interestEarned | STRING | Interest earned amount|
+totalStaked | STRING | Total staked amount |
+redeemableAmount | STRING | Redeemable amount |
+vaultPositionId | STRING | An Id to map the vault position with interest payments |
+lastStakedAt | STRING | Millisecond timestamp of the vault last staked time |
+timestamp | STRING | Millisecond timestamp |
+
+
+### GET `/v3/vault/staking/history`
+
+
+> **Request**
+
+```
+GET /v3/vault/staking/history
+```
+
+> **Successful response format**
+
+```json
+{
+	"success": true,
+	"data": [{
+		"asset": "oUSD",
+		"amount": "1",
+		"stakeId": "1689522308660449280",
+		"vaultPositionId": "1689522308660449280",
+		"stakedAt": "1693966988314"
+	}]
+}
+```
+
+Request Parameter | Type | Required | Description |
+----------------- | ---- | -------- | ----------- |
+asset | String | NO |`oUSD` default All |
+limit | LONG | NO | max 500, default 200 |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+
+
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+asset | STRING | Asset |
+amount | STRING | Staked amount |
+stakeId | STRING |Staked Id |
+vaultPositionId | STRING | An Id to map the vault position with interest payments |
+stakedAt | STRING | Millisecond timestamp of the vault  staked time |
+
+
+
+### GET `/v3/vault/redemption/history`
+
+> **Request**
+
+```
+GET /v3/vault/redemption/history
+```
+
+> **Successful response format**
+
+```json
+{
+	"success": true,
+	"data": [{
+		"asset": "oUSD",
+		"amount": "1",
+		"redeemId": "1689522308660449280",
+		"vaultPositionId": "1689522308660449280",
+		"status": "COMPLETED",
+		"requestedAt": "1693968747802"
+	}]
+}
+```
+
+Request Parameter | Type | Required | Description |
+----------------- | ---- | -------- | ----------- |
+asset | String | NO |`oUSD` default All |
+limit | LONG | NO | max 500, default 200 |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+
+
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+asset | STRING | Asset |
+amount | STRING | Staked amount |
+redeemId | STRING | Redeem Id |
+vaultPositionId | STRING | An Id to map the vault position with interest payments |
+status | STRING | `COMPLETED` || `PENDING` |
+requestedAt | STRING | Millisecond timestamp of the vault redemption time |
+
+
+### GET `/v3/vault/interest/history`
+
+> **Request**
+
+```
+GET /v3/vault/interest/history
+```
+
+> **Successful response format**
+
+```json
+{
+	"success": true,
+	"data": [{
+		"asset": "oUSD",
+		"totalStaked": "1213.44624647",
+		"interest": "3.10618513",
+		"hourlyRate": "0.00256403",
+		"apr": "22.4609028",
+		"vaultPositionId": "1689522308660449280",
+		"interestId": "1699256154977148928",
+		"paidAt": "1693969213337"
+	}, {
+		"asset": "oUSD",
+		"totalStaked": "1209.3377037",
+		"interest": "3.10854277",
+		"hourlyRate": "0.00257045",
+		"apr": "22.517142",
+		"vaultPositionId": "1689522308660449280",
+		"interestId": "1699241062147497984",
+		"paidAt": "1693965614947"
+	}]
+}
+```
+
+Request Parameter | Type | Required | Description |
+----------------- | ---- | -------- | ----------- |
+asset | String | NO |`oUSD` default All |
+vaultPositionId | String | NO | default All |
+limit | LONG | NO | max 500, default 200 |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+
+
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+asset | STRING | Asset |
+totalStaked | STRING | Total staked amount |
+interest | STRING | Interest |
+hourlyRate | STRING | Redeem Id |
+apr | STRING | Apr rate |
+vaultPositionId | STRING | An Id to map the vault position with interest payments |
+interestId | STRING | Interest Id |
+paidAt | STRING | Millisecond timestamp |
+
+
+### GET `/v3/ousd/interest/payments`
+
+Personalized oUSD interest payment history
+
+> **Request**
+
+```
+GET /v3/ousd/interest/payments
+```
+
+> **Successful response format**
+
+```json
+{
+	"success": true,
+	"data": {
+		"total": "400000000",
+		"payment": "0.15",
+		"hourlyBorrowingRate": "0.0015",
+		"apr": "0.1314",
+		"interestId": "1659241061147445612",
+		"paidAt": "1618123100000"
+	}
+}
+```
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+total | STRING | Asset |
+payment | STRING | Total oUSD balance |
+hourlyBorrowingRate | STRING | Hourly borrowing rate |
+apr | STRING | Apr rate |
+interestId | STRING | Interest Id |
+paidAt | STRING | Millisecond timestamp |
+
+
+### GET `/v3/vault/data`
+
+
+> **Request**
+
+```
+GET /v3/vault/data
+```
+
+> **Successful response format**
+
+```json
+{
+	"success": true,
+	"data": {
+		"asset": "oUSD",
+		"totalStaked": "65144.78674115",
+		"estHourlyStakingRate": "0.00253811",
+		"estHourlyBorrowingRate": "0.000046423",
+		"timestamp": "1693983612885"
+	}
+}
+```
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+asset | STRING | Asset |
+totalStaked | STRING | Total staked amount |
+estHourlyStakingRate | STRING | Hourly staking rate |
+estHourlyBorrowingRate | STRING | Hourly borrowing rate |
+timestamp | STRING | Millisecond timestamp |
+
+
+
+### GET `/v3/vault/earnings/history`
+
+> **Request**
+
+```
+GET /v3/vault/earnings/history
+```
+
+> **Successful response format**
+
+```json
+{
+	"success": true,
+	"data": [{
+		"asset": "oUSD",
+		"interest": "164.9255123",
+		"hourlyStakingRate": "0.000046423",
+		"apr": "0.40666548",
+		"paidAt": "1693983612885"
+	}, {
+		"asset": "oUSD",
+		"interest": "164.91688883",
+		"hourlyStakingRate": "0.000046423",
+		"apr": "0.40666548",
+		"paidAt": "1693980013888"
+	}]
+}
+```
+
+Request Parameter | Type | Required | Description |
+----------------- | ---- | -------- | ----------- |
+limit | LONG | NO | max 500, default 200 |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+asset | STRING | Asset |
+interest | STRING | Interest rate |
+hourlyStakingRate | STRING | Hourly staking rate |
+apr | STRING | Apr rate |
+paidAt | STRING | Millisecond timestamp |
+
+
+
 ## Market Data - Public
 
 ### GET `/v3/markets`
