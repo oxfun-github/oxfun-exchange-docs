@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: OPNX API docs-web socket and REST libraries for algo traders
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - json: curl
@@ -21,5 +21,5 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the Opnx API
+    content: OPNX docs and libraries for the REST api and web socket for pro traders and developers - integrate algorithms, trading strategies, and order execution tools
 ---
