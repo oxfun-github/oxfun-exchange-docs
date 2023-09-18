@@ -1421,6 +1421,146 @@ source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`,
 matchedAt | STRING | Millisecond timestamp of the order matched time |
 
 
+
+## Market Making - Private
+
+### GET `/v3/mm/rewards/history`
+
+Gives daily historical reward data, don’t show today’s results
+
+> **Request**
+
+```
+GET /v3/mm/rewards/history
+```
+
+> **Successful response format**
+
+```json
+{
+    "success": true, 
+    "data": [
+        {
+            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "reward": "85.97639425", 
+            "rewardPercentage": "0.08597639", 
+            "startedAt": "1694390400000"
+        }, 
+        {
+            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "reward": "998.54307241", 
+            "rewardPercentage": "0.99854307", 
+            "startedAt": "1694304000000"
+        }, 
+        {
+            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "reward": "998.60167277", 
+            "rewardPercentage": "0.99860167", 
+            "startedAt": "1694217600000"
+        }, 
+        {
+            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "reward": "998.4825102", 
+            "rewardPercentage": "0.99848251", 
+            "startedAt": "1694131200000"
+        }, 
+        {
+            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "reward": "998.47589074", 
+            "rewardPercentage": "0.99847589", 
+            "startedAt": "1694044800000"
+        }, 
+        {
+            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "reward": "67.26457927", 
+            "rewardPercentage": "0.06726457", 
+            "startedAt": "1693958400000"
+        }, 
+        {
+            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "reward": "462.50615767", 
+            "rewardPercentage": "0.47792302", 
+            "startedAt": "1692835200000"
+        }, 
+        {
+            "marketCode": "OX-oUSD-SWAP-LIN", 
+            "reward": "8.330764", 
+            "rewardPercentage": "0.01721691", 
+            "startedAt": "1692835200000"
+        }, 
+        {
+            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "reward": "48.18444559", 
+            "rewardPercentage": "0.04979059", 
+            "startedAt": "1692748800000"
+        }, 
+        {
+            "marketCode": "OX-oUSD-SWAP-LIN", 
+            "reward": "7.72843552", 
+            "rewardPercentage": "0.0159721", 
+            "startedAt": "1692576000000"
+        }
+    ]
+}
+```
+
+Request Parameter | Type | Required | Description |
+----------------- | ---- | -------- | ----------- |
+marketCode | String | NO | default most recent trades first |
+limit | LONG | NO | max 100, default 50 |
+startTime | LONG | NO | Millisecond timestamp. Default 7 days ago. startTime and endTime must be within 7 days of each other |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+marketCode | STRING | Market Code |
+reward | STRING | Reward |
+rewardPercentage | STRING | Reward Percentage |
+startedAt | STRING | Start of day timestamp |
+
+
+### GET `/v3/mm/rewards/summary`
+
+Gives data just for the current month, summary of the current monthly cycle
+
+> **Request**
+
+```
+GET /v3/mm/rewards/summary
+```
+
+> **Successful response format**
+
+```json
+{
+    "success": true, 
+    "data": [
+        {
+            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "reward": "0.52317898", 
+            "rewardPercentage": "0.00003031", 
+            "remainingRewards": "12722.2221", 
+            "totalRewards": "30000"
+        }
+    ]
+}
+
+```
+
+Request Parameter | Type | Required | Description |
+----------------- | ---- | -------- | ----------- |
+marketCode | String | NO | default most recent trades first |
+
+Response Field | Type | Description |
+-------------- | ---- | ----------- |
+marketCode | STRING | Market Code |
+reward | STRING | Reward |
+rewardPercentage | STRING | Reward Percentage |
+remainingRewards | STRING | Remaining rewards for the current month |
+totalRewards | STRING | Total rewards for the current month |
+
+
+
 ## Market Data - Public
 
 ### GET `/v3/markets`

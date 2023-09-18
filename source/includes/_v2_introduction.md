@@ -1,4 +1,11 @@
 # Change Log
+**2023-09-18**
+* Added new REST API  [GET /v3/mm/rewards/history](#get-v3-mm-rewards-history)
+
+* Added new REST API  [GET /v3/mm/rewards/summary](#get-v3-mm-rewards-summary)
+
+
+
 **2023-07-27**
 * Added [Self Trade Prevention Modes](#self-trade-prevention-modes) to WebSocket and REST place order requests
 
