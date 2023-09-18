@@ -545,6 +545,17 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#market-making-private" class="toc-h2 toc-link" data-title="Market Making - Private">Market Making - Private</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-v3-mm-rewards-history" class="toc-h3 toc-link" data-title="GET <code>/v3/mm/rewards/history</code>">GET <code>/v3/mm/rewards/history</code></a>
+                          </li>
+                          <li>
+                            <a href="#get-v3-mm-rewards-summary" class="toc-h3 toc-link" data-title="GET <code>/v3/mm/rewards/summary</code>">GET <code>/v3/mm/rewards/summary</code></a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#market-data-public" class="toc-h2 toc-link" data-title="Market Data - Public">Market Data - Public</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -678,6 +689,13 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='change-log'>Change Log</h1>
+<p><strong>2023-09-18</strong>
+* Added new REST API  <a href="#get-v3-mm-rewards-history">GET /v3/mm/rewards/history</a></p>
+
+<ul>
+<li>Added new REST API  <a href="#get-v3-mm-rewards-summary">GET /v3/mm/rewards/summary</a></li>
+</ul>
+
 <p><strong>2023-07-27</strong>
 * Added <a href="#self-trade-prevention-modes">Self Trade Prevention Modes</a> to WebSocket and REST place order requests</p>
 
@@ -9416,6 +9434,219 @@ Cancels all open orders for the **specified market** for the account connected t
 <td>matchedAt</td>
 <td>STRING</td>
 <td>Millisecond timestamp of the order matched time</td>
+</tr>
+</tbody></table>
+<h2 id='market-making-private'>Market Making - Private</h2><h3 id='get-v3-mm-rewards-history'>GET <code>/v3/mm/rewards/history</code></h3>
+<p>Gives daily historical reward data, don’t show today’s results</p>
+
+<blockquote>
+<p><strong>Request</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>GET /v3/mm/rewards/history
+</code></pre></div>
+<blockquote>
+<p><strong>Successful response format</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"reward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85.97639425"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"rewardPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08597639"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1694390400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"reward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"998.54307241"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"rewardPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.99854307"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1694304000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"reward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"998.60167277"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"rewardPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.99860167"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1694217600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"reward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"998.4825102"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"rewardPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.99848251"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1694131200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"reward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"998.47589074"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"rewardPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.99847589"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1694044800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"reward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67.26457927"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"rewardPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.06726457"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693958400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"reward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"462.50615767"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"rewardPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.47792302"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1692835200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OX-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"reward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.330764"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"rewardPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01721691"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1692835200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"reward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.18444559"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"rewardPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.04979059"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1692748800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OX-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"reward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.72843552"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"rewardPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0159721"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1692576000000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Request Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>marketCode</td>
+<td>String</td>
+<td>NO</td>
+<td>default most recent trades first</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>LONG</td>
+<td>NO</td>
+<td>max 100, default 50</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Millisecond timestamp. Default 7 days ago. startTime and endTime must be within 7 days of each other</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Response Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>marketCode</td>
+<td>STRING</td>
+<td>Market Code</td>
+</tr>
+<tr>
+<td>reward</td>
+<td>STRING</td>
+<td>Reward</td>
+</tr>
+<tr>
+<td>rewardPercentage</td>
+<td>STRING</td>
+<td>Reward Percentage</td>
+</tr>
+<tr>
+<td>startedAt</td>
+<td>STRING</td>
+<td>Start of day timestamp</td>
+</tr>
+</tbody></table>
+<h3 id='get-v3-mm-rewards-summary'>GET <code>/v3/mm/rewards/summary</code></h3>
+<p>Gives data just for the current month, summary of the current monthly cycle</p>
+
+<blockquote>
+<p><strong>Request</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>GET /v3/mm/rewards/summary
+</code></pre></div>
+<blockquote>
+<p><strong>Successful response format</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"reward"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.52317898"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"rewardPercentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00003031"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"remainingRewards"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12722.2221"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"totalRewards"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Request Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>marketCode</td>
+<td>String</td>
+<td>NO</td>
+<td>default most recent trades first</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Response Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>marketCode</td>
+<td>STRING</td>
+<td>Market Code</td>
+</tr>
+<tr>
+<td>reward</td>
+<td>STRING</td>
+<td>Reward</td>
+</tr>
+<tr>
+<td>rewardPercentage</td>
+<td>STRING</td>
+<td>Reward Percentage</td>
+</tr>
+<tr>
+<td>remainingRewards</td>
+<td>STRING</td>
+<td>Remaining rewards for the current month</td>
+</tr>
+<tr>
+<td>totalRewards</td>
+<td>STRING</td>
+<td>Total rewards for the current month</td>
 </tr>
 </tbody></table>
 <h2 id='market-data-public'>Market Data - Public</h2><h3 id='get-v3-markets'>GET <code>/v3/markets</code></h3>
