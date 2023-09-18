@@ -8,6 +8,7 @@
 
 
 **2023-07-27**
+
 * Added [Self Trade Prevention Modes](#self-trade-prevention-modes) to WebSocket and REST place order requests
 
 **2023-07-18**
