@@ -1519,47 +1519,6 @@ rewardPercentage | STRING | Reward Percentage |
 startedAt | STRING | Start of day timestamp |
 
 
-### GET `/v3/mm/rewards/summary`
-
-Gives data just for the current month, summary of the current monthly cycle
-
-> **Request**
-
-```
-GET /v3/mm/rewards/summary
-```
-
-> **Successful response format**
-
-```json
-{
-    "success": true, 
-    "data": [
-        {
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
-            "reward": "0.52317898", 
-            "rewardPercentage": "0.00003031", 
-            "remainingRewards": "12722.2221", 
-            "totalRewards": "30000"
-        }
-    ]
-}
-
-```
-
-Request Parameter | Type | Required | Description |
------------------ | ---- | -------- | ----------- |
-marketCode | String | NO | default most recent trades first |
-
-Response Field | Type | Description |
--------------- | ---- | ----------- |
-marketCode | STRING | Market Code |
-reward | STRING | Reward |
-rewardPercentage | STRING | Reward Percentage |
-remainingRewards | STRING | Remaining rewards for the current month |
-totalRewards | STRING | Total rewards for the current month |
-
-
 
 ## Market Data - Public
 
