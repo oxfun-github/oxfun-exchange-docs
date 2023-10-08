@@ -1514,7 +1514,7 @@ endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and end
 Response Field | Type | Description |
 -------------- | ---- | ----------- |
 marketCode | STRING | Market Code |
-reward | STRING | Reward |
+reward | STRING | Rewards are paid in 3-month locked OX, and this field indicates the estimated dollar value you will receive. |
 rewardPercentage | STRING | Reward Percentage |
 startedAt | STRING | Start of day timestamp |
 
