@@ -7012,13 +7012,13 @@ Calling this endpoint using an API key pair linked to the parent account with th
 <td>startTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE</td>
 </tr>
 </tbody></table>
 
@@ -7224,13 +7224,13 @@ while API keys linked to a sub-account can only see transfers where the sub-acco
 <td>startTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE</td>
 </tr>
 </tbody></table>
 
@@ -7568,13 +7568,13 @@ Returns an empty array `[]` when no positions were found
 <td>startTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is EXCLUSIVE</td>
 </tr>
 </tbody></table>
 
@@ -7748,13 +7748,13 @@ Returns an empty array `[]` when no positions were found
 <td>startTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE</td>
 </tr>
 </tbody></table>
 
@@ -7956,13 +7956,13 @@ Returns an empty array `[]` when no positions were found
 <td>startTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. This filter applies to &quot;requestedAt&quot;</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. This filter applies to &quot;requestedAt&quot;. startTime is INCLUSIVE</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. This filter applies to &quot;requestedAt&quot;</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. This filter applies to &quot;requestedAt&quot;. endTime is INCLUSIVE</td>
 </tr>
 </tbody></table>
 
@@ -9342,13 +9342,13 @@ Cancels all open orders for the **specified market** for the account connected t
 <td>startTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE</td>
 </tr>
 </tbody></table>
 
@@ -9536,13 +9536,13 @@ Cancels all open orders for the **specified market** for the account connected t
 <td>startTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default 7 days ago. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default 7 days ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is EXCLUSIVE</td>
 </tr>
 </tbody></table>
 
@@ -10085,13 +10085,13 @@ Cancels all open orders for the **specified market** for the account connected t
 <td>startTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other.</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other.</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE</td>
 </tr>
 </tbody></table>
 
@@ -10362,13 +10362,13 @@ Cancels all open orders for the **specified market** for the account connected t
 <td>startTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE</td>
 </tr>
 </tbody></table>
 
@@ -10456,13 +10456,13 @@ Cancels all open orders for the **specified market** for the account connected t
 <td>startTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other.</td>
+<td>Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other.</td>
+<td>Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE</td>
 </tr>
 </tbody></table>
 
