@@ -327,8 +327,8 @@ Request Parameter | Type | Required | Description |
 subAcc | STRING | NO | Max 5 |
 type | STRING | NO | DEPOSIT, WITHDRAWAL, etc, default return all, most recent first |
 limit | LONG | NO | Default 200, max 500 |
-startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
-endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE|
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE |
 
 Response Field | Type | Description | 
 -------------- | ---- | ----------- |
@@ -433,8 +433,8 @@ Request Parameter | Type | Required | Description |
 ----------------- | ---- | -------- | ----------- |
 asset | STRING | NO | Default all assets |
 limit | LONG | NO | Default 50, max 200 |
-startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
-endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE |
 
 Response Field | Type | Description | 
 -------------- | ---- | ----------- |
@@ -587,8 +587,8 @@ Request Parameters | Type | Required | Description |
 ------------------ | ---- | -------- | ----------- |
 marketCode | STRING | NO | e.g. `BTC-oUSD-SWAP-LIN` |
 limit | LONG | NO | default is `200`, max is `500` |
-startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
-endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is EXCLUSIVE |
 
 > **SUCCESSFUL RESPONSE**
 
@@ -689,8 +689,8 @@ Request Parameter | Type | Required | Description |
 ----------------- | ---- | -------- | ----------- |
 asset | STRING | NO | Default all assets |
 limit | LONG | NO | Default 50, max 200 |
-startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
-endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE |
 
 Response Field | Type | Description | 
 -------------- | ---- | ----------- |
@@ -786,8 +786,8 @@ Request Parameter | Type | Required | Description |
 id | STRING | NO | |
 asset | STRING | NO | Default all assets |
 limit | LONG | NO | Default 50, max 200 |
-startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. This filter applies to "requestedAt" |
-endTime | LONG | NO |  Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. This filter applies to "requestedAt" |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. This filter applies to "requestedAt". startTime is INCLUSIVE |
+endTime | LONG | NO |  Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. This filter applies to "requestedAt". endTime is INCLUSIVE |
 
 Response Field | Type | Description | 
 -------------- | ---- | ----------- |
@@ -1399,8 +1399,8 @@ Request Parameter | Type | Required | Description |
 ----------------- | ---- | -------- | ----------- |
 marketCode | String | default most recent trades first |
 limit | LONG | NO | max 500, default 200 |
-startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
-endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE |
 
 Response Field | Type | Description |
 -------------- | ---- | ----------- |
@@ -1508,8 +1508,8 @@ Request Parameter | Type | Required | Description |
 ----------------- | ---- | -------- | ----------- |
 marketCode | String | NO | default most recent trades first |
 limit | LONG | NO | max 100, default 50 |
-startTime | LONG | NO | Millisecond timestamp. Default 7 days ago. startTime and endTime must be within 7 days of each other |
-endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+startTime | LONG | NO | Millisecond timestamp. Default 7 days ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is EXCLUSIVE |
 
 Response Field | Type | Description |
 -------------- | ---- | ----------- |
@@ -1792,8 +1792,8 @@ Request Parameter | Type | Required | Description |
 marketCode | STRING | YES | Market code |
 timeframe | STRING | NO | Available values: `60s`,`300s`,`900s`,`1800s`,`3600s`,`7200s`,`14400s`,`86400s`, default is `3600s` |
 limit | LONG | NO | Default 200, max 500 |
-startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. |
-endTime | LONG | NO |  Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE |
+endTime | LONG | NO |  Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE |
 
 Response Field | Type | Description |
 -------------- | ---- | ----------- |
@@ -1950,8 +1950,8 @@ Request Parameter | Type | Required | Description |
 ----------------- | ---- | -------- | ----------- |
 marketCode | STRING | NO | Market code |
 limit | LONG | NO | Default 200, max 500 |
-startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other |
-endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE |
+endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE |
 
 Response Field |Type | Description| 
 -------------------------- | -----|--------- |
@@ -1992,8 +1992,8 @@ Request Parameter | Type | Required | Description |
 ----------------- | ---- | -------- | ----------- |
 marketCode | STRING | NO | Market code |
 limit | LONG | NO | Default 200, max 500 |
-startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. |
-endTime | LONG | NO |  Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. |
+startTime | LONG | NO | Millisecond timestamp. Default 24 hours ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE |
+endTime | LONG | NO |  Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is INCLUSIVE |
 
 Response Field | Type | Description |
 -------------- | ---- | ----------- |
