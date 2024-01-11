@@ -2182,4 +2182,3 @@ estLiquidationPrice | STRING | The liquidation price of the position. |
 estLiqPrice | STRING | pnl of the positioin - (market price - entry price) / quantity |
 unrealizedPnl | STRING | everage ratio of the position - (quantity * market price) / collateral balance |
 liqGap | STRING | market price - estimate liquidation price |
-
