@@ -324,9 +324,6 @@
             <a href="#api-key-management" class="toc-h1 toc-link" data-title="API Key Management">API Key Management</a>
           </li>
           <li>
-            <a href="#api-library" class="toc-h1 toc-link" data-title="API Library">API Library</a>
-          </li>
-          <li>
             <a href="#rate-limit" class="toc-h1 toc-link" data-title="Rate Limit">Rate Limit</a>
           </li>
           <li>
@@ -685,229 +682,19 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='change-log'>Change Log</h1>
-<p><strong>2023-09-18</strong></p>
-
-<ul>
-<li>Added new REST API  <a href="#get-v3-mm-rewards-history">GET /v3/mm/rewards/history</a></li>
-</ul>
-
-<p><strong>2023-07-27</strong></p>
-
-<ul>
-<li>Added <a href="#self-trade-prevention-modes">Self Trade Prevention Modes</a> to WebSocket and REST place order requests</li>
-</ul>
-
-<p><strong>2023-07-18</strong></p>
-
-<ul>
-<li><p>Added new REST API  <a href="#get-v3-positions-largest">GET /v3/positions/largest</a></p></li>
-<li><p>Added new REST API  <a href="#get-v3-positions-liquidation-closest">GET /v3/positions/liquidation/closest</a></p></li>
-</ul>
-
-<p><strong>2023-07-10</strong></p>
-
-<ul>
-<li>Updated REST API <a href="#get-v3-account">GET /v3/account</a>
-
-<ul>
-<li>Introduced <code>STANDARD</code> and <code>PORTFOLIO</code> account types</li>
-</ul></li>
-<li>Updated WebSocket API <a href="#balance-channel">Balance Channel</a>
-
-<ul>
-<li>Introduced <code>STANDARD</code> and <code>PORTFOLIO</code> trade types</li>
-</ul></li>
-</ul>
-
-<p><strong>2023-05-08</strong></p>
-
-<ul>
-<li><p>Updated REST API  <a href="#get-v3-assets">GET /v3/assets</a></p>
-
-<ul>
-<li>Response fields:
-
-<ul>
-<li>Added new field  <code>loanToValueFactor</code></li>
-</ul></li>
-</ul></li>
-<li><p>Added new REST API  <a href="#get-v3-leverage-tiers">GET /v3/leverage/tiers</a></p></li>
-</ul>
-
-<p><strong>2023-04-03</strong></p>
-
-<ul>
-<li>Updated REST API  <a href="#delete-v3-orders-cancel">DELETE /v3/orders/cancel</a>
-
-<ul>
-<li>Response fields:
-
-<ul>
-<li>Updated field <code>canceledAt</code> to  <code>closedAt</code></li>
-</ul></li>
-</ul></li>
-</ul>
-
-<p><strong>2023-03-31</strong></p>
-
-<ul>
-<li>Updated WebSocket Error Codes <a href="#error-codes">Error Codes</a></li>
-<li><p>Added new error code and message:</p>
-
-<ul>
-<li>000101    Internal server is unavailable temporary, try again later</li>
-<li>000201    Trade service is busy, try again later</li>
-<li>100008    Quantity cannot be less than the quantity increment xxx</li>
-<li>100015    recvWindow xxx has expired</li>
-<li>300001    Invalid account status xxx, please contact administration if any questions</li>
-<li>710001    System failure, exception thrown -&gt; xxx</li>
-<li>710007    Insufficient position</li>
-</ul></li>
-<li><p>Updated error code and message:</p>
-
-<ul>
-<li>100005    Open order not found</li>
-<li>100006    Open order is not owned by the user</li>
-<li>200050    The market xxx is inactive</li>
-<li>710002    The price is lower than the minimum</li>
-<li>710003    The price is higher than the maximum</li>
-<li>710004    Position quantity exceeds the limit</li>
-<li>710005    Insufficient margin</li>
-<li>710006    Insufficient balance</li>
-</ul></li>
-<li><p>Updated REST API <a href="#get-v3-orders-status">GET /v3/orders/status</a> and <a href="#get-v3-orders-working">GET /v3/orders/working</a> and <a href="#post-v3-orders-place">POST /v3/orders/place</a> and <a href="#delete-v3-orders-cancel">DELETE /v3/orders/cancel</a></p>
-
-<ul>
-<li>Response fields:
-
-<ul>
-<li>Added new field  <code>amount</code></li>
-<li>Added new field  <code>displayQuantity</code></li>
-<li>Added new field  <code>triggerType</code></li>
-</ul></li>
-</ul></li>
-</ul>
-
-<p><strong>2023-03-28</strong></p>
-
-<ul>
-<li>Removed WebSocket Adapter</li>
-<li>Updated WebSocket API <a href="#order-commands">Order Commands</a>
-
-<ul>
-<li>Response fields:
-
-<ul>
-<li>Added new field <code>limitPrice</code></li>
-<li>Added new field <code>triggerType</code></li>
-</ul></li>
-</ul></li>
-<li>Updated WebSocket API Order Channel
-
-<ul>
-<li>Response fields:
-
-<ul>
-<li>Added new field <code>limitPrice</code></li>
-<li>Added new field <code>triggerType</code></li>
-</ul></li>
-</ul></li>
-<li>Updated Websocket Ticker Channel
-
-<ul>
-<li>Response fields:
-
-<ul>
-<li>Added new field <code>indexPrice</code></li>
-</ul></li>
-</ul></li>
-<li>Updated Websocket Market Channel
-
-<ul>
-<li>Response fields:
-
-<ul>
-<li>Removed field <code>listingDate</code></li>
-<li>Removed field <code>marketPriceLastUpdated</code></li>
-<li>Added new field <code>exclusive</code></li>
-</ul></li>
-</ul></li>
-<li>Updated REST API <a href="#get-v3-account">GET /v3/account</a> and <a href="#get-v3-positions">GET /v3/positions</a>
-
-<ul>
-<li>Response fields:
-
-<ul>
-<li>Removed field <code>marginBalance</code></li>
-<li>Removed field <code>maintenanceMargin</code></li>
-<li>Removed field <code>marginRatio</code></li>
-<li>Removed field <code>leverage</code></li>
-<li>Removed field <code>riskRatio</code></li>
-</ul></li>
-</ul></li>
-<li>Updated REST API <a href="#get-v3-withdrawal">GET /v3/withdrawal</a>
-
-<ul>
-<li>Response fields:
-
-<ul>
-<li>Added <code>IN SWEEPING</code> enum to the <code>status</code> field</li>
-</ul></li>
-</ul></li>
-<li>Updated REST API <a href="#get-v3-orders-status">GET /v3/orders/status</a> and <a href="#get-v3-orders-working">GET /v3/orders/working</a>
-
-<ul>
-<li>Response fields:
-
-<ul>
-<li>Added new source enums to the <code>source</code> field</li>
-</ul></li>
-</ul></li>
-</ul>
-
-<p><strong>2023-03-27</strong></p>
-
-<ul>
-<li>Add new OrderType <code>STOP_MARKET</code></li>
-<li>Updated REST  API <a href="#post-v3-orders-place">POST /v3/orders/place</a></li>
-<li>Add WebSocket API <a href="#place-stop-market-order">Place Stop Market Order</a>  WebSocket api</li>
-</ul>
-
-<p><strong>2023-03-22</strong></p>
-
-<ul>
-<li>Updated REST  API <a href="#post-v3-orders-place">POST /v3/orders/place</a></li>
-<li>Updated WebSocket API <a href="#order-commands">Order Commands</a> place/modify WebSocket api
-
-<ul>
-<li>Request params:
-
-<ul>
-<li>Added new field <code>displayQuantity</code></li>
-<li>Added new field <code>amount</code></li>
-</ul></li>
-<li>Response fields:
-
-<ul>
-<li>Added new field <code>displayQuantity</code></li>
-<li>Added new field <code>amount</code></li>
-</ul></li>
-</ul></li>
-</ul>
-<h1 id='introduction'>Introduction</h1>
-<p>OPNX offers a REST API and streaming WebSocket API that allows traders and developers to integrate their algorithms, trading strategies, risk management systems, and order execution software with our trading platform. 
-OPNX&#39;s API emphasizes performance and security, enabling users to access the full range of our platform&#39;s features: order placement, account/subaccount management, and market data.</p>
+        <h1 id='change-log'>Change Log</h1><h1 id='introduction'>Introduction</h1>
+<p>OX.FUN offers a REST API and streaming WebSocket API that allows traders and developers to integrate their algorithms, trading strategies, risk management systems, and order execution software with our trading platform. 
+OX.FUN&#39;s API emphasizes performance and security, enabling users to access the full range of our platform&#39;s features: order placement, account/subaccount management, and market data.</p>
 
 <p><strong>REST API</strong></p>
 
-<p>OPNX&#39;s REST API allows users to execute trades, manage their accounts, and access market data. With extensive documentation and sample python code, the REST API is easy to use and can be integrated with a wide variety of trading software. The REST API also offers SSL/TLS connections, rate limiting, and IP whitelisting, ensuring that all communication between the user and the server is secure.</p>
+<p>OX.FUN&#39;s REST API allows users to execute trades, manage their accounts, and access market data. With extensive documentation and sample python code, the REST API is easy to use and can be integrated with a wide variety of trading software. The REST API also offers SSL/TLS connections, rate limiting, and IP whitelisting, ensuring that all communication between the user and the server is secure.</p>
 
 <p><strong>WebSocket API</strong></p>
 
-<p>OPNX&#39;s WebSocket API provides real-time market data and order updates with ultra-low latency. With the WebSocket API, users can subscribe to real-time price updates and order book changes, enabling them to make faster and more informed trading decisions. The Websocket API also offers a real-time streaming interface for order placement and cancellation, enabling users to respond to market changes quickly and efficiently.</p>
+<p>OX.FUN&#39;s WebSocket API provides real-time market data and order updates with ultra-low latency. With the WebSocket API, users can subscribe to real-time price updates and order book changes, enabling them to make faster and more informed trading decisions. The Websocket API also offers a real-time streaming interface for order placement and cancellation, enabling users to respond to market changes quickly and efficiently.</p>
 
-<p>To get started please register for a TEST account at <a href="https://stg.opnx.com/register">stg.opnx.com/register</a> or a LIVE account at <a href="https://opnx.com/register">opnx.com/register</a></p>
+<p>To get started register for a TEST account at <a href="https://stg.ox.fun">stg.ox.fun</a> or a LIVE account at <a href="https://ox.fun">ox.fun</a></p>
 <h1 id='api-key-management'>API Key Management</h1>
 <p>An API key is required to make an authenticated API command.  API keys (public and corresponding secret key) can be generated via the Opnx GUI within a clients account. </p>
 
@@ -916,12 +703,6 @@ OPNX&#39;s API emphasizes performance and security, enabling users to access the
 <p>If you wish to execute orders with your API Key, clients must select the <code>Can Trade</code> permission upon API key creation.</p>
 
 <p>API keys are also only bound to a single sub-account, defined upon creation. This means that an API key will only ever interact and return account information for a single sub-account.</p>
-<h1 id='api-library'>API Library</h1>
-<p>We recommend implementing your own API connector to minimize dependencies on external software, as well as optimize performance and security.</p>
-
-<p>However, to help speed up your development we have produced a lightweight Java connector, with complete API coverage, supporting synchronous and asynchronous requests, and event streaming using WebSockets. </p>
-
-<p><a href="https://github.com/opnx-github/opnx-api-client">github.com/opnx-github/opnx-api-client</a></p>
 <h1 id='rate-limit'>Rate Limit</h1>
 <p>Opnx&#39;s APIs allows our clients to access and control their accounts or view our market data using custom-written software. To protect the performance of the system, we impose certain limits:</p>
 
