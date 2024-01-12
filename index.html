@@ -787,16 +787,16 @@ OX.FUN&#39;s API emphasizes performance and security, enabling users to access t
 <p><strong>TEST</strong> site</p>
 
 <ul>
-<li><code>wss://stgapi.opnx.com/v2/websocket</code></li>
+<li><code>wss://stgapi.ox.fun/v2/websocket</code></li>
 </ul>
 
 <p><strong>LIVE</strong> site</p>
 
 <ul>
-<li><code>wss://api.opnx.com/v2/websocket</code></li>
+<li><code>wss://api.ox.fun/v2/websocket</code></li>
 </ul>
 
-<p>Opnx&#39;s application programming interface (API) provides our clients programmatic access to control aspects of their accounts and to place orders on the Opnx trading platform. The API is accessible via WebSocket connection to the URIs listed above. Commands, replies, and notifications all traverse the WebSocket in text frames with JSON-formatted payloads.</p>
+<p>OX.FUN&#39;s application programming interface (API) provides our clients programmatic access to control aspects of their accounts and to place orders on OX.FUN. The API is accessible via WebSocket connection to the URIs listed above. Commands, replies, and notifications all traverse the WebSocket in text frames with JSON-formatted payloads.</p>
 
 <p>Websocket commands can be sent in either of the following two formats:</p>
 
@@ -814,8 +814,8 @@ OX.FUN&#39;s API emphasizes performance and security, enabling users to access t
 <p><code>args</code>: the value(s) will be the instrument ID(s) or asset ID(s), for example:</p>
 
 <ul>
-<li>order:BTC-oUSD-SWAP-LIN</li>
-<li>depth:ETH-USDT-REPO-LIN</li>
+<li>order:BTC-USD-SWAP-LIN</li>
+<li>depth:ETH-USDT-SWAP-LIN</li>
 <li>position:all</li>
 </ul>
 
@@ -874,7 +874,7 @@ OX.FUN&#39;s API emphasizes performance and security, enabling users to access t
 <span class="p">}</span>
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
-    <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="s">'wss://stgapi.opnx.com/v2/websocket'</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="s">'wss://stgapi.ox.fun/v2/websocket'</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">await</span> <span class="n">ws</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">msg_auth</span><span class="p">))</span>
         <span class="k">while</span> <span class="n">ws</span><span class="p">.</span><span class="nb">open</span><span class="p">:</span>
             <span class="n">resp</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ws</span><span class="p">.</span><span class="n">recv</span><span class="p">()</span>
@@ -899,7 +899,7 @@ OX.FUN&#39;s API emphasizes performance and security, enabling users to access t
                             <span class="p">}</span>
                           <span class="p">});</span>
 
-<span class="kd">var</span> <span class="nx">ws</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="dl">'</span><span class="s1">wss://stgapi.opnx.com/v2/websocket</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">ws</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="dl">'</span><span class="s1">wss://stgapi.ox.fun/v2/websocket</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">websocket message from server : </span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
@@ -1054,7 +1054,7 @@ There are 4 STP modes available to traders <code>NONE</code>, <code>EXPIRE_MAKER
             </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1638237934061</span><span class="p">,</span><span class="w">
             </span><span class="nl">"recvWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">
@@ -1094,7 +1094,7 @@ There are 4 STP modes available to traders <code>NONE</code>, <code>EXPIRE_MAKER
             <span class="s">"timestamp"</span><span class="p">:</span> <span class="mi">1638237934061</span><span class="p">,</span>
             <span class="s">"recvWindow"</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
             <span class="s">"clientOrderId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span>
+            <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"BTC-USD-SWAP-LIN"</span><span class="p">,</span>
             <span class="s">"side"</span><span class="p">:</span> <span class="s">"BUY"</span><span class="p">,</span>
             <span class="s">"orderType"</span><span class="p">:</span> <span class="s">"LIMIT"</span><span class="p">,</span>
             <span class="s">"quantity"</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
@@ -1103,7 +1103,7 @@ There are 4 STP modes available to traders <code>NONE</code>, <code>EXPIRE_MAKER
           <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -1133,7 +1133,7 @@ There are 4 STP modes available to traders <code>NONE</code>, <code>EXPIRE_MAKER
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491945248"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span><span class="w">
@@ -1157,7 +1157,7 @@ There are 4 STP modes available to traders <code>NONE</code>, <code>EXPIRE_MAKER
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491945248"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span><span class="w">
@@ -1213,7 +1213,7 @@ One account can only place up to 50 orders per second via websocket.
 <td>marketCode</td>
 <td>STRING</td>
 <td>Yes</td>
-<td>Market code e.g. <code>BTC-oUSD-SWAP-LIN</code></td>
+<td>Market code e.g. <code>BTC-USD-SWAP-LIN</code></td>
 </tr>
 <tr>
 <td>orderType</td>
@@ -1281,7 +1281,7 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1638237934061</span><span class="p">,</span><span class="w">
             </span><span class="nl">"recvWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARKET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
@@ -1319,7 +1319,7 @@ One account can only place up to 50 orders per second via websocket.
             <span class="s">"timestamp"</span><span class="p">:</span> <span class="mi">1638237934061</span><span class="p">,</span>
             <span class="s">"recvWindow"</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
             <span class="s">"clientOrderId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span>
+            <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"ETH-USD-SWAP-LIN"</span><span class="p">,</span>
             <span class="s">"side"</span><span class="p">:</span> <span class="s">"SELL"</span><span class="p">,</span>
             <span class="s">"orderType"</span><span class="p">:</span> <span class="s">"MARKET"</span><span class="p">,</span>
             <span class="s">"quantity"</span><span class="p">:</span> <span class="mi">5</span>
@@ -1327,7 +1327,7 @@ One account can only place up to 50 orders per second via websocket.
 <span class="p">}</span>
 
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -1357,7 +1357,7 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491945248"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARKET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
@@ -1379,7 +1379,7 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491503359"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARKET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
@@ -1433,7 +1433,7 @@ One account can only place up to 50 orders per second via websocket.
 <td>marketCode</td>
 <td>STRING</td>
 <td>Yes</td>
-<td>Market code e.g. <code>BTC-oUSD-SWAP-LIN</code></td>
+<td>Market code e.g. <code>BTC-USD-SWAP-LIN</code></td>
 </tr>
 <tr>
 <td>orderType</td>
@@ -1489,7 +1489,7 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1638237934061</span><span class="p">,</span><span class="w">
             </span><span class="nl">"recvWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP_LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
@@ -1530,7 +1530,7 @@ One account can only place up to 50 orders per second via websocket.
             <span class="s">"timestamp"</span><span class="p">:</span> <span class="mi">1638237934061</span><span class="p">,</span>
             <span class="s">"recvWindow"</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
             <span class="s">"clientOrderId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span>
+            <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"ETH-USD-SWAP-LIN"</span><span class="p">,</span>
             <span class="s">"side"</span><span class="p">:</span> <span class="s">"BUY"</span><span class="p">,</span>
             <span class="s">"orderType"</span><span class="p">:</span> <span class="s">"STOP_LIMIT"</span><span class="p">,</span>
             <span class="s">"quantity"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
@@ -1541,7 +1541,7 @@ One account can only place up to 50 orders per second via websocket.
 <span class="p">}</span>
 
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -1571,7 +1571,7 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1607639739098"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP_LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
@@ -1597,7 +1597,7 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491503359"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP_LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
@@ -1655,7 +1655,7 @@ One account can only place up to 50 orders per second via websocket.
 <td>marketCode</td>
 <td>STRING</td>
 <td>Yes</td>
-<td>Market code e.g. <code>ETH-oUSD-SWAP-LIN</code></td>
+<td>Market code e.g. <code>ETH-USD-SWAP-LIN</code></td>
 </tr>
 <tr>
 <td>orderType</td>
@@ -1725,7 +1725,7 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679907302693</span><span class="p">,</span><span class="w">
             </span><span class="nl">"recvWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679907301552</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP_MARKET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.012</span><span class="p">,</span><span class="w">
@@ -1764,7 +1764,7 @@ One account can only place up to 50 orders per second via websocket.
             <span class="s">"timestamp"</span><span class="p">:</span> <span class="mi">1679907302693</span><span class="p">,</span>
             <span class="s">"recvWindow"</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
             <span class="s">"clientOrderId"</span><span class="p">:</span> <span class="mi">1679907301552</span><span class="p">,</span>
-            <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span>
+            <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"BTC-USD-SWAP-LIN"</span><span class="p">,</span>
             <span class="s">"side"</span><span class="p">:</span> <span class="s">"SELL"</span><span class="p">,</span>
             <span class="s">"orderType"</span><span class="p">:</span> <span class="s">"STOP_MARKET"</span><span class="p">,</span>
             <span class="s">"quantity"</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>
@@ -1773,7 +1773,7 @@ One account can only place up to 50 orders per second via websocket.
 <span class="p">}</span>
 
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -1803,7 +1803,7 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1607639739098"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1679907301552"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP_MARKET"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.012"</span><span class="p">,</span><span class="w">
@@ -1829,7 +1829,7 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1679907302693"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
            </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1679907301552"</span><span class="p">,</span><span class="w">
-           </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+           </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
            </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOP_MARKET"</span><span class="p">,</span><span class="w">
            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.012"</span><span class="p">,</span><span class="w">
@@ -1887,7 +1887,7 @@ One account can only place up to 50 orders per second via websocket.
 <td>marketCode</td>
 <td>STRING</td>
 <td>Yes</td>
-<td>Market code e.g. <code>BTC-oUSD-SWAP-LIN</code></td>
+<td>Market code e.g. <code>BTC-USD-SWAP-LIN</code></td>
 </tr>
 <tr>
 <td>orderType</td>
@@ -1943,7 +1943,7 @@ One account can only place up to 50 orders per second via websocket.
                   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1638237934061</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"recvWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
@@ -1992,7 +1992,7 @@ One account can only place up to 50 orders per second via websocket.
                   <span class="s">"timestamp"</span><span class="p">:</span> <span class="mi">1638237934061</span><span class="p">,</span>
                   <span class="s">"recvWindow"</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
                   <span class="s">"clientOrderId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                  <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span>
+                  <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"ETH-USD-SWAP-LIN"</span><span class="p">,</span>
                   <span class="s">"side"</span><span class="p">:</span> <span class="s">"BUY"</span><span class="p">,</span>
                   <span class="s">"orderType"</span><span class="p">:</span> <span class="s">"LIMIT"</span><span class="p">,</span>
                   <span class="s">"quantity"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
@@ -2010,7 +2010,7 @@ One account can only place up to 50 orders per second via websocket.
                 <span class="p">}]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -2040,7 +2040,7 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1607639739098"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
@@ -2083,7 +2083,7 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491503359"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
@@ -2177,7 +2177,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelorder"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2210,12 +2210,12 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"op"</span><span class="p">:</span> <span class="s">"cancelorder"</span><span class="p">,</span>
   <span class="s">"tag"</span><span class="p">:</span> <span class="mi">456</span><span class="p">,</span>
   <span class="s">"data"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span>
+            <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"BTC-USD-SWAP-LIN"</span><span class="p">,</span>
             <span class="s">"orderId"</span><span class="p">:</span> <span class="mi">12</span>
           <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -2244,7 +2244,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491173964"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="w">
           </span><span class="p">}</span><span class="w">
@@ -2261,7 +2261,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;errorCode&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491173964"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2303,7 +2303,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <td>marketCode</td>
 <td>STRING</td>
 <td>Yes</td>
-<td>Market code e.g. <code>BTC-oUSD-SWAP-LIN</code></td>
+<td>Market code e.g. <code>BTC-USD-SWAP-LIN</code></td>
 </tr>
 <tr>
 <td>orderId</td>
@@ -2320,7 +2320,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelorders"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
   </span><span class="nl">"dataArray"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                  </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="p">{</span><span class="w">
@@ -2357,7 +2357,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"op"</span><span class="p">:</span> <span class="s">"cancelorders"</span><span class="p">,</span>
   <span class="s">"tag"</span><span class="p">:</span> <span class="mi">456</span><span class="p">,</span>
   <span class="s">"dataArray"</span><span class="p">:</span> <span class="p">[{</span>
-                  <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span>
+                  <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"BTC-USD-SWAP-LIN"</span><span class="p">,</span>
                   <span class="s">"orderId"</span><span class="p">:</span> <span class="mi">12</span>
                 <span class="p">},</span>
                 <span class="p">{</span>
@@ -2366,7 +2366,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
                 <span class="p">}]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -2395,7 +2395,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491173964"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="w">
           </span><span class="p">}</span><span class="w">
@@ -2426,7 +2426,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;errorCode&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1592491173964"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2488,7 +2488,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1638237934061</span><span class="p">,</span><span class="w">
             </span><span class="nl">"recvWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">888</span><span class="p">,</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">9800</span><span class="p">,</span><span class="w">
@@ -2526,7 +2526,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"data"</span><span class="p">:</span> <span class="p">{</span>
             <span class="s">"timestamp"</span><span class="p">:</span> <span class="mi">1638237934061</span><span class="p">,</span>
             <span class="s">"recvWindow"</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-            <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span>
+            <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"BTC-USD-SWAP-LIN"</span><span class="p">,</span>
             <span class="s">"orderId"</span><span class="p">:</span> <span class="mi">888</span><span class="p">,</span>
             <span class="s">"side"</span><span class="p">:</span> <span class="s">"BUY"</span><span class="p">,</span>
             <span class="s">"price"</span><span class="p">:</span> <span class="mi">9800</span><span class="p">,</span>
@@ -2534,7 +2534,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
           <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -2569,7 +2569,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
       </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9800"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9800"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="w">
+      </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -2589,7 +2589,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
             </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9800"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9800"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -2643,7 +2643,7 @@ One account can only place up to 50 orders per second via websocket.
 <td>marketCode</td>
 <td>STRING</td>
 <td>Yes</td>
-<td>Market code e.g. <code>BTC-oUSD-SWAP-LIN</code></td>
+<td>Market code e.g. <code>BTC-USD-SWAP-LIN</code></td>
 </tr>
 <tr>
 <td>orderId</td>
@@ -2692,7 +2692,7 @@ One account can only place up to 50 orders per second via websocket.
   </span><span class="nl">"dataArray"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
                   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1638237934061</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"recvWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="mi">304304315061932310</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w">
@@ -2737,7 +2737,7 @@ One account can only place up to 50 orders per second via websocket.
   <span class="s">"dataArray"</span><span class="p">:</span> <span class="p">[{</span>
                   <span class="s">"timestamp"</span><span class="p">:</span> <span class="mi">1638237934061</span><span class="p">,</span>
                   <span class="s">"recvWindow"</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-                  <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span>
+                  <span class="s">"marketCode"</span><span class="p">:</span> <span class="s">"ETH-USD-SWAP-LIN"</span><span class="p">,</span>
                   <span class="s">"side"</span><span class="p">:</span> <span class="s">"BUY"</span><span class="p">,</span>
                   <span class="s">"orderID"</span><span class="p">:</span> <span class="mi">304304315061932310</span><span class="p">,</span>
                   <span class="s">"price"</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
@@ -2752,7 +2752,7 @@ One account can only place up to 50 orders per second via websocket.
                 <span class="p">}]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -2787,7 +2787,7 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -2825,7 +2825,7 @@ One account can only place up to 50 orders per second via websocket.
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -2946,7 +2946,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"balance:all"</span><span class="p">],</span>
   <span class="s">"tag"</span><span class="p">:</span> <span class="mi">101</span>
 <span class="p">}</span>
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -3120,7 +3120,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 
 </span><span class="p">{</span><span class="w">
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"position:BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> </span><span class="s2">"position:BCH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> </span><span class="err">........</span><span class="p">],</span><span class="w"> 
+  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"position:BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w"> </span><span class="s2">"position:BCH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w"> </span><span class="err">........</span><span class="p">],</span><span class="w"> 
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">websockets</span>
@@ -3154,7 +3154,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"tag"</span><span class="p">:</span> <span class="mi">102</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -3193,18 +3193,18 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Your account ID&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1607985371481"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:[</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1616053755423"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"contractValCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"entryPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1900.0"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"positionPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-5.6680"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"positionPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-566.80"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"estLiquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"quantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"50.54"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1617099855968"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"contractValCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
@@ -3286,7 +3286,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>instrumentId</td>
 <td>STRING</td>
-<td>e.g. <code>ETH-oUSD-SWAP-LIN</code></td>
+<td>e.g. <code>ETH-USD-SWAP-LIN</code></td>
 </tr>
 <tr>
 <td>quantity</td>
@@ -3311,7 +3311,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>positionPnl</td>
 <td>STRING</td>
-<td>Postion profit and lost</td>
+<td>Postion profit and lost in OX</td>
 </tr>
 <tr>
 <td>estLiquidationPrice</td>
@@ -3343,7 +3343,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 
 </span><span class="p">{</span><span class="w">
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"order:OX-USDT"</span><span class="p">,</span><span class="w"> </span><span class="s2">"order:ETH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> </span><span class="err">.....</span><span class="p">],</span><span class="w"> 
+  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"order:OX-USDT"</span><span class="p">,</span><span class="w"> </span><span class="s2">"order:ETH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w"> </span><span class="err">.....</span><span class="p">],</span><span class="w"> 
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">websockets</span>
@@ -3377,7 +3377,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
   <span class="s">"tag"</span><span class="p">:</span> <span class="mi">102</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -3460,7 +3460,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
           </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAKER_ONLY"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1594943491077"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
@@ -3485,7 +3485,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
           </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w"> 
-          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IOC"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680042503604"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
@@ -3632,7 +3632,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
           </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED_BY_USER"</span><span class="p">,</span><span class="w"> 
-          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680043402806"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
@@ -3661,7 +3661,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
           </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED_BY_USER"</span><span class="p">,</span><span class="w"> 
-          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680044038047"</span><span class="p">,</span><span class="w"> 
           </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> 
@@ -3756,7 +3756,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>marketCode</td>
 <td>STRING</td>
-<td>Market code e.g. <code>BTC-oUSD-SWAP-LIN</code></td>
+<td>Market code e.g. <code>BTC-USD-SWAP-LIN</code></td>
 </tr>
 <tr>
 <td>timeInForce</td>
@@ -3828,7 +3828,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REJECT_CANCEL_ORDER_ID_NOT_FOUND"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"timeCondition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"timestampEpochMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1615377638518</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> 
@@ -3996,7 +3996,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
           </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680044356374"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"remainQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
@@ -4084,7 +4084,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
 <tr>
 <td>marketCode</td>
 <td>STRING</td>
-<td>Market code e.g. <code>BTC-oUSD-SWAP-LIN</code></td>
+<td>Market code e.g. <code>BTC-USD-SWAP-LIN</code></td>
 </tr>
 <tr>
 <td>timeInForce</td>
@@ -4151,7 +4151,7 @@ Please also subscribe to the <strong>User Order Channel</strong> to receive push
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REJECT_AMEND_ORDER_ID_NOT_FOUND"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"timeCondition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"timestampEpochMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1615377638518</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w"> 
@@ -4314,7 +4314,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
           </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FILLED"</span><span class="p">,</span><span class="w"> 
-          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1680044888565"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"matchId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300016799886154670"</span><span class="p">,</span><span class="w">
@@ -4411,7 +4411,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <tr>
 <td>marketCode</td>
 <td>STRING</td>
-<td>Market code i.e. <code>BTC-oUSD-SWAP-LIN</code></td>
+<td>Market code i.e. <code>BTC-USD-SWAP-LIN</code></td>
 </tr>
 <tr>
 <td>timeInForce</td>
@@ -4492,7 +4492,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">103</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"depthL10:BTC-oUSD-SWAP-LIN"</span><span class="p">]</span><span class="w">
+  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"depthL10:BTC-USD-SWAP-LIN"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">websockets</span>
 <span class="kn">import</span> <span class="nn">asyncio</span>
@@ -4502,10 +4502,10 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <span class="p">{</span>
   <span class="s">"op"</span><span class="p">:</span> <span class="s">"subscribe"</span><span class="p">,</span>
   <span class="s">"tag"</span><span class="p">:</span> <span class="mi">103</span><span class="p">,</span>
-  <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"depthL10:BTC-oUSD-SWAP-LIN"</span><span class="p">]</span>
+  <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"depthL10:BTC-USD-SWAP-LIN"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -4529,7 +4529,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"depthL10:BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"depthL10:BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665454814275"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4568,7 +4568,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
                 </span><span class="mf">8.414</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665454814328"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partial"</span><span class="w">
@@ -4604,7 +4604,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <td>args</td>
 <td>LIST</td>
 <td>Yes</td>
-<td>List of individual markets <code>&lt;depth&gt;:&lt;marketCode&gt;</code> e.g: <code>[depthL10:BTC-oUSD-SWAP-LIN]</code>, valid book sizes are: <code>depthL5</code> <code>depthL10</code> <code>depthL25</code></td>
+<td>List of individual markets <code>&lt;depth&gt;:&lt;marketCode&gt;</code> e.g: <code>[depthL10:BTC-USD-SWAP-LIN]</code>, valid book sizes are: <code>depthL5</code> <code>depthL10</code> <code>depthL25</code></td>
 </tr>
 </tbody></table>
 
@@ -4665,7 +4665,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">103</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"depth:BTC-oUSD-SWAP-LIN"</span><span class="p">]</span><span class="w">
+  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"depth:BTC-USD-SWAP-LIN"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">websockets</span>
 <span class="kn">import</span> <span class="nn">asyncio</span>
@@ -4675,10 +4675,10 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <span class="p">{</span>
   <span class="s">"op"</span><span class="p">:</span> <span class="s">"subscribe"</span><span class="p">,</span>
   <span class="s">"tag"</span><span class="p">:</span> <span class="mi">103</span><span class="p">,</span>
-  <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"depth:BTC-oUSD-SWAP-LIN"</span><span class="p">]</span>
+  <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"depth:BTC-USD-SWAP-LIN"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -4702,7 +4702,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"depth:BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"depth:BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665454814275"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4742,7 +4742,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
             </span><span class="p">]</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"checksum"</span><span class="p">:</span><span class="w"> </span><span class="mi">3475315026</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1665454814328</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partial"</span><span class="w">
@@ -4778,7 +4778,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <td>args</td>
 <td>LIST</td>
 <td>Yes</td>
-<td>List of individual markets <code>&lt;depth&gt;:&lt;marketCode&gt;</code> e.g: <code>[depth:BTC-oUSD-SWAP-LIN]</code></td>
+<td>List of individual markets <code>&lt;depth&gt;:&lt;marketCode&gt;</code> e.g: <code>[depth:BTC-USD-SWAP-LIN]</code></td>
 </tr>
 </tbody></table>
 
@@ -4845,7 +4845,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
     </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"depthUpdate:BTC-oUSD-SWAP-LIN"</span><span class="w">
+        </span><span class="s2">"depthUpdate:BTC-USD-SWAP-LIN"</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4856,7 +4856,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"depthUpdate:BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"depthUpdate:BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665456142779"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4870,7 +4870,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
         </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
         </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
         </span><span class="nl">"checksum"</span><span class="p">:</span><span class="w"> </span><span class="mi">364462986</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665456142843"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"increment"</span><span class="w">
@@ -4892,7 +4892,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
             </span><span class="p">]</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"checksum"</span><span class="p">:</span><span class="w"> </span><span class="mi">2688268653</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665456142843"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partial"</span><span class="w">
@@ -4903,7 +4903,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <p>Incremental order book stream</p>
 
 <p>Usage Instructions:
-1. Connect to websocket wss://api.opnx.com/v2/websocket
+1. Connect to websocket wss://api.ox.fun/v2/websocket
 2. Subscribe to <strong>depthUpdate</strong> and you will get a message reply saying your subscription is successful
 3. Afterwards you will get a snapshot of the book with <strong>table:depthUpdate</strong>
 4. If you receive a reply with <strong>table:depthUpdate-diff</strong> first, keep it locally and wait for snapshot reply in step 3
@@ -4938,7 +4938,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <td>args</td>
 <td>LIST</td>
 <td>Yes</td>
-<td>List of individual markets <code>&lt;depthUpdate&gt;:&lt;marketCode&gt;</code> e.g: <code>[&quot;depthUpdate:BTC-oUSD-SWAP-LIN&quot;]</code></td>
+<td>List of individual markets <code>&lt;depthUpdate&gt;:&lt;marketCode&gt;</code> e.g: <code>[&quot;depthUpdate:BTC-USD-SWAP-LIN&quot;]</code></td>
 </tr>
 </tbody></table>
 
@@ -5005,7 +5005,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
     </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"bestBidAsk:BTC-oUSD-SWAP-LIN"</span><span class="w">
+        </span><span class="s2">"bestBidAsk:BTC-USD-SWAP-LIN"</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -5016,7 +5016,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bestBidAsk:BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bestBidAsk:BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665456882918"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -5031,7 +5031,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
             </span><span class="mf">1.0</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"checksum"</span><span class="p">:</span><span class="w"> </span><span class="mi">3790706311</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="mf">19015.0</span><span class="p">,</span><span class="w">
             </span><span class="mf">1.0</span><span class="w">
@@ -5070,7 +5070,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <td>args</td>
 <td>LIST</td>
 <td>Yes</td>
-<td>List of individual markets <code>&lt;bestBidAsk&gt;:&lt;marketCode&gt;</code> e.g: <code>[&quot;bestBidAsk:BTC-oUSD-SWAP-LIN&quot;]</code></td>
+<td>List of individual markets <code>&lt;bestBidAsk&gt;:&lt;marketCode&gt;</code> e.g: <code>[&quot;bestBidAsk:BTC-USD-SWAP-LIN&quot;]</code></td>
 </tr>
 </tbody></table>
 
@@ -5126,7 +5126,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"trade:BTC-oUSD-SWAP-LIN"</span><span class="p">]</span><span class="w">
+  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"trade:BTC-USD-SWAP-LIN"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">websockets</span>
 <span class="kn">import</span> <span class="nn">asyncio</span>
@@ -5136,10 +5136,10 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <span class="p">{</span>
   <span class="s">"op"</span><span class="p">:</span> <span class="s">"subscribe"</span><span class="p">,</span>
   <span class="s">"tag"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"trade:BTC-oUSD-SWAP-LIN"</span><span class="p">]</span>
+  <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"trade:BTC-USD-SWAP-LIN"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -5161,7 +5161,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"trade:BTC-oUSD-SWAP-LIN"</span><span class="p">],</span><span class="w"> 
+  </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"trade:BTC-USD-SWAP-LIN"</span><span class="p">],</span><span class="w"> 
   </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w"> 
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1594299886880"</span><span class="w">
@@ -5178,7 +5178,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
               </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5556.91"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"matchType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAKER"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1594299886890"</span><span class="w">
             </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5300,7 +5300,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
   <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"ticker:all"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -5356,7 +5356,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
             </span><span class="nl">"volume24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"currencyVolume24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"openInterest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1INCH-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1INCH-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1622020931046"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"lastQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"markPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.304"</span><span class="p">,</span><span class="w">
@@ -5449,12 +5449,12 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <tr>
 <td>volume24h</td>
 <td>STRING</td>
-<td>24 hour rolling trading volume in counter currency</td>
+<td>24 hour rolling trading volume in OX</td>
 </tr>
 <tr>
 <td>currencyVolume24h</td>
 <td>STRING</td>
-<td>24 hour rolling trading volume in base currency</td>
+<td>24 hour rolling trading volume in Contracts</td>
 </tr>
 <tr>
 <td>high24h</td>
@@ -5469,7 +5469,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <tr>
 <td>openInterest</td>
 <td>STRING</td>
-<td>Open interest</td>
+<td>Open interest in Contracts</td>
 </tr>
 <tr>
 <td>lastQty</td>
@@ -5499,7 +5499,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w"> 
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"candles60s:BTC-oUSD-SWAP-LIN"</span><span class="p">]</span><span class="w">
+  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"candles60s:BTC-USD-SWAP-LIN"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">websockets</span>
 <span class="kn">import</span> <span class="nn">asyncio</span>
@@ -5509,10 +5509,10 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <span class="p">{</span>
   <span class="s">"op"</span><span class="p">:</span> <span class="s">"subscribe"</span><span class="p">,</span>
   <span class="s">"tag"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"candles60s:BTC-oUSD-SWAP-LIN"</span><span class="p">]</span>
+  <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"candles60s:BTC-USD-SWAP-LIN"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -5533,7 +5533,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"candles60s:BTC-oUSD-SWAP-LIN"</span><span class="p">],</span><span class="w"> 
+  </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"candles60s:BTC-USD-SWAP-LIN"</span><span class="p">],</span><span class="w"> 
   </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w"> 
   </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1594313762698"</span><span class="w">
@@ -5545,15 +5545,15 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candle60s"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"candle"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"1594313762698"</span><span class="p">,</span><span class="w"> </span><span class="err">//timestamp</span><span class="w">
                 </span><span class="s2">"9633.1"</span><span class="p">,</span><span class="w">        </span><span class="err">//open</span><span class="w">
                 </span><span class="s2">"9693.9"</span><span class="p">,</span><span class="w">        </span><span class="err">//high</span><span class="w">
                 </span><span class="s2">"9238.1"</span><span class="p">,</span><span class="w">        </span><span class="err">//low</span><span class="w">
                 </span><span class="s2">"9630.2"</span><span class="p">,</span><span class="w">        </span><span class="err">//close</span><span class="w">
-                </span><span class="s2">"45247"</span><span class="p">,</span><span class="w">         </span><span class="err">//volume</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">counter</span><span class="w"> </span><span class="err">currency</span><span class="w">
-                </span><span class="s2">"5.3"</span><span class="w">            </span><span class="err">//volume</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">base</span><span class="w"> </span><span class="err">currency</span><span class="w">
+                </span><span class="s2">"45247"</span><span class="p">,</span><span class="w">         </span><span class="err">//volume</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">OX</span><span class="w">
+                </span><span class="s2">"5.3"</span><span class="w">            </span><span class="err">//volume</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Contracts</span><span class="w">
               </span><span class="p">]</span><span class="w">
           </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5644,7 +5644,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
   <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"liquidationRFQ"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -5677,12 +5677,12 @@ For more error messages and code, you can see them here <a href="#error-codes">E
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liquidationRFQ"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-oUSD-SWAP-LIN"</span><span class="w">
+              </span><span class="nl">"marketCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USD-SWAP-LIN"</span><span class="w">
               </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1613774607889"</span><span class="w">
           </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><strong>Channel Update Frequency</strong>: real-time, whenever there is planned position or collateral liquidation.</p>
+<p><strong>Channel Update Frequency</strong>: real-time, whenever there is an upcoming liquidation.</p>
 
 <p>The liquidation RFQ (request for quotes) channel publishes a message 500ms before a liquidation event is due to occur.  A liquidation event can be classed as one of the following:-</p>
 
@@ -5781,7 +5781,7 @@ For more error messages and code, you can see them here <a href="#error-codes">E
   <span class="s">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s">"market:all"</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.opnx.com/v2/websocket'</span>
+<span class="n">url</span><span class="o">=</span> <span class="s">'wss://stgapi.ox.fun/v2/websocket'</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">subscribe</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
