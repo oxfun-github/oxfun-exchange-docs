@@ -2,17 +2,17 @@
 
 **TEST SITE**
 
-* `https://stg.opnx.com`
+* `https://stg.ox.fun`
 
-* `https://stgapi.opnx.com`
+* `https://stgapi.ox.fun`
 
 **LIVE SITE**
 
-* `https://opnx.com`
+* `https://ox.fun`
 
-* `https://api.opnx.com`
+* `https://api.ox.fun`
 
-Opnx offers a powerful RESTful API to empower traders.
+OX.FUN offers a powerful RESTful API to empower traders.
 
 ## RESTful Error Codes
 
@@ -70,11 +70,11 @@ import datetime
 import json
 
 
-# rest_url = 'https://api.opnx.com'
-# rest_path = 'api.opnx.com'
+# rest_url = 'https://api.ox.fun'
+# rest_path = 'api.ox.fun'
 
-rest_url = 'https://stgapi.opnx.com'
-rest_path = 'stgapi.opnx.com'
+rest_url = 'https://stgapi.ox.fun'
+rest_path = 'stgapi.ox.fun'
 
 api_key = "API-KEY"
 api_secret = "API-SECRET"
@@ -116,7 +116,7 @@ Component | Required | Example | Description|
 Timestamp | Yes | 2020-04-30T15:20:30 | YYYY-MM-DDThh:mm:ss
 Nonce | Yes | 123 | User generated
 Verb | Yes| GET | Uppercase
-Path | Yes | stgapi.opnx.com |
+Path | Yes | stgapi.ox.fun |
 Method | Yes | /v3/positions | Available REST methods
 Body | No | marketCode=BTC-oUSD-SWAP-LIN | Optional and dependent on the REST method being called
 
@@ -125,7 +125,7 @@ The constructed message string should look like:-
   `2020-04-30T15:20:30\n
   123\n
   GET\n
-  stgapi.opnx.com\n
+  stgapi.ox.fun\n
   /v3/positions\n
   marketCode=BTC-oUSD-SWAP-LIN`
 
@@ -164,17 +164,17 @@ GET v3/account?subAcc={subAcc},{subAcc}
         {
             "accountId": "21213",
             "name": "main",
-            "accountType": "STANDARD",
+            "accountType": "PORTFOLIO",
             "balances": [
                 {
-                    "asset": "BTC",
-                    "total": "2.823",
-                    "available": "2.823",
+                    "asset": "OX",
+                    "total": "100000",
+                    "available": "100000",
                     "reserved": "0",
                     "lastUpdatedAt": "1593627415234"
                 },
                 {
-                    "asset": "FLEX",
+                    "asset": "USDT",
                     "total": "1585.890",
                     "available": "325.890",
                     "reserved": "1260.0",
@@ -183,24 +183,25 @@ GET v3/account?subAcc={subAcc},{subAcc}
             ],
             "positions": [
                 {
-                    "marketCode": "FLEX-oUSD-SWAP-LIN", 
-                    "baseAsset": "FLEX", 
-                    "counterAsset": "oUSD", 
-                    "position": "11411.1", 
-                    "entryPrice": "3.590", 
-                    "markPrice": "6.360", 
-                    "positionPnl": "31608.7470", 
+                    "marketCode": "BTC-USD-SWAP-LIN", 
+                    "baseAsset": "BTC", 
+                    "counterAsset": "USD", 
+                    "position": "0.00030", 
+                    "entryPrice": "43976.700", 
+                    "markPrice": "43788.1", 
+                    "positionPnl": "-5.6580", 
                     "estLiquidationPrice": "2.59", 
                     "lastUpdatedAt": "1637876701404",
 	            }
             ],
-            "collateral": "1231231",
-            "notionalPositionSize": "50000.0",
-            "portfolioVarMargin": "500",
-            "maintenanceMargin": "1231",
-            "marginRatio": "12.3179",
+            "collateral": "100000.0",
+            "notionalPositionSize": "1313.643",
+            "portfolioVarMargin": "131.3643",
+            "maintenanceMargin": "65.68215",
+            "marginRatio": "0.065682",
+            "riskRatio": "761.241829",
             "liquidating": false,
-            "feeTier": "6",
+            "feeTier": "2",
             "createdAt": "1611665624601"
         }
     ]
@@ -237,10 +238,11 @@ maintenanceMargin | STRING |[Currently Unavailable] Appears in the position sect
 marginRatio | STRING |[Currently Unavailable] Appears in the position section only for positions using isolated margin|
 leverage | STRING | [Currently Unavailable] Appears in the position section only for positions using isolated margin|
 collateral | STRING | Total collateral balance |
-notionalPositionSize | STRING | Notional position size |
+notionalPositionSize | STRING | Notional position size in OX |
 portfolioVarMargin | STRING | Initial margin |
 maintenanceMargin | STRING | Maintenance margin. The minimum amount of collateral required to avoid liquidation |
 marginRatio | STRING | Margin ratio. Orders are rejected/cancelled if the margin ratio reaches 50, and liquidation occurs if the margin ratio reaches 100  |
+riskRatio | STRING | Ignore.
 liquidating | BOOL | Available values: `true` and `false` |
 feeTier | STRING | Fee tier |
 createdAt | STRING | Timestamp indicating when the account was created |
@@ -466,17 +468,17 @@ GET /v3/balances?subAcc={name1},{name2}&asset={asset}
             "name": "main",
             "balances": [
                {
-                   "asset": "BTC",
+                   "asset": "USDT",
                    "total": "4468.823",              
                    "available": "4468.823",        
                    "reserved": "0",
                    "lastUpdatedAt": "1593627415234"
                },
                {
-                   "asset": "FLEX",
-                   "total": "1585.890",              
-                   "available": "325.890",         
-                   "reserved": "1260",
+                   "asset": "OX",
+                   "total": "100000.20",              
+                   "available": "100000.20",         
+                   "reserved": "0",
                    "lastUpdatedAt": "1593627415123"
                }
             ]
@@ -524,14 +526,14 @@ GET /v3/positions?subAcc={name1},{name2}&marketCode={marketCode}
         "name": "main",
         "positions": [
             {
-              "marketCode": "XYZ-oUSD-SWAP-LIN",
-              "baseAsset": "XYZ",
-              "counterAsset": "oUSD",
-              "position": "566.0",
-              "entryPrice": "7.3400",
-              "markPrice": "9.94984016",
-              "positionPnl": "1477.169530560",
-              "estLiquidationPrice": "0",
+              "marketCode": "BTC-USD-SWAP-LIN",
+              "baseAsset": "BTC",
+              "counterAsset": "USD",
+              "position": "-0.00030",
+              "entryPrice": "43976.7",
+              "markPrice": "43706.3",
+              "positionPnl": "8.112",
+              "estLiquidationPrice": "23611539.7",
               "lastUpdatedAt": "1673231134601",
             }
         ]
@@ -722,9 +724,9 @@ GET /v3/withdrawal-addresses?asset={asset}&network={network}
     "success": true,
     "data": [
         {
-            "asset": "FLEX",
+            "asset": "USDT",
             "network": "ERC20",
-            "address": "0x047a13c759D9c3254B4548Fc7e784fBeB1B273g39",
+            "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
             "label": "farming",
             "whitelisted": true
         }
@@ -936,15 +938,15 @@ GET /v3/orders/status?orderId={orderId}&clientOrderId={clientOrderId}
     "data": {
         "orderId": "1000387920513",
         "clientOrderId": "1612249737434",
-        "marketCode": "FLEX-USDT",
+        "marketCode": "OX-USDT",
         "status": "FILLED",
         "side": "BUY",
-        "price": "5.200",
+        "price": "0.0200",
         "isTriggered": false,
         "remainQuantity": "0",
         "totalQuantity": "12",
         "cumulativeMatchedQuantity": "12",
-        "avgFillPrice": "5.200",
+        "avgFillPrice": "0.0200",
         "orderType": "LIMIT",
         "timeInForce": "GTC",
         "source": "11",
@@ -980,9 +982,7 @@ remainQuantity | STRING | Remaining quantity |
 totalQuantity | STRING | Total quantity |
 cumulativeMatchedQuantity | STRING | Cumulative quantity of the matches |
 avgFillPrice | STRING | Average of filled price |
-avgLeg1Price | STRING | Returned for repo orders, leg1 denotes the spot leg |
-avgLeg2Price | STRING | Returned for repo orders, leg2 denotes the perp leg |
-fees | LIST of dictionaries | Overall fees with instrument ID, if FLEX is no enough to pay the fee then USDT will be paid |
+fees | LIST of dictionaries | Overall fees with instrument ID, if you don't hold enough OX to cover the fee then USDT will be charged instead|
 orderType | STRING | Type of the order, availabe values: `MARKET`, `LIMIT`, `STOP_LIMIT`,`STOP_MARKET` |
 timeInForce | STRING | Client submitted time in force. <ul><li>`GTC` (Good-till-Cancel) - Default</li><li> `IOC` (Immediate or Cancel, i.e. Taker-only)</li><li> `FOK` (Fill or Kill, for full size)</li><li>`MAKER_ONLY` (i.e. Post-only)</li><li> `MAKER_ONLY_REPRICE` (Reprices order to the best maker only price if the specified price were to lead to a taker trade) |
 source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`, `13`, `22`, `31`, `32`, `33`, `101`, `102`, `103`, `104`, `108`, `111`, `150`. <p>Enumeration: `0: GUI`, `2: Borrow`, `11: REST`, `13: Websocket`, `22: Delivery`, `31: Physical settlement`, `32: Cash settlement`, `33: transfer`, `101: Automatic borrow`, `102: Borrow position liquidation`, `103: Position liquidation`, `104: Liquidation revert`, `108: ADL`, `111: Automatic repayment`, `150: BLP assignment`</p> |
@@ -1079,7 +1079,7 @@ POST /v3/orders/place
     "orders": [
          {
              "clientOrderId": 1612249737724, 
-             "marketCode": "BTC-oUSD-SWAP-LIN", 
+             "marketCode": "BTC-USD-SWAP-LIN", 
              "side": "SELL", 
              "quantity": "0.001", 
              "timeInForce": "GTC", 
@@ -1088,7 +1088,7 @@ POST /v3/orders/place
          }, 
          {
              "clientOrderId": 1612249737724, 
-             "marketCode": "BTC-oUSD-SWAP-LIN", 
+             "marketCode": "BTC-USD-SWAP-LIN", 
              "side": "BUY", 
              "quantity": "0.002", 
              "timeInForce": "GTC", 
@@ -1110,7 +1110,7 @@ POST /v3/orders/place
             "message": "FAILED balance check as balance (0E-9) < value (0.001)",
             "submitted": false,
             "clientOrderId": "1612249737724",
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "side": "SELL",
             "price": "52888.0",
             "quantity": "0.001",   
@@ -1125,7 +1125,7 @@ POST /v3/orders/place
             "orderId": "1000132664173",
             "submitted": true,
             "clientOrderId": "1612249737724",
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "status": "OPEN",
             "price": "23641.0",
             "stopPrice": null,
@@ -1221,12 +1221,12 @@ DELETE /v3/orders/cancel
     "timestamp": 1615454880374, 
     "orders": [
         {
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "marketCode": "BTC-USD-SWAP-LIN", 
             "orderId": "304384250571714215", 
             "clientOrderId": 1615453494726
         }, 
         {
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "marketCode": "BTC-USD-SWAP-LIN", 
             "clientOrderId": 1612249737724
         }
     ]
@@ -1245,7 +1245,7 @@ DELETE /v3/orders/cancel
             "orderId": "304384250571714215",
             "submitted": true,
             "clientOrderId": "1615453494726", 
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "marketCode": "BTC-USD-SWAP-LIN", 
             "status": "CANCELED_BY_USER", 
             "side": "BUY", 
             "price": "4870.0", 
@@ -1323,7 +1323,7 @@ DELETE  /v3/orders/cancel-all
 
 ```json
 {
-    "marketCode": "BTC-oUSD-SWAP-LIN"
+    "marketCode": "BTC-USD-SWAP-LIN"
 }
 ```
 
@@ -1377,15 +1377,13 @@ GET /v3/trades?marketCode={marketCode}&limit={limit}&startTime={startTime}&endTi
             "orderId": "160067484555913076",
             "clientOrderId": "123",
             "matchId": "160067484555913077",
-            "marketCode": "FLEX-USDT",
+            "marketCode": "OX-USDT",
             "side": "SELL",
             "matchedQuantity": "0.1",
             "matchPrice": "0.065",
-            "total": "0.0065",	
-            "leg1Price'": "0.0065", 		
-            "leg2Price": "0.0065",			
+            "total": "0.0065",		
             "orderMatchType": "TAKER",
-            "feeAsset": "FLEX",
+            "feeAsset": "OX",
             "fee":"0.0196",
             "source": "10",
             "matchedAt": "1595514663626"
@@ -1412,8 +1410,6 @@ side | STRING | Side of the order, `BUY` or `SELL` |
 matchedQuantity | STRING | Match quantity |
 matchPrice | STRING | Match price |
 total | STRING | Total price |
-leg1Price | STRING | `REPO & SPREAD` |
-leg2Price | STRING | `REPO & SPREAD` |
 orderMatchType | STRING | `TAKER`,`MAKER` |
 feeAsset | STRING | Instrument ID of the fees |
 fee | STRING | Fees |
@@ -1421,110 +1417,11 @@ source | STRING | Source of the request, available values: `0`, `2`, `10`, `11`,
 matchedAt | STRING | Millisecond timestamp of the order matched time |
 
 
-
-## Market Making - Private
-
-### GET `/v3/mm/rewards/history`
-
-Gives daily historical reward data, don’t show today’s results
-
-> **Request**
-
-```
-GET /v3/mm/rewards/history
-```
-
-> **Successful response format**
-
-```json
-{
-    "success": true, 
-    "data": [
-        {
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
-            "reward": "85.97639425", 
-            "rewardPercentage": "0.08597639", 
-            "startedAt": "1694390400000"
-        }, 
-        {
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
-            "reward": "998.54307241", 
-            "rewardPercentage": "0.99854307", 
-            "startedAt": "1694304000000"
-        }, 
-        {
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
-            "reward": "998.60167277", 
-            "rewardPercentage": "0.99860167", 
-            "startedAt": "1694217600000"
-        }, 
-        {
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
-            "reward": "998.4825102", 
-            "rewardPercentage": "0.99848251", 
-            "startedAt": "1694131200000"
-        }, 
-        {
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
-            "reward": "998.47589074", 
-            "rewardPercentage": "0.99847589", 
-            "startedAt": "1694044800000"
-        }, 
-        {
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
-            "reward": "67.26457927", 
-            "rewardPercentage": "0.06726457", 
-            "startedAt": "1693958400000"
-        }, 
-        {
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
-            "reward": "462.50615767", 
-            "rewardPercentage": "0.47792302", 
-            "startedAt": "1692835200000"
-        }, 
-        {
-            "marketCode": "OX-oUSD-SWAP-LIN", 
-            "reward": "8.330764", 
-            "rewardPercentage": "0.01721691", 
-            "startedAt": "1692835200000"
-        }, 
-        {
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
-            "reward": "48.18444559", 
-            "rewardPercentage": "0.04979059", 
-            "startedAt": "1692748800000"
-        }, 
-        {
-            "marketCode": "OX-oUSD-SWAP-LIN", 
-            "reward": "7.72843552", 
-            "rewardPercentage": "0.0159721", 
-            "startedAt": "1692576000000"
-        }
-    ]
-}
-```
-
-Request Parameter | Type | Required | Description |
------------------ | ---- | -------- | ----------- |
-marketCode | String | NO | default most recent trades first |
-limit | LONG | NO | max 100, default 50 |
-startTime | LONG | NO | Millisecond timestamp. Default 7 days ago. startTime and endTime must be within 7 days of each other. startTime is INCLUSIVE |
-endTime | LONG | NO | Millisecond timestamp. Default time now. startTime and endTime must be within 7 days of each other. endTime is EXCLUSIVE |
-
-Response Field | Type | Description |
--------------- | ---- | ----------- |
-marketCode | STRING | Market Code |
-reward | STRING | Rewards are paid in 3-month locked OX, and this field indicates the estimated dollar value you will receive. |
-rewardPercentage | STRING | Reward Percentage |
-startedAt | STRING | Start of day timestamp |
-
-
-
 ## Market Data - Public
 
 ### GET `/v3/markets`
 
-Get a list of markets on Opnx.
+Get a list of markets by OX.FUN.
 
 > **Request**
 
@@ -1582,7 +1479,7 @@ lastUpdatedAt | STRING | |
 
 ### GET `/v3/assets`
 
-Get a list of assets supported on Opnx
+Get a list of assets supported by OX.FUN
 
 > **Request**
 
@@ -1597,7 +1494,7 @@ GET /v3/assets?asset={asset}
     "success": true,
     "data": [
         {
-            "asset": "USDT",
+            "asset": "OX",
             "isCollateral": true,
             "loanToValue": "1.000000000",
             "loanToValueFactor": "0",
@@ -1609,14 +1506,13 @@ GET /v3/assets?asset={asset}
                     "canDeposit": true,
                     "canWithdraw": true,
                     "minDeposit": "0.0001",
-                    "minWithdrawal": "2"
+                    "minWithdrawal": "1"
                 }
             ]
         },
         {
             "asset": "LINK",
-            "isCollateral": true,
-            "loanToValue": "0.800000000",
+            "isCollateral": false,
             "networkList": [
                 {
                     "network": "ERC20",
@@ -1641,14 +1537,14 @@ asset | STRING | NO | Asset name |
 Response Field | Type | Description |
 -------------- | ---- | ----------- |
 asset | STRING | Asset name |
-isCollateral | BOOL | Indicates it is collateral or not |
-loanToValue | STRING | Loan to value of the asset |
-loanToValueFactor | STRING |  |
+isCollateral | BOOL | Indicates if the asset can be used as collateral to trade perps |
+loanToValue | STRING | Ignore |
+loanToValueFactor | STRING | Ignore  |
 networkList | LIST | List of dictionaries |
 network | STRING | Network for deposit and withdrawal |
 tokenId | STRING | Token ID |
 transactionPrecision | STRING | Precision for the transaction |
-isWithdrawalFeeChargedToUser | BOOL | Indicates the withdrawal fee is charged to user or not |
+isWithdrawalFeeChargedToUser | BOOL | Indicates if there is a withdrawal fee |
 canDeposit | BOOL | Indicates can deposit or not |
 canWithdraw | BOOL | Indicates can withdraw or not |
 minDeposit | STRING | Minimum deposit amount |
@@ -1672,14 +1568,14 @@ GET /v3/tickers?marketCode={marketCode}
     "success": true,
     "data": [
         {
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "markPrice": "41512.4",
             "open24h": "41915.3",
             "high24h": "42662.2",
             "low24h": "41167.0",
-            "volume24h": "114341.4550",
-            "currencyVolume24h": "2.733",
-            "openInterest": "3516.506000000",
+            "volume24h": "22206.50440",
+            "currencyVolume24h": "0.004780",
+            "openInterest": "0.001300",
             "lastTradedPrice": "41802.5",
             "lastTradedQuantity": "0.001",
             "lastUpdatedAt": "1642585256002"
@@ -1699,9 +1595,9 @@ markPrice | STRING | Mark price |
 open24h | STRING | Rolling 24 hour opening price |
 high24h | STRING | Rolling 24 hour highest price |
 low24h | STRING | Rolling 24 hour lowest price |
-volume24h | STRING | Rolling 24 hour notional trading volume |
-currencyVolume24h | STRING | Rolling 24 hour trading volume in base currency |
-openInterest | STRING | Open interest |
+volume24h | STRING | Rolling 24 hour notional trading volume in OX terms |
+currencyVolume24h | STRING | Rolling 24 hour trading volume in Contracts |
+openInterest | STRING | Open interest in Contracts |
 lastTradedPrice | STRING | Last traded price |
 lastTradedQuantity | STRIN | Last traded quantity |
 lastUpdatedAt | STRING | Millisecond timestamp of lastest update |
@@ -1722,12 +1618,12 @@ GET /v3/funding/estimates?marketCode={marketCode}
     "success": true,
     "data": [
         {
-            "marketCode": "ETH-oUSD-SWAP-LIN",
+            "marketCode": "ETH-USD-SWAP-LIN",
             "fundingAt": "1667012400000",
             "estFundingRate": "0"
         },
         {
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "fundingAt": "1667012400000",
             "estFundingRate": "0"
         }
@@ -1802,8 +1698,8 @@ open | STRING | Opening price |
 high | STRING | Highest price |
 low | STRING | Lowest price |
 close | STRING | Closing price |
-volume | STRING | Trading volume in counter currency |
-currencyVolume | STRING | Trading volume in base currency |
+volume | STRING | Trading volume in OX terms |
+currencyVolume | STRING | Trading volume in Contract terms |
 openedAt | STRING | Millisecond timestamp of the candle open |
 
 
@@ -1824,7 +1720,7 @@ GET /v3/depth?marketCode={marketCode}&level={level}
     "success": true, 
     "level": "5", 
     "data": {
-        "marketCode": "BTC-oUSD-SWAP-LIN", 
+        "marketCode": "BTC-USD-SWAP-LIN", 
         "lastUpdatedAt": "1643016065958", 
         "asks": [
             [
@@ -1904,7 +1800,7 @@ GET /v3/markets/operational?marketCode={marketCode}
 {
     "success": true,
     "data": {
-        "marketCode": "BTC-oUSD-SWAP-LIN",
+        "marketCode": "BTC-USD-SWAP-LIN",
         "operational": true
     }
 }
@@ -1935,7 +1831,7 @@ GET /v3/exchange-trades?marketCode={marketCode}&limit={limit}&startTime={startTi
     "success": true,
     "data": [
         {
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "matchPrice": "9600.00000" ,
             "matchQuantity": "0.100000" ,
             "side": "BUY" ,
@@ -1965,7 +1861,7 @@ matchedAt | STRING    | |
 
 ### GET `/v3/funding/rates`
 
-Get all historical financing rates
+Get all historical funding rates
 
 > **Request**
 
@@ -1980,7 +1876,7 @@ GET /v3/funding/rates?marketCode={marketCode}&limit={limit}&startTime={startTime
     "success": true,
     "data": [
         {
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "fundingRate": "0.0",
             "createdAt": "1628362803134"
         }
@@ -2019,31 +1915,31 @@ GET  /v3/leverage/tiers?marketCode={marketCode}
     "success": true,
     "data": [
         {
-            "marketCode": "FLEX-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "tiers": [
                 {
                     "tier": 1,
-                    "leverage": "100",
+                    "leverage": "10",
                     "positionFloor": "0",
                     "positionCap": "100",
-                    "initialMargin": "0.01",
-                    "maintenanceMargin": "0.005"
+                    "initialMargin": "0.1",
+                    "maintenanceMargin": "0.05"
                 },
                 {
                     "tier": 2,
-                    "leverage": "50",
+                    "leverage": "5",
                     "positionFloor": "100",
                     "positionCap": "250",
-                    "initialMargin": "0.02",
-                    "maintenanceMargin": "0.01"
+                    "initialMargin": "0.2",
+                    "maintenanceMargin": "0.1"
                 },
                 {
                     "tier": 3,
-                    "leverage": "10",
+                    "leverage": "4",
                     "positionFloor": "250",
                     "positionCap": "1000",
-                    "initialMargin": "0.1",
-                    "maintenanceMargin": "0.05"
+                    "initialMargin": "0.25",
+                    "maintenanceMargin": "0.125"
                 }
             ]
         }
@@ -2065,120 +1961,3 @@ positionFloor | STRING | The lower position limit |
 positionCap | STRING | The upper position limit |
 initialMargin | STRING | Initial margin |
 maintenanceMargin | STRING | Maintenance margin |
-
-### GET `/v3/positions/largest`
-
-Every minute,retrieves information about the largest open positions on the exchange.
-
-> **Request**
-
-```
-GET  /v3/positions/largest?top=2&marketCode=BTC-oUSD-SWAP-LIN
-```
-
-> **Successful response format**
-
-```json
-{
-    "success": true,
-    "data": [
-        {
-            "positionId": "874435025344430081",
-            "marketCode": "BTC-oUSD-SWAP-LIN",
-            "position": "5.583",
-            "notionalValue": "176540.043000",
-            "estLiquidationPrice": "0.000000"
-        },
-        {
-            "positionId": "879460833696219139",
-            "marketCode": "BTC-oUSD-SWAP-LIN",
-            "position": "-3.928",
-            "notionalValue": "123394.192000",
-            "estLiquidationPrice": "52769.000000"
-        }
-    ]
-}
-```
-
-Request Parameter | Type | Required | Description |
------------------ | ---- | -------- | ----------- |
-marketCode | STRING | NO | Filter the positions by a specific market. If not provided, positions for all markets will be included |
-top | Long | NO | Default 20, max 200 |
-timestamp | Long | NO | Specify a specific timestamp to retrieve the positions as of that time. Use millisecond unix time (e.g., 1684262917000). If not provided, the latest available positions will be returned. |
-
-
-Response Field | Type | Description |
--------------- | ---- | ----------- |
-positionId | STRING | Unique identifier for the position. |
-marketCode | STRING | The market associated with the position.  |
-position | STRING | The value of the position in asset denomination. |
-notionalValue | STRING | The value of the position in USDT denomination. |
-estLiquidationPrice | STRING | The liquidation price of the position. |
-
-
-### GET `/v3/positions/liquidation/closest`
-
-Every 5 minutes,display position sizes, leverage ratios, and unrealized PnL of positions closest to liquidation.
-
-> **Request**
-
-```
-GET  /v3/positions/liquidation/closest?limit=3&marketCode=BTC-oUSD-SWAP-LIN
-```
-
-> **Successful response format**
-
-```json
-{
-    "success": true,
-    "data": [
-        {
-            "positionId": "2B205DE2E5EB26AC26B692B179981181",
-            "marketCode": "BTC-oUSD-SWAP-LIN",
-            "position": "0.4",
-            "notionalValue": "12539.20000000",
-            "leverageRatio": "10.45838595",
-            "unrealizedPnl": "1702.67206000",
-            "estLiqPrice": "28350.59675462",
-            "liqGap": "2997.40324537"
-        },
-        {
-            "positionId": "59E80C18421948694E461F045BFCF099",
-            "marketCode": "BTC-oUSD-SWAP-LIN",
-            "position": "0.002",
-            "notionalValue": "62.69600000",
-            "leverageRatio": "7.37325273",
-            "unrealizedPnl": "9.04030000",
-            "estLiqPrice": "27856.46620500",
-            "liqGap": "3491.53379500"
-        },
-        {
-            "positionId": "F53BDA0E9973EC9B12A827F1369FCDA8",
-            "marketCode": "BTC-oUSD-SWAP-LIN",
-            "position": "-0.004",
-            "notionalValue": "125.39200000",
-            "leverageRatio": "5.06917453",
-            "unrealizedPnl": "-17.62486800",
-            "estLiqPrice": "36773.41931995",
-            "liqGap": "5425.41931995"
-        }
-    ]
-}
-```
-
-Request Parameter | Type | Required | Description |
------------------ | ---- | -------- | ----------- |
-marketCode | STRING | YES | Market Code |
-limit | Long | NO | Default 20, max 200 |
-
-
-Response Field | Type | Description |
--------------- | ---- | ----------- |
-positionId | STRING | Unique identifier for the position. |
-marketCode | STRING | The market associated with the position.  |
-position | STRING | The value of the position in asset denomination. |
-notionalValue | STRING | The value of the position in USDT denomination. |
-estLiquidationPrice | STRING | The liquidation price of the position. |
-estLiqPrice | STRING | pnl of the positioin - (market price - entry price) / quantity |
-unrealizedPnl | STRING | everage ratio of the position - (quantity * market price) / collateral balance |
-liqGap | STRING | market price - estimate liquidation price |
