@@ -73,13 +73,13 @@
 
 **TEST** site
 
-* `wss://stgapi.opnx.com/v2/websocket`
+* `wss://stgapi.ox.fun/v2/websocket`
 
 **LIVE** site
 
-* `wss://api.opnx.com/v2/websocket`
+* `wss://api.ox.fun/v2/websocket`
 
-Opnx's application programming interface (API) provides our clients programmatic access to control aspects of their accounts and to place orders on the Opnx trading platform. The API is accessible via WebSocket connection to the URIs listed above. Commands, replies, and notifications all traverse the WebSocket in text frames with JSON-formatted payloads.
+OX.FUN's application programming interface (API) provides our clients programmatic access to control aspects of their accounts and to place orders on OX.FUN. The API is accessible via WebSocket connection to the URIs listed above. Commands, replies, and notifications all traverse the WebSocket in text frames with JSON-formatted payloads.
 
 Websocket commands can be sent in either of the following two formats:
 
@@ -94,8 +94,8 @@ Websocket commands can be sent in either of the following two formats:
 
 `args`: the value(s) will be the instrument ID(s) or asset ID(s), for example:
 
-* order:BTC-oUSD-SWAP-LIN
-* depth:ETH-USDT-REPO-LIN
+* order:BTC-USD-SWAP-LIN
+* depth:ETH-USDT-SWAP-LIN
 * position:all
 
 **All other commands**
@@ -156,7 +156,7 @@ msg_auth = \
 }
 
 async def subscribe():
-    async with websockets.connect('wss://stgapi.opnx.com/v2/websocket') as ws:
+    async with websockets.connect('wss://stgapi.ox.fun/v2/websocket') as ws:
         await ws.send(json.dumps(msg_auth))
         while ws.open:
             resp = await ws.recv()
@@ -183,7 +183,7 @@ var msg = JSON.stringify({
                             }
                           });
 
-var ws = new WebSocket('wss://stgapi.opnx.com/v2/websocket');
+var ws = new WebSocket('wss://stgapi.ox.fun/v2/websocket');
 
 ws.onmessage = function (e) {
   console.log('websocket message from server : ', e.data);
@@ -317,7 +317,7 @@ Placing an `EXPIRE_TAKER` order which collides with a resting `EXPIRE_MAKER` ord
             "timestamp": 1638237934061,
             "recvWindow": 500,
             "clientOrderId": 1,
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "quantity": 1.5,
@@ -359,7 +359,7 @@ place_order = \
             "timestamp": 1638237934061,
             "recvWindow": 500,
             "clientOrderId": 1,
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "quantity": 1.5,
@@ -368,7 +368,7 @@ place_order = \
           }
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -398,7 +398,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1592491945248",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "quantity": "1.5",
@@ -423,7 +423,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1592491945248",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "quantity": "1.5",
@@ -450,7 +450,7 @@ op | STRING | Yes | `placeorder`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
 data | DICTIONARY object | Yes |
 clientOrderId | ULONG | No | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
-marketCode | STRING | Yes | Market code e.g. `BTC-oUSD-SWAP-LIN` |
+marketCode | STRING | Yes | Market code e.g. `BTC-USD-SWAP-LIN` |
 orderType | STRING | Yes |  `LIMIT` |
 price | FLOAT |  Yes | Price |
 quantity |  FLOAT | Yes | Quantity (denominated by contractValCurrency) |
@@ -474,7 +474,7 @@ selfTradePreventionMode | STRING | No | `NONE`, `EXPIRE_MAKER`, `EXPIRE_TAKER`, 
             "timestamp": 1638237934061,
             "recvWindow": 500,
             "clientOrderId": 1,
-            "marketCode": "ETH-oUSD-SWAP-LIN",
+            "marketCode": "ETH-USD-SWAP-LIN",
             "side": "SELL",
             "orderType": "MARKET",
             "quantity": 5
@@ -514,7 +514,7 @@ place_order = \
             "timestamp": 1638237934061,
             "recvWindow": 500,
             "clientOrderId": 1,
-            "marketCode": "ETH-oUSD-SWAP-LIN",
+            "marketCode": "ETH-USD-SWAP-LIN",
             "side": "SELL",
             "orderType": "MARKET",
             "quantity": 5
@@ -522,7 +522,7 @@ place_order = \
 }
 
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -552,7 +552,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1592491945248",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "ETH-oUSD-SWAP-LIN",
+            "marketCode": "ETH-USD-SWAP-LIN",
             "side": "SELL",
             "orderType": "MARKET",
             "quantity": "5",
@@ -575,7 +575,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1592491503359",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "ETH-oUSD-SWAP-LIN",
+            "marketCode": "ETH-USD-SWAP-LIN",
             "side": "SELL",
             "orderType": "MARKET",
             "quantity": "5",
@@ -600,7 +600,7 @@ op | STRING | Yes | `placeorder`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
 data | DICTIONARY object | Yes |
 clientOrderId | ULONG | No | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
-marketCode | STRING | Yes | Market code e.g. `BTC-oUSD-SWAP-LIN` |
+marketCode | STRING | Yes | Market code e.g. `BTC-USD-SWAP-LIN` |
 orderType | STRING | Yes |  `MARKET` |
 quantity |  FLOAT | Yes | Quantity (denominated by contractValCurrency), not required if an `amount` is provided |
 amount | STRING | NO | An amount of USDT can be specified instead of a quantity. Only valid for spot market buy orders|
@@ -621,7 +621,7 @@ selfTradePreventionMode | STRING | No | `NONE`, `EXPIRE_MAKER`, `EXPIRE_TAKER`, 
             "timestamp": 1638237934061,
             "recvWindow": 500,
             "clientOrderId": 1,
-            "marketCode": "ETH-oUSD-SWAP-LIN",
+            "marketCode": "ETH-USD-SWAP-LIN",
             "side": "BUY",
             "orderType": "STOP_LIMIT",
             "quantity": 10,
@@ -664,7 +664,7 @@ place_order = \
             "timestamp": 1638237934061,
             "recvWindow": 500,
             "clientOrderId": 1,
-            "marketCode": "ETH-oUSD-SWAP-LIN",
+            "marketCode": "ETH-USD-SWAP-LIN",
             "side": "BUY",
             "orderType": "STOP_LIMIT",
             "quantity": 10,
@@ -675,7 +675,7 @@ place_order = \
 }
 
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -705,7 +705,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1607639739098",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "ETH-oUSD-SWAP-LIN",
+            "marketCode": "ETH-USD-SWAP-LIN",
             "side": "BUY",
             "orderType": "STOP_LIMIT",
             "quantity": "10",
@@ -732,7 +732,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1592491503359",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "ETH-oUSD-SWAP-LIN",
+            "marketCode": "ETH-USD-SWAP-LIN",
             "side": "BUY",
             "orderType": "STOP_LIMIT",
             "quantity": "10",
@@ -761,7 +761,7 @@ op | STRING | Yes | `placeorder`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
 data | DICTIONARY object | Yes |
 clientOrderId | ULONG | No | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
-marketCode| STRING| Yes| Market code e.g. `ETH-oUSD-SWAP-LIN`|
+marketCode| STRING| Yes| Market code e.g. `ETH-USD-SWAP-LIN`|
 orderType|STRING| Yes|  `STOP_LIMIT` for stop-limit orders |
 quantity|FLOAT|Yes|Quantity (denominated by contractValCurrency)|
 side|STRING| Yes| `BUY ` or `SELL`|
@@ -786,7 +786,7 @@ Stop market orders are only available in Perp markets.
             "timestamp": 1679907302693,
             "recvWindow": 500,
             "clientOrderId": 1679907301552,
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "side": "SELL",
             "orderType": "STOP_MARKET",
             "quantity": 0.012,
@@ -827,7 +827,7 @@ place_order = \
             "timestamp": 1679907302693,
             "recvWindow": 500,
             "clientOrderId": 1679907301552,
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "side": "SELL",
             "orderType": "STOP_MARKET",
             "quantity": 0.001,
@@ -836,7 +836,7 @@ place_order = \
 }
 
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -866,7 +866,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1607639739098",
   "data": {
             "clientOrderId": "1679907301552",
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "side": "SELL",
             "orderType": "STOP_MARKET",
             "quantity": "0.012",
@@ -893,7 +893,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1679907302693",
   "data": {
            "clientOrderId": "1679907301552",
-           "marketCode": "BTC-oUSD-SWAP-LIN",
+           "marketCode": "BTC-USD-SWAP-LIN",
            "side": "SELL",
            "orderType": "STOP_MARKET",
            "quantity": "0.012",
@@ -922,7 +922,7 @@ op | STRING | Yes | `placeorder`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
 data | DICTIONARY object | Yes |
 clientOrderId | ULONG | No | Client assigned ID to help manage and identify orders with max value `9223372036854775807` |
-marketCode| STRING| Yes| Market code e.g. `BTC-oUSD-SWAP-LIN`|
+marketCode| STRING| Yes| Market code e.g. `BTC-USD-SWAP-LIN`|
 orderType|STRING| Yes|  `STOP_MARKET` |
 quantity|FLOAT|Yes|Quantity (denominated by contractValCurrency)|
 side|STRING| Yes| `BUY ` or `SELL`|
@@ -944,7 +944,7 @@ selfTradePreventionMode | STRING | No | `NONE`, `EXPIRE_MAKER`, `EXPIRE_TAKER`, 
                   "timestamp": 1638237934061,
                   "recvWindow": 500,
                   "clientOrderId": 1,
-                  "marketCode": "ETH-oUSD-SWAP-LIN",
+                  "marketCode": "ETH-USD-SWAP-LIN",
                   "side": "BUY",
                   "orderType": "LIMIT",
                   "quantity": 10,
@@ -995,7 +995,7 @@ place_batch_order =\
                   "timestamp": 1638237934061,
                   "recvWindow": 500,
                   "clientOrderId": 1,
-                  "marketCode": "ETH-oUSD-SWAP-LIN",
+                  "marketCode": "ETH-USD-SWAP-LIN",
                   "side": "BUY",
                   "orderType": "LIMIT",
                   "quantity": 10,
@@ -1013,7 +1013,7 @@ place_batch_order =\
                 }]
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1043,7 +1043,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "timestamp": "1607639739098",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "ETH-oUSD-SWAP-LIN",
+            "marketCode": "ETH-USD-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "quantity": "10",
@@ -1087,7 +1087,7 @@ AND
   "timestamp": "1592491503359",
   "data": {
             "clientOrderId": "1",
-            "marketCode": "ETH-oUSD-SWAP-LIN",
+            "marketCode": "ETH-USD-SWAP-LIN",
             "side": "BUY",
             "orderType": "LIMIT",
             "quantity": "10",
@@ -1151,7 +1151,7 @@ recvWindow | LONG | NO | In milliseconds. If an order reaches the matching engin
   "op": "cancelorder",
   "tag": 456,
   "data": {
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "orderId": 12
           }
 }
@@ -1186,12 +1186,12 @@ cancel_order = \
   "op": "cancelorder",
   "tag": 456,
   "data": {
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "orderId": 12
           }
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1221,7 +1221,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "tag": "456",
   "timestamp": "1592491173964",
   "data": {
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "clientOrderId": "1",
             "orderId": "12"
           }
@@ -1239,7 +1239,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "code": "<errorCode>",
   "timestamp": "1592491173964",
   "data": {
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "orderId": "12"
           }
 }
@@ -1257,7 +1257,7 @@ Parameters | Type | Required | Description
 op | STRING | Yes | `cancelorder`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
 data | DICTIONARY object | Yes |
-marketCode|STRING|Yes|Market code e.g. `BTC-oUSD-SWAP-LIN`|
+marketCode|STRING|Yes|Market code e.g. `BTC-USD-SWAP-LIN`|
 orderId|INTEGER|Yes|Unique order ID from the exchange|
 
 
@@ -1270,7 +1270,7 @@ orderId|INTEGER|Yes|Unique order ID from the exchange|
   "op": "cancelorders",
   "tag": 456,
   "dataArray": [{
-                  "marketCode": "BTC-oUSD-SWAP-LIN",
+                  "marketCode": "BTC-USD-SWAP-LIN",
                   "orderId": 12
                 },
                 {
@@ -1309,7 +1309,7 @@ cancel_batch_order = \
   "op": "cancelorders",
   "tag": 456,
   "dataArray": [{
-                  "marketCode": "BTC-oUSD-SWAP-LIN",
+                  "marketCode": "BTC-USD-SWAP-LIN",
                   "orderId": 12
                 },
                 {
@@ -1318,7 +1318,7 @@ cancel_batch_order = \
                 }]
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1348,7 +1348,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "tag": "456",
   "timestamp": "1592491173964",
   "data": {
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "clientOrderId": "1",
             "orderId": "12"
           }
@@ -1380,7 +1380,7 @@ AND
   "code": "<errorCode>",
   "timestamp": "1592491173964",
   "data": {
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "orderId": "12"
           }
 }
@@ -1424,7 +1424,7 @@ dataArray | LIST of dictionaries | Yes |A list of orders with each order in JSON
   "data": {
             "timestamp": 1638237934061,
             "recvWindow": 500,
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "orderId": 888,
             "side": "BUY",
             "price": 9800,
@@ -1464,7 +1464,7 @@ modify_order = \
   "data": {
             "timestamp": 1638237934061,
             "recvWindow": 500,
-            "marketCode": "BTC-oUSD-SWAP-LIN",
+            "marketCode": "BTC-USD-SWAP-LIN",
             "orderId": 888,
             "side": "BUY",
             "price": 9800,
@@ -1472,7 +1472,7 @@ modify_order = \
           }
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1508,7 +1508,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
       "price": "9800",
       "limitPrice": "9800",
       "orderType": "LIMIT",
-      "marketCode": "BTC-oUSD-SWAP-LIN"
+      "marketCode": "BTC-USD-SWAP-LIN"
   }
 }
 ```
@@ -1529,7 +1529,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "quantity": "2",
             "price": "9800",
             "limitPrice": "9800",
-            "marketCode": "BTC-oUSD-SWAP-LIN"
+            "marketCode": "BTC-USD-SWAP-LIN"
           }
 }
 ```
@@ -1557,7 +1557,7 @@ Parameters | Type | Required | Description|
 op | STRING | Yes | `modifyorder`
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
 data | DICTIONARY object | Yes |
-marketCode|STRING|Yes| Market code e.g. `BTC-oUSD-SWAP-LIN`|
+marketCode|STRING|Yes| Market code e.g. `BTC-USD-SWAP-LIN`|
 orderId|INTEGER|Yes|Unique order ID from the exchange|
 side| STRING|No| `BUY` or `SELL`|
 price|FLOAT|No|Price for limit orders|
@@ -1577,7 +1577,7 @@ recvWindow | LONG | No | In milliseconds. If an order reaches the matching engin
   "dataArray": [{
                   "timestamp": 1638237934061,
                   "recvWindow": 500,
-                  "marketCode": "ETH-oUSD-SWAP-LIN",
+                  "marketCode": "ETH-USD-SWAP-LIN",
                   "side": "BUY",
                   "orderID": 304304315061932310,
                   "price": 101,
@@ -1624,7 +1624,7 @@ modify_batch_order = \
   "dataArray": [{
                   "timestamp": 1638237934061,
                   "recvWindow": 500,
-                  "marketCode": "ETH-oUSD-SWAP-LIN",
+                  "marketCode": "ETH-USD-SWAP-LIN",
                   "side": "BUY",
                   "orderID": 304304315061932310,
                   "price": 101,
@@ -1639,7 +1639,7 @@ modify_batch_order = \
                 }]
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1676,7 +1676,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "price": "101",
             "limitPrice": "101",
             "orderType": "LIMIT",
-            "marketCode": "ETH-oUSD-SWAP-LIN"
+            "marketCode": "ETH-USD-SWAP-LIN"
           }
 }
 
@@ -1715,7 +1715,7 @@ AND
             "side": "BUY",
             "price": "101",
             "limitPrice": "101",
-            "marketCode": "ETH-oUSD-SWAP-LIN"
+            "marketCode": "ETH-USD-SWAP-LIN"
           }
 }
 
@@ -1813,7 +1813,7 @@ balance = \
   "args": ["balance:all"],
   "tag": 101
 }
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1920,7 +1920,7 @@ OR
 
 {
   "op": "subscribe",
-  "args": ["position:BTC-oUSD-SWAP-LIN", "position:BCH-oUSD-SWAP-LIN", ........], 
+  "args": ["position:BTC-USD-SWAP-LIN", "position:BCH-USD-SWAP-LIN", ........], 
   "tag": 102
 }
 ```
@@ -1956,7 +1956,7 @@ position = \
   "tag": 102
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -1997,18 +1997,18 @@ asyncio.get_event_loop().run_until_complete(subscribe())
   "accountId": "<Your account ID>",
   "timestamp": "1607985371481",
   "data":[ {
-              "instrumentId": "ETH-oUSD-SWAP-LIN",
+              "instrumentId": "ETH-USD-SWAP-LIN",
               "quantity" : "0.1",
               "lastUpdated": "1616053755423",
               "contractValCurrency": "ETH",
               "entryPrice": "1900.0",
-              "positionPnl": "-5.6680",
+              "positionPnl": "-566.80",
               "estLiquidationPrice": "0",
               "margin": "0",
               "leverage": "0"
             },
             {
-              "instrumentId": "ETH-oUSD-SWAP-LIN",
+              "instrumentId": "ETH-USD-SWAP-LIN",
               "quantity" : "50.54",
               "lastUpdated": "1617099855968",
               "contractValCurrency": "ETH",
@@ -2045,12 +2045,12 @@ table | STRING | `position` |
 accountId | STRING | Account identifier |
 timestamp | STRING | Current millisecond timestamp |
 data | LIST of dictionaries | |
-instrumentId | STRING | e.g. `ETH-oUSD-SWAP-LIN` |
+instrumentId | STRING | e.g. `ETH-USD-SWAP-LIN` |
 quantity | STRING | Position size (+/-) |
 lastUpdated | STRING | Millisecond timestamp |
 contractValCurrency | STRING | Base asset ID e.g. `ETH` |
 entryPrice | STRING | Average entry price of total position (Cost / Size) |
-positionPnl | STRING | Postion profit and lost |
+positionPnl | STRING | Postion profit and lost in OX |
 estLiquidationPrice | STRING | Estimated liquidation price, return 0 if it is negative(<0) |
 margin | STRING | Currently always reports 0
 leverage | STRING | Currently always reports 0
@@ -2071,7 +2071,7 @@ OR
 
 {
   "op": "subscribe", 
-  "args": ["order:OX-USDT", "order:ETH-oUSD-SWAP-LIN", .....], 
+  "args": ["order:OX-USDT", "order:ETH-USD-SWAP-LIN", .....], 
   "tag": 102
 }
 ```
@@ -2107,7 +2107,7 @@ order = \
   "tag": 102
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -2173,7 +2173,7 @@ tag | INTEGER or STRING | No | If given it will be echoed in the reply and the m
           "amount": "0.0",
           "side": "BUY",
           "status": "OPEN",
-          "marketCode": "BTC-oUSD-SWAP-LIN",
+          "marketCode": "BTC-USD-SWAP-LIN",
           "timeInForce": "MAKER_ONLY",
           "timestamp": "1594943491077",
           "orderType": "LIMIT",
@@ -2199,7 +2199,7 @@ tag | INTEGER or STRING | No | If given it will be echoed in the reply and the m
           "amount": "0.0", 
           "side": "BUY", 
           "status": "OPEN", 
-          "marketCode": "BTC-oUSD-SWAP-LIN", 
+          "marketCode": "BTC-USD-SWAP-LIN", 
           "timeInForce": "IOC", 
           "timestamp": "1680042503604", 
           "remainQuantity": "0.001", 
@@ -2261,7 +2261,7 @@ displayQuantity |STRING| Quantity displayed in the book, primarily used for iceb
           "amount": "0.0", 
           "side": "BUY", 
           "status": "CANCELED_BY_USER", 
-          "marketCode": "BTC-oUSD-SWAP-LIN", 
+          "marketCode": "BTC-USD-SWAP-LIN", 
           "timeInForce": "GTC", 
           "timestamp": "1680043402806", 
           "remainQuantity": "0.001", 
@@ -2291,7 +2291,7 @@ displayQuantity |STRING| Quantity displayed in the book, primarily used for iceb
           "amount": "0.0", 
           "side": "BUY", 
           "status": "CANCELED_BY_USER", 
-          "marketCode": "BTC-oUSD-SWAP-LIN", 
+          "marketCode": "BTC-USD-SWAP-LIN", 
           "timeInForce": "GTC", 
           "timestamp": "1680044038047", 
           "remainQuantity": "0.001", 
@@ -2333,7 +2333,7 @@ quantity|STRING |Original order quantity of closed order
 amount | STRING | "0.0" if not provided in the request
 side|STRING |`BUY` or `SELL`
 status|STRING | <ul><li>`CANCELED_BY_USER`</li><li>`CANCELED_BY_MAKER_ONLY`</li><li>`CANCELED_BY_FOK`</li><li>`CANCELED_ALL_BY_IOC`</li><li>`CANCELED_PARTIAL_BY_IOC`</li></ul>
-marketCode|STRING |  Market code e.g. `BTC-oUSD-SWAP-LIN`
+marketCode|STRING |  Market code e.g. `BTC-USD-SWAP-LIN`
 timeInForce|STRING |Time in force of closed order
 timestamp|STRING |Current millisecond timestamp
 remainQuantity|STRING |Historical remaining order quantity of closed order
@@ -2370,7 +2370,7 @@ displayQuantity |STRING| Quantity displayed in the book, primarily used for iceb
             "side": "BUY", 
             "status": "REJECT_CANCEL_ORDER_ID_NOT_FOUND", 
             "timeCondition": "GTC", 
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "marketCode": "BTC-USD-SWAP-LIN", 
             "timestampEpochMs": 1615377638518, 
             "orderType": "LIMIT",
             "price": 0.0, 
@@ -2435,7 +2435,7 @@ isTriggered | BOOL | `False` or `True`
           "amount": "0.0",
           "side": "BUY",
           "status": "OPEN",
-          "marketCode": "BTC-oUSD-SWAP-LIN",
+          "marketCode": "BTC-USD-SWAP-LIN",
           "timeInForce": "GTC",
           "timestamp": "1680044356374",
           "remainQuantity": "0.001",
@@ -2468,7 +2468,7 @@ remainQuantity | STRING | Working quantity
 amount|STRING| "0.0" if not provided in the request
 side|STRING|`BUY` or `SELL`
 status|STRING|  Order status
-marketCode | STRING |  Market code e.g. `BTC-oUSD-SWAP-LIN`
+marketCode | STRING |  Market code e.g. `BTC-USD-SWAP-LIN`
 timeInForce|STRING| Client submitted time in force, `GTC` by default
 timestamp|STRING |Current millisecond timestamp
 orderType| STRING | `LIMIT` or `STOP_LIMIT`
@@ -2504,7 +2504,7 @@ displayQuantity |STRING| Quantity displayed in the book, primarily used for iceb
             "side": "BUY", 
             "status": "REJECT_AMEND_ORDER_ID_NOT_FOUND", 
             "timeCondition": "GTC", 
-            "marketCode": "BTC-oUSD-SWAP-LIN", 
+            "marketCode": "BTC-USD-SWAP-LIN", 
             "timestampEpochMs": 1615377638518, 
             "orderType": "LIMIT", 
             "price": 22, 
@@ -2565,7 +2565,7 @@ isTriggered | BOOL
           "amount": "0.0",
           "side": "BUY",
           "status": "FILLED", 
-          "marketCode": "BTC-oUSD-SWAP-LIN",
+          "marketCode": "BTC-USD-SWAP-LIN",
           "timeInForce": "GTC",
           "timestamp": "1680044888565",
           "matchId": "300016799886154670",
@@ -2603,7 +2603,7 @@ quantity|STRING|Order quantity submitted
 amount|STRING| "0.0" if not provided in the request
 side|STRING|`BUY` or `SELL`
 status|STRING|`FILLED` or `PARTIAL_FILL`
-marketCode|STRING| Market code i.e. `BTC-oUSD-SWAP-LIN`
+marketCode|STRING| Market code i.e. `BTC-USD-SWAP-LIN`
 timeInForce|STRING|Client submitted time in force (only applicable for LIMIT and STOP LIMIT order types)
 timestamp|STRING|Millisecond timestamp of order match
 matchID|STRING|Exchange match ID
@@ -2635,7 +2635,7 @@ Multiple subscriptions to different channels both public and private can be made
 {
   "op": "subscribe",
   "tag": 103,
-  "args": ["depthL10:BTC-oUSD-SWAP-LIN"]
+  "args": ["depthL10:BTC-USD-SWAP-LIN"]
 }
 ```
 ```python
@@ -2647,10 +2647,10 @@ orderbook_depth = \
 {
   "op": "subscribe",
   "tag": 103,
-  "args": ["depthL10:BTC-oUSD-SWAP-LIN"]
+  "args": ["depthL10:BTC-USD-SWAP-LIN"]
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -2676,7 +2676,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
     "success": true,
     "tag": "103",
     "event": "subscribe",
-    "channel": "depthL10:BTC-oUSD-SWAP-LIN",
+    "channel": "depthL10:BTC-USD-SWAP-LIN",
     "timestamp": "1665454814275"
 }
 ```
@@ -2716,7 +2716,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
                 8.414
             ]
         ],
-        "marketCode": "BTC-oUSD-SWAP-LIN",
+        "marketCode": "BTC-USD-SWAP-LIN",
         "timestamp": "1665454814328"
     },
     "action": "partial"
@@ -2733,7 +2733,7 @@ Parameters |Type| Required| Description |
 --------|-----|---|-----------|
 op | STRING| Yes | `subscribe` |
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
-args | LIST | Yes | List of individual markets `<depth>:<marketCode>` e.g: `[depthL10:BTC-oUSD-SWAP-LIN]`, valid book sizes are: `depthL5` `depthL10` `depthL25` |
+args | LIST | Yes | List of individual markets `<depth>:<marketCode>` e.g: `[depthL10:BTC-USD-SWAP-LIN]`, valid book sizes are: `depthL5` `depthL10` `depthL25` |
 
 <sub>**Channel Update Fields**</sub>
 
@@ -2757,7 +2757,7 @@ action| STRING |  |
 {
   "op": "subscribe",
   "tag": 103,
-  "args": ["depth:BTC-oUSD-SWAP-LIN"]
+  "args": ["depth:BTC-USD-SWAP-LIN"]
 }
 ```
 ```python
@@ -2769,10 +2769,10 @@ orderbook_depth = \
 {
   "op": "subscribe",
   "tag": 103,
-  "args": ["depth:BTC-oUSD-SWAP-LIN"]
+  "args": ["depth:BTC-USD-SWAP-LIN"]
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -2798,7 +2798,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
     "success": true,
     "tag": "103",
     "event": "subscribe",
-    "channel": "depth:BTC-oUSD-SWAP-LIN",
+    "channel": "depth:BTC-USD-SWAP-LIN",
     "timestamp": "1665454814275"
 }
 ```
@@ -2839,7 +2839,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             ]
         ],
         "checksum": 3475315026,
-        "marketCode": "BTC-oUSD-SWAP-LIN",
+        "marketCode": "BTC-USD-SWAP-LIN",
         "timestamp": 1665454814328
     },
     "action": "partial"
@@ -2856,7 +2856,7 @@ Parameters |Type| Required| Description |
 --------|-----|---|-----------|
 op | STRING| Yes | `subscribe` |
 tag | INTEGER or STRING | No | If given it will be echoed in the reply and the max size of `tag` is 32 |
-args | LIST | Yes | List of individual markets `<depth>:<marketCode>` e.g: `[depth:BTC-oUSD-SWAP-LIN]`|
+args | LIST | Yes | List of individual markets `<depth>:<marketCode>` e.g: `[depth:BTC-USD-SWAP-LIN]`|
 
 <sub>**Channel Update Fields**</sub>
 
@@ -2882,7 +2882,7 @@ action| STRING |  |
     "op": "subscribe",
     "tag": "test1",
     "args": [
-        "depthUpdate:BTC-oUSD-SWAP-LIN"
+        "depthUpdate:BTC-USD-SWAP-LIN"
     ]
 }
 ```
@@ -2894,7 +2894,7 @@ action| STRING |  |
     "success": true,
     "tag": "test1",
     "event": "subscribe",
-    "channel": "depthUpdate:BTC-oUSD-SWAP-LIN",
+    "channel": "depthUpdate:BTC-USD-SWAP-LIN",
     "timestamp": "1665456142779"
 }
 ```
@@ -2909,7 +2909,7 @@ action| STRING |  |
         "asks": [],
         "bids": [],
         "checksum": 364462986,
-        "marketCode": "BTC-oUSD-SWAP-LIN",
+        "marketCode": "BTC-USD-SWAP-LIN",
         "timestamp": "1665456142843"
     },
     "action": "increment"
@@ -2934,7 +2934,7 @@ action| STRING |  |
             ]
         ],
         "checksum": 2688268653,
-        "marketCode": "BTC-oUSD-SWAP-LIN",
+        "marketCode": "BTC-USD-SWAP-LIN",
         "timestamp": "1665456142843"
     },
     "action": "partial"
@@ -2946,7 +2946,7 @@ action| STRING |  |
 Incremental order book stream
 
 Usage Instructions:
-1. Connect to websocket wss://api.opnx.com/v2/websocket
+1. Connect to websocket wss://api.ox.fun/v2/websocket
 2. Subscribe to **depthUpdate** and you will get a message reply saying your subscription is successful
 3. Afterwards you will get a snapshot of the book with **table:depthUpdate**
 4. If you receive a reply with **table:depthUpdate-diff** first, keep it locally and wait for snapshot reply in step 3
@@ -2962,7 +2962,7 @@ Parameters |Type| Required| Description |
 --------|-----|---|-----------|
 op | STRING| Yes | `subscribe` |
 tag | INTEGER or STRING | No | If given it will be echoed in the reply |
-args | LIST | Yes | List of individual markets `<depthUpdate>:<marketCode>` e.g: `["depthUpdate:BTC-oUSD-SWAP-LIN"]`|
+args | LIST | Yes | List of individual markets `<depthUpdate>:<marketCode>` e.g: `["depthUpdate:BTC-USD-SWAP-LIN"]`|
 
 <sub>**Channel Update Fields**</sub>
 
@@ -2988,7 +2988,7 @@ action| STRING | `partial` `increment` |
     "op": "subscribe",
     "tag": "test1",
     "args": [
-        "bestBidAsk:BTC-oUSD-SWAP-LIN"
+        "bestBidAsk:BTC-USD-SWAP-LIN"
     ]
 }
 ```
@@ -3000,7 +3000,7 @@ action| STRING | `partial` `increment` |
     "success": true,
     "tag": "test1",
     "event": "subscribe",
-    "channel": "bestBidAsk:BTC-oUSD-SWAP-LIN",
+    "channel": "bestBidAsk:BTC-USD-SWAP-LIN",
     "timestamp": "1665456882918"
 }
 ```
@@ -3016,7 +3016,7 @@ action| STRING | `partial` `increment` |
             1.0
         ],
         "checksum": 3790706311,
-        "marketCode": "BTC-oUSD-SWAP-LIN",
+        "marketCode": "BTC-USD-SWAP-LIN",
         "bid": [
             19015.0,
             1.0
@@ -3036,7 +3036,7 @@ Parameters |Type| Required| Description |
 --------|-----|---|-----------|
 op | STRING| Yes | `subscribe` |
 tag | INTEGER or STRING | No | If given it will be echoed in the reply |
-args | LIST | Yes | List of individual markets `<bestBidAsk>:<marketCode>` e.g: `["bestBidAsk:BTC-oUSD-SWAP-LIN"]` |
+args | LIST | Yes | List of individual markets `<bestBidAsk>:<marketCode>` e.g: `["bestBidAsk:BTC-USD-SWAP-LIN"]` |
 
 <sub>**Channel Update Fields**</sub>
 
@@ -3059,7 +3059,7 @@ timestamp| STRING | Millisecond timestamp |
 {
   "op": "subscribe",
   "tag": 1,
-  "args": ["trade:BTC-oUSD-SWAP-LIN"]
+  "args": ["trade:BTC-USD-SWAP-LIN"]
 }
 ```
 ```python
@@ -3071,10 +3071,10 @@ trade = \
 {
   "op": "subscribe",
   "tag": 1,
-  "args": ["trade:BTC-oUSD-SWAP-LIN"]
+  "args": ["trade:BTC-USD-SWAP-LIN"]
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -3097,7 +3097,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
 ```json
 {
   "event": "subscribe", 
-  "channel": ["trade:BTC-oUSD-SWAP-LIN"], 
+  "channel": ["trade:BTC-USD-SWAP-LIN"], 
   "success": True, 
   "tag": "1", 
   "timestamp": "1594299886880"
@@ -3115,7 +3115,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
               "price": "5556.91",
               "quantity": "5",
               "matchType": "MAKER",
-              "marketCode": "BTC-oUSD-SWAP-LIN",
+              "marketCode": "BTC-USD-SWAP-LIN",
               "timestamp": "1594299886890"
             } ]
 }
@@ -3179,7 +3179,7 @@ ticker = \
   "args": ["ticker:all"]
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -3237,7 +3237,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
             "volume24h": "0",
             "currencyVolume24h": "0",
             "openInterest": "0",
-            "marketCode": "1INCH-oUSD-SWAP-LIN",
+            "marketCode": "1INCH-USD-SWAP-LIN",
             "timestamp": "1622020931046",
             "lastQty": "0",
             "markPrice": "3.304",
@@ -3277,11 +3277,11 @@ marketCode    | STRING   | Market code |
 last          | STRING   | Last traded price|
 markPrice     | STRING   | Mark price|
 open24h       | STRING   | 24 hour rolling opening price|
-volume24h     | STRING   | 24 hour rolling trading volume in counter currency |
-currencyVolume24h     | STRING   | 24 hour rolling trading volume in base currency|
+volume24h     | STRING   | 24 hour rolling trading volume in OX |
+currencyVolume24h     | STRING   | 24 hour rolling trading volume in Contracts|
 high24h     | STRING   | 24 hour highest price|
 low24h     | STRING   | 24 hour lowest price|
-openInterest     | STRING   | Open interest|
+openInterest     | STRING   | Open interest in Contracts|
 lastQty     | STRING   | Last traded price amount|
 timestamp   | STRING   | Millisecond timestamp|
 lastMarkPrice| STRING | Previous mark price reading|
@@ -3296,7 +3296,7 @@ indexPrice | STRING | Index price |
 {
   "op": "subscribe", 
   "tag": 1,
-  "args": ["candles60s:BTC-oUSD-SWAP-LIN"]
+  "args": ["candles60s:BTC-USD-SWAP-LIN"]
 }
 ```
 ```python
@@ -3308,10 +3308,10 @@ candles = \
 {
   "op": "subscribe",
   "tag": 1,
-  "args": ["candles60s:BTC-oUSD-SWAP-LIN"]
+  "args": ["candles60s:BTC-USD-SWAP-LIN"]
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -3333,7 +3333,7 @@ asyncio.get_event_loop().run_until_complete(subscribe())
 ```json
 {
   "event": "subscribe", 
-  "channel": ["candles60s:BTC-oUSD-SWAP-LIN"], 
+  "channel": ["candles60s:BTC-USD-SWAP-LIN"], 
   "success": True, 
   "tag": "1", 
   "timestamp": "1594313762698"
@@ -3346,15 +3346,15 @@ asyncio.get_event_loop().run_until_complete(subscribe())
 {
   "table": "candle60s",
   "data": [ {
-              "marketCode": "BTC-oUSD-SWAP-LIN",
+              "marketCode": "BTC-USD-SWAP-LIN",
               "candle": [
                 "1594313762698", //timestamp
                 "9633.1",        //open
                 "9693.9",        //high
                 "9238.1",        //low
                 "9630.2",        //close
-                "45247",         //volume in counter currency
-                "5.3"            //volume in base currency
+                "45247",         //volume in OX
+                "5.3"            //volume in Contracts
               ]
           } ]
 }
@@ -3407,7 +3407,7 @@ liquidation = \
   "args": ["liquidationRFQ"]
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
@@ -3443,13 +3443,13 @@ asyncio.get_event_loop().run_until_complete(subscribe())
 {
   "table": "liquidationRFQ",
   "data": [ {
-              "marketCode": "BTC-oUSD-SWAP-LIN"
+              "marketCode": "BTC-USD-SWAP-LIN"
               "timestamp": "1613774607889"
           } ]
 }
 ```
 
-**Channel Update Frequency**: real-time, whenever there is planned position or collateral liquidation.
+**Channel Update Frequency**: real-time, whenever there is an upcoming liquidation.
  
 The liquidation RFQ (request for quotes) channel publishes a message 500ms before a liquidation event is due to occur.  A liquidation event can be classed as one of the following:-
 
@@ -3507,7 +3507,7 @@ market = \
   "args": ["market:all"]
 }
 
-url= 'wss://stgapi.opnx.com/v2/websocket'
+url= 'wss://stgapi.ox.fun/v2/websocket'
 async def subscribe():
     async with websockets.connect(url) as ws:
         while True:
