@@ -13,7 +13,7 @@ includes:
   - v2_introduction
   - v2_websocket
   - v3_restapi
-  - v2_restapi  
+
 
 search: true
 
@@ -21,5 +21,5 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: OPNX docs and libraries for the REST api and web socket for pro traders and developers - integrate algorithms, trading strategies, and order execution tools
+    content: OX.FUN docs and libraries for the REST api and web socket for pro traders and developers - integrate algorithms, trading strategies, and order execution tools
 ---
