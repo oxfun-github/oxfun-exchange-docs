@@ -1,12 +1,12 @@
 ---
-title: OPNX API docs-web socket and REST libraries for algo traders
+title: OX.FUN API docs-web socket and REST libraries for algo traders
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - json: curl
   - python
 
 toc_footers:
-  - <a href='https://opnx.com/user-console/register'>Sign Up for a Developer Key</a>
+  - <a href='https://ox.fun/user-console/register'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
