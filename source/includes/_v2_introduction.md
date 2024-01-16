@@ -18,7 +18,7 @@ To get started register for a TEST account at [stg.ox.fun](https://stg.ox.fun) o
 
 # API Key Management
 
-An API key is required to make an authenticated API command.  API keys (public and corresponding secret key) can be generated via the Opnx GUI within a clients account. 
+An API key is required to make an authenticated API command.  API keys (public and corresponding secret key) can be generated via the OX.FUN GUI within a clients account. 
 
 By default, API Keys are read-only and can only read basic account information, such as positions, orders, and trades. They cannot be used to trade such as placing, modifying or cancelling orders.
 
@@ -30,7 +30,7 @@ API keys are also only bound to a single sub-account, defined upon creation. Thi
 
 # Rate Limit
 
-Opnx's APIs allows our clients to access and control their accounts or view our market data using custom-written software. To protect the performance of the system, we impose certain limits:
+OX.FUN's APIs allows our clients to access and control their accounts or view our market data using custom-written software. To protect the performance of the system, we impose certain limits:
 
 Type                              |                            Limit |
 --------------------------------- | -------------------------------- |
